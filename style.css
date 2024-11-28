@@ -139,6 +139,10 @@ table {
         opacity: 0;
     }
 
+    50%{
+        opacity: 0;
+    }
+
     100% {
         opacity: 1;
     }
@@ -189,8 +193,44 @@ body {
     z-index: -1;
 }
 
+#b {
+    opacity: 0;
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    z-index: -1;
+}
+
+
+#c {
+    opacity: 0;
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    z-index: -1;
+}
+
+
 @media screen and (max-width: 800px) {
     #a {
+        opacity: 0;
+        position: absolute;
+        min-width: 800px;
+        height: 100%;
+        z-index: -1;
+
+    }
+
+    #b {
+        opacity: 0;
+        position: absolute;
+        min-width: 800px;
+        height: 100%;
+        z-index: -1;
+
+    }
+
+    #c {
         opacity: 0;
         position: absolute;
         min-width: 800px;
