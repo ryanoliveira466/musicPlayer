@@ -1,0 +1,463 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+@font-face {
+    font-family: Garamond;
+    src: url(text/EBGaramond-VariableFont_wght.ttf);
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateX(0);
+    }
+
+    40% {
+        transform: translateX(-30px);
+    }
+
+    60% {
+        transform: translateX(-15px);
+    }
+}
+
+html p {
+    margin: 0px
+}
+
+
+
+body {
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(black, rgb(59, 25, 59));
+}
+
+
+
+#a {
+    opacity: 0;
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    z-index: -1;
+}
+
+@media screen and (max-width: 800px) {
+    #a {
+        opacity: 0;
+        position: absolute;
+        min-width: 800px;
+        height: 100%;
+        z-index: -1;
+        
+    }
+    
+
+}
+
+
+
+
+@media screen and (max-width: 600px) {
+    .offcanvas-body p {
+        font-size: x-large;
+    }
+
+    .offcanvas-title {
+        font-size: x-large;
+    }
+
+
+
+
+    #music-player{
+        width: 750px;
+        height: 790px;
+         
+    }
+
+    #music-player p{
+       font-size: xx-large;
+         
+    }
+
+    #music-info{
+        width: 750px;
+        height: auto;
+        text-align: center;
+    }
+
+
+    #music-info h3{
+       font-size: xx-large;
+    }
+
+ 
+  
+    #song{
+        height: 700px;
+        overflow-y: hidden;
+    }
+
+
+ 
+
+
+}
+
+
+
+@media screen and (max-width: 400px) {
+    .offcanvas-body p {
+        font-size: xx-large;
+    }
+
+    .offcanvas-title {
+        font-size: xx-large;
+    }
+
+}
+
+
+
+#carouselExampleFade {
+    min-width: 800px;
+}
+
+#imgGojo {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    min-width: 800px;
+    margin-top: 50px;
+}
+
+#text1 {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Garamond;
+    text-align: center;
+    margin-top: 60px;
+    color: rgb(228, 221, 221);
+    background-color: black;
+    border-radius: 50px;
+    max-width: 1200px;
+    min-width: 800px;
+    -webkit-box-shadow: 0px 3px 11px 13px rgba(0, 0, 0, 0.65);
+    -moz-box-shadow: 0px 3px 11px 13px rgba(0, 0, 0, 0.65);
+    box-shadow: 0px 3px 11px 13px rgba(0, 0, 0, 0.65);
+}
+
+#text1 h1 {
+    font-size: 200px;
+}
+
+#text1 p {
+    font-size: 50px;
+}
+
+#line {
+    width: 100%;
+}
+
+
+.offcanvas-backdrop {
+    min-width: 800px;
+    max-width: 100vw;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000;
+}
+
+#offCanvasButton:hover {
+    animation: bounce 1s ease;
+}
+
+
+
+#song {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    /* Enable horizontal scrolling */
+    scroll-behavior: smooth;
+    margin-top: 60px;
+    min-width: 800px;
+    max-width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
+    backdrop-filter: blur(10px);
+    /* Apply blur effect to background */
+    -webkit-backdrop-filter: blur(10px);
+    /* Safari support */
+}
+
+#song::-webkit-scrollbar {
+    display: flex;
+    height: 8px;
+    /* Set the height for horizontal scrollbar */
+}
+
+#song::-webkit-scrollbar-track {
+    background: #f1f1f100;
+    /* Track color */
+}
+
+#song::-webkit-scrollbar-thumb {
+    background: #555;
+    /* Scrollbar thumb color */
+    border-radius: 4px;
+}
+
+#song::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Darker thumb when hovered */
+}
+
+html ::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+.music-player {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    height: 390px;
+    padding: 20px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+.music-player img {
+    width: 100%;
+    border-radius: 10px;
+    height: auto;
+    object-fit: cover;
+}
+
+.music-info {
+    width: 310px;
+    height: 65px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.music-info h3 {
+    font-size: 18px;
+    margin: 0;
+    font-weight: 600;
+    color: #474249;
+}
+
+#artist {
+    color: #e9e3e3;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.audio-player {
+    margin-top: 5px;
+    width: 100%; 
+}
+
+audio {
+    width: 100%;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* @keyframes gradientAnimation {
+    0% {
+      background: linear-gradient(45deg, #ff7e5f, #feb47b);
+    }
+    
+    100% {
+      background: linear-gradient(50deg, #0308ff, #00ece1);
+    }
+  } */
+/* body {
+    background-color: #FF0;
+}
+
+body:hover {
+    background-color: #AD310B;
+    
+    transition: background-color 1000ms linear;
+} */
