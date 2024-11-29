@@ -1,113 +1,97 @@
 
 
+
+arrayImagesColor = [{ id: "purple", color: "linear-gradient(black, rgb(59, 25, 59))", div: 'a', tint: "none" },
+{ id: "blue", color: "linear-gradient(black, rgb(40, 113, 126))", div: 'b', tint: "none" },
+{ id: "red", color: "linear-gradient(black, rgb(95, 10, 10))", div: 'c', tint: "none" },
+{ id: "teste", color: "linear-gradient(black, rgb(19, 250, 77))", div: 'd', tint: "rgb(19, 250, 77)" }
+]
+
+
+
 function colorChangeNext() {
     let elements = document.getElementsByClassName('carousel-item carousel-item-next carousel-item-start')[0];
-    // let elements = document.getElementsByClassName('carousel-item active')[0];
+
+    for (let i = 0; i < arrayImagesColor.length; i++) {
+
+        if (elements.id == arrayImagesColor[i].id) {
+            let divElement = document.getElementById(arrayImagesColor[i].div);
+
+            divElement.style.backgroundImage = arrayImagesColor[i].color;
+            divElement.style.animation = '2s fadeIn ease-out forwards';
+
+            divElement.addEventListener("animationend", function () {
+                document.body.style.backgroundImage = arrayImagesColor[i].color;
+                divElement.style.animation = 'none';
+            });
+
+            // Create a <style> element to add custom CSS rules dynamically
+            let style = document.createElement('style');
+
+            // Add the CSS rules for the ::after pseudo-element
+            style.innerHTML = `
+            #${arrayImagesColor[i].id}::after {
+            content: '';
+            position: absolute;
+            width: 1280px;
+            height: 720px;
+            background-color: ${arrayImagesColor[i].tint};
+            mix-blend-mode: color;
+            }
+             `;
+
+            // Append the style element to the document head
+            document.head.appendChild(style);
 
 
 
-    if (elements.id == 'purple') {
 
 
-        document.getElementById('a').style.backgroundImage = 'linear-gradient(black, rgb(59, 25, 59))';
-        document.getElementById('a').style.animation = '2s fadeIn ease-out forwards'
-
-        document.getElementById("a").addEventListener("animationend", function () {
-            document.body.style.backgroundImage = 'linear-gradient(black, rgb(59, 25, 59))';
-            document.getElementById("a").style.animation = 'none';
-        });
-
-
-
-
+        }
     }
-    else if (elements.id == 'blue') {
-
-
-        document.getElementById('b').style.backgroundImage = 'linear-gradient(black, rgb(40, 113, 126))';
-        document.getElementById('b').style.animation = '2s fadeIn ease-out forwards'
-
-        document.getElementById("b").addEventListener("animationend", function () {
-            document.body.style.backgroundImage = 'linear-gradient(black, rgb(40, 113, 126))';
-            document.getElementById("b").style.animation = 'none';
-        });
-    }
-
-    else if (elements.id == 'red') {
-
-
-        document.getElementById('c').style.backgroundImage = 'linear-gradient(black, rgb(95, 10, 10))';
-        document.getElementById('c').style.animation = '2s fadeIn ease-out forwards'
-
-        document.getElementById("c").addEventListener("animationend", function () {
-            document.body.style.backgroundImage = 'linear-gradient(black, rgb(95, 10, 10))';
-            document.getElementById("c").style.animation = 'none';
-        });
-    }
-
 }
-
-
-
-
-
-
-
-
 
 function colorChangePrev() {
     let elements = document.getElementsByClassName('carousel-item carousel-item-prev carousel-item-end')[0];
-    // let elements = document.getElementsByClassName('carousel-item active')[0];
-    console.log(elements.id);
 
-    if (elements.id == 'purple') {
+    for (let i = 0; i < arrayImagesColor.length; i++) {
+
+        if (elements.id == arrayImagesColor[i].id) {
+            let divElement = document.getElementById(arrayImagesColor[i].div);
+
+            divElement.style.backgroundImage = arrayImagesColor[i].color;
+            divElement.style.animation = '2s fadeIn ease-out forwards';
+
+            divElement.addEventListener("animationend", function () {
+                document.body.style.backgroundImage = arrayImagesColor[i].color;
+                divElement.style.animation = 'none';
+            });
+
+            // Create a <style> element to add custom CSS rules dynamically
+            let style = document.createElement('style');
+
+            // Add the CSS rules for the ::after pseudo-element
+            style.innerHTML = `
+            #${arrayImagesColor[i].id}::after {
+            content: '';
+            position: absolute;
+            width: 1280px;
+            height: 720px;
+            background-color: ${arrayImagesColor[i].tint};
+            mix-blend-mode: color;
+            }
+             `;
+
+            // Append the style element to the document head
+            document.head.appendChild(style);
 
 
-        document.getElementById('a').style.backgroundImage = 'linear-gradient(black, rgb(59, 25, 59))';
-        document.getElementById('a').style.animation = '2s fadeIn ease-out forwards'
-
-        document.getElementById("a").addEventListener("animationend", function () {
-            document.body.style.backgroundImage = 'linear-gradient(black, rgb(59, 25, 59))';
-            document.getElementById("a").style.animation = 'none';
-        });
 
 
 
-
+        }
     }
-    else if (elements.id == 'blue') {
-
-
-        document.getElementById('b').style.backgroundImage = 'linear-gradient(black, rgb(40, 113, 126))';
-        document.getElementById('b').style.animation = '2s fadeIn ease-out forwards'
-
-        document.getElementById("b").addEventListener("animationend", function () {
-            document.body.style.backgroundImage = 'linear-gradient(black, rgb(40, 113, 126))';
-            document.getElementById("b").style.animation = 'none';
-        });
-    }
-
-    else if (elements.id == 'red') {
-
-
-        document.getElementById('c').style.backgroundImage = 'linear-gradient(black, rgb(95, 10, 10))';
-        document.getElementById('c').style.animation = '2s fadeIn ease-out forwards'
-
-        document.getElementById("c").addEventListener("animationend", function () {
-            document.body.style.backgroundImage = 'linear-gradient(black, rgb(95, 10, 10))';
-            document.getElementById("c").style.animation = 'none';
-        });
-    }
-
 }
-
-
-
-
-
-
-
-
 
 
 
