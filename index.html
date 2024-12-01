@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <!-- initial-scale=1.0 -->
     <meta name="viewport" content="width=device-width">
+    <!-- Include Pickr CSS from CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/@simonwep/pickr@1.8.0/dist/themes/classic.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -14,6 +16,11 @@
 
 
 <body>
+
+    <button class="btn btn-danger" id="scroll" style="display: none;">testeScrol</button>
+
+
+
 
     <!-- background change color -->
     <div id="coresBackgorund">
@@ -38,15 +45,23 @@
                 <div class="modal-body" style="color: rgb(218, 223, 223);">
 
                     <div class="itemAdd">
-                        <button class="btn btn"><img src="img/add.png" alt="" srcset=""></button>
+                        <button class="btn btn" id="btnImagem"><img src="img/add.png"
+                                style="border-radius: 0px;object-fit: none;" width="80px" height="80px" alt=""
+                                data-bs-toggle="modal" data-bs-target="#exampleModalImagens" srcset=""></button>
                         <p style="margin: 1rem;">Image</p>
                     </div>
 
-
+                    <div class="itemAdd">
+                        <button class="btn btn"><img src="img/add.png" style="border-radius: 0px;object-fit: none;"
+                                width="80px" height="80px" alt="" srcset=""></button>
+                        <p style="margin: 1rem;">Song</p>
+                    </div>
 
                     <div class="itemAdd">
-                        <button class="btn btn"><img src="img/add.png" alt="" srcset=""></button>
-                        <p style="margin: 1rem;">Song</p>
+                        <button class="btn btn" id="btnView"><img src="img/view.webp"
+                                style="border-radius: 10px;object-fit: cover;" width="80px" height="80px" alt=""
+                                data-bs-toggle="modal" data-bs-target="#exampleModalView" srcset=""></button>
+                        <p style="margin: 1rem;">View</p>
                     </div>
 
                 </div>
@@ -58,6 +73,338 @@
     </div>
 
     <!-- Vertically centered modal -->
+
+
+
+
+
+
+
+
+    <!-- Vertically centered modal -->
+
+    <!-- Modal IMAGENS -->
+    <div class="modalRef fade modal" data-bs-theme="dark" id="exampleModalImagens" tabindex="-1"
+        aria-labelledby="exampleModalImagensLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="font-family: Garamond; font-size: xxx-large;">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+
+                </div>
+                <div class="modal-body" id="modal-body-img" style="color: rgb(218, 223, 223); position: relative;">
+
+                    <div class="itemAdd">
+                        <form id="upload-form" enctype="multipart/form-data">
+                            <label for="">Choose an image to upload:</label>
+                            <input type="file" style="font-size: x-large;" id="image-upload" accept="image/*"
+                                onchange="previewImage(event)">
+                            <br><br>
+                        </form>
+                    </div>
+
+
+                    <div class="preview-container" id="preview-container" style="width: 100%; height: 500px;">
+                        <img id="image-preview" class="rounded"
+                            style="padding: 0.5rem; border-radius: 5px;object-fit: scale-down;" src="img/notFound.jpg"
+                            alt="Image Preview">
+                    </div>
+
+
+                    <div class="itemAdd" style="justify-content: center;">
+                        <input type="text" class="form-control" id="name" style="padding: 1rem; font-size: unset;"
+                            placeholder="Name:">
+                    </div>
+
+
+                    <!-- Placeholder for the color picker -->
+                    <div style="display: none;">
+                        <div id="color-picker"></div>
+                        <div id="color-picker2"></div>
+                        <div id="color-picker3"></div>
+                    </div>
+                    <!-- Placeholder for the color picker -->
+
+
+                    <div id="colorOption">
+                        <div class="itemAdd"
+                            style="flex-direction: column; text-align: center; justify-content: center;align-items: center;">
+                            <p>Color 1: <span id="colorValue" style="display: none;">#ff0000</span></p>
+                            <div id="colorDisplay" class="color-display" style="background-color: #ff0000;"></div>
+                        </div>
+
+
+                        <div class="itemAdd"
+                            style="flex-direction: column; text-align: center; justify-content: center;align-items: center;">
+                            <p>Color 2: <span id="colorValue2" style="display: none;">#ff0000</span></p>
+                            <div id="colorDisplay2" class="color-display" style="background-color: #ff0000;"></div>
+                        </div>
+
+                        <div class="itemAdd"
+                            style="flex-direction: column; text-align: center; justify-content: center;align-items: center;">
+                            <p>Color 3: <span id="colorValue3" style="display: none;">#ff0000</span></p>
+                            <div id="colorDisplay3" class="color-display" style="background-color: #ff0000;"></div>
+                        </div>
+
+                    </div>
+
+                    <div style="display: flex; width: 100%; padding: 8px;justify-content: center; align-items: center;">
+                        <button id="buttonAcceptimg" class="btn btn-secondary" style="font-size: xx-large;">
+                            <p>Save</p>
+                        </button>
+                    </div>
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-close" id="btnCloseModalImagem" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vertically centered modal -->
+
+
+
+
+
+
+
+
+    <!-- Vertically centered modal -->
+
+    <!-- Modal VIEW -->
+    <div class="modalRef fade modal" data-bs-theme="dark" id="exampleModalView" tabindex="-1"
+        aria-labelledby="exampleModalViewLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="font-family: Garamond; font-size: xxx-large;">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+
+                </div>
+                <div class="modal-body" id="modal-body-img" style="color: rgb(218, 223, 223); position: relative;">
+
+
+                    <div id="imageView">
+
+
+
+                        <!-- <div>
+                            <div class="music-player" id="music-player">
+                                <img src="img/view.webp"  class="musicImg" alt="Album Cover">
+                                <div class="music-info" id="music-info">
+                                    <h3>Lady Gaga - Bloody Mary | Perfect Slowed & Reverb</h3>
+                                </div> 
+                                
+                                
+                                <div id="colorOption">
+                                    <div class="itemAdd"
+                                        style="flex-direction: column; text-align: center; justify-content: center;align-items: center;">
+                                        <p>Color 1: <span id="colorValue" style="display: none;"></span></p>
+                                        <div id="colorDisplay" class="color-display" style="background-color: #ff0000;"></div>
+                                    </div>
+            
+            
+                                    <div class="itemAdd"
+                                        style="flex-direction: column; text-align: center; justify-content: center;align-items: center;">
+                                        <p>Color 2: <span id="colorValue2" style="display: none;"> </span></p>
+                                        <div id="colorDisplay2" class="color-display" style="background-color: #ff0000;"></div>
+                                    </div>
+            
+                                    <div class="itemAdd"
+                                        style="flex-direction: column; text-align: center; justify-content: center;align-items: center;">
+                                        <p>Color 3: <span id="colorValue3" style="display: none;"> </span></p>
+                                        <div id="colorDisplay3" class="color-display" style="background-color: #ff0000;"></div>
+                                    </div>
+            
+                                </div>
+
+                                <div id="optionButtons">
+                                    <button class="btn btn-danger itemAdd"><p>Delete</p></button>
+                                    <button class="btn btn-secondary itemAdd"><p>Edit</p></button>
+                                </div>
+
+                            </div>
+
+
+                        </div> -->
+
+
+
+
+
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-close" id="btnCloseModalView" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vertically centered modal -->
+
+
+
+
+
+
+
+    <!-- Vertically centered modal -->
+
+    <!-- Modal EDIT -->
+    <div class="modalRef fade modal" data-bs-theme="dark" id="exampleModalEdit" tabindex="-1"
+        aria-labelledby="exampleModalEditLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="font-family: Garamond; font-size: xxx-large;">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+
+                </div>
+                <div class="modal-body" id="modal-body-edit" style="color: rgb(218, 223, 223); position: relative;">
+
+                    <div class="itemAdd">
+                        <form id="upload-form" enctype="multipart/form-data">
+                            <label for="">Choose an image to upload:</label>
+                            <input type="file" style="font-size: x-large;" id="image-upload" accept="image/*"
+                                onchange="previewImage(event)">
+                            <br><br>
+                        </form>
+                    </div>
+
+                    <div class="preview-container" id="preview-container" style="width: 100%; height: 500px;">
+                        <img id="image-preview" class="rounded"
+                            style="padding: 0.5rem; border-radius: 5px;object-fit: scale-down;" src="img/notFound.jpg"
+                            alt="Image Preview">
+                    </div>
+
+                    <div class="itemAdd" style="justify-content: center;">
+                        <p style="padding: 1rem; margin: 0; text-align: justify;">Name:</p>
+                        <input type="text" class="form-control" id="name" style="padding: 1rem; font-size: unset;"
+                            placeholder="Name:">
+                    </div>
+
+
+                    <!-- Placeholder for the color picker -->
+                    <div style="display: none;">
+                        <div id="color-picker"></div>
+                        <div id="color-picker2"></div>
+                        <div id="color-picker3"></div>
+                    </div>
+                    <!-- Placeholder for the color picker -->
+
+
+                    <div id="colorOption">
+                        <div class="itemAdd"
+                            style="flex-direction: column; text-align: center; justify-content: center;align-items: center;">
+                            <p>Color 1: <span id="colorValue" style="display: none;"></span></p>
+                            <div id="colorDisplay" class="color-display" style="background-color: #ff0000;"></div>
+                        </div>
+
+
+                        <div class="itemAdd"
+                            style="flex-direction: column; text-align: center; justify-content: center;align-items: center;">
+                            <p>Color 2: <span id="colorValue2" style="display: none;"> </span></p>
+                            <div id="colorDisplay2" class="color-display" style="background-color: #ff0000;"></div>
+                        </div>
+
+                        <div class="itemAdd"
+                            style="flex-direction: column; text-align: center; justify-content: center;align-items: center;">
+                            <p>Color 3: <span id="colorValue3" style="display: none;"> </span></p>
+                            <div id="colorDisplay3" class="color-display" style="background-color: #ff0000;"></div>
+                        </div>
+
+                    </div>
+
+                    <div class=""
+                        style=" display: flex; width: 100%; padding: 8px;justify-content: center; align-items: center;">
+                        <button id="buttonAcceptimg" class="btn btn-secondary" style="font-size: xx-large;">
+                            <p>Save</p>
+                        </button>
+                    </div>
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-close" id="btnCloseModalEdit" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vertically centered modal -->
+
+
+
+
+
+    <!-- Button to show toast -->
+    <button type="button" class="btn btn-primary" id="liveToastBtn" style="display: none;">Show live toast</button>
+
+    <!-- Toast container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" data-bs-theme="dark" id="toatsAlert">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="img/gojoIcon2.jpg" class="rounded me-2" alt="..." width="100px" height="100px">
+                <strong class="me-auto">
+                    <p style="font-size: xx-large;">Alert</p>
+                </strong>
+                <small>
+                    <p style="font-size: x-large;">Now</p>
+                </small>
+                <button type="button" class="btn-close" id="liveToastBtnClose" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+            <div class="toast-body" style="color: aliceblue;">
+                <p style="font-size: xx-large;">Empty spaces not allowed!</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Button to show toast -->
+    <button type="button" class="btn btn-primary" id="liveToastBtnName" style="display: none;">Show live toast</button>
+
+    <!-- Toast container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" data-bs-theme="dark" id="toatsAlert">
+        <div id="liveToastImage" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="img/gojoIcon2.jpg" class="rounded me-2" alt="..." width="100px" height="100px">
+                <strong class="me-auto">
+                    <p style="font-size: xx-large;">Alert</p>
+                </strong>
+                <small>
+                    <p style="font-size: x-large;">Now</p>
+                </small>
+                <button type="button" class="btn-close" id="liveToastBtnNameClose" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+            <div class="toast-body" style="color: aliceblue;">
+                <p style="font-size: xx-large;">Name already in use or not allowed!</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
 
     <header>
 
@@ -112,24 +459,24 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active" id="purple">
                         <div class="container-fluid imgGojo" id="purple">
-                            <img src="img/gojo.jpg" alt="" srcset="">
+                            <img src="img/gojo.jpg" alt="" srcset="" id="purpleImg">
                         </div>
                     </div>
                     <div class="carousel-item" id="blue">
                         <div class="container-fluid imgGojo" id="blue">
-                            <img src="img/gojoBlue.png" alt="" srcset="">
+                            <img src="img/gojoBlue.png" alt="" srcset="" id="blueImg">
                         </div>
                     </div>
 
                     <div class="carousel-item" id="red">
                         <div class="container-fluid imgGojo" id="red">
-                            <img src="img/gojoRed.jpg" alt="" srcset="">
+                            <img src="img/gojoRed.jpg" alt="" srcset="" id="redImg">
                         </div>
                     </div>
 
                     <div class="carousel-item" id="teste">
                         <div class="container-fluid imgGojo" id="teste">
-                            <img src="img/teste/maxresdefault.jpg" alt="" srcset="">
+                            <img src="img/teste/maxresdefault.jpg" alt="" srcset="" id="testeImg">
                         </div>
                     </div>
 
@@ -153,13 +500,13 @@
             <span class="border" id="line"></span>
         </div>
 
-        <article style="padding-bottom: 100px;">
+        <!-- <article style="padding-bottom: 100px;">
             <div class="container-fluid" id="text1">
                 <h1>Satoru Gojo</h1>
                 <p>Entre os céus e a terra</p>
                 <p>Eu sou o mais honrado</p>
             </div>
-        </article>
+        </article> -->
 
         <div class="container-fluid"
             style="display: flex;justify-content: center; margin-top: 30px; max-width: 1100px;min-width: 800px;">
@@ -171,7 +518,7 @@
             <div class="" id="song">
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/thumb1.jpg" width="350px" height="200px" alt="Album Cover">
+                        <img src="img/thumb1.jpg" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
                             <h3>INFINITY FUNK - Prey ~ (SUPER SLOWED + REVERB) [BRAZILIAN PHONK]</h3>
                         </div>
@@ -188,7 +535,7 @@
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/thumb2.jpg" width="350px" height="200px" alt="Album Cover">
+                        <img src="img/thumb2.jpg" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
                             <h3>O MELHOR NO QUE FAZ 3.0 - DJ BRYAN 7 ~ (SUPER SLOWED + REVERB) [BRAZILIAN PHONK]</h3>
                         </div>
@@ -204,7 +551,7 @@
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/thumb3.jpg" width="350px" height="200px" alt="Album Cover">
+                        <img src="img/thumb3.jpg" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
                             <h3>Slide da Treme Melódica v2 - DJ FNK ~ (SUPER SLOWED + REVERB) [BRAZILIAN PHONK]</h3>
                         </div>
@@ -222,7 +569,7 @@
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/thumb4.jpg" width="350px" height="200px" alt="Album Cover">
+                        <img src="img/thumb4.jpg" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
                             <h3>irokz | FUNK UNIVERSO x Satoru Gojo | [ SLOWED + REVERB ] | [ Brazilian Funk ]</h3>
                         </div>
@@ -240,7 +587,7 @@
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/thumb5.jpg" width="350px" height="200px" alt="Album Cover">
+                        <img src="img/thumb5.jpg" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
                             <h3>VEN NO TOMA TOMA - DJ Ikeraus ~ (SLOWED + REVERB) [BRAZILIAN PHONK]</h3>
                         </div>
@@ -260,7 +607,7 @@
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/thumb6.jpg" width="350px" height="200px" alt="Album Cover">
+                        <img src="img/thumb6.jpg" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
                             <h3>Lady Gaga - Bloody Mary | Perfect Slowed & Reverb</h3>
                         </div>
@@ -276,18 +623,117 @@
 
             </div>
         </article>
-
-
-
-
-
     </main>
 
 
+
+    <script>
+        // Function to preview the image after selection
+        function previewImage(event) {
+            const file = event.target.files[0]; // Get the file
+            const reader = new FileReader(); // Create a FileReader instance
+
+
+            //Depois que o arquivo foi lido pela classe FileReader esse trecho é acionado pelo 'onload'
+
+            reader.onload = function () {
+                const preview = document.getElementById('image-preview');
+                preview.src = reader.result; // Set the image source to the loaded file data
+                document.getElementById('preview-container').style.display = 'block'; // Show the preview
+            }
+
+            //Primeiro esse trechi lê o arquivo
+
+            if (file) {
+                reader.readAsDataURL(file); // Read the file as a Data URL (base64)
+            }
+        }
+
+
+
+        // Function to preview the image after selection
+        function previewImageEdit(event) {
+            const file = event.target.files[0]; // Get the file
+            const reader = new FileReader(); // Create a FileReader instance
+
+
+            //Depois que o arquivo foi lido pela classe FileReader esse trecho é acionado pelo 'onload'
+
+            reader.onload = function () {
+                const preview = document.getElementById('image-previewEdit');
+                preview.src = reader.result; // Set the image source to the loaded file data
+                document.getElementById('preview-containerEdit').style.display = 'block'; // Show the preview
+            }
+
+            //Primeiro esse trechi lê o arquivo
+
+            if (file) {
+                reader.readAsDataURL(file); // Read the file as a Data URL (base64)
+            }
+        }
+    </script>
+
+
+
+
+    <!-- SÓ FUNCIONA SE FOR ANTES -->
+    <!-- Include Pickr JavaScript from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr@1.8.0/dist/pickr.min.js"></script>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script>
+        // Get the button and the toast element
+        const toastButton = document.getElementById('liveToastBtn');
+        const toastElement = document.getElementById('liveToast');
+
+        // Initialize toast using Bootstrap's Toast class
+        const toast = new bootstrap.Toast(toastElement);
+
+        // Add event listener to the button to show the toast
+        toastButton.addEventListener('click', function () {
+            toast.show();
+        });
+
+
+
+
+        // Get the button and the toast element
+        const toastButton2 = document.getElementById('liveToastBtnName');
+        const toastElement2 = document.getElementById('liveToastImage');
+
+        // Initialize toast using Bootstrap's Toast class
+        const toast2 = new bootstrap.Toast(toastElement2);
+
+        // Add event listener to the button to show the toast
+        toastButton2.addEventListener('click', function () {
+            toast2.show();
+        });
+
+
+
+
+
+
+    </script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+      // Slow smooth scroll to the bottom
+      $('.btn-scroll').on('click', function() {
+          var scrollableDiv = $('.scrollable-div');
+          var targetScroll = scrollableDiv[0].scrollHeight; // Target scroll position (bottom of the content)
+
+          $('html, body').animate({
+              scrollTop: targetScroll
+          }, 2000); // 2000ms for slow smooth scroll to the bottom
+      });
+  </script> -->
+
+
+
+
 </body>
 
 </html>
