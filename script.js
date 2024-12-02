@@ -97,18 +97,22 @@ function colorChangeNext() {
             // Create a <style> element to add custom CSS rules dynamically
             let style = document.createElement('style');
 
-            // Add the CSS rules for the ::after pseudo-element
-            style.innerHTML = `
-            #${arrayImagesColor[i].id}::after {
-            content: '';
-            position: absolute;
-            width: 1280px;
-            height: 720px;
-            background-color: ${arrayImagesColor[i].tint};
-            mix-blend-mode: color;
-            border-radius: 20px;
-            }
-             `;
+
+
+
+             style.innerHTML = `
+             #${arrayImagesColor[i].id}::after {
+                 content: '';
+                 position: absolute;
+                 width: 1280px;
+                 height: 720px;
+                 background-color: ${arrayImagesColor[i].tint};
+                 mix-blend-mode: color;
+                 border-radius: 20px;
+                 }
+                  `;
+
+          
 
             // Append the style element to the document head
             document.head.appendChild(style);
@@ -140,18 +144,24 @@ function colorChangePrev() {
             // Create a <style> element to add custom CSS rules dynamically
             let style = document.createElement('style');
 
-            // Add the CSS rules for the ::after pseudo-element
-            style.innerHTML = `
-            #${arrayImagesColor[i].id}::after {
-            content: '';
-            position: absolute;
-            width: 1280px;
-            height: 720px;
-            background-color: ${arrayImagesColor[i].tint};
-            mix-blend-mode: color;
-            border-radius: 20px;
-            }
-             `;
+
+
+
+                  // Add the CSS rules for the ::after pseudo-element
+                  style.innerHTML = `
+                  #${arrayImagesColor[i].id}::after {
+                  content: '';
+                  position: absolute;
+                  width: 1280px;
+                  height: 720px;
+                  background-color: ${arrayImagesColor[i].tint};
+                  mix-blend-mode: color;
+                  border-radius: 20px;
+                  }
+                   `;
+
+
+
 
             // Append the style element to the document head
             document.head.appendChild(style);

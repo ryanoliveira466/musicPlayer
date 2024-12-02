@@ -302,7 +302,7 @@ body {
     min-width: 800px;
 }
 
-#imgGojo {
+/* #imgGojo {
     position: relative;
     display: flex;
     justify-content: center;
@@ -310,9 +310,9 @@ body {
     min-width: 800px;
     margin-top: 50px;
 
-}
+} */
 
-.imgGojo {
+ /* .imgGojo {
     position: relative;
     display: flex;
     justify-content: center;
@@ -326,7 +326,24 @@ body {
     width: 1280px;
     height: 720px;
     object-fit: scale-down;
+}  */
+
+
+  .imgGojo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 50px;
+    border-radius: 20px;
+    border: 10px solid transparent;
 }
+
+.imgGojo img {
+    border-radius: 20px;
+    height: 720px;
+    object-fit: scale-down;
+}  
 
 
 
@@ -509,6 +526,43 @@ E FUNCIONA COM TODAS AS CONFIGURAÇÕES PORÉM POSSO MEXER NELAS */
     --bs-modal-width: 500px;
     --bs-modal-padding: 0;
     --bs-modal-margin: 0;
+    --bs-modal-color: ;
+    --bs-modal-bg: var(--bs-body-bg);
+    --bs-modal-border-color: var(--bs-border-color-translucent);
+    --bs-modal-border-width: var(--bs-border-width);
+    --bs-modal-border-radius: var(--bs-border-radius-lg);
+    --bs-modal-box-shadow: var(--bs-box-shadow-sm);
+    --bs-modal-inner-border-radius: calc(var(--bs-border-radius-lg) -(var(--bs-border-width)));
+    --bs-modal-header-padding-x: 1rem;
+    --bs-modal-header-padding-y: 1rem;
+    --bs-modal-header-padding: 1rem 1rem;
+    --bs-modal-header-border-color: var(--bs-border-color);
+    --bs-modal-header-border-width: var(--bs-border-width);
+    --bs-modal-title-line-height: 1.5;
+    --bs-modal-footer-gap: 0.5rem;
+    --bs-modal-footer-bg: ;
+    --bs-modal-footer-border-color: var(--bs-border-color);
+    --bs-modal-footer-border-width: var(--bs-border-width);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--bs-modal-zindex);
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+}
+
+
+
+
+html .modal {
+    --bs-modal-zindex: 1055;
+    --bs-modal-width: 500px;
+    --bs-modal-padding: 1rem;
+    --bs-modal-margin: 0px;
     --bs-modal-color: ;
     --bs-modal-bg: var(--bs-body-bg);
     --bs-modal-border-color: var(--bs-border-color-translucent);
@@ -749,6 +803,9 @@ E FUNCIONA COM TODAS AS CONFIGURAÇÕES PORÉM POSSO MEXER NELAS */
     box-shadow: var(--bs-toast-box-shadow);
     border-radius: var(--bs-toast-border-radius);
 }
+
+
+
 
 
 
