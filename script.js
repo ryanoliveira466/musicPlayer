@@ -94,11 +94,11 @@ function colorChangeNext() {
                 divElement.style.animation = 'none';
             });
 
+            
+
             // Create a <style> element to add custom CSS rules dynamically
             let style = document.createElement('style');
-
-
-
+            style.id = `${arrayImagesColor[i].id}after`
 
              style.innerHTML = `
              #${arrayImagesColor[i].id}::after {
@@ -351,7 +351,7 @@ document.getElementById('buttonAcceptimg').addEventListener('click', function ()
     let tint = document.getElementById('colorValue3').innerHTML
     let divBgName = `${id}Div`
     let idImg = `${id}Img`
-    let imgSrc = document.getElementById('image-preview').src
+    let imgSrc = document.getElementById('image-preview').src;
 
 
     if (id == "") {

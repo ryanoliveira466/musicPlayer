@@ -8,9 +8,28 @@
     <!-- Include Pickr CSS from CDN -->
     <link href="https://cdn.jsdelivr.net/npm/@simonwep/pickr@1.8.0/dist/themes/classic.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+        <link href="https://cdn.jsdelivr.net/npm/cropperjs/dist/cropper.min.css" rel="stylesheet">
     <title>Gojo</title>
+    <!-- <style>
+        body {
+          font-family: Arial, sans-serif;
+          text-align: center;
+          padding: 20px;
+        }
+        #image {
+          max-width: 100%;
+          display: block;
+          margin: 0 auto;
+          height: 500px;
+        }
+        #cropped-result {
+          margin-top: 20px;
+          max-width: 100%;
+        }
+      </style> -->
 </head>
 
 
@@ -98,7 +117,7 @@
                         <form id="upload-form" enctype="multipart/form-data">
                             <label for="">Choose an image to upload:</label>
                             <input type="file" style="font-size: x-large;" id="image-upload" accept="image/*"
-                                onchange="previewImage(event)">
+                                onchange="">
                             <br><br>
                         </form>
                     </div>
@@ -109,7 +128,6 @@
                             style="padding: 0.5rem; border-radius: 5px;object-fit: scale-down;" src="img/notFound.jpg"
                             alt="Image Preview">
                     </div>
-
 
                     <div class="itemAdd" style="justify-content: center;">
                         <input type="text" class="form-control" id="name" style="padding: 1rem; font-size: unset;"
@@ -470,10 +488,12 @@
 
                     <div class="carousel-item" id="red">
                         <div class="container-fluid imgGojo" id="red">
-                            <img src="img/gojoRed.jpg" alt="" srcset="" id="redImg">
+                            <img src="img/gojoRed.jpg"  alt="" srcset="" id="redImg">
                         </div>
                     </div>
 
+
+               
                     <div class="carousel-item" id="teste">
                         <div class="container-fluid imgGojo" id="teste">
                             <img src="img/teste/maxresdefault.jpg" alt="" srcset="" id="testeImg">
@@ -627,7 +647,7 @@
 
 
 
-    <script>
+    <!-- <script>
         // Function to preview the image after selection
         function previewImage(event) {
             const file = event.target.files[0]; // Get the file
@@ -671,7 +691,208 @@
                 reader.readAsDataURL(file); // Read the file as a Data URL (base64)
             }
         }
-    </script>
+    </script> -->
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/cropperjs/dist/cropper.min.js"></script>
+    <script>
+    //   let cropper; // Reference to the cropper instance
+    
+    //   // Handle image upload
+    //   document.getElementById('image-upload').addEventListener('change', function(event) {
+    //     let file = event.target.files[0];
+    //     if (file) {
+    //       let reader = new FileReader();
+    //       reader.onload = function(e) {
+    //         // Set the uploaded image to the <img> element
+    //         let imageElement = document.getElementById('image-preview');
+    //         imageElement.src = e.target.result;
+    //         imageElement.style.display = 'block'; // Show image element
+    
+    //         // Reset the cropper instance if one exists
+    //         if (cropper) {
+    //           cropper.destroy(); // Destroy the previous cropper instance if it exists
+    //         }
+    
+    //         // Initialize the Cropper.js instance with the new image
+    //         cropper = new Cropper(imageElement, {
+    //           aspectRatio: 0 / 0,
+    //           viewMode: 2,                          // Ensure the crop area is restricted to the image size
+    //           autoCropArea: 1,                      // Automatically fill the entire image with the crop area
+    //           responsive: true,                     // Ensure responsive resizing of the cropper
+    //           cropBoxResizable: true,               // Allow resizing of the crop box
+    //           background: true,                     // Allow background dimming
+    //           ready: function() {
+    //             // Automatically zoom in to fill the crop area to the image size
+    //             cropper.zoomTo(0);
+    //           }
+    //         });
+    //       };
+    //       reader.readAsDataURL(file);
+  
+          
+    //       // Reset the file input value so the same file can be selected again
+    //       event.target.value = '';  // Clear the input field value
+    //     }
+    //   });
+    
+    //   // Handle the cropping process
+    //   document.getElementById('crop-button').addEventListener('click', function() {
+    //     if (cropper) {
+    //       // Get the cropped image data as a Data URL
+    //       const canvas = cropper.getCroppedCanvas();
+    //       const croppedImageURL = canvas.toDataURL('image/png');
+          
+    //       // Set the cropped image to the result <img> element
+    //       let resultImage = document.getElementById('cropped-result');
+    //       resultImage.src = croppedImageURL;
+    //       resultImage.style.display = 'block'; // Show the cropped result
+    //     } else {
+    //       alert('Please upload an image first!');
+    //     }
+    //   });
+    // </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    let cropper; // Reference to the cropper instance
+  
+    // Handle image upload
+    document.getElementById('image-upload').addEventListener('change', function(event) {
+      let file = event.target.files[0];
+      if (file) {
+        let reader = new FileReader();
+        reader.onload = function(e) {
+          // Set the uploaded image to the <img> element
+          let imageElement = document.getElementById('image-preview');
+          imageElement.src = e.target.result;
+          imageElement.style.display = 'block'; // Show image element
+  
+          // Reset the cropper instance if one exists
+          if (cropper) {
+            cropper.destroy(); // Destroy the previous cropper instance if it exists
+          }
+  
+          // Initialize the Cropper.js instance with the new image
+          cropper = new Cropper(imageElement, {
+            aspectRatio: 0 / 0,
+            viewMode: 2,                          // Ensure the crop area is restricted to the image size
+            autoCropArea: 1,                      // Automatically fill the entire image with the crop area
+            responsive: true,                     // Ensure responsive resizing of the cropper
+            cropBoxResizable: true,               // Allow resizing of the crop box
+            background: true,                     // Allow background dimming
+            ready: function() {
+              // Automatically zoom in to fill the crop area to the image size
+              cropper.zoomTo(0);
+            }
+          });
+        };
+        reader.readAsDataURL(file);
+  
+        // Reset the file input value so the same file can be selected again
+        event.target.value = '';  // Clear the input field value
+      }
+    });
+  
+    // Handle the cropping process
+    document.getElementById('buttonAcceptimg').addEventListener('click', function() {
+      if (cropper) {
+        // Get the cropped image data as a Data URL
+        const canvas = cropper.getCroppedCanvas();
+        const croppedImageURL = canvas.toDataURL('image/png');
+        
+        // Apply border-radius to the cropped image using a temporary canvas
+        const radius = 20;  // Set the border-radius here
+  
+        // Create a temporary canvas to apply the border-radius effect
+        let tempCanvas = document.createElement('canvas');
+        let tempCtx = tempCanvas.getContext('2d');
+        
+        // Set canvas dimensions to match the cropped canvas
+        tempCanvas.width = canvas.width;
+        tempCanvas.height = canvas.height;
+  
+        // Draw a rounded rectangle on the temporary canvas
+        tempCtx.beginPath();
+        tempCtx.moveTo(radius, 0);
+        tempCtx.lineTo(tempCanvas.width - radius, 0);
+        tempCtx.quadraticCurveTo(tempCanvas.width, 0, tempCanvas.width, radius);
+        tempCtx.lineTo(tempCanvas.width, tempCanvas.height - radius);
+        tempCtx.quadraticCurveTo(tempCanvas.width, tempCanvas.height, tempCanvas.width - radius, tempCanvas.height);
+        tempCtx.lineTo(radius, tempCanvas.height);
+        tempCtx.quadraticCurveTo(0, tempCanvas.height, 0, tempCanvas.height - radius);
+        tempCtx.lineTo(0, radius);
+        tempCtx.quadraticCurveTo(0, 0, radius, 0);
+        tempCtx.closePath();
+        tempCtx.clip();
+  
+        // Draw the cropped image onto the temporary canvas with rounded corners
+        tempCtx.drawImage(canvas, 0, 0);
+  
+        // Convert the temporary canvas to a data URL
+        const roundedCroppedImageURL = tempCanvas.toDataURL('image/png');
+        document.getElementById('image-preview').src = roundedCroppedImageURL
+  
+        // Set the cropped and rounded image to the result <img> element
+      } else {
+        alert('Please upload an image first!');
+      }
+    });
+  </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
 
 
 
