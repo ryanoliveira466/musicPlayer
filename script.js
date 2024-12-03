@@ -1,9 +1,9 @@
 
 
-arrayImagesColor = [{ id: "purple", idImg: "purpleImg", color: "linear-gradient(#000000, rgb(59, 25, 59))", color1: '#000000', color2: 'rgb(59, 25, 59)', div: 'a', tint: "#FFFFFF00", src: "img/gojo.jpg" },
-{ id: "blue", idImg: "blueImg", color: "linear-gradient(#000000, rgb(40, 113, 126))", color1: '	#000000', color2: 'rgb(40, 113, 126)', div: 'b', tint: "#FFFFFF00", src: "img/gojoBlue.png" },
-{ id: "red", idImg: "redImg", color: "linear-gradient(#000000, rgb(95, 10, 10))", color1: '#000000', color2: 'rgb(95, 10, 10)', div: 'c', tint: "#FFFFFF00", src: "img/gojoRed.jpg" },
-{ id: "teste", idImg: "testeImg", color: "linear-gradient(#000000, rgb(19, 250, 77))", color1: '#000000', color2: 'rgb(19, 250, 77)', div: 'd', tint: "rgb(19, 250, 77)", src: "img/teste/maxresdefault.jpg" }
+arrayImagesColor = [{ id: "purple", idImg: "purpleImg", color: "linear-gradient(#9600FF, #FF00B1)", color1: '#9600FF', color2: '#FF00B1', div: 'a', tint: "#9B59B6", src: "img/gojo.jpg", mix: "color" },
+{ id: "blue", idImg: "blueImg", color: "linear-gradient(#00FFF2, #000AFF)", color1: '#00FFF2', color2: '#000AFF', div: 'b', tint: "#0051FF", src: "img/thumb1.jpg", mix: "soft-light"},
+{ id: "red", idImg: "redImg", color: "linear-gradient(#FF0000, #FF4200)", color1: '#FF0000', color2: '#FF4200', div: 'c', tint: "#FF0000", src: "img/thumb2.jpg", mix: "hue" },
+{ id: "teste", idImg: "testeImg", color: "linear-gradient(#19FF00, #06F30C)", color1: '#19FF00', color2: '#06F30C', div: 'd', tint: "#13FA4D", src: "img/thumb5.jpg", mix: "difference"}
 ]
 
 
@@ -94,25 +94,26 @@ function colorChangeNext() {
                 divElement.style.animation = 'none';
             });
 
-            
+
 
             // Create a <style> element to add custom CSS rules dynamically
             let style = document.createElement('style');
             style.id = `${arrayImagesColor[i].id}after`
 
-             style.innerHTML = `
+            style.innerHTML = `
              #${arrayImagesColor[i].id}::after {
                  content: '';
                  position: absolute;
                  width: 1280px;
                  height: 720px;
                  background-color: ${arrayImagesColor[i].tint};
-                 mix-blend-mode: color;
+                 mix-blend-mode: ${arrayImagesColor[i].mix};
                  border-radius: 20px;
+                 animation: 1s fadeIn ease-out forwards;
                  }
                   `;
 
-          
+
 
             // Append the style element to the document head
             document.head.appendChild(style);
@@ -147,16 +148,17 @@ function colorChangePrev() {
 
 
 
-                  // Add the CSS rules for the ::after pseudo-element
-                  style.innerHTML = `
+            // Add the CSS rules for the ::after pseudo-element
+            style.innerHTML = `
                   #${arrayImagesColor[i].id}::after {
                   content: '';
                   position: absolute;
                   width: 1280px;
                   height: 720px;
                   background-color: ${arrayImagesColor[i].tint};
-                  mix-blend-mode: color;
+                  mix-blend-mode: ${arrayImagesColor[i].mix};
                   border-radius: 20px;
+                  animation: 1s fadeIn ease-out forwards;
                   }
                    `;
 
@@ -340,9 +342,22 @@ document.getElementById('btnImagem').addEventListener('click', function () {
 
 
 
+let resultEffect = "color"
+document.querySelectorAll('input[name="blendMode"]').forEach(radio => {
+    radio.addEventListener('change', function () {
+        const selectedRadio = document.querySelector('input[name="blendMode"]:checked');
+        if (selectedRadio) {
+            resultEffect = selectedRadio.value
+        }
+    });
+});
+
+
+
+
+
+
 document.getElementById('buttonAcceptimg').addEventListener('click', function () {
-
-
 
 
     let id = document.getElementById('name').value.trim();
@@ -352,7 +367,7 @@ document.getElementById('buttonAcceptimg').addEventListener('click', function ()
     let divBgName = `${id}Div`
     let idImg = `${id}Img`
     let imgSrc = document.getElementById('image-preview').src;
-
+    let mixEffect = resultEffect
 
     if (id == "") {
         document.getElementById('liveToastBtn').click()
@@ -384,7 +399,7 @@ document.getElementById('buttonAcceptimg').addEventListener('click', function ()
 
 
 
-    arrayImagesColor.push({ id: id, idImg: `${id}Img`, color: `linear-gradient(${colorA}, ${colorB})`, color1: colorA, color2: colorB, div: `${id}Div`, tint: `${tint}`, src: imgSrc })
+    arrayImagesColor.push({ id: id, idImg: `${id}Img`, color: `linear-gradient(${colorA}, ${colorB})`, color1: colorA, color2: colorB, div: `${id}Div`, tint: `${tint}`, src: imgSrc, mix: mixEffect })
 
 
 
@@ -432,10 +447,12 @@ document.getElementById('buttonAcceptimg').addEventListener('click', function ()
 
 
 
-    document.getElementById('btnCloseModalImagem').click()
 
+    document.getElementById('btnCloseModalImagem').click()
+    document.getElementById('name').value = ''
 
 })
+
 
 
 
@@ -458,6 +475,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
         let color1 = `${arrayImagesColor[i].color1}`
         let color2 = `${arrayImagesColor[i].color2}`
         let color3 = `${arrayImagesColor[i].tint}`
+        let mixEffectCheck = `${arrayImagesColor[i].mix}`
 
         // Get the container where we want to append the music player
         const imgContainer = document.getElementById('imageView');
@@ -525,27 +543,6 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         editButton.addEventListener('click', function () {
 
             let pickr4 = null;
@@ -577,9 +574,9 @@ document.getElementById('btnView'), addEventListener('click', function () {
             const input = document.createElement('input');
             input.type = 'file';
             input.style.fontSize = 'x-large';
-            input.id = 'image-upload';
+            input.id = 'image-upload2';
             input.accept = 'image/*';
-            input.setAttribute('onchange', 'previewImageEdit(event)');
+            input.setAttribute('onchange', '');
 
             // Append elements to the form
             form.appendChild(label);
@@ -704,6 +701,81 @@ document.getElementById('btnView'), addEventListener('click', function () {
             // Append colorOption to modalBody
             modalBody.appendChild(colorOption);
 
+
+
+
+            const radioContainer = document.createElement('div');
+            // Set the ID for the div
+            radioContainer.id = 'radio-container';
+            // Apply the styles
+            radioContainer.style.display = 'flex';
+            radioContainer.style.justifyContent = 'center';
+            radioContainer.style.alignItems = 'center';
+            radioContainer.style.flexWrap = 'wrap';
+            radioContainer.style.flexDirection = 'row';
+            radioContainer.style.fontSize = 'x-large';
+
+            modalBody.appendChild(radioContainer)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // Define an array of blend modes
+            const blendModes = [
+                "normal", "multiply", "screen", "overlay", "darken", "lighten",
+                "color-dodge", "color-burn", "hard-light", "soft-light", "difference",
+                "exclusion", "hue", "saturation", "color", "luminosity", "plus-darker", "plus-lighter"
+            ];
+
+            // Get the parent container to append radio buttons
+            const container = document.getElementById('radio-container');
+
+            // Loop through the blend modes array and create radio buttons dynamically
+            blendModes.forEach((mode, index) => {
+                // Create the div for the form-check
+                const formCheckDiv = document.createElement('div');
+                formCheckDiv.classList.add('form-check');
+
+                // Create the input (radio button)
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.classList.add('form-check-input');
+                input.name = 'blendMode2';
+                input.id = `blendMode${index + 1}`;
+                input.value = mode;
+
+                // If it's the "color" mode, make it checked by default
+                if (mode === mixEffectCheck) {
+                    input.checked = true;
+                }
+
+                // Create the label
+                const label = document.createElement('label');
+                label.classList.add('form-check-label');
+                label.setAttribute('for', `blendMode${index + 1}`);
+                label.textContent = mode;
+
+                // Append the input and label to the form-check div
+                formCheckDiv.appendChild(input);
+                formCheckDiv.appendChild(label);
+
+                // Append the form-check div to the container
+                container.appendChild(formCheckDiv);
+            });
+
+
+
             // Create the Save button
             const saveButtonContainer = document.createElement('div');
             saveButtonContainer.style.display = 'flex';
@@ -721,6 +793,15 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
 
 
+            let resultEffect2 =  mixEffectCheck
+            document.querySelectorAll('input[name="blendMode2"]').forEach(radio => {
+                radio.addEventListener('change', function () {
+                    const selectedRadio2 = document.querySelector('input[name="blendMode2"]:checked');
+                    if (selectedRadio2) {
+                        resultEffect2 = selectedRadio2.value
+                    }
+                });
+            });
 
 
 
@@ -735,6 +816,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
                 let colorB = document.getElementById('colorValue5').innerHTML
                 let tint = document.getElementById('colorValue6').innerHTML
                 let imgSrc = document.getElementById('image-previewEdit').src
+                let mixEffect = resultEffect2
 
 
                 if (nameInput.value.trim() == "") {
@@ -750,18 +832,18 @@ document.getElementById('btnView'), addEventListener('click', function () {
                         return;
                     }
                 }
-            
+
 
 
                 function isValidId(id) {
                     // Regular expression for a valid id
                     const regex = /^[a-zA-Z][\w.-]*$/;
-            
+
                     // Check if the string matches the regular expression
                     return regex.test(id);
                 }
-            
-            
+
+
                 if (isValidId(id) == false) {
                     document.getElementById('liveToastBtnName').click()
                     return;
@@ -795,12 +877,64 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
                         arrayImagesColor[i].tint = `${tint}`
                         arrayImagesColor[i].src = imgSrc
+                        arrayImagesColor[i].mix = mixEffect
+
+
 
                         console.log(arrayImagesColor);
 
 
                     }
 
+                }
+
+
+
+                let elements = document.getElementsByClassName('carousel-item active')[0];
+
+
+                for (let i = 0; i < arrayImagesColor.length; i++) {
+
+                    if (elements.id == arrayImagesColor[i].id) {
+                        let divElement = document.getElementById(arrayImagesColor[i].div);
+
+                        divElement.style.backgroundImage = arrayImagesColor[i].color;
+                        divElement.style.animation = '2s fadeIn ease-out forwards';
+
+                        divElement.addEventListener("animationend", function () {
+                            document.body.style.backgroundImage = arrayImagesColor[i].color;
+                            divElement.style.animation = 'none';
+                        });
+
+
+
+                        // Create a <style> element to add custom CSS rules dynamically
+                        let style = document.createElement('style');
+                        style.id = `${arrayImagesColor[i].id}after`
+
+                        style.innerHTML = `
+                         #${arrayImagesColor[i].id}::after {
+                             content: '';
+                             position: absolute;
+                             width: 1280px;
+                             height: 720px;
+                             background-color: ${arrayImagesColor[i].tint};
+                             mix-blend-mode: ${arrayImagesColor[i].mix};
+                             border-radius: 20px;
+                             animation: 1s fadeIn ease-out forwards;
+                             }
+                              `;
+
+
+
+                        // Append the style element to the document head
+                        document.head.appendChild(style);
+
+
+
+
+
+                    }
                 }
 
                 document.getElementById('btnCloseModalEdit').click()
@@ -983,6 +1117,95 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
 
             })
+
+
+
+
+
+            let cropper2; // Reference to the cropper instance
+
+            // Handle image upload
+            document.getElementById('image-upload2').addEventListener('change', function (event) {
+                let file = event.target.files[0];
+                if (file) {
+                    let reader = new FileReader();
+                    reader.onload = function (e) {
+                        // Set the uploaded image to the <img> element
+                        let imageElement = document.getElementById('image-previewEdit');
+                        imageElement.src = e.target.result;
+                        imageElement.style.display = 'block'; // Show image element
+
+                        // Reset the cropper instance if one exists
+                        if (cropper2) {
+                            cropper2.destroy(); // Destroy the previous cropper instance if it exists  
+                        }
+
+                        // Initialize the Cropper.js instance with the new image
+                        cropper2 = new Cropper(imageElement, {
+                            aspectRatio: 0 / 0,
+                            viewMode: 2,                          // Ensure the crop area is restricted to the image size
+                            autoCropArea: 1,                      // Automatically fill the entire image with the crop area
+                            responsive: true,                     // Ensure responsive resizing of the cropper
+                            cropBoxResizable: true,               // Allow resizing of the crop box
+                            background: true,                     // Allow background dimming
+                            ready: function () {
+                                // Automatically zoom in to fill the crop area to the image size
+                                cropper2.zoomTo(0);
+                            }
+                        });
+                    };
+                    reader.readAsDataURL(file);
+
+                    // Reset the file input value so the same file can be selected again
+                    event.target.value = '';  // Clear the input field value
+                }
+            });
+
+            // Handle the cropping process
+            saveButton.addEventListener('focus', function () {
+                if (cropper2) {
+                    // Get the cropped image data as a Data URL
+                    const canvas = cropper2.getCroppedCanvas();
+                    const croppedImageURL = canvas.toDataURL('image/png');
+
+                    // Apply border-radius to the cropped image using a temporary canvas
+                    const radius = 20;  // Set the border-radius here
+
+                    // Create a temporary canvas to apply the border-radius effect
+                    let tempCanvas = document.createElement('canvas');
+                    let tempCtx = tempCanvas.getContext('2d');
+
+                    // Set canvas dimensions to match the cropped canvas
+                    tempCanvas.width = canvas.width;
+                    tempCanvas.height = canvas.height;
+
+                    // Draw a rounded rectangle on the temporary canvas
+                    tempCtx.beginPath();
+                    tempCtx.moveTo(radius, 0);
+                    tempCtx.lineTo(tempCanvas.width - radius, 0);
+                    tempCtx.quadraticCurveTo(tempCanvas.width, 0, tempCanvas.width, radius);
+                    tempCtx.lineTo(tempCanvas.width, tempCanvas.height - radius);
+                    tempCtx.quadraticCurveTo(tempCanvas.width, tempCanvas.height, tempCanvas.width - radius, tempCanvas.height);
+                    tempCtx.lineTo(radius, tempCanvas.height);
+                    tempCtx.quadraticCurveTo(0, tempCanvas.height, 0, tempCanvas.height - radius);
+                    tempCtx.lineTo(0, radius);
+                    tempCtx.quadraticCurveTo(0, 0, radius, 0);
+                    tempCtx.closePath();
+                    tempCtx.clip();
+
+                    // Draw the cropped image onto the temporary canvas with rounded corners
+                    tempCtx.drawImage(canvas, 0, 0);
+
+                    // Convert the temporary canvas to a data URL
+                    const roundedCroppedImageURL = tempCanvas.toDataURL('image/png');
+                    document.getElementById('image-previewEdit').src = roundedCroppedImageURL
+
+                    // Set the cropped and rounded image to the result <img> element
+                } else {
+
+                }
+            });
+
 
             document.getElementById('colorDisplay4').click()
 
