@@ -178,6 +178,41 @@ function colorChangePrev() {
 
 
 
+// Get the carousel element (optional, for consistency)
+const carousel = document.getElementById('carouselExampleFade'); // Replace with your carousel ID
+
+// Variables to track touch positions
+let touchStartX = 0;
+let touchEndX = 0;
+
+// Detect touchstart (when touch begins)
+carousel.addEventListener('touchstart', function (e) {
+    touchStartX = e.touches[0].clientX; // Store initial touch position
+}, false);
+
+// Detect touchend (when touch ends)
+carousel.addEventListener('touchend', function (e) {
+    touchEndX = e.changedTouches[0].clientX; // Store final touch position
+    
+    // Call the function to handle the swipe direction
+    handleSwipe();
+}, false);
+
+// Function to determine swipe direction
+function handleSwipe() {
+    if (touchStartX - touchEndX > 50) {
+        // Swipe left - trigger colorChangeNext()
+        colorChangeNext();
+    }
+    if (touchEndX - touchStartX > 50) {
+        // Swipe right - trigger colorChangePrev()
+        colorChangePrev();
+    }
+}
+
+
+
+
 document.getElementById('buttonCarousel1').addEventListener('click', function () {
 
     //   setTimeout(colorChangePrev,1000) 
