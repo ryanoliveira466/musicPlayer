@@ -87,7 +87,7 @@ function colorChangeNext() {
             let divElement = document.getElementById(arrayImagesColor[i].div);
 
             divElement.style.backgroundImage = arrayImagesColor[i].color;
-            divElement.style.animation = '2s fadeIn ease-out forwards';
+            divElement.style.animation = '1s fadeIn ease-out forwards';
 
             divElement.addEventListener("animationend", function () {
                 document.body.style.backgroundImage = arrayImagesColor[i].color;
@@ -101,11 +101,11 @@ function colorChangeNext() {
             style.id = `${arrayImagesColor[i].id}after`
 
             style.innerHTML = `
-             #${arrayImagesColor[i].id}::after {
+             .imgGojo::after {
                  content: '';
                  position: absolute;
-                 width: 1280px;
-                 height: 720px;
+                 width: 100%;
+                 height: 100%;
                  background-color: ${arrayImagesColor[i].tint};
                  mix-blend-mode: ${arrayImagesColor[i].mix};
                  border-radius: 20px;
@@ -135,7 +135,7 @@ function colorChangePrev() {
             let divElement = document.getElementById(arrayImagesColor[i].div);
 
             divElement.style.backgroundImage = arrayImagesColor[i].color;
-            divElement.style.animation = '2s fadeIn ease-out forwards';
+            divElement.style.animation = '1s fadeIn ease-out forwards';
 
             divElement.addEventListener("animationend", function () {
                 document.body.style.backgroundImage = arrayImagesColor[i].color;
@@ -150,11 +150,11 @@ function colorChangePrev() {
 
             // Add the CSS rules for the ::after pseudo-element
             style.innerHTML = `
-                  #${arrayImagesColor[i].id}::after {
+                 .imgGojo::after {
                   content: '';
                   position: absolute;
-                  width: 1280px;
-                  height: 720px;
+                  width: 100%;
+                  height: 100%;
                   background-color: ${arrayImagesColor[i].tint};
                   mix-blend-mode: ${arrayImagesColor[i].mix};
                   border-radius: 20px;
@@ -459,8 +459,23 @@ document.getElementById('buttonAcceptimg').addEventListener('click', function ()
 
     // Create the inner <div> element with the class "container-fluid imgGojo" and id "teste"
     const containerFluid = document.createElement('div');
-    containerFluid.classList.add('container-fluid', 'imgGojo');
+    containerFluid.classList.add('container-fluid');
     containerFluid.id = id;
+
+
+
+
+
+
+
+    const containerImg = document.createElement('div');
+    containerImg.classList.add('imgGojo');
+
+
+
+
+
+
 
     // Create the <img> element with the source and id attributes
     const image = document.createElement('img');
@@ -468,8 +483,17 @@ document.getElementById('buttonAcceptimg').addEventListener('click', function ()
     image.alt = '';
     image.id = idImg;
 
+
+
+
+    containerImg.appendChild(image)
+
+
+
+
+
     // Append the image to the containerFluid div
-    containerFluid.appendChild(image);
+    containerFluid.appendChild(containerImg);
 
     // Append the containerFluid to the carouselItem div
     carouselItem.appendChild(containerFluid);
@@ -934,7 +958,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
                         let divElement = document.getElementById(arrayImagesColor[i].div);
 
                         divElement.style.backgroundImage = arrayImagesColor[i].color;
-                        divElement.style.animation = '2s fadeIn ease-out forwards';
+                        divElement.style.animation = '1s fadeIn ease-out forwards';
 
                         divElement.addEventListener("animationend", function () {
                             document.body.style.backgroundImage = arrayImagesColor[i].color;
@@ -948,11 +972,11 @@ document.getElementById('btnView'), addEventListener('click', function () {
                         style.id = `${arrayImagesColor[i].id}after`
 
                         style.innerHTML = `
-                         #${arrayImagesColor[i].id}::after {
+                         .imgGojo::after {
                              content: '';
                              position: absolute;
-                             width: 1280px;
-                             height: 720px;
+                             width: 100%;
+                             height: 100%;
                              background-color: ${arrayImagesColor[i].tint};
                              mix-blend-mode: ${arrayImagesColor[i].mix};
                              border-radius: 20px;
