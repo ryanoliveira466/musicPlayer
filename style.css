@@ -233,6 +233,21 @@ body {
 
 
 
+    #exampleModalView .modal-content{
+        height: 100% !important;
+         
+    }
+
+    #exampleModalImagens .modal-content{
+        height: 100% !important;
+    }
+
+    #exampleModalEdit .modal-content{
+        height: 100% !important;
+    }
+
+
+
 }
 
 
@@ -362,8 +377,10 @@ body {
     justify-content: center;
     overflow: hidden;
     margin-top: 50px;
-    border-radius: 30px;
-    border: 10px solid transparent;
+    margin-bottom: 20px;
+    border-radius: 50px;
+    border: 6px solid rgba(0, 0, 0, 0.144);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.753); 
 }
 
 .imgGojo img {
@@ -426,7 +443,7 @@ body {
 }
 
 #configButton {
-
+    mix-blend-mode: difference;
     margin-left: auto;
 }
 
@@ -525,7 +542,7 @@ html ::-webkit-scrollbar {
     font-size: 18px;
     margin: 0;
     font-weight: 600;
-    color: #474249;
+    color: #ffffff;
 }
 
 #artist {
@@ -647,6 +664,8 @@ html .modal {
     background-color: rgba(0, 0, 0, 0.01);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(10px);
+    height: 98vh;
+    overflow: scroll;
 }
 
 #exampleModalImagens .modal-footer {
@@ -694,6 +713,8 @@ html .modal {
     background-color: rgba(0, 0, 0, 0.01);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(10px);
+    height: 98vh;
+    overflow: scroll;
 }
 
 #exampleModalView .modal-footer {
@@ -796,6 +817,8 @@ html .modal {
     background-color: rgba(0, 0, 0, 0.01);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(10px);
+    height: 98vh;
+    overflow: scroll;
 }
 
 #exampleModalEdit .modal-footer {

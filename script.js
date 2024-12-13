@@ -1,9 +1,51 @@
-
-
-arrayImagesColor = [{ id: "purple", idImg: "purpleImg", color: "linear-gradient(#9600FF, #FF00B1)", color1: '#9600FF', color2: '#FF00B1', div: 'a', tint: "#9B59B6", src: "img/gojo.jpg", mix: "color" },
-{ id: "blue", idImg: "blueImg", color: "linear-gradient(#00FFF2, #000AFF)", color1: '#00FFF2', color2: '#000AFF', div: 'b', tint: "#0051FF", src: "img/thumb1.jpg", mix: "soft-light"},
-{ id: "red", idImg: "redImg", color: "linear-gradient(#FF0000, #FF4200)", color1: '#FF0000', color2: '#FF4200', div: 'c', tint: "#FF0000", src: "img/thumb2.jpg", mix: "hue" },
-{ id: "teste", idImg: "testeImg", color: "linear-gradient(#19FF00, #06F30C)", color1: '#19FF00', color2: '#06F30C', div: 'd', tint: "#13FA4D", src: "img/thumb5.jpg", mix: "difference"}
+arrayImagesColor = [{
+        id: "purple",
+        idImg: "purpleImg",
+        color: "linear-gradient(#9600FF, #FF00B1)",
+        color1: '#9600FF',
+        color2: '#FF00B1',
+        div: 'a',
+        tint: "#9B59B6",
+        src: "img/gojo.jpg",
+        mix: "color",
+        cover: "scale-down"
+    },
+    {
+        id: "blue",
+        idImg: "blueImg",
+        color: "linear-gradient(#00FFF2, #000AFF)",
+        color1: '#00FFF2',
+        color2: '#000AFF',
+        div: 'b',
+        tint: "#0051FF",
+        src: "img/thumb1.jpg",
+        mix: "soft-light",
+        cover: "scale-down"
+    },
+    {
+        id: "red",
+        idImg: "redImg",
+        color: "linear-gradient(#FF0000, #FF4200)",
+        color1: '#FF0000',
+        color2: '#FF4200',
+        div: 'c',
+        tint: "#FF0000",
+        src: "img/thumb2.jpg",
+        mix: "hue",
+        cover: "scale-down"
+    },
+    {
+        id: "teste",
+        idImg: "testeImg",
+        color: "linear-gradient(#19FF00, #06F30C)",
+        color1: '#19FF00',
+        color2: '#06F30C',
+        div: 'd',
+        tint: "#13FA4D",
+        src: "img/thumb5.jpg",
+        mix: "difference",
+        cover: "scale-down"
+    }
 ]
 
 
@@ -16,8 +58,7 @@ document.getElementById('liveToastBtnClose').addEventListener('focus', function 
     const divView = document.getElementById('exampleModalEdit');
     divView.style.scrollBehavior = 'smooth'
     divView.scrollTop = 0;
-}
-)
+})
 
 
 document.getElementById('liveToastBtnClose').addEventListener('click', function () {
@@ -32,8 +73,7 @@ document.getElementById('liveToastBtnClose').addEventListener('click', function 
     divView.style.scrollBehavior = 'smooth'
     divView.scrollTop = 0; // 
     divView.style.scrollBehavior = ''
-}
-)
+})
 
 
 
@@ -50,8 +90,7 @@ document.getElementById('liveToastBtnNameClose').addEventListener('focus', funct
     const divView = document.getElementById('exampleModalEdit');
     divView.style.scrollBehavior = 'smooth'
     divView.scrollTop = 0;
-}
-)
+})
 
 
 document.getElementById('liveToastBtnNameClose').addEventListener('click', function () {
@@ -66,8 +105,7 @@ document.getElementById('liveToastBtnNameClose').addEventListener('click', funct
     divView.style.scrollBehavior = 'smooth'
     divView.scrollTop = 0; // 
     divView.style.scrollBehavior = ''
-}
-)
+})
 
 
 
@@ -84,6 +122,12 @@ function colorChangeNext() {
     for (let i = 0; i < arrayImagesColor.length; i++) {
 
         if (elements.id == arrayImagesColor[i].id) {
+
+
+
+            document.getElementById(arrayImagesColor[i].idImg).style.objectFit = arrayImagesColor[i].cover
+
+
             let divElement = document.getElementById(arrayImagesColor[i].div);
 
             divElement.style.backgroundImage = arrayImagesColor[i].color;
@@ -132,6 +176,11 @@ function colorChangePrev() {
     for (let i = 0; i < arrayImagesColor.length; i++) {
 
         if (elements.id == arrayImagesColor[i].id) {
+
+
+            document.getElementById(arrayImagesColor[i].idImg).style.objectFit = arrayImagesColor[i].cover
+
+
             let divElement = document.getElementById(arrayImagesColor[i].div);
 
             divElement.style.backgroundImage = arrayImagesColor[i].color;
@@ -193,7 +242,7 @@ carousel.addEventListener('touchstart', function (e) {
 // Detect touchend (when touch ends)
 carousel.addEventListener('touchend', function (e) {
     touchEndX = e.changedTouches[0].clientX; // Store final touch position
-    
+
     // Call the function to handle the swipe direction
     handleSwipe();
 }, false);
@@ -240,20 +289,20 @@ document.getElementById('offCanvasButton').addEventListener("click", function ()
 
 // Initialize the Pickr color picker
 const pickr = Pickr.create({
-    el: '#color-picker',  // Target the div where you want the color picker
-    theme: 'classic',     // You can also use 'monolith' or 'nano' themes
-    default: '#ff0000',   // Default color
-    swatches: [           // Optional: Define a set of swatches
+    el: '#color-picker', // Target the div where you want the color picker
+    theme: 'classic', // You can also use 'monolith' or 'nano' themes
+    default: '#ff0000', // Default color
+    swatches: [ // Optional: Define a set of swatches
         '#FF5733', '#33FF57', '#3357FF', '#F1C40F', '#9B59B6'
     ],
     components: {
-        preview: true,   // Show preview of selected color
-        opacity: true,   // Show opacity slider
-        hue: true,       // Show hue slider
+        preview: true, // Show preview of selected color
+        opacity: true, // Show opacity slider
+        hue: true, // Show hue slider
         interaction: {
-            hex: true,    // Allow hex input
-            rgba: true,   // Allow rgba input
-            input: true   // Allow direct input
+            hex: true, // Allow hex input
+            rgba: true, // Allow rgba input
+            input: true // Allow direct input
         }
     }
 });
@@ -265,20 +314,20 @@ const pickr = Pickr.create({
 
 // Initialize the Pickr color picker
 const pickr2 = Pickr.create({
-    el: '#color-picker2',  // Target the div where you want the color picker
-    theme: 'classic',     // You can also use 'monolith' or 'nano' themes
-    default: '#ff0000',   // Default color
-    swatches: [           // Optional: Define a set of swatches
+    el: '#color-picker2', // Target the div where you want the color picker
+    theme: 'classic', // You can also use 'monolith' or 'nano' themes
+    default: '#ff0000', // Default color
+    swatches: [ // Optional: Define a set of swatches
         '#FF5733', '#33FF57', '#3357FF', '#F1C40F', '#9B59B6'
     ],
     components: {
-        preview: true,   // Show preview of selected color
-        opacity: true,   // Show opacity slider
-        hue: true,       // Show hue slider
+        preview: true, // Show preview of selected color
+        opacity: true, // Show opacity slider
+        hue: true, // Show hue slider
         interaction: {
-            hex: true,    // Allow hex input
-            rgba: true,   // Allow rgba input
-            input: true   // Allow direct input
+            hex: true, // Allow hex input
+            rgba: true, // Allow rgba input
+            input: true // Allow direct input
         }
     }
 });
@@ -291,20 +340,20 @@ const pickr2 = Pickr.create({
 
 // Initialize the Pickr color picker
 const pickr3 = Pickr.create({
-    el: '#color-picker3',  // Target the div where you want the color picker
-    theme: 'classic',     // You can also use 'monolith' or 'nano' themes
-    default: '#ff0000',   // Default color
-    swatches: [           // Optional: Define a set of swatches
+    el: '#color-picker3', // Target the div where you want the color picker
+    theme: 'classic', // You can also use 'monolith' or 'nano' themes
+    default: '#ff0000', // Default color
+    swatches: [ // Optional: Define a set of swatches
         '#FF5733', '#33FF57', '#3357FF', '#F1C40F', '#9B59B6'
     ],
     components: {
-        preview: true,   // Show preview of selected color
-        opacity: true,   // Show opacity slider
-        hue: true,       // Show hue slider
+        preview: true, // Show preview of selected color
+        opacity: true, // Show opacity slider
+        hue: true, // Show hue slider
         interaction: {
-            hex: true,    // Allow hex input
-            rgba: true,   // Allow rgba input
-            input: true   // Allow direct input
+            hex: true, // Allow hex input
+            rgba: true, // Allow rgba input
+            input: true // Allow direct input
         }
     }
 });
@@ -388,6 +437,18 @@ document.querySelectorAll('input[name="blendMode"]').forEach(radio => {
 });
 
 
+let imageCoverEffect = "scale-down"
+document.querySelectorAll('input[name="imageCover"]').forEach(radio => {
+    radio.addEventListener('change', function () {
+        const selectedCover = document.querySelector('input[name="imageCover"]:checked');
+        if (selectedCover) {
+            imageCoverEffect = selectedCover.value
+        }
+    });
+});
+
+
+
 
 
 
@@ -403,6 +464,7 @@ document.getElementById('buttonAcceptimg').addEventListener('click', function ()
     let idImg = `${id}Img`
     let imgSrc = document.getElementById('image-preview').src;
     let mixEffect = resultEffect
+    let coverImg = imageCoverEffect
 
     if (id == "") {
         document.getElementById('liveToastBtn').click()
@@ -434,7 +496,18 @@ document.getElementById('buttonAcceptimg').addEventListener('click', function ()
 
 
 
-    arrayImagesColor.push({ id: id, idImg: `${id}Img`, color: `linear-gradient(${colorA}, ${colorB})`, color1: colorA, color2: colorB, div: `${id}Div`, tint: `${tint}`, src: imgSrc, mix: mixEffect })
+    arrayImagesColor.push({
+        id: id,
+        idImg: `${id}Img`,
+        color: `linear-gradient(${colorA}, ${colorB})`,
+        color1: colorA,
+        color2: colorB,
+        div: `${id}Div`,
+        tint: `${tint}`,
+        src: imgSrc,
+        mix: mixEffect,
+        cover: coverImg
+    })
 
 
 
@@ -535,6 +608,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
         let color2 = `${arrayImagesColor[i].color2}`
         let color3 = `${arrayImagesColor[i].tint}`
         let mixEffectCheck = `${arrayImagesColor[i].mix}`
+        let coverEffectCheck = `${arrayImagesColor[i].cover}`
 
         // Get the container where we want to append the music player
         const imgContainer = document.getElementById('imageView');
@@ -835,6 +909,111 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
 
 
+
+
+
+
+
+
+
+            var br = document.createElement("br");
+            modalBody.appendChild(br);
+
+
+
+
+
+
+
+
+
+
+
+
+            const coverContainer = document.createElement('div');
+            // Set the ID for the div
+            coverContainer.id = 'cover-container';
+            // Apply the styles
+            coverContainer.style.display = 'flex';
+            coverContainer.style.justifyContent = 'center';
+            coverContainer.style.alignItems = 'center';
+            coverContainer.style.flexWrap = 'wrap';
+            coverContainer.style.flexDirection = 'row';
+            coverContainer.style.fontSize = 'x-large';
+
+            modalBody.appendChild(coverContainer)
+
+
+
+
+
+
+            // Define an array of blend modes
+            const coverModes = [
+                "fill", "contain", "cover", "scale-down", "none",
+            ];
+
+            // Get the parent container to append radio buttons
+            const containerCover = document.getElementById('cover-container');
+
+            // Loop through the blend modes array and create radio buttons dynamically
+            coverModes.forEach((mode, index) => {
+                // Create the div for the form-check
+                const formCheckDiv = document.createElement('div');
+                formCheckDiv.classList.add('form-check');
+
+                // Create the input (radio button)
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.classList.add('form-check-input');
+                input.name = 'imageCover2';
+                input.id = `imageCover${index + 1}`;
+                input.value = mode;
+
+                // If it's the "color" mode, make it checked by default
+                if (mode === coverEffectCheck) {
+                    input.checked = true;
+                }
+
+                // Create the label
+                const label = document.createElement('label');
+                label.classList.add('form-check-label');
+                label.setAttribute('for', `imageCover${index + 1}`);
+                label.textContent = mode;
+
+                // Append the input and label to the form-check div
+                formCheckDiv.appendChild(input);
+                formCheckDiv.appendChild(label);
+
+                // Append the form-check div to the container
+                containerCover.appendChild(formCheckDiv);
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             // Create the Save button
             const saveButtonContainer = document.createElement('div');
             saveButtonContainer.style.display = 'flex';
@@ -852,7 +1031,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
 
 
-            let resultEffect2 =  mixEffectCheck
+            let resultEffect2 = mixEffectCheck
             document.querySelectorAll('input[name="blendMode2"]').forEach(radio => {
                 radio.addEventListener('change', function () {
                     const selectedRadio2 = document.querySelector('input[name="blendMode2"]:checked');
@@ -861,6 +1040,23 @@ document.getElementById('btnView'), addEventListener('click', function () {
                     }
                 });
             });
+
+
+
+            let imageCoverEffect2 = coverEffectCheck
+            document.querySelectorAll('input[name="imageCover2"]').forEach(radio => {
+                radio.addEventListener('change', function () {
+                    const selectedCover2 = document.querySelector('input[name="imageCover2"]:checked');
+                    if (selectedCover2) {
+                        imageCoverEffect2 = selectedCover2.value
+                    }
+                });
+            });
+
+
+
+
+
 
 
 
@@ -876,6 +1072,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
                 let tint = document.getElementById('colorValue6').innerHTML
                 let imgSrc = document.getElementById('image-previewEdit').src
                 let mixEffect = resultEffect2
+                let coverImg2 =imageCoverEffect2
 
 
                 if (nameInput.value.trim() == "") {
@@ -937,6 +1134,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
                         arrayImagesColor[i].tint = `${tint}`
                         arrayImagesColor[i].src = imgSrc
                         arrayImagesColor[i].mix = mixEffect
+                        arrayImagesColor[i].cover = coverImg2
 
 
 
@@ -955,6 +1153,11 @@ document.getElementById('btnView'), addEventListener('click', function () {
                 for (let i = 0; i < arrayImagesColor.length; i++) {
 
                     if (elements.id == arrayImagesColor[i].id) {
+
+
+                        document.getElementById(arrayImagesColor[i].idImg).style.objectFit = arrayImagesColor[i].cover
+
+
                         let divElement = document.getElementById(arrayImagesColor[i].div);
 
                         divElement.style.backgroundImage = arrayImagesColor[i].color;
@@ -1025,20 +1228,20 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
             // Initialize the Pickr color picker
             pickr4 = Pickr.create({
-                el: '#color-picker4',  // Target the div where you want the color picker
-                theme: 'classic',     // You can also use 'monolith' or 'nano' themes
-                default: color1,   // Default color
-                swatches: [           // Optional: Define a set of swatches
+                el: '#color-picker4', // Target the div where you want the color picker
+                theme: 'classic', // You can also use 'monolith' or 'nano' themes
+                default: color1, // Default color
+                swatches: [ // Optional: Define a set of swatches
                     '#FF5733', '#33FF57', '#3357FF', '#F1C40F', '#9B59B6'
                 ],
                 components: {
-                    preview: true,   // Show preview of selected color
-                    opacity: true,   // Show opacity slider
-                    hue: true,       // Show hue slider
+                    preview: true, // Show preview of selected color
+                    opacity: true, // Show opacity slider
+                    hue: true, // Show hue slider
                     interaction: {
-                        hex: true,    // Allow hex input
-                        rgba: true,   // Allow rgba input
-                        input: true   // Allow direct input
+                        hex: true, // Allow hex input
+                        rgba: true, // Allow rgba input
+                        input: true // Allow direct input
                     }
                 }
             });
@@ -1053,20 +1256,20 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
             // Initialize the Pickr color picker
             pickr5 = Pickr.create({
-                el: '#color-picker5',  // Target the div where you want the color picker
-                theme: 'classic',     // You can also use 'monolith' or 'nano' themes
-                default: color2,   // Default color
-                swatches: [           // Optional: Define a set of swatches
+                el: '#color-picker5', // Target the div where you want the color picker
+                theme: 'classic', // You can also use 'monolith' or 'nano' themes
+                default: color2, // Default color
+                swatches: [ // Optional: Define a set of swatches
                     '#FF5733', '#33FF57', '#3357FF', '#F1C40F', '#9B59B6'
                 ],
                 components: {
-                    preview: true,   // Show preview of selected color
-                    opacity: true,   // Show opacity slider
-                    hue: true,       // Show hue slider
+                    preview: true, // Show preview of selected color
+                    opacity: true, // Show opacity slider
+                    hue: true, // Show hue slider
                     interaction: {
-                        hex: true,    // Allow hex input
-                        rgba: true,   // Allow rgba input
-                        input: true   // Allow direct input
+                        hex: true, // Allow hex input
+                        rgba: true, // Allow rgba input
+                        input: true // Allow direct input
                     }
                 }
             });
@@ -1082,20 +1285,20 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
             // Initialize the Pickr color picker
             pickr6 = Pickr.create({
-                el: '#color-picker6',  // Target the div where you want the color picker
-                theme: 'classic',     // You can also use 'monolith' or 'nano' themes
-                default: color3,   // Default color
-                swatches: [           // Optional: Define a set of swatches
+                el: '#color-picker6', // Target the div where you want the color picker
+                theme: 'classic', // You can also use 'monolith' or 'nano' themes
+                default: color3, // Default color
+                swatches: [ // Optional: Define a set of swatches
                     '#FF5733', '#33FF57', '#3357FF', '#F1C40F', '#9B59B6'
                 ],
                 components: {
-                    preview: true,   // Show preview of selected color
-                    opacity: true,   // Show opacity slider
-                    hue: true,       // Show hue slider
+                    preview: true, // Show preview of selected color
+                    opacity: true, // Show opacity slider
+                    hue: true, // Show hue slider
                     interaction: {
-                        hex: true,    // Allow hex input
-                        rgba: true,   // Allow rgba input
-                        input: true   // Allow direct input
+                        hex: true, // Allow hex input
+                        rgba: true, // Allow rgba input
+                        input: true // Allow direct input
                     }
                 }
             });
@@ -1202,11 +1405,11 @@ document.getElementById('btnView'), addEventListener('click', function () {
                         // Initialize the Cropper.js instance with the new image
                         cropper2 = new Cropper(imageElement, {
                             aspectRatio: 0 / 0,
-                            viewMode: 2,                          // Ensure the crop area is restricted to the image size
-                            autoCropArea: 1,                      // Automatically fill the entire image with the crop area
-                            responsive: true,                     // Ensure responsive resizing of the cropper
-                            cropBoxResizable: true,               // Allow resizing of the crop box
-                            background: true,                     // Allow background dimming
+                            viewMode: 2, // Ensure the crop area is restricted to the image size
+                            autoCropArea: 1, // Automatically fill the entire image with the crop area
+                            responsive: true, // Ensure responsive resizing of the cropper
+                            cropBoxResizable: true, // Allow resizing of the crop box
+                            background: true, // Allow background dimming
                             ready: function () {
                                 // Automatically zoom in to fill the crop area to the image size
                                 cropper2.zoomTo(0);
@@ -1216,7 +1419,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
                     reader.readAsDataURL(file);
 
                     // Reset the file input value so the same file can be selected again
-                    event.target.value = '';  // Clear the input field value
+                    event.target.value = ''; // Clear the input field value
                 }
             });
 
@@ -1228,7 +1431,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
                     const croppedImageURL = canvas.toDataURL('image/png');
 
                     // Apply border-radius to the cropped image using a temporary canvas
-                    const radius = 20;  // Set the border-radius here
+                    const radius = 20; // Set the border-radius here
 
                     // Create a temporary canvas to apply the border-radius effect
                     let tempCanvas = document.createElement('canvas');
@@ -1315,5 +1518,3 @@ let parentDiv = document.getElementById('modal-body-img')
 parentDiv.appendChild(picker)
 parentDiv.appendChild(picker2)
 parentDiv.appendChild(picker3)
-
-
