@@ -6,9 +6,9 @@ arrayImagesColor = [{
         color2: '#FF00B1',
         div: 'a',
         tint: "#9B59B6",
-        src: "img/gojo.jpg",
+        src: "img/teste/maxresdefault (1).jpg",
         mix: "color",
-        cover: "scale-down"
+        cover: "cover"
     },
     {
         id: "blue",
@@ -18,9 +18,9 @@ arrayImagesColor = [{
         color2: '#000AFF',
         div: 'b',
         tint: "#0051FF",
-        src: "img/thumb1.jpg",
+        src: "img/teste/maxresdefault.jpg",
         mix: "soft-light",
-        cover: "scale-down"
+        cover: "cover"
     },
     {
         id: "red",
@@ -30,9 +30,9 @@ arrayImagesColor = [{
         color2: '#FF4200',
         div: 'c',
         tint: "#FF0000",
-        src: "img/thumb2.jpg",
+        src: "img/teste/karmen-loh-clementine-withlogo-compressed.jpg",
         mix: "hue",
-        cover: "scale-down"
+        cover: "cover"
     },
     {
         id: "teste",
@@ -42,9 +42,9 @@ arrayImagesColor = [{
         color2: '#06F30C',
         div: 'd',
         tint: "#13FA4D",
-        src: "img/thumb5.jpg",
-        mix: "difference",
-        cover: "scale-down"
+        src: "img/teste/wallpaper.png",
+        mix: "overlay",
+        cover: "cover"
     }
 ]
 
