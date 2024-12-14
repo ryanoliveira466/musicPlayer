@@ -868,7 +868,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
             const blendModes = [
                 "normal", "multiply", "screen", "overlay", "darken", "lighten",
                 "color-dodge", "color-burn", "hard-light", "soft-light", "difference",
-                "exclusion", "hue", "saturation", "color", "luminosity", "plus-darker", "plus-lighter"
+                 "exclusion", "hue", "saturation", "color", "luminosity", "plus-lighter"
             ];
 
             // Get the parent container to append radio buttons
