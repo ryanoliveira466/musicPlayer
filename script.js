@@ -30,7 +30,7 @@ arrayImagesColor = [{
         color2: '#FF4200',
         div: 'c',
         tint: "#FF0000",
-        src: "img/teste/karmen-loh-clementine-withlogo-compressed.jpg",
+        src: "img/teste/Łaszewo.jpg",
         mix: "hue",
         cover: "cover"
     },
@@ -42,7 +42,7 @@ arrayImagesColor = [{
         color2: '#06F30C',
         div: 'd',
         tint: "#13FA4D",
-        src: "img/teste/wallpaper.png",
+        src: "img/teste/wallpaper.jpg",
         mix: "overlay",
         cover: "cover"
     }
@@ -664,12 +664,12 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
         const deleteButton = document.createElement('button');
         deleteButton.classList.add('btn', 'btn-danger', 'itemAdd');
-        deleteButton.innerHTML = '<p>Delete</p>';
+        deleteButton.innerHTML = '<img src="img/trash.png" alt="" srcset="" width="90px" height="90px">';
         deleteButton.id = btnDelId
 
         const editButton = document.createElement('button');
         editButton.classList.add('btn', 'btn-secondary', 'itemAdd');
-        editButton.innerHTML = '<p>Edit</p>';
+        editButton.innerHTML = '<img src="img/pen.png" alt="" srcset="" width="90px" height="90px">';
         editButton.id = btnEditId
         editButton.setAttribute('data-bs-toggle', 'modal');
         editButton.setAttribute('data-bs-target', '#exampleModalEdit');
@@ -797,7 +797,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
 
             // Function to create color display blocks
-            function createColorDisplay(idColor, colorId) {
+            function createColorDisplay(idColor, colorId,numberText) {
                 const itemAddColor = document.createElement('div');
                 itemAddColor.classList.add('itemAdd');
                 itemAddColor.style.flexDirection = 'column';
@@ -806,7 +806,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
                 itemAddColor.style.alignItems = 'center';
 
                 const colorText = document.createElement('p');
-                colorText.textContent = `Color ${idColor}: `;
+                colorText.textContent = `Color ${numberText}: `;
                 const colorValue = document.createElement('span');
                 colorValue.id = `colorValue${idColor}`;
                 colorValue.style.display = 'none';
@@ -827,9 +827,9 @@ document.getElementById('btnView'), addEventListener('click', function () {
             }
 
             // Create three color displays
-            createColorDisplay(4, color1);
-            createColorDisplay(5, color2);
-            createColorDisplay(6, color3);
+            createColorDisplay(4, color1, 1);
+            createColorDisplay(5, color2, 2);
+            createColorDisplay(6, color3, 3);
 
             // Append colorOption to modalBody
             modalBody.appendChild(colorOption);
@@ -1026,7 +1026,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
             saveButton.className = 'btn btn-secondary'
             saveButton.style.fontSize = '32px'
             saveButton.id = 'buttonAcceptEdit';
-            saveButton.innerHTML = `<p>Save</p>`
+            saveButton.innerHTML = `<img src="img/save.png" alt="" srcset="" width="90px" height="90px">`
 
 
 
@@ -1040,6 +1040,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
                     }
                 });
             });
+
 
 
 
