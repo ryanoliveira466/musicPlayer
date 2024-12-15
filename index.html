@@ -98,20 +98,20 @@ input[type="image"] {
                         <button class="btn btn" id="btnImagem"><img src="img/plus.png"
                                 style="border-radius: 0px;object-fit: none;" width="80px" height="80px" alt=""
                                 data-bs-toggle="modal" data-bs-target="#exampleModalImagens" srcset=""></button>
-                        <p style="margin: 1rem;">Image</p>
+                        <p style="margin: 1rem;" aria-describedby="btnImagem">Image</p>
                     </div>
 
                     <div class="itemAdd">
                         <button class="btn btn"><img src="img/plus.png" style="border-radius: 0px;object-fit: none;"
                                 width="80px" height="80px" alt="" srcset=""></button>
-                        <p style="margin: 1rem;">Song</p>
+                        <p style="margin: 1rem;" aria-describedby="">Song</p>
                     </div>
 
                     <div class="itemAdd">
                         <button class="btn btn" id="btnView"><img src="img/viewEye.png"
                                 style="border-radius: 10px;object-fit: cover;" width="82px" height="80px" alt=""
                                 data-bs-toggle="modal" data-bs-target="#exampleModalView" srcset=""></button>
-                        <p style="margin: 1rem;">View</p>
+                        <p style="margin: 1rem;" for="btnView">View</p>
                     </div>
 
                    
@@ -373,6 +373,71 @@ input[type="image"] {
 
                 </div>
 
+                <br>
+
+
+
+
+                <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; flex-direction: row; font-size: x-large;">
+                    <!-- Radio Button for Linear Gradient Directions -->
+                
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="backgroundCover" id="backgroundCover1" value="to left">
+                        <label class="form-check-label" for="backgroundCover1">
+                            to left
+                        </label>
+                    </div>
+                
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="backgroundCover" id="backgroundCover2" value="to top">
+                        <label class="form-check-label" for="backgroundCover2">
+                            to top
+                        </label>
+                    </div>
+                
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="backgroundCover" id="backgroundCover3" value="to bottom" checked>
+                        <label class="form-check-label" for="backgroundCover3">
+                            to bottom
+                        </label>
+                    </div>
+                
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="backgroundCover" id="backgroundCover4" value="to right">
+                        <label class="form-check-label" for="backgroundCover4">
+                            to right
+                        </label>
+                    </div>
+                
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="backgroundCover" id="backgroundCover5" value="to top right">
+                        <label class="form-check-label" for="backgroundCover5">
+                            to top right
+                        </label>
+                    </div>
+                
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="backgroundCover" id="backgroundCover6" value="to top left">
+                        <label class="form-check-label" for="backgroundCover6">
+                            to top left
+                        </label>
+                    </div>
+                
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="backgroundCover" id="backgroundCover7" value="to bottom right">
+                        <label class="form-check-label" for="backgroundCover7">
+                            to bottom right
+                        </label>
+                    </div>
+                
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="backgroundCover" id="backgroundCover8" value="to bottom left">
+                        <label class="form-check-label" for="backgroundCover8">
+                            to bottom left
+                        </label>
+                    </div>
+                </div>
+
 
 
 
@@ -544,7 +609,7 @@ input[type="image"] {
                     aria-label="Close"></button>
             </div>
             <div class="toast-body" style="color: aliceblue;">
-                <p style="font-size: xx-large;">Empty spaces not allowed!</p>
+                <p style="font-size: xx-large;">Empty spaces/img not allowed!</p>
             </div>
         </div>
     </div>
@@ -601,7 +666,7 @@ input[type="image"] {
     -webkit-backdrop-filter: blur(10px);"
             data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="staticBackdropLabel">Title</h5>
+                <h5 class="offcanvas-title" id="staticBackdropLabel">Music Player</h5>
                 <button type="button" class="btn btn" style="margin-left: auto;" data-bs-dismiss="offcanvas"
                     aria-label="Close">
                     <img src="img/close.png" alt="" srcset="" width="30px" height="30px">
@@ -674,12 +739,12 @@ input[type="image"] {
 
 
                
-                    <div class="carousel-item" id="teste">
-                        <div class="container-fluid" id="teste">
+                    <div class="carousel-item" id="green">
+                        <div class="container-fluid" id="green">
                             <div class="imgGojo">
                                 <div class="stats"></div>
-                                <h1 class="statsTitle" id="titleteste">teste</h1>
-                            <img src="img/teste/wallpaper.jpg" alt="" srcset="" id="testeImg">
+                                <h1 class="statsTitle" id="titlegreen">green</h1>
+                            <img src="img/teste/wallpaper.jpg" alt="" srcset="" id="greenImg">
                         </div>
                         </div>
                     </div>
@@ -1039,6 +1104,7 @@ input[type="image"] {
   
     // Handle the cropping process
     document.getElementById('buttonAcceptimg').addEventListener('click', function() {
+
       if (cropper) {
         // Get the cropped image data as a Data URL
         const canvas = cropper.getCroppedCanvas();
@@ -1071,6 +1137,7 @@ input[type="image"] {
   
         // Draw the cropped image onto the temporary canvas with rounded corners
         tempCtx.drawImage(canvas, 0, 0);
+
   
         // Convert the temporary canvas to a data URL
         const roundedCroppedImageURL = tempCanvas.toDataURL('image/png');
@@ -1078,7 +1145,7 @@ input[type="image"] {
   
         // Set the cropped and rounded image to the result <img> element
       } else {
-        alert('Please upload an image first!');
+        return 0;
       }
     });
   </script>

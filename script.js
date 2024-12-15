@@ -1,50 +1,55 @@
 arrayImagesColor = [{
     id: "purple",
     idImg: "purpleImg",
-    color: "linear-gradient(#9600FF, #FF00B1)",
-    color1: '#9600FF',
-    color2: '#FF00B1',
+    color: "linear-gradient(to left,#030328, #29033D)",
+    color1: '#030328',
+    color2: '#29033D',
     div: 'a',
-    tint: "#9B59B6",
+    tint: "#4D13A4",
     src: "img/teste/maxresdefault (1).jpg",
-    mix: "color",
-    cover: "cover"
+    mix: "overlay",
+    cover: "cover",
+    linear: "to left"
+
 },
 {
     id: "blue",
     idImg: "blueImg",
-    color: "linear-gradient(#00FFF2, #000AFF)",
+    color: "linear-gradient(to right,#00FFF2, #000AFF)",
     color1: '#00FFF2',
     color2: '#000AFF',
     div: 'b',
-    tint: "#0051FF",
+    tint: "#FF0000",
     src: "img/teste/maxresdefault.jpg",
     mix: "exclusion",
-    cover: "cover"
+    cover: "cover",
+    linear: "to right"
 },
 {
     id: "red",
     idImg: "redImg",
-    color: "linear-gradient(#FF0000, #FF4200)",
-    color1: '#FF0000',
-    color2: '#FF4200',
+    color: "linear-gradient(to bottom left,#FE8E01, #FF0000)",
+    color1: '#FE8E01',
+    color2: '#FF0000',
     div: 'c',
-    tint: "#FF0000",
+    tint: "#8E4304",
     src: "img/teste/Łaszewo.jpg",
     mix: "hue",
-    cover: "cover"
+    cover: "cover",
+    linear: "to bottom left"
 },
 {
-    id: "teste",
-    idImg: "testeImg",
-    color: "linear-gradient(#19FF00, #06F30C)",
-    color1: '#19FF00',
-    color2: '#06F30C',
+    id: "green",
+    idImg: "greenImg",
+    color: "linear-gradient(to bottom right,#1AED3D, #35ED03)",
+    color1: '#1AED3D',
+    color2: '#35ED03',
     div: 'd',
-    tint: "#13FA4D",
+    tint: "#9EF509",
     src: "img/teste/wallpaper.jpg",
-    mix: "overlay",
-    cover: "cover"
+    mix: "saturation",
+    cover: "cover",
+    linear: "to bottom right"
 }
 ]
 
@@ -287,6 +292,8 @@ document.getElementById('buttonCarousel1').addEventListener('click', function ()
 
     //   setTimeout(colorChangePrev,1000) 
     colorChangePrev()
+    document.getElementsByClassName('carousel-control-next-icon')[0].style.transform = 'scale(1)'
+    document.getElementsByClassName('carousel-control-prev-icon')[0].style.transform = 'scale(1.3)'
 
 })
 
@@ -294,6 +301,8 @@ document.getElementById('buttonCarousel2').addEventListener('click', function ()
 
     //  setTimeout(colorChangeNext,1000)
     colorChangeNext()
+    document.getElementsByClassName('carousel-control-prev-icon')[0].style.transform = 'scale(1)'
+    document.getElementsByClassName('carousel-control-next-icon')[0].style.transform = 'scale(1.3)'
 
 
 })
@@ -303,8 +312,12 @@ document.getElementById('buttonCarousel2').addEventListener('click', function ()
 document.addEventListener('keydown', function (event) {
     if (event.key === 'ArrowRight') {
         document.getElementById('buttonCarousel2').click()
+        document.getElementsByClassName('carousel-control-prev-icon')[0].style.transform = 'scale(1)'
+        document.getElementsByClassName('carousel-control-next-icon')[0].style.transform = 'scale(1.3)'
     } else if (event.key === 'ArrowLeft') {
         document.getElementById('buttonCarousel1').click()
+        document.getElementsByClassName('carousel-control-next-icon')[0].style.transform = 'scale(1)'
+        document.getElementsByClassName('carousel-control-prev-icon')[0].style.transform = 'scale(1.3)'
     }
 });
 
@@ -480,6 +493,18 @@ document.querySelectorAll('input[name="imageCover"]').forEach(radio => {
 
 
 
+let backgroundCoverEffect = "to bottom"
+document.querySelectorAll('input[name="backgroundCover"]').forEach(radio => {
+    radio.addEventListener('change', function () {
+        const selectedCover = document.querySelector('input[name="backgroundCover"]:checked');
+        if (selectedCover) {
+            backgroundCoverEffect = selectedCover.value
+        }
+    });
+});
+
+
+
 
 
 
@@ -496,6 +521,7 @@ document.getElementById('buttonAcceptimg').addEventListener('click', function ()
     let imgSrc = document.getElementById('image-preview').src;
     let mixEffect = resultEffect
     let coverImg = imageCoverEffect
+    let linearMove = backgroundCoverEffect
 
     if (id == "") {
         document.getElementById('liveToastBtn').click()
@@ -526,18 +552,27 @@ document.getElementById('buttonAcceptimg').addEventListener('click', function ()
     }
 
 
+    let sourceImgDefault = document.getElementById('image-preview').src
+
+    if (sourceImgDefault.toString().includes('img/notFound.jpg') == true) {
+        document.getElementById('liveToastBtn').click()
+        return;
+    }
+
+
 
     arrayImagesColor.push({
         id: id,
         idImg: `${id}Img`,
-        color: `linear-gradient(${colorA}, ${colorB})`,
+        color: `linear-gradient(${linearMove},${colorA}, ${colorB})`,
         color1: colorA,
         color2: colorB,
         div: `${id}Div`,
         tint: `${tint}`,
         src: imgSrc,
         mix: mixEffect,
-        cover: coverImg
+        cover: coverImg,
+        linear: linearMove
     })
 
 
@@ -671,6 +706,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
         let color3 = `${arrayImagesColor[i].tint}`
         let mixEffectCheck = `${arrayImagesColor[i].mix}`
         let coverEffectCheck = `${arrayImagesColor[i].cover}`
+        let backgroundEffectCheck = `${arrayImagesColor[i].linear}`
 
         // Get the container where we want to append the music player
         const imgContainer = document.getElementById('imageView');
@@ -1112,6 +1148,72 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
 
 
+            var br = document.createElement("br");
+            modalBody.appendChild(br);
+
+
+
+
+
+            const backgroundLinearContainer = document.createElement('div');
+            // Set the ID for the div
+            backgroundLinearContainer.id = 'backgroundLinearContainer';
+            // Apply the styles
+            backgroundLinearContainer.style.display = 'flex';
+            backgroundLinearContainer.style.justifyContent = 'center';
+            backgroundLinearContainer.style.alignItems = 'center';
+            backgroundLinearContainer.style.flexWrap = 'wrap';
+            backgroundLinearContainer.style.flexDirection = 'row';
+            backgroundLinearContainer.style.fontSize = 'x-large';
+
+            modalBody.appendChild(backgroundLinearContainer)
+
+
+
+            // Define an array of blend modes
+            const backModes = [
+                "to left", "to top", "to bottom", "to right", "to top right", "to top left", "to bottom right", "to bottom left"
+            ];
+
+            // Get the parent container to append radio buttons
+            const backLinearCover = document.getElementById('backgroundLinearContainer');
+
+            // Loop through the blend modes array and create radio buttons dynamically
+            backModes.forEach((mode, index) => {
+                // Create the div for the form-check
+                const formCheckDiv = document.createElement('div');
+                formCheckDiv.classList.add('form-check');
+
+                // Create the input (radio button)
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.classList.add('form-check-input');
+                input.name = 'backgroundCover2';
+                input.id = `backgroundCover${index + 20}`;
+                input.value = mode;
+
+                // If it's the "color" mode, make it checked by default
+                if (mode === backgroundEffectCheck) {
+                    input.checked = true;
+                }
+
+                // Create the label
+                const label = document.createElement('label');
+                label.classList.add('form-check-label');
+                label.setAttribute('for', `backgroundCover${index + 20}`);
+                label.textContent = mode;
+
+                // Append the input and label to the form-check div
+                formCheckDiv.appendChild(input);
+                formCheckDiv.appendChild(label);
+
+                // Append the form-check div to the container
+                backLinearCover.appendChild(formCheckDiv);
+            });
+
+
+
+
 
 
 
@@ -1177,6 +1279,20 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
 
 
+            let backgroundCoverEffect2 = backgroundEffectCheck
+            document.querySelectorAll('input[name="backgroundCover2"]').forEach(radio => {
+                radio.addEventListener('change', function () {
+                    const selectedCover2 = document.querySelector('input[name="backgroundCover2"]:checked');
+                    if (selectedCover2) {
+                        backgroundCoverEffect2 = selectedCover2.value
+                    }
+                });
+            });
+
+
+
+
+
 
 
 
@@ -1207,6 +1323,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
                 let imgSrc = document.getElementById('image-previewEdit').src
                 let mixEffect = resultEffect2
                 let coverImg2 = imageCoverEffect2
+                let linearMove2 = backgroundCoverEffect2
 
 
                 if (nameInput.value.trim() == "") {
@@ -1262,7 +1379,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
                         arrayImagesColor[i].id = id
                         arrayImagesColor[i].idImg = `${id}Img`
-                        arrayImagesColor[i].color = `linear-gradient(${colorA}, ${colorB})`
+                        arrayImagesColor[i].color = `linear-gradient(${linearMove2},${colorA}, ${colorB})`
                         arrayImagesColor[i].color1 = colorA
                         arrayImagesColor[i].color2 = colorB
 
@@ -1274,6 +1391,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
                         arrayImagesColor[i].src = imgSrc
                         arrayImagesColor[i].mix = mixEffect
                         arrayImagesColor[i].cover = coverImg2
+                        arrayImagesColor[i].linear = linearMove2
 
 
 
@@ -1568,17 +1686,17 @@ document.getElementById('btnView'), addEventListener('click', function () {
                             cropstart() {
                                 // Hide the custom cursor when cropping starts (dragging or resizing)
                                 document.getElementsByClassName('cursor')[0].style.display = 'none';
-                              },
-                              cropmove(event) {
+                            },
+                            cropmove(event) {
                                 // Update cursor position during cropping (dragging or resizing)
                                 updateCursorPosition(event);
                                 // Show the custom cursor when the crop area is being moved
                                 document.getElementsByClassName('cursor')[0].style.display = 'block';
-                              },
-                              cropend() {
+                            },
+                            cropend() {
                                 // Hide the custom cursor when cropping ends (dragging or resizing)
                                 document.getElementsByClassName('cursor')[0].style.display = 'block';
-                              }
+                            }
 
 
                         });
@@ -1675,32 +1793,45 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
 
     const clickCursor = document.getElementById('clickCursor');
-    const buttons = document.querySelectorAll(`button,.color-display,#image-upload,label`);
-    
+    const buttons = document.querySelectorAll(`button,.color-display,#image-upload,label,.pcr-type`);
+
 
 
     // Move the custom cursor based on mouse movement
-document.addEventListener('mousemove', (e) => {
-    clickCursor.style.left = `${e.pageX + 20}px`;
-    clickCursor.style.top = `${e.pageY + 20}px`;
-});
-
-// Loop through all the buttons and add the event listeners
-buttons.forEach(button => {
-    // Show the custom cursor when hovering over the button
-    button.addEventListener('pointerover', () => {
-        clickCursor.style.display = 'block'; // Show the custom cursor
+    document.addEventListener('mousemove', (e) => {
+        clickCursor.style.left = `${e.pageX + 20}px`;
+        clickCursor.style.top = `${e.pageY + 20}px`;
     });
 
-    // Hide the custom cursor when mouse leaves the button
-    button.addEventListener('pointerout', () => {
-        clickCursor.style.display = 'none'; // Hide the custom cursor
+    // Loop through all the buttons and add the event listeners
+    buttons.forEach(button => {
+        // Show the custom cursor when hovering over the button
+        button.addEventListener('pointerover', () => {
+            clickCursor.style.display = 'block'; // Show the custom cursor
+        });
+
+        // Hide the custom cursor when mouse leaves the button
+        button.addEventListener('pointerout', () => {
+            clickCursor.style.display = 'none'; // Hide the custom cursor
+        });
     });
-});
 
 
 
+    const inputPicker = document.querySelectorAll(`.pcr-result`);
 
+    // Loop through all the buttons and add the event listeners
+    inputPicker.forEach(button => {
+        // Show the custom cursor when hovering over the button
+        button.addEventListener('pointerover', () => {
+            penCursor.style.display = 'block'; // Show the custom cursor
+        });
+
+        // Hide the custom cursor when mouse leaves the button
+        button.addEventListener('pointerout', () => {
+            penCursor.style.display = 'none'; // Hide the custom cursor
+        });
+    });
 
 
 
@@ -1762,9 +1893,59 @@ document.addEventListener('mousemove', (e) => {
 
 
 
+document.addEventListener('touchstart', (e) => {
+    const touch = e.touches[0]; // Get the first touch point
+
+    // Move the cursor to the touch position
+    cursor.style.left = `${touch.pageX - cursor.offsetWidth / 2}px`;
+    cursor.style.top = `${touch.pageY - cursor.offsetHeight / 2}px`;
+
+    // Optionally, you can add a class or style to show the cursor when touched.
+    cursor.style.display = 'block';  // Make sure it's visible when touched
+});
+
+
+
+
+
+document.addEventListener('touchmove', (e) => {
+    const touch = e.touches[0]; // Get the first touch point
+
+    // Move the cursor to the touch position
+    cursor.style.left = `${touch.pageX - cursor.offsetWidth / 2}px`;
+    cursor.style.top = `${touch.pageY - cursor.offsetHeight / 2}px`;
+
+    // Optionally, you can add a class or style to show the cursor when touched.
+    cursor.style.display = 'block';  // Make sure it's visible when touched
+});
+
+
+
+document.addEventListener('drag', (e) => {
+    const touch = e.touches[0]; // Get the first touch point
+
+    // Move the cursor to the touch position
+    cursor.style.left = `${touch.pageX - cursor.offsetWidth / 2}px`;
+    cursor.style.top = `${touch.pageY - cursor.offsetHeight / 2}px`;
+
+    // Optionally, you can add a class or style to show the cursor when touched.
+    cursor.style.display = 'block';  // Make sure it's visible when touched
+});
+
+
+
+
+document.addEventListener('drag', (e) => {
+    cursor.style.left = `${e.pageX - cursor.offsetWidth / 2}px`;
+    cursor.style.top = `${e.pageY - cursor.offsetHeight / 2}px`;
+    cursor.style.display = 'block';
+});
+
+
+
 
 const clickCursor = document.getElementById('clickCursor');
-const buttons = document.querySelectorAll(`button,.color-display,#image-upload`);
+const buttons = document.querySelectorAll(`button,.color-display,#image-upload,.pcr-type`);
 
 
 // Move the custom cursor based on mouse movement
@@ -1772,6 +1953,19 @@ document.addEventListener('mousemove', (e) => {
     clickCursor.style.left = `${e.pageX + 20}px`;
     clickCursor.style.top = `${e.pageY + 20}px`;
 });
+
+
+
+document.addEventListener('touchstart', (e) => {
+    const touch = e.touches[0]; // Get the first touch point
+
+    // Move the cursor to the touch position
+    clickCursor.style.left = `${touch.pageX + 20}px`;
+    clickCursor.style.top = `${touch.pageY + 20}px`;
+
+
+});
+
 
 // Loop through all the buttons and add the event listeners
 buttons.forEach(button => {
@@ -1784,6 +1978,8 @@ buttons.forEach(button => {
     button.addEventListener('pointerout', () => {
         clickCursor.style.display = 'none'; // Hide the custom cursor
     });
+
+
 });
 
 
@@ -1803,6 +1999,19 @@ document.addEventListener('mousemove', (e) => {
     penCursor.style.top = `${e.pageY + 20}px`;
 });
 
+
+
+
+document.addEventListener('touchstart', (e) => {
+    const touch = e.touches[0]; // Get the first touch point
+
+    // Move the cursor to the touch position
+    penCursor.style.left = `${touch.pageX + 20}px`;
+    penCursor.style.top = `${touch.pageY + 20}px`;
+
+
+});
+
 // Loop through all the buttons and add the event listeners
 
 // Show the custom cursor when hovering over the button
@@ -1817,6 +2026,44 @@ input.addEventListener('pointerout', () => {
 
 
 
+
+
+
+
+
+
+
+
+const inputPicker = document.querySelectorAll(`.pcr-result`);
+
+// Loop through all the buttons and add the event listeners
+inputPicker.forEach(button => {
+    // Show the custom cursor when hovering over the button
+    button.addEventListener('pointerover', () => {
+        penCursor.style.display = 'block'; // Show the custom cursor
+    });
+
+    // Hide the custom cursor when mouse leaves the button
+    button.addEventListener('pointerout', () => {
+        penCursor.style.display = 'none'; // Hide the custom cursor
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const divs = document.querySelectorAll(`#song`);
 
 // Loop through all the buttons and add the event listeners
@@ -1825,10 +2072,16 @@ divs.forEach(div => {
     div.style.setProperty('cursor', 'crosshair', 'important');
     // Show the custom cursor when hovering over the button
     div.addEventListener('scroll', () => {
-    document.getElementsByClassName('cursor')[0].style.display = 'block'; // Show the custom cursor
+        document.getElementsByClassName('cursor')[0].style.display = 'block'; // Show the custom cursor
     });
- 
+
 });
+
+
+
+
+
+
 
 
 
