@@ -30,11 +30,42 @@
           max-width: 100%;
         }
       </style> -->
+
+
+      <style>
+        * {
+          cursor: none;
+        }
+
+        * {
+  cursor: none !important;
+}
+
+input[type="image"] {
+  cursor: none !important;
+}
+
+    /* Apply the cursor: none style globally */
+    * {
+      cursor: none !important;
+    }
+
+    /* Ensure the cursor is also removed specifically for the input[type="file"] */
+    input[type="file"] {
+      cursor: none !important;
+    }
+
+
+      </style>
 </head>
 
 
 
 <body>
+
+    <div class="cursor"></div>
+    <div id="clickCursor"></div>
+    <div id="penCursor"></div>
 
     <button class="btn btn-danger" id="scroll" style="display: none;">testeScrol</button>
 
@@ -117,8 +148,8 @@
 
                     <div class="itemAdd">
                         <form id="upload-form" enctype="multipart/form-data">
-                            <label for="">Choose an image to upload:</label>
-                            <input type="file" style="font-size: x-large;" id="image-upload" accept="image/*"
+                            <label for="image-upload">Choose an image to upload:</label>
+                            <input type="file" style="font-size: x-large; display: none;" id="image-upload"  accept="image/*"
                                 onchange="">
                             <br><br>
                         </form>
@@ -322,13 +353,13 @@
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="imageCover" id="imageCover3" value="cover">
+                        <input class="form-check-input" type="radio" name="imageCover" id="imageCover3" value="cover" checked>
                         <label class="form-check-label" for="imageCover3">
                             cover
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="imageCover" id="imageCover4" value="scale-down" checked>
+                        <input class="form-check-input" type="radio" name="imageCover" id="imageCover4" value="scale-down">
                         <label class="form-check-label" for="imageCover4">
                             scale-down
                         </label>
@@ -502,7 +533,7 @@
     <div class="toast-container position-fixed bottom-0 end-0 p-3" data-bs-theme="dark" id="toatsAlert">
         <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
-                <img src="img/gojoIcon2.jpg" class="rounded me-2" alt="..." width="100px" height="100px">
+                <img src="img/alert.png" class="rounded me-2" alt="..." width="100px" height="100px">
                 <strong class="me-auto">
                     <p style="font-size: xx-large;">Alert</p>
                 </strong>
@@ -528,7 +559,7 @@
     <div class="toast-container position-fixed bottom-0 end-0 p-3" data-bs-theme="dark" id="toatsAlert">
         <div id="liveToastImage" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
-                <img src="img/gojoIcon2.jpg" class="rounded me-2" alt="..." width="100px" height="100px">
+                <img src="img/alert.png" class="rounded me-2" alt="..." width="100px" height="100px">
                 <strong class="me-auto">
                     <p style="font-size: xx-large;">Alert</p>
                 </strong>
@@ -566,7 +597,7 @@
         </button>
 
         <div class="offcanvas offcanvas-start"
-            style="background-color: rgba(0, 0, 0, 0.5);; color: rgb(221, 238, 238); font-family: Garamond;backdrop-filter: blur(40px);
+            style="color: rgb(221, 238, 238); font-family: Garamond;backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(10px);"
             data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
             <div class="offcanvas-header">
@@ -578,7 +609,7 @@
             </div>
             <div class="offcanvas-body">
                 <div>
-                    <p>
+                    <!-- <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac velit sit amet lectus
                         scelerisque tempus. Ut ac nisi vel tortor aliquet lacinia. Curabitur posuere, orci ac lacinia
                         ullamcorper, nisi turpis vehicula ligula, at condimentum nisi odio ac risus. Sed auctor felis at
@@ -591,7 +622,14 @@
                         volutpat. Fusce volutpat malesuada neque, ac eleifend felis laoreet eget. Sed id purus eu metus
                         cursus maximus. Donec viverra, magna in convallis facilisis, ipsum lectus aliquam nunc, nec
                         porttitor enim nisi sed lorem. Etiam convallis gravida eros ac bibendum.
-                    </p>
+                    </p> -->
+
+                    <div id="musicOffCan">
+                    <img src="img/musicalNote1.webp" class="musicImgOffCan" alt="" srcset="">
+                    <img src="img/musicalNote2.webp" class="musicImgOffCan" alt="" srcset="">
+                    <img src="img/musicalNote3.webp" class="musicImgOffCan" alt="" srcset="">
+                    <img src="img/musicalNote4.webp" class="musicImgOffCan" alt="" srcset="">
+                    </div>
 
                 </div>
 
@@ -608,6 +646,8 @@
                     <div class="carousel-item active" id="purple">
                         <div class="container-fluid" id="purple">
                             <div class="imgGojo">
+                                <div class="stats"></div>
+                                <h1 class="statsTitle" id="titlepurple">purple</h1>
                             <img src="img/teste/maxresdefault (1).jpg" alt="" srcset="" id="purpleImg">
                         </div>
                         </div>
@@ -615,7 +655,9 @@
                     <div class="carousel-item" id="blue">
                         <div class="container-fluid" id="blue">
                             <div class="imgGojo">
-                            <img src="img/teste/maxresdefault.jpg" alt="" srcset="" id="blueImg">
+                                <div class="stats"></div>
+                                <h1 class="statsTitle" id="titleblue">blue</h1>
+                            <img src="img/teste/maxresdefault.jpg" alt="" srcset="" id="blueImg">      
                            </div>
                         </div>
                     </div>
@@ -623,6 +665,8 @@
                     <div class="carousel-item" id="red">
                         <div class="container-fluid" id="red">
                             <div class="imgGojo">
+                                <div class="stats"></div>
+                                <h1 class="statsTitle" id="titlered">red</h1>
                             <img src="img/teste/Łaszewo.jpg"  alt="" srcset="" id="redImg">
                         </div>
                         </div>
@@ -633,6 +677,8 @@
                     <div class="carousel-item" id="teste">
                         <div class="container-fluid" id="teste">
                             <div class="imgGojo">
+                                <div class="stats"></div>
+                                <h1 class="statsTitle" id="titleteste">teste</h1>
                             <img src="img/teste/wallpaper.jpg" alt="" srcset="" id="testeImg">
                         </div>
                         </div>
@@ -676,7 +722,8 @@
             <div class="" id="song">
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/musicBackground.jpg" class="musicImg" alt="Album Cover">
+                        <!-- <div class="backgroundGif"></div> -->
+                        <img src="img/musicalNote5.webp" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
                             <h3>Song name</h3>
                         </div>
@@ -693,7 +740,7 @@
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/musicBackground.jpg" class="musicImg" alt="Album Cover">
+                        <img src="img/musicalNote5.webp" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
                             <h3>Song name</h3>
                         </div>
@@ -709,25 +756,7 @@
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/musicBackground.jpg" class="musicImg" alt="Album Cover">
-                        <div class="music-info" id="music-info">
-                            <h3>Song name</h3>
-                        </div>
-                        <p id="artist">Artist Name</p>
-                        <div class="audio-player">
-                            <audio controls>
-                                <source src="your-audio-file.mp3" type="audio/mp3">
-                                Your browser does not support the audio element.
-                            </audio>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div>
-                    <div class="music-player" id="music-player">
-                        <img src="img/musicBackground.jpg" class="musicImg" alt="Album Cover">
+                        <img src="img/musicalNote5.webp" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
                             <h3>Song name</h3>
                         </div>
@@ -745,7 +774,25 @@
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/musicBackground.jpg" class="musicImg" alt="Album Cover">
+                        <img src="img/musicalNote5.webp" class="musicImg" alt="Album Cover">
+                        <div class="music-info" id="music-info">
+                            <h3>Song name</h3>
+                        </div>
+                        <p id="artist">Artist Name</p>
+                        <div class="audio-player">
+                            <audio controls>
+                                <source src="your-audio-file.mp3" type="audio/mp3">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div>
+                    <div class="music-player" id="music-player">
+                        <img src="img/musicalNote5.webp" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
                             <h3>Song name</h3>
                         </div>
@@ -765,7 +812,7 @@
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/musicBackground.jpg" class="musicImg" alt="Album Cover">
+                        <img src="img/musicalNote5.webp" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
                             <h3>Song name</h3>
                         </div>
@@ -959,7 +1006,28 @@
             ready: function() {
               // Automatically zoom in to fill the crop area to the image size
               cropper.zoomTo(0);
-            }
+            },
+
+
+
+
+            cropstart() {
+                                // Hide the custom cursor when cropping starts (dragging or resizing)
+                                document.getElementsByClassName('cursor')[0].style.display = 'none';
+                              },
+                              cropmove(event) {
+                                // Update cursor position during cropping (dragging or resizing)
+                                updateCursorPosition(event);
+                                // Show the custom cursor when the crop area is being moved
+                                document.getElementsByClassName('cursor')[0].style.display = 'block';
+                              },
+                              cropend() {
+                                // Hide the custom cursor when cropping ends (dragging or resizing)
+                                document.getElementsByClassName('cursor')[0].style.display = 'block';
+                              }
+
+
+
           });
         };
         reader.readAsDataURL(file);
@@ -1177,6 +1245,7 @@
           }, 2000); // 2000ms for slow smooth scroll to the bottom
       });
   </script> -->
+  
 
 
 

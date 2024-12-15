@@ -1,51 +1,51 @@
 arrayImagesColor = [{
-        id: "purple",
-        idImg: "purpleImg",
-        color: "linear-gradient(#9600FF, #FF00B1)",
-        color1: '#9600FF',
-        color2: '#FF00B1',
-        div: 'a',
-        tint: "#9B59B6",
-        src: "img/teste/maxresdefault (1).jpg",
-        mix: "color",
-        cover: "cover"
-    },
-    {
-        id: "blue",
-        idImg: "blueImg",
-        color: "linear-gradient(#00FFF2, #000AFF)",
-        color1: '#00FFF2',
-        color2: '#000AFF',
-        div: 'b',
-        tint: "#0051FF",
-        src: "img/teste/maxresdefault.jpg",
-        mix: "soft-light",
-        cover: "cover"
-    },
-    {
-        id: "red",
-        idImg: "redImg",
-        color: "linear-gradient(#FF0000, #FF4200)",
-        color1: '#FF0000',
-        color2: '#FF4200',
-        div: 'c',
-        tint: "#FF0000",
-        src: "img/teste/Łaszewo.jpg",
-        mix: "hue",
-        cover: "cover"
-    },
-    {
-        id: "teste",
-        idImg: "testeImg",
-        color: "linear-gradient(#19FF00, #06F30C)",
-        color1: '#19FF00',
-        color2: '#06F30C',
-        div: 'd',
-        tint: "#13FA4D",
-        src: "img/teste/wallpaper.jpg",
-        mix: "overlay",
-        cover: "cover"
-    }
+    id: "purple",
+    idImg: "purpleImg",
+    color: "linear-gradient(#9600FF, #FF00B1)",
+    color1: '#9600FF',
+    color2: '#FF00B1',
+    div: 'a',
+    tint: "#9B59B6",
+    src: "img/teste/maxresdefault (1).jpg",
+    mix: "color",
+    cover: "cover"
+},
+{
+    id: "blue",
+    idImg: "blueImg",
+    color: "linear-gradient(#00FFF2, #000AFF)",
+    color1: '#00FFF2',
+    color2: '#000AFF',
+    div: 'b',
+    tint: "#0051FF",
+    src: "img/teste/maxresdefault.jpg",
+    mix: "exclusion",
+    cover: "cover"
+},
+{
+    id: "red",
+    idImg: "redImg",
+    color: "linear-gradient(#FF0000, #FF4200)",
+    color1: '#FF0000',
+    color2: '#FF4200',
+    div: 'c',
+    tint: "#FF0000",
+    src: "img/teste/Łaszewo.jpg",
+    mix: "hue",
+    cover: "cover"
+},
+{
+    id: "teste",
+    idImg: "testeImg",
+    color: "linear-gradient(#19FF00, #06F30C)",
+    color1: '#19FF00',
+    color2: '#06F30C',
+    div: 'd',
+    tint: "#13FA4D",
+    src: "img/teste/wallpaper.jpg",
+    mix: "overlay",
+    cover: "cover"
+}
 ]
 
 
@@ -139,10 +139,17 @@ function colorChangeNext() {
             });
 
 
+            try {
+                let removeStyleLoop = document.getElementById('after')
+                document.head.removeChild(removeStyleLoop)
+            } catch (error) {
+
+            }
 
             // Create a <style> element to add custom CSS rules dynamically
             let style = document.createElement('style');
-            style.id = `${arrayImagesColor[i].id}after`
+            // style.id = `${arrayImagesColor[i].id}after`
+            style.id = `after`
 
             style.innerHTML = `
              .imgGojo::after {
@@ -191,8 +198,18 @@ function colorChangePrev() {
                 divElement.style.animation = 'none';
             });
 
+
+
+            try {
+                let removeStyleLoop = document.getElementById('after')
+                document.head.removeChild(removeStyleLoop)
+            } catch (error) {
+
+            }
+
             // Create a <style> element to add custom CSS rules dynamically
             let style = document.createElement('style');
+            style.id = `after`
 
 
 
@@ -252,10 +269,14 @@ function handleSwipe() {
     if (touchStartX - touchEndX > 50) {
         // Swipe left - trigger colorChangeNext()
         colorChangeNext();
+        document.getElementsByClassName('carousel-control-next-icon')[0].style.transform = 'scale(1.3)';
+        document.getElementsByClassName('carousel-control-prev-icon')[0].style.transform = 'scale(1)';
     }
     if (touchEndX - touchStartX > 50) {
         // Swipe right - trigger colorChangePrev()
         colorChangePrev();
+        document.getElementsByClassName('carousel-control-prev-icon')[0].style.transform = 'scale(1.3)';
+        document.getElementsByClassName('carousel-control-next-icon')[0].style.transform = 'scale(1)';
     }
 }
 
@@ -276,6 +297,16 @@ document.getElementById('buttonCarousel2').addEventListener('click', function ()
 
 
 })
+
+
+
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'ArrowRight') {
+        document.getElementById('buttonCarousel2').click()
+    } else if (event.key === 'ArrowLeft') {
+        document.getElementById('buttonCarousel1').click()
+    }
+});
 
 document.getElementById('offCanvasButton').addEventListener("click", function () {
 
@@ -437,7 +468,7 @@ document.querySelectorAll('input[name="blendMode"]').forEach(radio => {
 });
 
 
-let imageCoverEffect = "scale-down"
+let imageCoverEffect = "cover"
 document.querySelectorAll('input[name="imageCover"]').forEach(radio => {
     radio.addEventListener('change', function () {
         const selectedCover = document.querySelector('input[name="imageCover"]:checked');
@@ -546,6 +577,19 @@ document.getElementById('buttonAcceptimg').addEventListener('click', function ()
 
 
 
+    const blurStats = document.createElement("div")
+    blurStats.classList.add('stats')
+
+
+
+
+
+
+
+    const titleStats = document.createElement('h1')
+    titleStats.classList.add('statsTitle')
+    titleStats.id = `title${id}`
+    titleStats.innerHTML = id
 
 
 
@@ -559,7 +603,25 @@ document.getElementById('buttonAcceptimg').addEventListener('click', function ()
 
 
 
+    containerImg.appendChild(blurStats)
+    containerImg.appendChild(titleStats)
     containerImg.appendChild(image)
+
+
+
+    containerImg.addEventListener("pointerover", function () {
+        blurStats.style.display = 'flex'
+        titleStats.style.display = 'flex'
+
+    })
+
+
+    containerImg.addEventListener("pointerout", function () {
+        blurStats.style.display = 'none'
+        titleStats.style.display = 'none'
+
+    })
+
 
 
 
@@ -667,12 +729,34 @@ document.getElementById('btnView'), addEventListener('click', function () {
         deleteButton.innerHTML = '<img src="img/trash.png" alt="" srcset="" width="90px" height="90px">';
         deleteButton.id = btnDelId
 
+
+        const clickCursor = document.getElementById('clickCursor');
+        deleteButton.addEventListener('pointerover', () => {
+            clickCursor.style.display = 'block';
+        });
+
+        deleteButton.addEventListener('pointerout', () => {
+            clickCursor.style.display = 'none';
+        });
+
+
+
+
         const editButton = document.createElement('button');
         editButton.classList.add('btn', 'btn-secondary', 'itemAdd');
         editButton.innerHTML = '<img src="img/pen.png" alt="" srcset="" width="90px" height="90px">';
         editButton.id = btnEditId
         editButton.setAttribute('data-bs-toggle', 'modal');
         editButton.setAttribute('data-bs-target', '#exampleModalEdit');
+
+        editButton.addEventListener('pointerover', () => {
+            clickCursor.style.display = 'block';
+        });
+
+        editButton.addEventListener('pointerout', () => {
+            clickCursor.style.display = 'none';
+        });
+
 
 
 
@@ -703,6 +787,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
             const label = document.createElement('label');
             label.textContent = 'Choose an image to upload:';
+            label.setAttribute("for", "image-upload2");
 
             const input = document.createElement('input');
             input.type = 'file';
@@ -710,6 +795,17 @@ document.getElementById('btnView'), addEventListener('click', function () {
             input.id = 'image-upload2';
             input.accept = 'image/*';
             input.setAttribute('onchange', '');
+            input.style.display = 'none'
+
+            const clickCursor = document.getElementById('clickCursor');
+            input.addEventListener('pointerover', () => {
+                clickCursor.style.display = 'block'; // Show the custom cursor
+            });
+
+            // Hide the custom cursor when mouse leaves the button
+            input.addEventListener('pointerout', () => {
+                clickCursor.style.display = 'none'; // Hide the custom cursor
+            });
 
             // Append elements to the form
             form.appendChild(label);
@@ -764,6 +860,19 @@ document.getElementById('btnView'), addEventListener('click', function () {
             nameInput.style.padding = '1rem';
             nameInput.value = imgName
 
+
+            const penCursor = document.getElementById('penCursor');
+            // Show the custom cursor when hovering over the button
+            nameInput.addEventListener('pointerover', () => {
+                penCursor.style.display = 'block'; // Show the custom cursor
+            });
+
+            // Hide the custom cursor when mouse leaves the button
+            nameInput.addEventListener('pointerout', () => {
+                penCursor.style.display = 'none'; // Hide the custom cursor
+            });
+
+
             // Append name text and input to itemAddName
             itemAddName.appendChild(nameText);
             itemAddName.appendChild(nameInput);
@@ -797,7 +906,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
 
             // Function to create color display blocks
-            function createColorDisplay(idColor, colorId,numberText) {
+            function createColorDisplay(idColor, colorId, numberText) {
                 const itemAddColor = document.createElement('div');
                 itemAddColor.classList.add('itemAdd');
                 itemAddColor.style.flexDirection = 'column';
@@ -816,6 +925,17 @@ document.getElementById('btnView'), addEventListener('click', function () {
                 colorDisplay.classList.add('color-display');
                 colorDisplay.id = `colorDisplay${idColor}`;
                 colorDisplay.style.backgroundColor = colorId;
+
+
+                colorDisplay.addEventListener('pointerover', () => {
+                    clickCursor.style.display = 'block';
+                });
+
+                colorDisplay.addEventListener('pointerout', () => {
+                    clickCursor.style.display = 'none';
+                });
+
+
 
                 // Append elements to itemAddColor
                 itemAddColor.appendChild(colorText);
@@ -868,7 +988,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
             const blendModes = [
                 "normal", "multiply", "screen", "overlay", "darken", "lighten",
                 "color-dodge", "color-burn", "hard-light", "soft-light", "difference",
-                 "exclusion", "hue", "saturation", "color", "luminosity", "plus-lighter"
+                "exclusion", "hue", "saturation", "color", "luminosity", "plus-lighter"
             ];
 
             // Get the parent container to append radio buttons
@@ -885,7 +1005,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
                 input.type = 'radio';
                 input.classList.add('form-check-input');
                 input.name = 'blendMode2';
-                input.id = `blendMode${index + 1}`;
+                input.id = `blendMode${index + 19}`;
                 input.value = mode;
 
                 // If it's the "color" mode, make it checked by default
@@ -896,7 +1016,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
                 // Create the label
                 const label = document.createElement('label');
                 label.classList.add('form-check-label');
-                label.setAttribute('for', `blendMode${index + 1}`);
+                label.setAttribute('for', `blendMode${index + 19}`);
                 label.textContent = mode;
 
                 // Append the input and label to the form-check div
@@ -967,7 +1087,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
                 input.type = 'radio';
                 input.classList.add('form-check-input');
                 input.name = 'imageCover2';
-                input.id = `imageCover${index + 1}`;
+                input.id = `imageCover${index + 6}`;
                 input.value = mode;
 
                 // If it's the "color" mode, make it checked by default
@@ -978,7 +1098,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
                 // Create the label
                 const label = document.createElement('label');
                 label.classList.add('form-check-label');
-                label.setAttribute('for', `imageCover${index + 1}`);
+                label.setAttribute('for', `imageCover${index + 6}`);
                 label.textContent = mode;
 
                 // Append the input and label to the form-check div
@@ -1061,6 +1181,19 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
 
 
+            saveButton.addEventListener('pointerover', () => {
+                clickCursor.style.display = 'block'; // Show the custom cursor
+            });
+
+            // Hide the custom cursor when mouse leaves the button
+            saveButton.addEventListener('pointerout', () => {
+                clickCursor.style.display = 'none'; // Hide the custom cursor
+            });
+
+
+
+
+
             saveButton.addEventListener('click', function () {
 
 
@@ -1073,7 +1206,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
                 let tint = document.getElementById('colorValue6').innerHTML
                 let imgSrc = document.getElementById('image-previewEdit').src
                 let mixEffect = resultEffect2
-                let coverImg2 =imageCoverEffect2
+                let coverImg2 = imageCoverEffect2
 
 
                 if (nameInput.value.trim() == "") {
@@ -1112,6 +1245,11 @@ document.getElementById('btnView'), addEventListener('click', function () {
                     if (ref.includes(arrayImagesColor[i].id)) {
 
 
+                        document.getElementById(`title${arrayImagesColor[i].id}`).innerHTML = id
+                        document.getElementById(`title${arrayImagesColor[i].id}`).id = `title${id}`
+
+
+
                         let idChangeOnce = document.getElementById(arrayImagesColor[i].id)
                         idChangeOnce.id = id
 
@@ -1136,6 +1274,8 @@ document.getElementById('btnView'), addEventListener('click', function () {
                         arrayImagesColor[i].src = imgSrc
                         arrayImagesColor[i].mix = mixEffect
                         arrayImagesColor[i].cover = coverImg2
+
+
 
 
 
@@ -1171,9 +1311,17 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
 
 
+                        try {
+                            let removeStyleLoop = document.getElementById('after')
+                            document.head.removeChild(removeStyleLoop)
+                        } catch (error) {
+
+                        }
+
+
                         // Create a <style> element to add custom CSS rules dynamically
                         let style = document.createElement('style');
-                        style.id = `${arrayImagesColor[i].id}after`
+                        style.id = `after`
 
                         style.innerHTML = `
                          .imgGojo::after {
@@ -1414,7 +1562,25 @@ document.getElementById('btnView'), addEventListener('click', function () {
                             ready: function () {
                                 // Automatically zoom in to fill the crop area to the image size
                                 cropper2.zoomTo(0);
-                            }
+                            },
+
+
+                            cropstart() {
+                                // Hide the custom cursor when cropping starts (dragging or resizing)
+                                document.getElementsByClassName('cursor')[0].style.display = 'none';
+                              },
+                              cropmove(event) {
+                                // Update cursor position during cropping (dragging or resizing)
+                                updateCursorPosition(event);
+                                // Show the custom cursor when the crop area is being moved
+                                document.getElementsByClassName('cursor')[0].style.display = 'block';
+                              },
+                              cropend() {
+                                // Hide the custom cursor when cropping ends (dragging or resizing)
+                                document.getElementsByClassName('cursor')[0].style.display = 'block';
+                              }
+
+
                         });
                     };
                     reader.readAsDataURL(file);
@@ -1506,7 +1672,163 @@ document.getElementById('btnView'), addEventListener('click', function () {
         }
 
     }
+
+
+    const clickCursor = document.getElementById('clickCursor');
+    const buttons = document.querySelectorAll(`button,.color-display,#image-upload,label`);
+    
+
+
+    // Move the custom cursor based on mouse movement
+document.addEventListener('mousemove', (e) => {
+    clickCursor.style.left = `${e.pageX + 20}px`;
+    clickCursor.style.top = `${e.pageY + 20}px`;
+});
+
+// Loop through all the buttons and add the event listeners
+buttons.forEach(button => {
+    // Show the custom cursor when hovering over the button
+    button.addEventListener('pointerover', () => {
+        clickCursor.style.display = 'block'; // Show the custom cursor
+    });
+
+    // Hide the custom cursor when mouse leaves the button
+    button.addEventListener('pointerout', () => {
+        clickCursor.style.display = 'none'; // Hide the custom cursor
+    });
+});
+
+
+
+
+
+
+
+
+
 })
+
+
+
+
+
+
+let thumb = document.getElementsByClassName('imgGojo');
+let statsClass = document.getElementsByClassName('stats')
+let statsTitleClass = document.getElementsByClassName('statsTitle')
+
+for (const element of thumb) {
+    element.addEventListener('pointerover', function () {
+        for (const element1 of statsClass) {
+            element1.style.display = "flex"
+        }
+
+
+        for (const element2 of statsTitleClass) {
+            element2.style.display = "flex"
+        }
+
+
+    });
+
+    element.addEventListener('pointerout', function () {
+        for (const element1 of statsClass) {
+            element1.style.display = "none"
+        }
+
+
+        for (const element2 of statsTitleClass) {
+            element2.style.display = "none"
+        }
+
+    });
+}
+
+
+
+
+// Track mouse movement and update the position of the custom cursor
+//e.page são as cordenadas do ponteiro do mouse
+//mas a div cursor não fica exatamente no click do ponteiro
+//então temos que subtrair metade para que a div fique centralizada no meio
+//conseguimos isso ao pegar o widht e height da div e dividir por 2
+const cursor = document.querySelector('.cursor');
+
+
+document.addEventListener('mousemove', (e) => {
+    cursor.style.left = `${e.pageX - cursor.offsetWidth / 2}px`;
+    cursor.style.top = `${e.pageY - cursor.offsetHeight / 2}px`;
+});
+
+
+
+
+const clickCursor = document.getElementById('clickCursor');
+const buttons = document.querySelectorAll(`button,.color-display,#image-upload`);
+
+
+// Move the custom cursor based on mouse movement
+document.addEventListener('mousemove', (e) => {
+    clickCursor.style.left = `${e.pageX + 20}px`;
+    clickCursor.style.top = `${e.pageY + 20}px`;
+});
+
+// Loop through all the buttons and add the event listeners
+buttons.forEach(button => {
+    // Show the custom cursor when hovering over the button
+    button.addEventListener('pointerover', () => {
+        clickCursor.style.display = 'block'; // Show the custom cursor
+    });
+
+    // Hide the custom cursor when mouse leaves the button
+    button.addEventListener('pointerout', () => {
+        clickCursor.style.display = 'none'; // Hide the custom cursor
+    });
+});
+
+
+
+
+
+
+
+
+const penCursor = document.getElementById('penCursor');
+const input = document.getElementById(`name`);
+
+
+// Move the custom cursor based on mouse movement
+document.addEventListener('mousemove', (e) => {
+    penCursor.style.left = `${e.pageX + 20}px`;
+    penCursor.style.top = `${e.pageY + 20}px`;
+});
+
+// Loop through all the buttons and add the event listeners
+
+// Show the custom cursor when hovering over the button
+input.addEventListener('pointerover', () => {
+    penCursor.style.display = 'block'; // Show the custom cursor
+});
+
+// Hide the custom cursor when mouse leaves the button
+input.addEventListener('pointerout', () => {
+    penCursor.style.display = 'none'; // Hide the custom cursor
+});
+
+
+
+const divs = document.querySelectorAll(`#song`);
+
+// Loop through all the buttons and add the event listeners
+divs.forEach(div => {
+
+    div.style.setProperty('cursor', 'crosshair', 'important');
+    // Show the custom cursor when hovering over the button
+    div.addEventListener('scroll', () => {
+    document.getElementsByClassName('cursor')[0].style.display = 'block'; // Show the custom cursor
+    });
+ 
+});
 
 
 
