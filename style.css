@@ -957,7 +957,7 @@ html .modal {
     border-radius: 20px;
     outline: 0;
     background-color: rgba(0, 0, 0, 0.01);
-    backdrop-filter: blur(40px);
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     height: 98vh;
     overflow: scroll;
@@ -1007,7 +1007,7 @@ html .modal {
     border-radius: 20px;
     outline: 0;
     background-color: rgba(0, 0, 0, 0.01);
-    backdrop-filter: blur(40px);
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     height: 98vh;
     overflow: scroll;
@@ -1067,7 +1067,7 @@ html .modal {
     border-radius: 20px;
     outline: 0;
     background-color: rgba(0, 0, 0, 0.01);
-    backdrop-filter: blur(40px);
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     scroll-behavior: smooth;
 }
@@ -1118,7 +1118,7 @@ html .modal {
     border-radius: 20px;
     outline: 0;
     background-color: rgba(0, 0, 0, 0.01);
-    backdrop-filter: blur(40px);
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     height: 98vh;
     overflow: scroll;
@@ -1338,7 +1338,7 @@ html .cropper-container {
     background-color: #ffffff00;
     z-index: 1; 
        backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(1px); 
 }
 
 
@@ -1405,7 +1405,7 @@ html label, html input{
   }
 
   .offcanvas-header{
-     backdrop-filter: blur(40px);
+     backdrop-filter: blur(10px);
   }
 
   .offcanvas{
