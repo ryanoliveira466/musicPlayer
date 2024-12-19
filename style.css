@@ -957,8 +957,8 @@ html .modal {
     border-radius: 20px;
     outline: 0;
     background-color: rgba(0, 0, 0, 0.01);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
     height: 98vh;
     overflow: scroll;
     scroll-behavior: smooth;
@@ -1007,8 +1007,8 @@ html .modal {
     border-radius: 20px;
     outline: 0;
     background-color: rgba(0, 0, 0, 0.01);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
     height: 98vh;
     overflow: scroll;
     scroll-behavior: smooth;
@@ -1067,8 +1067,8 @@ html .modal {
     border-radius: 20px;
     outline: 0;
     background-color: rgba(0, 0, 0, 0.01);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
     scroll-behavior: smooth;
 }
 
@@ -1118,8 +1118,8 @@ html .modal {
     border-radius: 20px;
     outline: 0;
     background-color: rgba(0, 0, 0, 0.01);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
     height: 98vh;
     overflow: scroll;
     scroll-behavior: smooth;
@@ -1405,7 +1405,7 @@ html label, html input{
   }
 
   .offcanvas-header{
-     backdrop-filter: blur(10px);
+     backdrop-filter: blur(0px);
   }
 
   .offcanvas{
