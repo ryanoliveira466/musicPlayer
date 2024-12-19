@@ -1337,8 +1337,8 @@ html .cropper-container {
     border-radius: 53px;
     background-color: #ffffff00;
     z-index: 1; 
-       backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(1px); 
+        backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px); 
 }
 
 
@@ -1405,7 +1405,7 @@ html label, html input{
   }
 
   .offcanvas-header{
-     backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px);
   }
 
   .offcanvas{
@@ -1436,6 +1436,7 @@ body:hover {
 
     transition: background-color 1000ms linear;
 } */
+
 
 @media screen and (max-width: 825px) {
     .imgGojo img{
