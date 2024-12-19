@@ -1437,7 +1437,11 @@ body:hover {
     transition: background-color 1000ms linear;
 } */
 
-
+@media screen and (max-width: 825px) {
+    .imgGojo img{
+        clip-path: inset(3px 14px 3px 14px round 50px);
+    }
+}
  
  html{
     min-width: 800px !important;
