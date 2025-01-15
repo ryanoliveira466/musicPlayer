@@ -63,7 +63,7 @@ input[type="image"] {
 
 <body>
 
-    <div class="cursor"></div>
+    <div class="cursor" id="cursor"></div>
     <div id="clickCursor"></div>
     <div id="penCursor"></div>
 
@@ -788,13 +788,23 @@ input[type="image"] {
                 <div>
                     <div class="music-player" id="music-player">
                         <!-- <div class="backgroundGif"></div> -->
+                        
                         <img src="img/musicalNote5.webp" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
                             <h3>Song name</h3>
                         </div>
                         <p id="artist" class="artist">Artist Name</p>
+
                         <div class="audio-player">
-                            <audio controls>
+
+                            <button class="btn btnPlay"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnPause"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <div class="audioLength"></div>
+                            <button class="btn btnVolume"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
+
+
+
+                            <audio controls style="display: none;">
                                 <source src="your-audio-file.mp3" type="audio/mp3">
                                 Your browser does not support the audio element.
                             </audio>
@@ -811,7 +821,14 @@ input[type="image"] {
                         </div>
                         <p id="artist">Artist Name</p>
                         <div class="audio-player">
-                            <audio controls>
+                            <button class="btn btnPlay"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnPause"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <div class="audioLength"></div>
+                            <button class="btn btnVolume"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
+
+
+
+                            <audio controls style="display: none;">
                                 <source src="your-audio-file.mp3" type="audio/mp3">
                                 Your browser does not support the audio element.
                             </audio>
@@ -827,7 +844,14 @@ input[type="image"] {
                         </div>
                         <p id="artist">Artist Name</p>
                         <div class="audio-player">
-                            <audio controls>
+                            <button class="btn btnPlay"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnPause"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <div class="audioLength"></div>
+                            <button class="btn btnVolume"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
+
+
+
+                            <audio controls style="display: none;">
                                 <source src="your-audio-file.mp3" type="audio/mp3">
                                 Your browser does not support the audio element.
                             </audio>
@@ -845,7 +869,14 @@ input[type="image"] {
                         </div>
                         <p id="artist">Artist Name</p>
                         <div class="audio-player">
-                            <audio controls>
+                            <button class="btn btnPlay"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnPause"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <div class="audioLength"></div>
+                            <button class="btn btnVolume"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
+
+
+
+                            <audio controls style="display: none;">
                                 <source src="your-audio-file.mp3" type="audio/mp3">
                                 Your browser does not support the audio element.
                             </audio>
@@ -863,7 +894,14 @@ input[type="image"] {
                         </div>
                         <p id="artist">Artist Name</p>
                         <div class="audio-player">
-                            <audio controls>
+                            <button class="btn btnPlay"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnPause"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <div class="audioLength"></div>
+                            <button class="btn btnVolume"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
+
+
+
+                            <audio controls style="display: none;">
                                 <source src="your-audio-file.mp3" type="audio/mp3">
                                 Your browser does not support the audio element.
                             </audio>
@@ -883,7 +921,14 @@ input[type="image"] {
                         </div>
                         <p id="artist">Artist Name</p>
                         <div class="audio-player">
-                            <audio controls>
+                            <button class="btn btnPlay"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnPause"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <div class="audioLength"></div>
+                            <button class="btn btnVolume"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
+
+
+
+                            <audio controls style="display: none;">
                                 <source src="your-audio-file.mp3" type="audio/mp3">
                                 Your browser does not support the audio element.
                             </audio>
@@ -1078,7 +1123,7 @@ input[type="image"] {
 
             cropstart() {
                                 // Hide the custom cursor when cropping starts (dragging or resizing)
-                                document.getElementsByClassName('cursor')[0].style.display = 'none';
+                                document.getElementsByClassName('cursor')[0].style.display = 'block';
                               },
                               cropmove(event) {
                                 // Update cursor position during cropping (dragging or resizing)

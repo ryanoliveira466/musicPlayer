@@ -129,7 +129,6 @@ function colorChangeNext() {
         if (elements.id == arrayImagesColor[i].id) {
 
 
-
             document.getElementById(arrayImagesColor[i].idImg).style.objectFit = arrayImagesColor[i].cover
 
 
@@ -1685,21 +1684,22 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
                             cropstart() {
                                 // Hide the custom cursor when cropping starts (dragging or resizing)
-                                document.getElementsByClassName('cursor')[0].style.display = 'none';
+                                document.getElementsByClassName('cursor')[0].style.display = 'block';
+
                             },
                             cropmove(event) {
-                                // Update cursor position during cropping (dragging or resizing)
-                                updateCursorPosition(event);
-                                // Show the custom cursor when the crop area is being moved
                                 document.getElementsByClassName('cursor')[0].style.display = 'block';
                             },
                             cropend() {
                                 // Hide the custom cursor when cropping ends (dragging or resizing)
                                 document.getElementsByClassName('cursor')[0].style.display = 'block';
-                            }
-
+                            },
 
                         });
+
+
+                
+                       
                     };
                     reader.readAsDataURL(file);
 
@@ -1889,7 +1889,13 @@ const cursor = document.querySelector('.cursor');
 document.addEventListener('mousemove', (e) => {
     cursor.style.left = `${e.pageX - cursor.offsetWidth / 2}px`;
     cursor.style.top = `${e.pageY - cursor.offsetHeight / 2}px`;
+
+
 });
+
+
+
+
 
 
 
@@ -1903,6 +1909,8 @@ document.addEventListener('touchstart', (e) => {
     // Optionally, you can add a class or style to show the cursor when touched.
     cursor.style.display = 'block';  // Make sure it's visible when touched
 });
+
+
 
 
 
@@ -1940,6 +1948,9 @@ document.addEventListener('drag', (e) => {
     cursor.style.top = `${e.pageY - cursor.offsetHeight / 2}px`;
     cursor.style.display = 'block';
 });
+
+
+
 
 
 

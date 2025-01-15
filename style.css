@@ -199,6 +199,12 @@ table {
 
 }
 
+html{
+    overflow-x: hidden !important;
+}
+
+
+
 html p {
     margin: 0px
 }
@@ -310,7 +316,7 @@ body {
 
 
 * {
-    cursor: none;
+    cursor: none !important;
   }
   
 
@@ -378,6 +384,10 @@ html button{
 
 @media screen and (max-width: 600px) {
 
+    html{
+        overflow-x: hidden !important;
+    }
+
 
     .offcanvas-body p {
         font-size: xx-large;
@@ -392,6 +402,7 @@ html button{
         width: 800px;
         /* height: 790px; */
         overflow: hidden;
+        margin: 0px;
 
     }
 
@@ -747,6 +758,7 @@ header {
 
 
 #song {
+    position: relative;
     display: flex;
     flex-direction: row;
     overflow-x: auto;
@@ -755,8 +767,9 @@ header {
     margin-top: 60px;
     min-width: 800px;
     max-width: 100vw;
-    background-color: rgb(159 128 128 / 59%);
-    mix-blend-mode: difference;
+    backdrop-filter: brightness(0.5);
+    /* background-color: rgb(159 128 128 / 59%);
+    mix-blend-mode: difference; */
     /* Semi-transparent background */
     /* backdrop-filter: blur(10px); */
     /* Apply blur effect to background */
@@ -767,16 +780,19 @@ header {
 #song::-webkit-scrollbar {
     display: flex;
     height: 8px;
+    
     /* Set the height for horizontal scrollbar */
 }
 
 #song::-webkit-scrollbar-track {
-    background: #f1f1f100;
+    background: #ff000000;
+     mix-blend-mode: difference;
     /* Track color */
 }
 
 #song::-webkit-scrollbar-thumb {
-    background: #555;
+    background: #ffffff36;
+    
     /* Scrollbar thumb color */
     border-radius: 4px;
 }
@@ -805,6 +821,7 @@ html ::-webkit-scrollbar {
     text-align: center;
     overflow: hidden;
     text-overflow: clip;
+    margin: 1rem;
 }
 
 .musicImg {
@@ -813,7 +830,7 @@ html ::-webkit-scrollbar {
     height: 200px;
     border-radius: 10px;
     object-fit: cover;
-    mix-blend-mode: difference;
+    /* mix-blend-mode: difference; */
     /* object-fit: contain; */
     /* object-fit: scale-down; */
     /* height: auto; */
@@ -829,6 +846,7 @@ html ::-webkit-scrollbar {
     word-wrap: break-word;
     word-wrap: now-rap;
     overflow: scroll;
+    mix-blend-mode: difference;
 
 }
 
@@ -843,12 +861,50 @@ html ::-webkit-scrollbar {
     color: #e9e3e3;
     font-size: 14px;
     margin-top: 5px;
+    mix-blend-mode: difference;
 }
 
+.audioLength{
+    display: none;
+    width: 100%;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #45473d; 
+}
+
+
 .audio-player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
     margin-top: 5px;
     width: 100%;
-    mix-blend-mode: difference;
+    /* mix-blend-mode: difference; */
+}
+
+.audio-player button {
+    transition: transform 0.2s ease-out;
+    /* Use 'ease' or 'linear' for smooth transitions */
+}
+
+.audio-player button:hover {
+    transform: scale(1.1);
+}
+
+.btnPlay{
+    mix-blend-mode: difference !important;
+}
+
+.btnPause{
+    display: none !important;
+    mix-blend-mode: difference !important;
+}
+
+ 
+
+.btnVolume{
+    mix-blend-mode: difference !important;
 }
 
 audio {
@@ -1391,8 +1447,7 @@ html label, html input{
     cursor: crosshair !important;
   }
   
-
-
+  
   .musicImgOffCan{
     display: flex;
     margin: 10px;
