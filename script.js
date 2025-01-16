@@ -53,6 +53,34 @@ arrayImagesColor = [{
 }
 ]
 
+arraySong = [
+    {
+        nameSong: '1'
+
+    },
+    {
+        nameSong: '2'
+
+    },
+    {
+        nameSong: '3'
+
+    },
+    {
+        nameSong: '4'
+
+    },
+    {
+        nameSong: '5'
+
+    },
+    {
+        nameSong: '6'
+
+    }
+];
+
+
 
 //FOCUS VEM PRIMEIRO DO QUE O CLICK
 document.getElementById('liveToastBtnClose').addEventListener('focus', function () {
@@ -1698,8 +1726,8 @@ document.getElementById('btnView'), addEventListener('click', function () {
                         });
 
 
-                
-                       
+
+
                     };
                     reader.readAsDataURL(file);
 
@@ -2063,18 +2091,6 @@ inputPicker.forEach(button => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 const divs = document.querySelectorAll(`#song`);
 
 // Loop through all the buttons and add the event listeners
@@ -2094,6 +2110,46 @@ divs.forEach(div => {
 
 
 
+arraySong.forEach((song) => {
+    document.getElementById(`audioPlay${song.nameSong}`).addEventListener('click', function () {
+        document.getElementById(`audio${song.nameSong}`).play();
+
+        document.getElementById(`audioPause${song.nameSong}`).style.display = 'flex'
+        document.getElementById(`audioPlay${song.nameSong}`).style.display = 'none'
+
+    })
+
+    document.getElementById(`audioPause${song.nameSong}`).addEventListener('click', function () {
+        document.getElementById(`audio${song.nameSong}`).pause();
+
+        document.getElementById(`audioPlay${song.nameSong}`).style.display = 'flex'
+        document.getElementById(`audioPause${song.nameSong}`).style.display = 'none'
+
+
+    })
+
+    document.getElementById(`audioVolume${song.nameSong}`).addEventListener('click', function () {
+        document.getElementById(`audio${song.nameSong}`).muted = true
+
+        document.getElementById(`audioVolume${song.nameSong}`).style.display = 'none'
+        document.getElementById(`audioMutado${song.nameSong}`).style.display = 'flex'
+
+    })
+
+
+    document.getElementById(`audioMutado${song.nameSong}`).addEventListener('click', function () {
+        document.getElementById(`audio${song.nameSong}`).muted = false
+
+        document.getElementById(`audioMutado${song.nameSong}`).style.display = 'none'
+        document.getElementById(`audioVolume${song.nameSong}`).style.display = 'flex'
+
+
+    })
+})
+
+
+
+
 
 
 
@@ -2105,3 +2161,54 @@ let parentDiv = document.getElementById('modal-body-img')
 parentDiv.appendChild(picker)
 parentDiv.appendChild(picker2)
 parentDiv.appendChild(picker3)
+
+
+
+
+
+const volumeBar = document.querySelector('.volumeBar');
+const volumeCircle = document.getElementById('volumeCirle1');
+const audioSong = document.getElementById('audio1')
+
+const draggable = document.getElementById("draggable");
+
+let isDragging = false;
+let offsetX, offsetY;
+
+// Mouse down event to start dragging
+volumeCircle.addEventListener("mousedown", function (event) {
+    isDragging = true;
+    offsetX = event.clientX - volumeCircle.offsetLeft;
+});
+
+// Mouse move event to move the element
+document.addEventListener("mousemove", function (event) {
+    if (isDragging) {
+
+        if ((event.clientX - offsetX) < 0) {
+            volumeCircle.style.left = '0px'
+            audioSong.volume = 0
+            
+        }
+
+        else if ((event.clientX - offsetX) > 20) {
+            volumeCircle.style.left = '20px'
+            audioSong.volume = 1
+        }
+
+        else {
+            volumeCircle.style.left = event.clientX - offsetX + "px";
+            audioSong.volume = (event.clientX - offsetX) / 20
+        }
+
+ 
+
+
+
+    }
+});
+
+// Mouse up event to stop dragging
+document.addEventListener("mouseup", function () {
+    isDragging = false;
+});

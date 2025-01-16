@@ -656,6 +656,13 @@ input[type="image"] {
             <img src="img/menu.png" alt="" srcset="" width="60px" height="60px">
         </button>
 
+        <div class="searchDiv">
+            <div class="imgSearch">
+            <img src="img/search.png" style="padding: 4px;" alt="" srcset="" width="58px" height="58px">
+        </div>
+            <input type="text" id="searchBar" placeholder="Search" class="form-control" style="font-size: large; padding: 1rem;">
+        </div>
+
 
         <button class="btn btn" id="configButton" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <img src="img/dot.png" alt="" srcset="" width="60px" height="60px">
@@ -797,15 +804,20 @@ input[type="image"] {
 
                         <div class="audio-player">
 
-                            <button class="btn btnPlay"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
-                            <button class="btn btnPause"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnPlay" id="audioPlay1"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnPause" style="display: none;" id="audioPause1"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
                             <div class="audioLength"></div>
-                            <button class="btn btnVolume"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnVolume" id="audioVolume1"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnMutado" style="display: none;" id="audioMutado1"><img src="img/muted.png" alt="" srcset="" width="30px" height="30px"></button>
+                             
+                            <div class="volumeBar">
+                                <div id="volumeCirle1"><img src="img/circleCursor.png" class="volumeCirle" alt="" srcset="" ></div>
+                            </div>
 
 
 
-                            <audio controls style="display: none;">
-                                <source src="your-audio-file.mp3" type="audio/mp3">
+                            <audio controls style="display: none;" id="audio1">
+                                <source src="song/XYLØ - Blue Light [TubeRipper.com].mp3" type="audio/mp3">
                                 Your browser does not support the audio element.
                             </audio>
                         </div>
@@ -821,14 +833,15 @@ input[type="image"] {
                         </div>
                         <p id="artist">Artist Name</p>
                         <div class="audio-player">
-                            <button class="btn btnPlay"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
-                            <button class="btn btnPause"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnPlay" id="audioPlay2"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnPause" style="display: none;" id="audioPause2"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
                             <div class="audioLength"></div>
-                            <button class="btn btnVolume"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnVolume" id="audioVolume2"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnMutado" style="display: none;" id="audioMutado2"><img src="img/muted.png" alt="" srcset="" width="30px" height="30px"></button>
 
 
 
-                            <audio controls style="display: none;">
+                            <audio controls style="display: none;" id="audio2">
                                 <source src="your-audio-file.mp3" type="audio/mp3">
                                 Your browser does not support the audio element.
                             </audio>
@@ -844,39 +857,15 @@ input[type="image"] {
                         </div>
                         <p id="artist">Artist Name</p>
                         <div class="audio-player">
-                            <button class="btn btnPlay"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
-                            <button class="btn btnPause"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnPlay" id="audioPlay3"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnPause" style="display: none;" id="audioPause3"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
                             <div class="audioLength"></div>
-                            <button class="btn btnVolume"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnVolume" id="audioVolume3"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnMutado" style="display: none;" id="audioMutado3"><img src="img/muted.png" alt="" srcset="" width="30px" height="30px"></button>
 
 
 
-                            <audio controls style="display: none;">
-                                <source src="your-audio-file.mp3" type="audio/mp3">
-                                Your browser does not support the audio element.
-                            </audio>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div>
-                    <div class="music-player" id="music-player">
-                        <img src="img/musicalNote5.webp" class="musicImg" alt="Album Cover">
-                        <div class="music-info" id="music-info">
-                            <h3>Song name</h3>
-                        </div>
-                        <p id="artist">Artist Name</p>
-                        <div class="audio-player">
-                            <button class="btn btnPlay"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
-                            <button class="btn btnPause"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
-                            <div class="audioLength"></div>
-                            <button class="btn btnVolume"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
-
-
-
-                            <audio controls style="display: none;">
+                            <audio controls style="display: none;" id="audio3">
                                 <source src="your-audio-file.mp3" type="audio/mp3">
                                 Your browser does not support the audio element.
                             </audio>
@@ -894,14 +883,41 @@ input[type="image"] {
                         </div>
                         <p id="artist">Artist Name</p>
                         <div class="audio-player">
-                            <button class="btn btnPlay"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
-                            <button class="btn btnPause"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnPlay" id="audioPlay4"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnPause" style="display: none;" id="audioPause4"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
                             <div class="audioLength"></div>
-                            <button class="btn btnVolume"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnVolume" id="audioVolume4"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnMutado" style="display: none;" id="audioMutado4"><img src="img/muted.png" alt="" srcset="" width="30px" height="30px"></button>
 
 
 
-                            <audio controls style="display: none;">
+                            <audio controls style="display: none;" id="audio4">
+                                <source src="your-audio-file.mp3" type="audio/mp3">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div>
+                    <div class="music-player" id="music-player">
+                        <img src="img/musicalNote5.webp" class="musicImg" alt="Album Cover">
+                        <div class="music-info" id="music-info">
+                            <h3>Song name</h3>
+                        </div>
+                        <p id="artist">Artist Name</p>
+                        <div class="audio-player">
+                            <button class="btn btnPlay" id="audioPlay5"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnPause" style="display: none;" id="audioPause5"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <div class="audioLength"></div>
+                            <button class="btn btnVolume" id="audioVolume5"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnMutado" style="display: none;" id="audioMutado5"><img src="img/muted.png" alt="" srcset="" width="30px" height="30px"></button>
+
+
+
+                            <audio controls style="display: none;" id="audio5">
                                 <source src="your-audio-file.mp3" type="audio/mp3">
                                 Your browser does not support the audio element.
                             </audio>
@@ -921,14 +937,15 @@ input[type="image"] {
                         </div>
                         <p id="artist">Artist Name</p>
                         <div class="audio-player">
-                            <button class="btn btnPlay"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
-                            <button class="btn btnPause"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnPlay" id="audioPlay6"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnPause" style="display: none;" id="audioPause6"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
                             <div class="audioLength"></div>
-                            <button class="btn btnVolume"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnVolume" id="audioVolume6"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
+                            <button class="btn btnMutado" style="display: none;" id="audioMutado6"><img src="img/muted.png" alt="" srcset="" width="30px" height="30px"></button>
 
 
 
-                            <audio controls style="display: none;">
+                            <audio controls style="display: none;" id="audio6">
                                 <source src="your-audio-file.mp3" type="audio/mp3">
                                 Your browser does not support the audio element.
                             </audio>

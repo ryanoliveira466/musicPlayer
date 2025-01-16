@@ -454,6 +454,17 @@ html button{
         height: 90px;
     }
 
+    .volumeBar{
+        width: 80px !important;
+        height: 30px !important;
+    }
+
+    #volumeCirle1 img {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+
 
     audio {
         margin-top: 40px;
@@ -893,17 +904,23 @@ html ::-webkit-scrollbar {
 }
 
 .btnPlay{
+    
     mix-blend-mode: difference !important;
 }
 
 .btnPause{
-    display: none !important;
+    display: none;
     mix-blend-mode: difference !important;
 }
 
  
 
 .btnVolume{
+    mix-blend-mode: difference !important;
+}
+
+.btnMutado{
+    display: none;
     mix-blend-mode: difference !important;
 }
 
@@ -1501,4 +1518,63 @@ body:hover {
  
  html{
     min-width: 800px !important;
+    overflow-x: hidden !important;
  }
+
+ .searchDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+ }
+
+ .imgSearch{
+    backdrop-filter: brightness(0.5);
+    border-radius: 10px;
+ }
+
+ #searchBar{
+    border-radius: 10px;
+    color: #e9e3e3;
+    font-family: 'Garamond';
+    backdrop-filter: brightness(0.5);
+    margin-left: 10px;
+ }
+
+
+ .volumeBar{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 10px;
+    background-color: #ffffff;
+    border-radius: 20px;
+     
+ }
+
+ #volumeCirle1 {
+    position: absolute;
+    transition: all 0.1s ease;
+    pointer-events: all;
+}
+
+/* Circle appearance */
+#volumeCirle1 img {
+    width: 30px;
+    height: 30px;
+}
+
+.volumeCirle{
+    pointer-events: none;
+}
+
+ 
+
+
+
+
+
+
+  
