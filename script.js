@@ -2111,11 +2111,31 @@ divs.forEach(div => {
 
 
 arraySong.forEach((song) => {
+
+
+
+
     document.getElementById(`audioPlay${song.nameSong}`).addEventListener('click', function () {
         document.getElementById(`audio${song.nameSong}`).play();
 
         document.getElementById(`audioPause${song.nameSong}`).style.display = 'flex'
         document.getElementById(`audioPlay${song.nameSong}`).style.display = 'none'
+
+
+        
+    for(var i = 0;i < arraySong.length;i++){
+
+        if((arraySong[i].nameSong).includes(song.nameSong)){
+            document.getElementById(`audio${song.nameSong}`).play();
+        }
+
+        else{
+            document.getElementById(`audio${arraySong[i].nameSong}`).pause()
+            document.getElementById(`audioPlay${arraySong[i].nameSong}`).style.display = 'flex'
+            document.getElementById(`audioPause${arraySong[i].nameSong}`).style.display = 'none'
+        }
+        
+    }
 
     })
 
@@ -2127,6 +2147,12 @@ arraySong.forEach((song) => {
 
 
     })
+
+
+
+
+
+
 
     document.getElementById(`audioVolume${song.nameSong}`).addEventListener('click', function () {
         document.getElementById(`audio${song.nameSong}`).muted = true
@@ -2145,6 +2171,8 @@ arraySong.forEach((song) => {
 
 
     })
+
+
 })
 
 
@@ -2166,19 +2194,26 @@ parentDiv.appendChild(picker3)
 
 
 
-const volumeBar = document.querySelector('.volumeBar');
-const volumeCircle = document.getElementById('volumeCirle1');
-const audioSong = document.getElementById('audio1')
 
-const draggable = document.getElementById("draggable");
+
+
+
+
+
+arraySong.forEach((song) => {
+
+const volumeCircle = document.getElementById(`volumeCircle${song.nameSong}`);
+const audioSong = document.getElementById(`audio${song.nameSong}`)
 
 let isDragging = false;
-let offsetX, offsetY;
+let offsetX;
 
 // Mouse down event to start dragging
 volumeCircle.addEventListener("mousedown", function (event) {
     isDragging = true;
     offsetX = event.clientX - volumeCircle.offsetLeft;
+    console.log('oi');
+    
 });
 
 // Mouse move event to move the element
@@ -2212,3 +2247,71 @@ document.addEventListener("mousemove", function (event) {
 document.addEventListener("mouseup", function () {
     isDragging = false;
 });
+
+
+
+
+
+
+
+
+
+
+
+// Mouse down event to start dragging
+volumeCircle.addEventListener("touchstart", function (event) {
+    isDragging = true;
+    offsetX = event.touches[0].clientX; - volumeCircle.offsetLeft;
+    console.log('oi');
+    
+});
+
+// Mouse move event to move the element
+document.addEventListener("touchmove", function (event) {
+    if (isDragging) {
+
+        document.getElementById('song').style.overflowX = 'hidden'
+
+
+        if ((event.touches[0].clientX - offsetX) < 0) {
+            volumeCircle.style.left = '0px'
+            audioSong.volume = 0
+            
+        }
+
+        else if ((event.touches[0].clientX - offsetX) > 20) {
+            volumeCircle.style.left = '20px'
+            audioSong.volume = 1
+        }
+
+        else {
+            volumeCircle.style.left = event.touches[0].clientX - offsetX + "px";
+            audioSong.volume = (event.touches[0].clientX - offsetX) / 20
+        }
+
+ 
+
+
+
+    }
+});
+
+// Mouse up event to stop dragging
+document.addEventListener("touchend", function () {
+    isDragging = false;
+    document.getElementById('song').style.overflowX = 'scroll'
+});
+
+
+
+    
+})
+
+
+
+
+
+
+
+
+

@@ -191,15 +191,16 @@ table {
 
 @keyframes show {
     0% {
-        transform: rotateX(-90deg);  
+        transform: rotateX(-90deg);
     }
+
     100% {
-        transform: rotateY(0deg);  
+        transform: rotateY(0deg);
     }
 
 }
 
-html{
+html {
     overflow-x: hidden !important;
 }
 
@@ -209,23 +210,24 @@ html p {
     margin: 0px
 }
 
-html img, html span{
+html img,
+html span {
     animation: show 0.6s ease alternate;
 }
 
-#imageView{
+#imageView {
     animation: show 0.6s ease alternate;
 }
 
-#imageView div{
+#imageView div {
     scroll-behavior: smooth !important;
 }
 
-#imageView img{
+#imageView img {
     animation: none;
 }
 
-#imageView .music-player{
+#imageView .music-player {
     flex-direction: row;
     overflow-x: scroll;
     scroll-behavior: smooth !important;
@@ -233,16 +235,16 @@ html img, html span{
     transition: transform .3s ease-out;
 }
 
-#imageView .musicImg{
-   object-fit: cover;
-   flex-shrink: 0;
+#imageView .musicImg {
+    object-fit: cover;
+    flex-shrink: 0;
 }
 
-#imageView .music-player p{
+#imageView .music-player p {
     display: none;
 }
 
-#imageView .music-info{
+#imageView .music-info {
     display: none;
     align-items: center;
     margin: 1rem;
@@ -250,12 +252,12 @@ html img, html span{
     width: 50%;
 }
 
-#imageView #colorOption{
+#imageView #colorOption {
     margin-left: auto;
 }
 
 
-#imageView #optionButtons{
+#imageView #optionButtons {
     margin-top: 20px;
 }
 
@@ -275,28 +277,38 @@ body {
 
 .cursor {
     position: absolute;
-    width: 50px;  /* Custom cursor image width */
-    height: 50px; /* Custom cursor image height */
-    background-image: url('img/circleCursor.png'); /* Replace with your image */
+    width: 50px;
+    /* Custom cursor image width */
+    height: 50px;
+    /* Custom cursor image height */
+    background-image: url('img/circleCursor.png');
+    /* Replace with your image */
     background-size: contain;
-    pointer-events: none;  /* Prevent the cursor div from interfering with clicks */
-    mix-blend-mode: difference; /* Apply blend mode */
+    pointer-events: none;
+    /* Prevent the cursor div from interfering with clicks */
+    mix-blend-mode: difference;
+    /* Apply blend mode */
     z-index: 9998;
     transition: transform 0.1s ease;
 }
 
 
- 
+
 
 #clickCursor {
     display: none;
     position: absolute;
-    width: 30px;  /* Custom cursor image width */
-    height: 30px; /* Custom cursor image height */
-    background-image: url('img/click.gif'); /* Replace with your image */
+    width: 30px;
+    /* Custom cursor image width */
+    height: 30px;
+    /* Custom cursor image height */
+    background-image: url('img/click.gif');
+    /* Replace with your image */
     background-size: cover;
-    pointer-events: none;  /* Prevent the cursor div from interfering with clicks */
-    mix-blend-mode: difference; /* Apply blend mode */
+    pointer-events: none;
+    /* Prevent the cursor div from interfering with clicks */
+    mix-blend-mode: difference;
+    /* Apply blend mode */
     z-index: 9999;
     transition: transform 0.1s ease;
 }
@@ -304,12 +316,17 @@ body {
 #penCursor {
     display: none;
     position: absolute;
-    width: 60px;  /* Custom cursor image width */
-    height: 60px; /* Custom cursor image height */
-    background-image: url('img/penGif.gif'); /* Replace with your image */
+    width: 60px;
+    /* Custom cursor image width */
+    height: 60px;
+    /* Custom cursor image height */
+    background-image: url('img/penGif.gif');
+    /* Replace with your image */
     background-size: cover;
-    pointer-events: none;  /* Prevent the cursor div from interfering with clicks */
-    mix-blend-mode: difference; /* Apply blend mode */
+    pointer-events: none;
+    /* Prevent the cursor div from interfering with clicks */
+    mix-blend-mode: difference;
+    /* Apply blend mode */
     z-index: 9999;
     transition: transform 0.1s ease;
 }
@@ -317,16 +334,16 @@ body {
 
 * {
     cursor: none !important;
-  }
-  
+}
+
 
 .cursor:hover {
     transform: scale(1.2);
 }
 
 
-html button{
-   cursor: none !important;
+html button {
+    cursor: none !important;
 }
 
 
@@ -384,7 +401,7 @@ html button{
 
 @media screen and (max-width: 600px) {
 
-    html{
+    html {
         overflow-x: hidden !important;
     }
 
@@ -454,16 +471,16 @@ html button{
         height: 90px;
     }
 
-    .volumeBar{
+    .volumeBar {
         width: 80px !important;
         height: 30px !important;
     }
 
-    #volumeCirle1 img {
+    .volumeCircle img {
         width: 60px !important;
         height: 60px !important;
     }
-    
+
 
 
     audio {
@@ -473,8 +490,18 @@ html button{
     }
 
 
-    #imageView #colorOption{
+    #imageView #colorOption {
         margin-left: 20px;
+    }
+
+    #searchBar {
+        font-size: xx-large !important;
+    }
+
+    .imgSearch img {
+        width: 76px;
+        height: 76px;
+
     }
 
 
@@ -791,19 +818,19 @@ header {
 #song::-webkit-scrollbar {
     display: flex;
     height: 8px;
-    
+
     /* Set the height for horizontal scrollbar */
 }
 
 #song::-webkit-scrollbar-track {
     background: #ff000000;
-     mix-blend-mode: difference;
+    mix-blend-mode: difference;
     /* Track color */
 }
 
 #song::-webkit-scrollbar-thumb {
     background: #ffffff36;
-    
+
     /* Scrollbar thumb color */
     border-radius: 4px;
 }
@@ -849,8 +876,8 @@ html ::-webkit-scrollbar {
 }
 
 .music-info {
-    /* width: 310px; */
-    width: 100%;
+    width: 310px;
+    /* width: 100%; */
     height: 65px;
     margin-top: 15px;
     text-overflow: ellipsis;
@@ -875,12 +902,12 @@ html ::-webkit-scrollbar {
     mix-blend-mode: difference;
 }
 
-.audioLength{
+.audioLength {
     display: none;
     width: 100%;
     height: 20px;
     border-radius: 20px;
-    background-color: #45473d; 
+    background-color: #45473d;
 }
 
 
@@ -903,25 +930,29 @@ html ::-webkit-scrollbar {
     transform: scale(1.1);
 }
 
-.btnPlay{
-    
+.btnPlay {
+
     mix-blend-mode: difference !important;
 }
 
-.btnPause{
+.btnPause {
     display: none;
     mix-blend-mode: difference !important;
 }
 
- 
 
-.btnVolume{
+
+.btnVolume {
     mix-blend-mode: difference !important;
 }
 
-.btnMutado{
+.btnMutado {
     display: none;
     mix-blend-mode: difference !important;
+}
+
+.btnOptions {
+    background-color: #fbfdfd1f !important;
 }
 
 audio {
@@ -1108,7 +1139,7 @@ html .modal {
 
 
 #exampleModalView .modal-dialog {
-   max-width: 100%;
+    max-width: 100%;
 }
 
 
@@ -1381,11 +1412,11 @@ E FUNCIONA COM TODAS AS CONFIGURAÇÕES PORÉM POSSO MEXER NELAS  */
 }
 
 
-.pcr-hue{
+.pcr-hue {
     cursor: none !important;
-} 
+}
 
-.pcr-slider{
+.pcr-slider {
     cursor: none !important;
 }
 
@@ -1400,7 +1431,7 @@ html .cropper-container {
 
 
 
-.stats{
+.stats {
     display: none;
     position: absolute;
     justify-content: center;
@@ -1409,38 +1440,39 @@ html .cropper-container {
     height: 100%;
     border-radius: 53px;
     background-color: #ffffff00;
-    z-index: 1; 
-        backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px); 
+    z-index: 1;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
 }
 
 
-.statsTitle{
+.statsTitle {
     color: rgb(255 255 255);
     display: none;
     font-family: Garamond;
     mix-blend-mode: difference;
     position: absolute;
     z-index: 1;
-    font-weight: bold; 
+    font-weight: bold;
 }
 
 
-.file-upload-button{
-    cursor: none !important;
-}
- 
-html{
+.file-upload-button {
     cursor: none !important;
 }
 
-html label, html input{
+html {
+    cursor: none !important;
+}
+
+html label,
+html input {
     cursor: none !important;
 }
 
 
 
-.pcr-palette{
+.pcr-palette {
     cursor: none;
 }
 
@@ -1453,40 +1485,43 @@ html label, html input{
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #d0ff00; /* Blue background to blend with */
+    background-color: #d0ff00;
+    /* Blue background to blend with */
 }
 
 
 
 
 /* Apply custom cursor only within the cropper container */
-.cropper-container, .cropper-view-box, .cropper-face {
+.cropper-container,
+.cropper-view-box,
+.cropper-face {
     cursor: crosshair !important;
-  }
-  
-  
-  .musicImgOffCan{
+}
+
+
+.musicImgOffCan {
     display: flex;
     margin: 10px;
     mix-blend-mode: difference;
-  }
+}
 
-  #musicOffCan{
+#musicOffCan {
     display: flex;
     flex-direction: column;
-  }
+}
 
-  .offcanvas-header{
+.offcanvas-header {
     backdrop-filter: blur(20px);
-  }
+}
 
-  .offcanvas{
+.offcanvas {
     mix-blend-mode: difference;
-  }
+}
 
-  .offcanvas-backdrop.show{
+.offcanvas-backdrop.show {
     opacity: .2 !important;
-  }
+}
 
 
 
@@ -1511,38 +1546,38 @@ body:hover {
 
 
 @media screen and (max-width: 825px) {
-    .imgGojo img{
+    .imgGojo img {
         clip-path: inset(3px 14px 3px 14px round 50px);
     }
 }
- 
- html{
+
+html {
     min-width: 800px !important;
     overflow-x: hidden !important;
- }
+}
 
- .searchDiv{
+.searchDiv {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
- }
+}
 
- .imgSearch{
+.imgSearch {
     backdrop-filter: brightness(0.5);
     border-radius: 10px;
- }
+}
 
- #searchBar{
+#searchBar {
     border-radius: 10px;
     color: #e9e3e3;
     font-family: 'Garamond';
     backdrop-filter: brightness(0.5);
     margin-left: 10px;
- }
+}
 
 
- .volumeBar{
+.volumeBar {
     position: relative;
     display: flex;
     justify-content: center;
@@ -1551,30 +1586,98 @@ body:hover {
     height: 10px;
     background-color: #ffffff;
     border-radius: 20px;
-     
- }
 
- #volumeCirle1 {
+}
+
+.volumeCircle {
     position: absolute;
     transition: all 0.1s ease;
     pointer-events: all;
 }
 
 /* Circle appearance */
-#volumeCirle1 img {
+.volumeCircle img {
     width: 30px;
     height: 30px;
 }
 
-.volumeCirle{
+.volumeCircle img {
     pointer-events: none;
+}
+
+
+
+#musicBar {
+    position: sticky;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: 140px;
+    background-color: #e9e3e346;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    backdrop-filter: brightness(0.5);
+}
+
+.musicBarImg {
+    border-radius: 10px;
+    object-fit: cover;
+    width: 200px;
+    height: 100px;
+    margin: 1rem;
+     
+}
+
+#btnMusicBarExpand{
+    margin-left: auto;
+    margin-bottom: 3px;
+    margin-right: 16px;
+    margin-left: 16px;
+      
+}
+
+.musicBarAudioTrack{
+    position: relative;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    height: 10px;
+    background-color: #ffffff;
+    border-radius: 20px;
 }
 
  
 
 
 
+.musicBarCircle {
+    position: absolute;
+    transition: all 0.1s ease;
+    pointer-events: all;
+}
 
+/* Circle appearance */
+.musicBarCircle img {
+    width: 30px;
+    height: 30px;
+}
 
+.musicBarCircle img {
+    pointer-events: none;
+}
 
-  
+.volumeMusicBar{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 10px;
+    background-color: #ffffff;
+    border-radius: 20px;
+}

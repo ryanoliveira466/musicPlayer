@@ -95,20 +95,20 @@ input[type="image"] {
                 <div class="modal-body" style="color: rgb(218, 223, 223);">
 
                     <div class="itemAdd">
-                        <button class="btn btn" id="btnImagem"><img src="img/plus.png"
+                        <button class="btn btn btnOptions" id="btnImagem"><img src="img/plus.png"
                                 style="border-radius: 0px;object-fit: none;" width="80px" height="80px" alt=""
                                 data-bs-toggle="modal" data-bs-target="#exampleModalImagens" srcset=""></button>
                         <p style="margin: 1rem;" aria-describedby="btnImagem">Image</p>
                     </div>
 
                     <div class="itemAdd">
-                        <button class="btn btn"><img src="img/plus.png" style="border-radius: 0px;object-fit: none;"
+                        <button class="btn btn btnOptions" id="btnSong"><img src="img/plus.png" style="border-radius: 0px;object-fit: none;"
                                 width="80px" height="80px" alt="" srcset=""></button>
                         <p style="margin: 1rem;" aria-describedby="">Song</p>
                     </div>
 
                     <div class="itemAdd">
-                        <button class="btn btn" id="btnView"><img src="img/viewEye.png"
+                        <button class="btn btn btnOptions" id="btnView"><img src="img/viewEye.png"
                                 style="border-radius: 10px;object-fit: cover;" width="82px" height="80px" alt=""
                                 data-bs-toggle="modal" data-bs-target="#exampleModalView" srcset=""></button>
                         <p style="margin: 1rem;" for="btnView">View</p>
@@ -644,6 +644,25 @@ input[type="image"] {
 
 
 
+
+    <!-- MUSIC BAR -->
+
+
+  <div id="musicBar">
+    <img src="img/teste/maxresdefault.jpg" alt="" srcset="" class="musicBarImg">
+    <div class="musicBarAudioTrack"><div id="" class="musicBarCircle"><img src="img/circleCursor.png" alt="" srcset=""></div></div>
+    <button class="btn btnPlay" id="audioPlayMusicBar"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
+    <button class="btn btnPause" style="display: none;" id="audioPause1"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
+    <div class="audioLength"></div>
+    <button class="btn btnVolume" id="audioVolumeMusicBar"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
+    <button class="btn btnMutado" style="display: none;" id="audioMutadoMusicBar"><img src="img/muted.png" alt="" srcset="" width="30px" height="30px"></button>
+     
+    <button class="btn btnOptions" id="btnMusicBarExpand"><img src="img/expand.png" alt="" srcset=""></button>
+  </div>
+
+
+
+
     <!-- MAIN CONTENT STARTS HERE -->
 
 
@@ -796,9 +815,9 @@ input[type="image"] {
                     <div class="music-player" id="music-player">
                         <!-- <div class="backgroundGif"></div> -->
                         
-                        <img src="img/musicalNote5.webp" class="musicImg" alt="Album Cover">
+                        <img src="img/teste/maxresdefault (1).jpg" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
-                            <h3>Song name</h3>
+                            <h3>XYLØ - Blue Light</h3>
                         </div>
                         <p id="artist" class="artist">Artist Name</p>
 
@@ -811,7 +830,7 @@ input[type="image"] {
                             <button class="btn btnMutado" style="display: none;" id="audioMutado1"><img src="img/muted.png" alt="" srcset="" width="30px" height="30px"></button>
                              
                             <div class="volumeBar">
-                                <div id="volumeCirle1"><img src="img/circleCursor.png" class="volumeCirle" alt="" srcset="" ></div>
+                                <div id="volumeCircle1" class="volumeCircle"><img src="img/circleCursor.png"  alt="" srcset="" ></div>
                             </div>
 
 
@@ -827,9 +846,9 @@ input[type="image"] {
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/musicalNote5.webp" class="musicImg" alt="Album Cover">
+                        <img src="img/teste/Łaszewo.jpg" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
-                            <h3>Song name</h3>
+                            <h3>Łaszewo - Don't Walk Away (feat. KEEVΛ)</h3>
                         </div>
                         <p id="artist">Artist Name</p>
                         <div class="audio-player">
@@ -839,10 +858,14 @@ input[type="image"] {
                             <button class="btn btnVolume" id="audioVolume2"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
                             <button class="btn btnMutado" style="display: none;" id="audioMutado2"><img src="img/muted.png" alt="" srcset="" width="30px" height="30px"></button>
 
+                            <div class="volumeBar">
+                                <div id="volumeCircle2" class="volumeCircle"><img src="img/circleCursor.png"   alt="" srcset="" ></div>
+                            </div>
+
 
 
                             <audio controls style="display: none;" id="audio2">
-                                <source src="your-audio-file.mp3" type="audio/mp3">
+                                <source src="song/Łaszewo - Dont Walk Away (feat. KEEVΛ) [TubeRipper.com].mp3" type="audio/mp3">
                                 Your browser does not support the audio element.
                             </audio>
                         </div>
@@ -851,9 +874,9 @@ input[type="image"] {
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/musicalNote5.webp" class="musicImg" alt="Album Cover">
+                        <img src="img/teste/xKM-jgaOW2Y-HD.jpg" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
-                            <h3>Song name</h3>
+                            <h3>Dabin - Alive (feat. RUNN)</h3>
                         </div>
                         <p id="artist">Artist Name</p>
                         <div class="audio-player">
@@ -863,10 +886,14 @@ input[type="image"] {
                             <button class="btn btnVolume" id="audioVolume3"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
                             <button class="btn btnMutado" style="display: none;" id="audioMutado3"><img src="img/muted.png" alt="" srcset="" width="30px" height="30px"></button>
 
+                            <div class="volumeBar">
+                                <div id="volumeCircle3" class="volumeCircle"><img src="img/circleCursor.png"   alt="" srcset="" ></div>
+                            </div>
+
 
 
                             <audio controls style="display: none;" id="audio3">
-                                <source src="your-audio-file.mp3" type="audio/mp3">
+                                <source src="song/Dabin - Alive (feat. RUNN) [TubeRipper.com].mp3" type="audio/mp3">
                                 Your browser does not support the audio element.
                             </audio>
                         </div>
@@ -877,9 +904,9 @@ input[type="image"] {
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/musicalNote5.webp" class="musicImg" alt="Album Cover">
+                        <img src="img/teste/jacek-babinski-img-8028-2afxxxxx.jpg" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
-                            <h3>Song name</h3>
+                            <h3>Far Out - Lost With You (feat. Ruby Chase)</h3>
                         </div>
                         <p id="artist">Artist Name</p>
                         <div class="audio-player">
@@ -889,10 +916,14 @@ input[type="image"] {
                             <button class="btn btnVolume" id="audioVolume4"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
                             <button class="btn btnMutado" style="display: none;" id="audioMutado4"><img src="img/muted.png" alt="" srcset="" width="30px" height="30px"></button>
 
+                            <div class="volumeBar">
+                                <div id="volumeCircle4" class="volumeCircle"><img src="img/circleCursor.png"   alt="" srcset="" ></div>
+                            </div>
+
 
 
                             <audio controls style="display: none;" id="audio4">
-                                <source src="your-audio-file.mp3" type="audio/mp3">
+                                <source src="song/Far Out - Lost With You (feat. Ruby Chase) [TubeRipper.com].mp3" type="audio/mp3">
                                 Your browser does not support the audio element.
                             </audio>
                         </div>
@@ -903,9 +934,9 @@ input[type="image"] {
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/musicalNote5.webp" class="musicImg" alt="Album Cover">
+                        <img src="img/teste/karmen-loh-clementine-withlogo-compressed.jpg" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
-                            <h3>Song name</h3>
+                            <h3>Módl - Clementine</h3>
                         </div>
                         <p id="artist">Artist Name</p>
                         <div class="audio-player">
@@ -915,10 +946,14 @@ input[type="image"] {
                             <button class="btn btnVolume" id="audioVolume5"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
                             <button class="btn btnMutado" style="display: none;" id="audioMutado5"><img src="img/muted.png" alt="" srcset="" width="30px" height="30px"></button>
 
+                            <div class="volumeBar">
+                                <div id="volumeCircle5" class="volumeCircle"><img src="img/circleCursor.png"   alt="" srcset="" ></div>
+                            </div>
+
 
 
                             <audio controls style="display: none;" id="audio5">
-                                <source src="your-audio-file.mp3" type="audio/mp3">
+                                <source src="song/Módl - Clementine [TubeRipper.com].mp3" type="audio/mp3">
                                 Your browser does not support the audio element.
                             </audio>
                         </div>
@@ -931,9 +966,9 @@ input[type="image"] {
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/musicalNote5.webp" class="musicImg" alt="Album Cover">
+                        <img src="img/teste/maxresdefault.jpg" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
-                            <h3>Song name</h3>
+                            <h3>Said The Sky - Erase Me (feat. NÉONHÈART)</h3>
                         </div>
                         <p id="artist">Artist Name</p>
                         <div class="audio-player">
@@ -943,10 +978,14 @@ input[type="image"] {
                             <button class="btn btnVolume" id="audioVolume6"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
                             <button class="btn btnMutado" style="display: none;" id="audioMutado6"><img src="img/muted.png" alt="" srcset="" width="30px" height="30px"></button>
 
+                            <div class="volumeBar">
+                                <div id="volumeCircle6" class="volumeCircle"><img src="img/circleCursor.png"   alt="" srcset="" ></div>
+                            </div>
+
 
 
                             <audio controls style="display: none;" id="audio6">
-                                <source src="your-audio-file.mp3" type="audio/mp3">
+                                <source src="song/Said The Sky - Erase Me (feat. NÉONHÈART) [TubeRipper.com].mp3" type="audio/mp3">
                                 Your browser does not support the audio element.
                             </audio>
                         </div>
