@@ -2123,6 +2123,7 @@ divs.forEach(div => {
 let currentAudioPlaying;
 let currentBtnPlay;
 let currentBtnPause;
+let currentId;
 
 arraySong.forEach((song) => {
 
@@ -2135,12 +2136,16 @@ arraySong.forEach((song) => {
 
 
 
+        const imageAudioBar = document.getElementById('audioVolumeMusicBarImg')
+        const audioSong = document.getElementById(`audio${song.nameSong}`)
+
 
 
         const audioTeste = document.getElementById(`audio${song.nameSong}`)
         currentAudioPlaying = audioTeste.id
         currentBtnPlay = `audioPlay${song.nameSong}`
         currentBtnPause = `audioPause${song.nameSong}`
+        currentId = song.nameSong
         console.log(currentAudioPlaying);
 
         const imgMusicBar = document.getElementById('musicBarImg')
@@ -2160,6 +2165,19 @@ arraySong.forEach((song) => {
 
 
         document.getElementById(`audio${song.nameSong}`).play();
+
+        if (audioSong.volume >= 0 && audioSong.volume <= 0.2 && `audio${song.nameSong}` == `audio${currentId}`) {
+            imageAudioBar.src = 'img/volumeLow.png'
+        }
+
+        else if (audioSong.volume >= 0.3 && audioSong.volume <= 0.5 && `audio${song.nameSong}` == `audio${currentId}`) {
+            imageAudioBar.src = 'img/volumeMedium.png'
+        }
+
+        else if (audioSong.volume >= 0.6 && audioSong.volume <= 1 && `audio${song.nameSong}` == `audio${currentId}`) {
+            imageAudioBar.src = 'img/volume.png'
+        }
+
 
         document.getElementById(`audioPause${song.nameSong}`).style.display = 'flex'
         document.getElementById(`audioPlay${song.nameSong}`).style.display = 'none'
@@ -2257,6 +2275,7 @@ parentDiv.appendChild(picker3)
 arraySong.forEach((song) => {
 
     const volumeCircle = document.getElementById(`volumeCircle${song.nameSong}`);
+    const imageAudioBar = document.getElementById('audioVolumeMusicBarImg')
     const audioSong = document.getElementById(`audio${song.nameSong}`)
 
     let isDragging1 = false;
@@ -2294,6 +2313,24 @@ arraySong.forEach((song) => {
 
 
 
+
+            if (audioSong.volume >= 0 && audioSong.volume <= 0.2 && `audio${song.nameSong}` == `audio${currentId}`) {
+                imageAudioBar.src = 'img/volumeLow.png'
+            }
+
+            else if (audioSong.volume >= 0.3 && audioSong.volume <= 0.5 && `audio${song.nameSong}` == `audio${currentId}`) {
+                imageAudioBar.src = 'img/volumeMedium.png'
+            }
+
+            else if (audioSong.volume >= 0.6 && audioSong.volume <= 1 && `audio${song.nameSong}` == `audio${currentId}`) {
+                imageAudioBar.src = 'img/volume.png'
+            }
+
+
+
+
+
+
         }
     });
 
@@ -2311,7 +2348,7 @@ arraySong.forEach((song) => {
 
 
 
-
+    let isDragging2
     // Mouse down event to start dragging
     volumeCircle.addEventListener("touchstart", function (event) {
         isDragging2 = true;
@@ -2342,6 +2379,23 @@ arraySong.forEach((song) => {
                 volumeCircle.style.left = event.touches[0].clientX - offsetX + "px";
                 audioSong.volume = (event.touches[0].clientX - offsetX) / 20
             }
+
+
+
+
+            if (audioSong.volume >= 0 && audioSong.volume <= 0.2 && `audio${song.nameSong}` == `audio${currentId}`) {
+                imageAudioBar.src = 'img/volumeLow.png'
+            }
+
+            else if (audioSong.volume >= 0.3 && audioSong.volume <= 0.5 && `audio${song.nameSong}` == `audio${currentId}`) {
+                imageAudioBar.src = 'img/volumeMedium.png'
+            }
+
+            else if (audioSong.volume >= 0.6 && audioSong.volume <= 1 && `audio${song.nameSong}` == `audio${currentId}`) {
+                imageAudioBar.src = 'img/volume.png'
+            }
+
+
 
 
 
@@ -2608,7 +2662,7 @@ volumeCircleMusicBar.addEventListener('touchstart', function (event) {
 });
 
 // Function to handle the drag logic
-function moveCircle(event) {
+function moveCircleTouch(event) {
     if (isDragging3) {
         let newLeft = event.touches[0].clientX - offsetX;
 
@@ -2629,7 +2683,7 @@ document.addEventListener('touchmove', function (event) {
         // Throttle the movement to only update on the next available frame
         animationFrameRequested = true;
         requestAnimationFrame(function () {
-            moveCircle(event);  // Call the function to update the circle position
+            moveCircleTouch(event);  // Call the function to update the circle position
             animationFrameRequested = false;  // Allow the next frame to update
         });
     }
@@ -2734,6 +2788,43 @@ document.getElementById(`audioPauseMusicBar`).addEventListener('click', function
 
     document.getElementById(`${currentBtnPlay}`).style.display = 'flex'
     document.getElementById(`${currentBtnPause}`).style.display = 'none'
+
+
+
+})
+
+
+
+document.getElementById('audioVolumeMusicBar').addEventListener('click', function () {
+
+
+    const volumeCircle = document.getElementById(`volumeCircle${currentId}`);
+    const audioSong = document.getElementById(`audio${currentId}`)
+    const imageAudioBar = document.getElementById('audioVolumeMusicBarImg')
+    let currentVolume = audioSong.volume
+    let currentVolumeCirclePosition = volumeCircle.offsetLeft
+
+    if ((currentVolume + 0.1) > 1) {
+        audioSong.volume = 0
+        volumeCircle.style.left = `${0}px`
+    }
+    else {
+        audioSong.volume = currentVolume + 0.1
+        volumeCircle.style.left = `${currentVolumeCirclePosition + 2}px`
+    }
+
+
+    if (audioSong.volume >= 0 && audioSong.volume <= 0.2) {
+        imageAudioBar.src = 'img/volumeLow.png'
+    }
+
+    else if (audioSong.volume >= 0.3 && audioSong.volume <= 0.5) {
+        imageAudioBar.src = 'img/volumeMedium.png'
+    }
+
+    else if (audioSong.volume >= 0.6 && audioSong.volume <= 1) {
+        imageAudioBar.src = 'img/volume.png'
+    }
 
 
 
