@@ -955,6 +955,29 @@ html ::-webkit-scrollbar {
     mix-blend-mode: difference !important;
 }
 
+.btnRight {
+    display: flex;
+    mix-blend-mode: difference !important;
+    transition: all 3s ease-in-out;
+}
+
+.btnLeft {
+    display: flex;
+    mix-blend-mode: difference !important;
+    transition: all 3s ease-in-out;
+}
+
+.btnShuffle {
+    display: flex;
+    mix-blend-mode: difference !important;
+    transition: all 3s ease-in-out;
+}
+
+#buttonsShuffle{
+    display: block;
+    transition: all 3s ease-in-out;
+}
+
 .btnOptions {
     background-color: #fbfdfd1f !important;
 }

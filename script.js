@@ -727,7 +727,7 @@ document.getElementById('buttonAcceptimg').addEventListener('click', function ()
 
 document.getElementById('btnView'), addEventListener('click', function () {
 
-   
+
 
 
     document.body.style.paddingRight = '0'
@@ -838,7 +838,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
         editButton.addEventListener('click', function () {
 
- 
+
 
             let pickr4 = null;
             let pickr5 = null;
@@ -1799,8 +1799,8 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
             document.getElementById('colorDisplay4').click()
 
-            setTimeout(function() {
-                document.getElementById('botaoScroll').click();  
+            setTimeout(function () {
+                document.getElementById('botaoScroll').click();
             }, 200);
 
 
@@ -1881,7 +1881,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
     });
 
 
-    
+
 
 })
 
@@ -2162,15 +2162,15 @@ arraySong.forEach((song) => {
 
 
         audioTeste.addEventListener('timeupdate', function () {
-            if (!isManualUpdate && flagExpand == false) { 
-                 
+            if (!isManualUpdate && flagExpand == false) {
+
 
                 musicBarAudioTrackMinus30 = divMusicBarLenght - 30
                 audioTrack(audioTeste.duration, audioTeste.currentTime, musicBarAudioTrackMinus30);
             }
-            if(!isManualUpdate && flagExpand == true){
-                 
-                
+            if (!isManualUpdate && flagExpand == true) {
+
+
                 musicBarAudioTrackMinus30 = divMusicBarLenght - 30
                 audioTrack(audioTeste.duration, audioTeste.currentTime, musicBarAudioTrackMinus30);
             }
@@ -2182,16 +2182,20 @@ arraySong.forEach((song) => {
 
         document.getElementById(`audio${song.nameSong}`).play();
 
-        if (audioSong.volume >= 0 && audioSong.volume <= 0.2 && `audio${song.nameSong}` == `audio${currentId}`) {
+        if (parseFloat(audioSong.volume.toFixed(8)) >= 0 && parseFloat(audioSong.volume.toFixed(8)) <= 0.3) {
             imageAudioBar.src = 'img/volumeLow.png'
         }
 
-        else if (audioSong.volume >= 0.3 && audioSong.volume <= 0.5 && `audio${song.nameSong}` == `audio${currentId}`) {
+        else if (parseFloat(audioSong.volume.toFixed(8)) >= 0.4 && parseFloat(audioSong.volume.toFixed(8)) <= 0.7) {
             imageAudioBar.src = 'img/volumeMedium.png'
         }
 
-        else if (audioSong.volume >= 0.6 && audioSong.volume <= 1 && `audio${song.nameSong}` == `audio${currentId}`) {
+        else if (parseFloat(audioSong.volume.toFixed(8)) >= 0.8 && parseFloat(audioSong.volume.toFixed(8)) <= 0.9) {
             imageAudioBar.src = 'img/volume.png'
+        }
+
+        else if (parseFloat(audioSong.volume.toFixed(8)) == 1) {
+            imageAudioBar.src = 'img/volumeMax.png'
         }
 
 
@@ -2294,6 +2298,7 @@ arraySong.forEach((song) => {
     const imageAudioBar = document.getElementById('audioVolumeMusicBarImg')
     const audioSong = document.getElementById(`audio${song.nameSong}`)
 
+
     let isDragging1 = false;
     let offsetX;
 
@@ -2308,6 +2313,8 @@ arraySong.forEach((song) => {
     // Mouse move event to move the element
     document.addEventListener("mousemove", function (event) {
         if (isDragging1) {
+
+            const currentAudioSong = document.getElementById(`audio${currentId}`)
 
             if ((event.clientX - offsetX) < 0) {
                 volumeCircle.style.left = '0px'
@@ -2330,16 +2337,22 @@ arraySong.forEach((song) => {
 
 
 
-            if (audioSong.volume >= 0 && audioSong.volume <= 0.2 && `audio${song.nameSong}` == `audio${currentId}`) {
+
+
+            if (parseFloat(currentAudioSong.volume.toFixed(8)) >= 0 && parseFloat(currentAudioSong.volume.toFixed(8)) <= 0.3) {
                 imageAudioBar.src = 'img/volumeLow.png'
             }
 
-            else if (audioSong.volume >= 0.3 && audioSong.volume <= 0.5 && `audio${song.nameSong}` == `audio${currentId}`) {
+            else if (parseFloat(currentAudioSong.volume.toFixed(8)) >= 0.4 && parseFloat(currentAudioSong.volume.toFixed(8)) <= 0.7) {
                 imageAudioBar.src = 'img/volumeMedium.png'
             }
 
-            else if (audioSong.volume >= 0.6 && audioSong.volume <= 1 && `audio${song.nameSong}` == `audio${currentId}`) {
+            else if (parseFloat(currentAudioSong.volume.toFixed(8)) >= 0.8 && parseFloat(currentAudioSong.volume.toFixed(8)) <= 0.9) {
                 imageAudioBar.src = 'img/volume.png'
+            }
+
+            else if (parseFloat(currentAudioSong.volume.toFixed(8)) == 1) {
+                imageAudioBar.src = 'img/volumeMax.png'
             }
 
 
@@ -2398,17 +2411,20 @@ arraySong.forEach((song) => {
 
 
 
-
-            if (audioSong.volume >= 0 && audioSong.volume <= 0.2 && `audio${song.nameSong}` == `audio${currentId}`) {
+            if (parseFloat(currentAudioSong.volume.toFixed(8)) >= 0 && parseFloat(currentAudioSong.volume.toFixed(8)) <= 0.3) {
                 imageAudioBar.src = 'img/volumeLow.png'
             }
 
-            else if (audioSong.volume >= 0.3 && audioSong.volume <= 0.5 && `audio${song.nameSong}` == `audio${currentId}`) {
+            else if (parseFloat(currentAudioSong.volume.toFixed(8)) >= 0.4 && parseFloat(currentAudioSong.volume.toFixed(8)) <= 0.7) {
                 imageAudioBar.src = 'img/volumeMedium.png'
             }
 
-            else if (audioSong.volume >= 0.6 && audioSong.volume <= 1 && `audio${song.nameSong}` == `audio${currentId}`) {
+            else if (parseFloat(currentAudioSong.volume.toFixed(8)) >= 0.8 && parseFloat(currentAudioSong.volume.toFixed(8)) <= 0.9) {
                 imageAudioBar.src = 'img/volume.png'
+            }
+
+            else if (parseFloat(currentAudioSong.volume.toFixed(8)) == 1) {
+                imageAudioBar.src = 'img/volumeMax.png'
             }
 
 
@@ -2817,7 +2833,7 @@ document.getElementById('audioVolumeMusicBar').addEventListener('click', functio
     const volumeCircle = document.getElementById(`volumeCircle${currentId}`);
     const audioSong = document.getElementById(`audio${currentId}`)
     const imageAudioBar = document.getElementById('audioVolumeMusicBarImg')
-    let currentVolume = audioSong.volume
+    let currentVolume = parseFloat(audioSong.volume.toFixed(8));
     let currentVolumeCirclePosition = volumeCircle.offsetLeft
 
     if ((currentVolume + 0.1) > 1) {
@@ -2830,17 +2846,24 @@ document.getElementById('audioVolumeMusicBar').addEventListener('click', functio
     }
 
 
-    if (audioSong.volume >= 0 && audioSong.volume <= 0.2) {
+    if (parseFloat(audioSong.volume.toFixed(8)) >= 0 && parseFloat(audioSong.volume.toFixed(8)) <= 0.3) {
         imageAudioBar.src = 'img/volumeLow.png'
     }
 
-    else if (audioSong.volume >= 0.3 && audioSong.volume <= 0.5) {
+    else if (parseFloat(audioSong.volume.toFixed(8)) >= 0.4 && parseFloat(audioSong.volume.toFixed(8)) <= 0.7) {
         imageAudioBar.src = 'img/volumeMedium.png'
     }
 
-    else if (audioSong.volume >= 0.6 && audioSong.volume <= 1) {
+    else if (parseFloat(audioSong.volume.toFixed(8)) >= 0.8 && parseFloat(audioSong.volume.toFixed(8)) <= 0.9) {
         imageAudioBar.src = 'img/volume.png'
     }
+
+    else if (parseFloat(audioSong.volume.toFixed(8)) == 1) {
+        imageAudioBar.src = 'img/volumeMax.png'
+    }
+
+    console.log(parseFloat(audioSong.volume.toFixed(8)));
+
 
 
 
@@ -2853,13 +2876,13 @@ document.getElementById('btnMusicBarExpand').addEventListener('click', function 
 
 
     const button = this;  // "this" refers to the button that was clicked
-  
+
     // Disable the button
     button.disabled = true;
-  
+
     // Set a timeout to enable the button after 1 second
-    setTimeout(function() {
-      button.disabled = false;
+    setTimeout(function () {
+        button.disabled = false;
     }, 1000); // 1000 milliseconds = 1 second
 
     const musicBar = document.getElementById('musicBar')
@@ -2870,13 +2893,13 @@ document.getElementById('btnMusicBarExpand').addEventListener('click', function 
 
     circle.classList.toggle('opacity')
 
-    setTimeout(function() {
+    setTimeout(function () {
         circle.classList.remove('opacity')
-    }, 1000);  
-    
-    
+    }, 1000);
 
-   
+
+
+
 
     if (musicBar.style.height == '100%') {
         musicBar.style.height = '140px'
@@ -2884,12 +2907,12 @@ document.getElementById('btnMusicBarExpand').addEventListener('click', function 
         musicBarImg.style.height = '100px'
         musicBarImg.style.width = '200px'
         window.scrollTo(0, 0);
-         
-        setTimeout(function() {
+
+        setTimeout(function () {
             divMusicBarLenght = document.getElementById('musicBarAudioTrack').offsetWidth
-        }, 600);  
+        }, 600);
         flagExpand = false
-        
+
 
     }
 
@@ -2899,53 +2922,189 @@ document.getElementById('btnMusicBarExpand').addEventListener('click', function 
         musicBarImg.style.height = '200px'
         musicBarImg.style.width = '400px'
         window.scrollTo(0, 0);
-        
-        setTimeout(function() {
+
+        setTimeout(function () {
             divMusicBarLenght = document.getElementById('musicBarAudioTrack').offsetWidth
-        }, 600);  
+        }, 600);
         flagExpand = true
-        
-        
+
+
     }
 
-     
-        
-        
-        
-    
-    
-    
+
+
+
+
+
+
+
 
 })
 
 
 
-document.getElementById('botaoScroll').addEventListener('click', function(){
+document.getElementById('botaoScroll').addEventListener('click', function () {
     const divScrolls = document.querySelectorAll('.modal-content')
     divScrolls.forEach(div => {
 
-        div.scrollTo(0,0)
-        
+        div.scrollTo(0, 0)
+
     });
 })
 
 const btnOptions = document.querySelectorAll('.btnOptions, .itemAdd');
 
 btnOptions.forEach(btn => {
-    btn.addEventListener('click', function() {
-        
-        setTimeout(function() {
-            document.getElementById('botaoScroll').click();  
-        }, 200);  
+    btn.addEventListener('click', function () {
+
+        setTimeout(function () {
+            document.getElementById('botaoScroll').click();
+        }, 200);
     });
-    
+
 });
 
 
+
+
+
+
+
+
+
+
+document.getElementById('arrowRightMusicBar').addEventListener('click', function () {
+    let currentAudioPlaylist = currentId
+    let nextAudioPlaylist;
+
+    for (var i = 0; i < arraySong.length; i++) {
+        if (arraySong[i].nameSong == currentAudioPlaylist) {
+            nextAudioPlaylist = i + 1
+
+            console.log(arraySong.length);
+
+            if (nextAudioPlaylist > (arraySong.length - 1)) {
+                document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRightMax.png'
+            }
+
+            else {
+                document.getElementById(`audioPlay${arraySong[nextAudioPlaylist].nameSong}`).click()
+                document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
+                document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
+
+            }
+
+
+        }
+
+
+
+    }
+
+})
+
+
+
+
+
+document.getElementById('arrowLeftMusicBar').addEventListener('click', function () {
+    let currentAudioPlaylist = currentId
+    let nextAudioPlaylist;
+
+    for (var i = 0; i < arraySong.length; i++) {
+        if (arraySong[i].nameSong == currentAudioPlaylist) {
+            nextAudioPlaylist = i - 1
+
+
+
+
+
+            if (nextAudioPlaylist == (0 - 1)) {
+                document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeftMax.png'
+            }
+
+            else {
+                document.getElementById(`audioPlay${arraySong[nextAudioPlaylist].nameSong}`).click()
+                document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
+                document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
+
+            }
+
+
+        }
+
+
+    }
+
+})
+
+
+
+let flagShuffle = false
+document.getElementById('shuffleMusicBar').addEventListener('click', function () {
+    var imgElement = document.getElementById('shuffleMusicBarImg');
+    var currentSrc = imgElement.src.split('/').pop(); // Get the filename part of the src URL
+    let randomSongPlaylist;
+
+    if (currentSrc === 'shuffle.png') {
+        imgElement.src = 'img/shuffleOn.png';
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        randomSongPlaylist = getRandomInt(arraySong.length)
+         
+        document.getElementById(`audio${arraySong[randomSongPlaylist].nameSong}`).load()
+        document.getElementById(`audioPlay${arraySong[randomSongPlaylist].nameSong}`).click()
+        document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
+        document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
+        flagShuffle = true
+
+
+
+
+    } else if (currentSrc === 'shuffleOn.png') {
+        imgElement.src = 'img/shuffle.png';
+        flagShuffle = false
+    }
+
+
+
+});
+
+
+arraySong.forEach(song => {
+    document.getElementById(`audio${song.nameSong}`).addEventListener('ended', function () {
+
+        let randomSongPlaylist;
+
+        if (flagShuffle == true) {
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * max);
+            }
+
+            randomSongPlaylist = getRandomInt(arraySong.length)
+            document.getElementById(`audio${arraySong[randomSongPlaylist].nameSong}`).load()
+            document.getElementById(`audioPlay${arraySong[randomSongPlaylist].nameSong}`).click()
+
+        }
+    })
+
+});
+
+
+
+
+
+
+
+
+
 // setTimeout(function() {
-//     document.getElementById('botaoScroll').click();  
+//     document.getElementById('botaoScroll').click();
 // }, 1000);  
- 
+
 
 
 
