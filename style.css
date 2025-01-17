@@ -281,7 +281,7 @@ body {
     /* Custom cursor image width */
     height: 50px;
     /* Custom cursor image height */
-    background-image: url('img/circleCursor.png');
+    background-image: url('img/circleCursorPointer.png');
     /* Replace with your image */
     background-size: contain;
     pointer-events: none;
@@ -391,6 +391,9 @@ html button {
     #exampleModalEdit .modal-content {
         height: 100% !important;
     }
+
+
+   
 
 
 
@@ -791,6 +794,7 @@ header {
     display: flex;
     min-width: 800px;
     max-width: 100vw;
+    transition: all 0.5s ease-in-out; /* Add smooth transition */
 }
 
 
@@ -1609,7 +1613,7 @@ html {
 
 
 #musicBar {
-    position: sticky;
+    position: fixed;
     display: flex;
     text-align: center;
     justify-content: center;
@@ -1622,6 +1626,7 @@ html {
     left: 0;
     z-index: 100;
     backdrop-filter: brightness(0.5);
+    transition: all 0.5s ease-in-out; /* Add smooth transition */
 }
 
 .musicBarImg {
@@ -1631,6 +1636,7 @@ html {
     height: 100px;
     margin: 1rem;
     flex-shrink: 0;
+    transition: all 0.5s ease-in-out; /* Add smooth transition */
      
 }
 
@@ -1653,9 +1659,35 @@ html {
     border-radius: 20px;
 }
 
+
+@keyframes fadeInCircleMusicBar {
+    0% {
+      opacity: 0; /* Start with invisible */
+    }
+    
+    50% {
+        opacity: 0;
+    }
+
+    80%{
+        opacity: 0;
+    }
+
+    90%{
+        opacity: 0.2;
+    }
+
+    100% {
+      opacity: 1; /* End with fully visible */
+    }
+  }
  
+.opacity{
+    animation: fadeInCircleMusicBar 1s ease-in
+}
 
 
+ 
 
 .musicBarCircle {
     position: absolute;
@@ -1683,3 +1715,8 @@ html {
     background-color: #ffffff;
     border-radius: 20px;
 }
+
+
+
+
+

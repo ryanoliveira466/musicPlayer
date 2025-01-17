@@ -727,6 +727,8 @@ document.getElementById('buttonAcceptimg').addEventListener('click', function ()
 
 document.getElementById('btnView'), addEventListener('click', function () {
 
+   
+
 
     document.body.style.paddingRight = '0'
     let div = document.getElementById('imageView'); // Get the div by its ID
@@ -835,6 +837,8 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
 
         editButton.addEventListener('click', function () {
+
+ 
 
             let pickr4 = null;
             let pickr5 = null;
@@ -1795,6 +1799,10 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
             document.getElementById('colorDisplay4').click()
 
+            setTimeout(function() {
+                document.getElementById('botaoScroll').click();  
+            }, 200);
+
 
 
         })
@@ -1873,8 +1881,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
     });
 
 
-
-
+    
 
 })
 
@@ -2149,13 +2156,22 @@ arraySong.forEach((song) => {
         console.log(currentAudioPlaying);
 
         const imgMusicBar = document.getElementById('musicBarImg')
-        const musicBarAudioTrackMinus30 = divMusicBarLenght - 30
+        let musicBarAudioTrackMinus30 = divMusicBarLenght - 30
         imgMusicBar.src = song.wallPaper
 
 
 
         audioTeste.addEventListener('timeupdate', function () {
-            if (!isManualUpdate) {  // Only update if not manually dragging
+            if (!isManualUpdate && flagExpand == false) { 
+                 
+
+                musicBarAudioTrackMinus30 = divMusicBarLenght - 30
+                audioTrack(audioTeste.duration, audioTeste.currentTime, musicBarAudioTrackMinus30);
+            }
+            if(!isManualUpdate && flagExpand == true){
+                 
+                
+                musicBarAudioTrackMinus30 = divMusicBarLenght - 30
                 audioTrack(audioTeste.duration, audioTeste.currentTime, musicBarAudioTrackMinus30);
             }
         });
@@ -2492,7 +2508,7 @@ arraySong.forEach((song) => {
 
 
 const volumeCircleMusicBar = document.getElementById('musicBarCircle');
-const divMusicBarLenght = document.getElementById('musicBarAudioTrack').offsetWidth;
+let divMusicBarLenght = document.getElementById('musicBarAudioTrack').offsetWidth;
 let isDragging3 = false;
 let isManualUpdate = false;
 let offsetX;
@@ -2830,6 +2846,106 @@ document.getElementById('audioVolumeMusicBar').addEventListener('click', functio
 
 })
 
+
+let flagExpand = false
+document.getElementById('btnMusicBarExpand').addEventListener('click', function () {
+
+
+
+    const button = this;  // "this" refers to the button that was clicked
+  
+    // Disable the button
+    button.disabled = true;
+  
+    // Set a timeout to enable the button after 1 second
+    setTimeout(function() {
+      button.disabled = false;
+    }, 1000); // 1000 milliseconds = 1 second
+
+    const musicBar = document.getElementById('musicBar')
+    const musicBarImg = document.getElementById('musicBarImg')
+    const header = document.getElementById('140height')
+    const circle = document.getElementById('musicBarCircle')
+
+
+    circle.classList.toggle('opacity')
+
+    setTimeout(function() {
+        circle.classList.remove('opacity')
+    }, 1000);  
+    
+    
+
+   
+
+    if (musicBar.style.height == '100%') {
+        musicBar.style.height = '140px'
+        header.style.height = '140px'
+        musicBarImg.style.height = '100px'
+        musicBarImg.style.width = '200px'
+        window.scrollTo(0, 0);
+         
+        setTimeout(function() {
+            divMusicBarLenght = document.getElementById('musicBarAudioTrack').offsetWidth
+        }, 600);  
+        flagExpand = false
+        
+
+    }
+
+    else {
+        musicBar.style.height = '100%'
+        header.style.height = '0px'
+        musicBarImg.style.height = '200px'
+        musicBarImg.style.width = '400px'
+        window.scrollTo(0, 0);
+        
+        setTimeout(function() {
+            divMusicBarLenght = document.getElementById('musicBarAudioTrack').offsetWidth
+        }, 600);  
+        flagExpand = true
+        
+        
+    }
+
+     
+        
+        
+        
+    
+    
+    
+
+})
+
+
+
+document.getElementById('botaoScroll').addEventListener('click', function(){
+    const divScrolls = document.querySelectorAll('.modal-content')
+    divScrolls.forEach(div => {
+
+        div.scrollTo(0,0)
+        
+    });
+})
+
+const btnOptions = document.querySelectorAll('.btnOptions, .itemAdd');
+
+btnOptions.forEach(btn => {
+    btn.addEventListener('click', function() {
+        
+        setTimeout(function() {
+            document.getElementById('botaoScroll').click();  
+        }, 200);  
+    });
+    
+});
+
+
+// setTimeout(function() {
+//     document.getElementById('botaoScroll').click();  
+// }, 1000);  
+ 
 
 
 
