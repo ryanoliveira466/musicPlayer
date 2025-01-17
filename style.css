@@ -1593,6 +1593,7 @@ html {
     position: absolute;
     transition: all 0.1s ease;
     pointer-events: all;
+    user-select: none;
 }
 
 /* Circle appearance */
@@ -1629,6 +1630,7 @@ html {
     width: 200px;
     height: 100px;
     margin: 1rem;
+    flex-shrink: 0;
      
 }
 

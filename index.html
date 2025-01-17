@@ -647,13 +647,21 @@ input[type="image"] {
 
     <!-- MUSIC BAR -->
 
+    <!-- <audio controls style="display: flex;" id="audioTeste">
+        <source id="audioTesteSrc" src="song/Far Out - Lost With You (feat. Ruby Chase) [TubeRipper.com].mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio> -->
+
+
 
   <div id="musicBar">
-    <img src="img/teste/maxresdefault.jpg" alt="" srcset="" class="musicBarImg">
-    <div class="musicBarAudioTrack"><div id="" class="musicBarCircle"><img src="img/circleCursor.png" alt="" srcset=""></div></div>
+    <img src="img/teste/maxresdefault.jpg" alt="" srcset="" class="musicBarImg" id="musicBarImg">
+    <div class="musicBarAudioTrack" id="musicBarAudioTrack"><div id="musicBarCircle" style="user-select: none;" class="musicBarCircle"><img src="img/circleCursor.png" alt="" srcset=""></div></div>
     <button class="btn btnPlay" id="audioPlayMusicBar"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
-    <button class="btn btnPause" style="display: none;" id="audioPause1"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
+    <button class="btn btnPause" style="display: none;" id="audioPauseMusicBar"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
+
     <div class="audioLength"></div>
+
     <button class="btn btnVolume" id="audioVolumeMusicBar"><img src="img/volume.png" alt="" srcset="" width="30px" height="30px"></button>
     <button class="btn btnMutado" style="display: none;" id="audioMutadoMusicBar"><img src="img/muted.png" alt="" srcset="" width="30px" height="30px"></button>
      

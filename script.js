@@ -55,27 +55,38 @@ arrayImagesColor = [{
 
 arraySong = [
     {
-        nameSong: '1'
+        nameSong: '1',
+        wallPaper: 'img/teste/maxresdefault (1).jpg',
+        songSrc: 'song/XYLØ - Blue Light [TubeRipper.com].mp3'
+    },
+    {
+        nameSong: '2',
+        wallPaper: 'img/teste/Łaszewo.jpg',
+        songSrc: 'song/Łaszewo - Dont Walk Away (feat. KEEVΛ) [TubeRipper.com].mp3'
 
     },
     {
-        nameSong: '2'
+        nameSong: '3',
+        wallPaper: 'img/teste/xKM-jgaOW2Y-HD.jpg',
+        songSrc: 'song/Dabin - Alive (feat. RUNN) [TubeRipper.com].mp3'
 
     },
     {
-        nameSong: '3'
+        nameSong: '4',
+        wallPaper: 'img/teste/jacek-babinski-img-8028-2afxxxxx.jpg',
+        songSrc: 'song/Far Out - Lost With You (feat. Ruby Chase) [TubeRipper.com].mp3'
 
     },
     {
-        nameSong: '4'
+        nameSong: '5',
+        wallPaper: 'img/teste/karmen-loh-clementine-withlogo-compressed.jpg',
+        songSrc: 'song/Módl - Clementine [TubeRipper.com].mp3'
 
     },
     {
-        nameSong: '5'
-
-    },
-    {
-        nameSong: '6'
+        nameSong: '6',
+        wallPaper: 'img/teste/maxresdefault.jpg',
+        songSrc: 'song/Said The Sky - Erase Me (feat. NÉONHÈART) [TubeRipper.com].mp3'
 
     }
 ];
@@ -2109,6 +2120,9 @@ divs.forEach(div => {
 
 
 
+let currentAudioPlaying;
+let currentBtnPlay;
+let currentBtnPause;
 
 arraySong.forEach((song) => {
 
@@ -2116,26 +2130,60 @@ arraySong.forEach((song) => {
 
 
     document.getElementById(`audioPlay${song.nameSong}`).addEventListener('click', function () {
+
+
+
+
+
+
+
+        const audioTeste = document.getElementById(`audio${song.nameSong}`)
+        currentAudioPlaying = audioTeste.id
+        currentBtnPlay = `audioPlay${song.nameSong}`
+        currentBtnPause = `audioPause${song.nameSong}`
+        console.log(currentAudioPlaying);
+
+        const imgMusicBar = document.getElementById('musicBarImg')
+        const musicBarAudioTrackMinus30 = divMusicBarLenght - 30
+        imgMusicBar.src = song.wallPaper
+
+
+
+        audioTeste.addEventListener('timeupdate', function () {
+            if (!isManualUpdate) {  // Only update if not manually dragging
+                audioTrack(audioTeste.duration, audioTeste.currentTime, musicBarAudioTrackMinus30);
+            }
+        });
+
+
+
+
+
         document.getElementById(`audio${song.nameSong}`).play();
 
         document.getElementById(`audioPause${song.nameSong}`).style.display = 'flex'
         document.getElementById(`audioPlay${song.nameSong}`).style.display = 'none'
 
 
-        
-    for(var i = 0;i < arraySong.length;i++){
 
-        if((arraySong[i].nameSong).includes(song.nameSong)){
-            document.getElementById(`audio${song.nameSong}`).play();
-        }
+        document.getElementById(`audioPauseMusicBar`).style.display = 'flex'
+        document.getElementById(`audioPlayMusicBar`).style.display = 'none'
 
-        else{
-            document.getElementById(`audio${arraySong[i].nameSong}`).pause()
-            document.getElementById(`audioPlay${arraySong[i].nameSong}`).style.display = 'flex'
-            document.getElementById(`audioPause${arraySong[i].nameSong}`).style.display = 'none'
+
+
+        for (var i = 0; i < arraySong.length; i++) {
+
+            if ((arraySong[i].nameSong).includes(song.nameSong)) {
+                document.getElementById(`audio${song.nameSong}`).play();
+            }
+
+            else {
+                document.getElementById(`audio${arraySong[i].nameSong}`).pause()
+                document.getElementById(`audioPlay${arraySong[i].nameSong}`).style.display = 'flex'
+                document.getElementById(`audioPause${arraySong[i].nameSong}`).style.display = 'none'
+            }
+
         }
-        
-    }
 
     })
 
@@ -2144,6 +2192,11 @@ arraySong.forEach((song) => {
 
         document.getElementById(`audioPlay${song.nameSong}`).style.display = 'flex'
         document.getElementById(`audioPause${song.nameSong}`).style.display = 'none'
+
+
+
+        document.getElementById(`audioPlayMusicBar`).style.display = 'flex'
+        document.getElementById(`audioPauseMusicBar`).style.display = 'none'
 
 
     })
@@ -2182,6 +2235,7 @@ arraySong.forEach((song) => {
 
 
 
+
 let picker = document.getElementsByClassName('pcr-app')[0]
 let picker2 = document.getElementsByClassName('pcr-app')[1]
 let picker3 = document.getElementsByClassName('pcr-app')[2]
@@ -2202,115 +2256,488 @@ parentDiv.appendChild(picker3)
 
 arraySong.forEach((song) => {
 
-const volumeCircle = document.getElementById(`volumeCircle${song.nameSong}`);
-const audioSong = document.getElementById(`audio${song.nameSong}`)
+    const volumeCircle = document.getElementById(`volumeCircle${song.nameSong}`);
+    const audioSong = document.getElementById(`audio${song.nameSong}`)
 
-let isDragging = false;
-let offsetX;
+    let isDragging1 = false;
+    let offsetX;
 
-// Mouse down event to start dragging
-volumeCircle.addEventListener("mousedown", function (event) {
-    isDragging = true;
-    offsetX = event.clientX - volumeCircle.offsetLeft;
-    console.log('oi');
-    
-});
+    // Mouse down event to start dragging
+    volumeCircle.addEventListener("mousedown", function (event) {
+        isDragging1 = true;
+        offsetX = event.clientX - volumeCircle.offsetLeft;
+        console.log('oi');
 
-// Mouse move event to move the element
-document.addEventListener("mousemove", function (event) {
-    if (isDragging) {
+    });
 
-        if ((event.clientX - offsetX) < 0) {
-            volumeCircle.style.left = '0px'
-            audioSong.volume = 0
-            
+    // Mouse move event to move the element
+    document.addEventListener("mousemove", function (event) {
+        if (isDragging1) {
+
+            if ((event.clientX - offsetX) < 0) {
+                volumeCircle.style.left = '0px'
+                audioSong.volume = 0
+
+            }
+
+            else if ((event.clientX - offsetX) > 20) {
+                volumeCircle.style.left = '20px'
+                audioSong.volume = 1
+            }
+
+            else {
+                volumeCircle.style.left = event.clientX - offsetX + "px";
+                audioSong.volume = (event.clientX - offsetX) / 20
+            }
+
+
+
+
+
         }
+    });
 
-        else if ((event.clientX - offsetX) > 20) {
-            volumeCircle.style.left = '20px'
-            audioSong.volume = 1
+    // Mouse up event to stop dragging
+    document.addEventListener("mouseup", function () {
+        isDragging1 = false;
+    });
+
+
+
+
+
+
+
+
+
+
+
+    // Mouse down event to start dragging
+    volumeCircle.addEventListener("touchstart", function (event) {
+        isDragging2 = true;
+        offsetX = event.touches[0].clientX; - volumeCircle.offsetLeft;
+        console.log('oi');
+
+    });
+
+    // Mouse move event to move the element
+    document.addEventListener("touchmove", function (event) {
+        if (isDragging2) {
+
+            document.getElementById('song').style.overflowX = 'hidden'
+
+
+            if ((event.touches[0].clientX - offsetX) < 0) {
+                volumeCircle.style.left = '0px'
+                audioSong.volume = 0
+
+            }
+
+            else if ((event.touches[0].clientX - offsetX) > 20) {
+                volumeCircle.style.left = '20px'
+                audioSong.volume = 1
+            }
+
+            else {
+                volumeCircle.style.left = event.touches[0].clientX - offsetX + "px";
+                audioSong.volume = (event.touches[0].clientX - offsetX) / 20
+            }
+
+
+
+
+
         }
+    });
 
-        else {
-            volumeCircle.style.left = event.clientX - offsetX + "px";
-            audioSong.volume = (event.clientX - offsetX) / 20
-        }
-
- 
-
-
-
-    }
-});
-
-// Mouse up event to stop dragging
-document.addEventListener("mouseup", function () {
-    isDragging = false;
-});
+    // Mouse up event to stop dragging
+    document.addEventListener("touchend", function () {
+        isDragging2 = false;
+        document.getElementById('song').style.overflowX = 'scroll'
+    });
 
 
 
 
-
-
-
-
-
-
-
-// Mouse down event to start dragging
-volumeCircle.addEventListener("touchstart", function (event) {
-    isDragging = true;
-    offsetX = event.touches[0].clientX; - volumeCircle.offsetLeft;
-    console.log('oi');
-    
-});
-
-// Mouse move event to move the element
-document.addEventListener("touchmove", function (event) {
-    if (isDragging) {
-
-        document.getElementById('song').style.overflowX = 'hidden'
-
-
-        if ((event.touches[0].clientX - offsetX) < 0) {
-            volumeCircle.style.left = '0px'
-            audioSong.volume = 0
-            
-        }
-
-        else if ((event.touches[0].clientX - offsetX) > 20) {
-            volumeCircle.style.left = '20px'
-            audioSong.volume = 1
-        }
-
-        else {
-            volumeCircle.style.left = event.touches[0].clientX - offsetX + "px";
-            audioSong.volume = (event.touches[0].clientX - offsetX) / 20
-        }
-
- 
-
-
-
-    }
-});
-
-// Mouse up event to stop dragging
-document.addEventListener("touchend", function () {
-    isDragging = false;
-    document.getElementById('song').style.overflowX = 'scroll'
-});
-
-
-
-    
 })
 
 
 
 
 
+
+
+
+
+
+
+
+// const volumeCircleMusicBar = document.getElementById(`musicBarCircle`);
+// const divMusicBarLenght = document.getElementById(`musicBarAudioTrack`).offsetWidth;
+
+// let isDragging3 = false;
+// let isManualUpdate = false;
+// let offsetX;
+// let animationFrameRequested = false; // To throttle the requests
+
+// // Mouse down event to start dragging
+// volumeCircleMusicBar.addEventListener("mousedown", function (event) {
+//     isDragging3 = true;
+//     offsetX = event.clientX - volumeCircleMusicBar.offsetLeft;
+//     isManualUpdate = true;  // Mark as manual update
+// });
+
+// // Function to handle the drag logic
+// function moveCircle(event) {
+//     if (isDragging3) {
+//         let newLeft = event.clientX - offsetX;
+
+//         // Constrain the circle's movement within the music bar's width
+//         if (newLeft < 0) {
+//             volumeCircleMusicBar.style.left = '0px';
+//         } else if (newLeft > divMusicBarLenght - 30) {
+//             volumeCircleMusicBar.style.left = `${divMusicBarLenght - 30}px`;
+//         } else {
+//             volumeCircleMusicBar.style.left = `${newLeft}px`;
+//         }
+
+//         // Sync the current time with the circle's position
+//         const currentAudio = document.getElementById(currentAudioPlaying);
+//         const musicBarAudioTrackMinus30 = divMusicBarLenght - 30;
+//         circleTrack(currentAudio.duration, musicBarAudioTrackMinus30, currentAudio.id);
+//     }
+// }
+
+// // Mouse move event to move the element (optimized with requestAnimationFrame)
+// document.addEventListener("mousemove", function (event) {
+//     if (isDragging3 && !animationFrameRequested) {
+//         // Throttle the movement to only update on the next available frame
+//         animationFrameRequested = true;
+//         requestAnimationFrame(function () {
+//             moveCircle(event);  // Call the function to update the circle position
+//             animationFrameRequested = false;  // Allow the next frame to update
+//         });
+//     }
+// });
+
+// // Mouse up event to stop dragging
+// document.addEventListener("mouseup", function () {
+//     isDragging3 = false;
+//     isManualUpdate = false;
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+const volumeCircleMusicBar = document.getElementById('musicBarCircle');
+const divMusicBarLenght = document.getElementById('musicBarAudioTrack').offsetWidth;
+let isDragging3 = false;
+let isManualUpdate = false;
+let offsetX;
+let animationFrameRequested = false; // To throttle the requests
+
+// Mouse down event to start dragging
+volumeCircleMusicBar.addEventListener('mousedown', function (event) {
+    isDragging3 = true;
+    offsetX = event.clientX - volumeCircleMusicBar.offsetLeft;
+    isManualUpdate = true;  // Mark as manual update
+});
+
+// Function to handle the drag logic
+function moveCircle(event) {
+    if (isDragging3) {
+        let newLeft = event.clientX - offsetX;
+
+        // Constrain the circle's movement within the music bar's width
+        if (newLeft < 0) {
+            volumeCircleMusicBar.style.left = '0px';
+        } else if (newLeft > divMusicBarLenght - 30) {
+            volumeCircleMusicBar.style.left = `${divMusicBarLenght - 30}px`;
+        } else {
+            volumeCircleMusicBar.style.left = `${newLeft}px`;
+        }
+    }
+}
+
+// Mouse move event to move the element (optimized with requestAnimationFrame)
+document.addEventListener('mousemove', function (event) {
+    if (isDragging3 && !animationFrameRequested) {
+        // Throttle the movement to only update on the next available frame
+        animationFrameRequested = true;
+        requestAnimationFrame(function () {
+            moveCircle(event);  // Call the function to update the circle position
+            animationFrameRequested = false;  // Allow the next frame to update
+        });
+    }
+});
+
+// Mouse up event to stop dragging and update audio
+document.addEventListener('mouseup', function () {
+    if (isDragging3) {
+        isDragging3 = false;
+        isManualUpdate = false;
+
+        // When dragging ends, update the audio position to the circle's final location
+        const currentAudio = document.getElementById(currentAudioPlaying);
+        const musicBarAudioTrackMinus30 = divMusicBarLenght - 30;
+
+        // Sync the current time with the circle's final position
+        const finalPosition = volumeCircleMusicBar.offsetLeft;
+        const reason = musicBarAudioTrackMinus30 / currentAudio.duration;
+        currentAudio.currentTime = finalPosition / reason;
+
+        // Optionally, trigger the audio to continue playing after sync
+        currentAudio.play();
+
+        // Optional: Update other UI elements here (e.g., pause/play buttons)
+    }
+});
+
+
+
+
+
+
+
+
+
+
+// const volumeCircleMusicBar = document.getElementById(`musicBarCircle`);
+// const divMusicBarLenght = document.getElementById(`musicBarAudioTrack`).offsetWidth;
+
+
+
+
+
+// let isDragging3 = false;
+// let isManualUpdate = false;
+// let offsetX;
+
+
+
+
+
+// // Mouse down event to start dragging
+// volumeCircleMusicBar.addEventListener("mousedown", function (event) {
+//     isDragging3 = true;
+//     offsetX = event.clientX - volumeCircleMusicBar.offsetLeft;
+//     isManualUpdate = true;  // Mark as manual update
+
+
+
+// });
+
+
+
+
+// // Mouse move event to move the element
+// document.addEventListener("mousemove", function (event) {
+
+
+
+
+//     if (isDragging3) {
+
+
+
+//         if ((event.clientX - offsetX) < 0) {
+//             volumeCircleMusicBar.style.left = '0px'
+
+//         }
+
+//         else if ((event.clientX - offsetX) > divMusicBarLenght - 30) {
+//             volumeCircleMusicBar.style.left = `${divMusicBarLenght - 30}px`
+
+
+//         }
+
+//         else {
+//             volumeCircleMusicBar.style.left = event.clientX - offsetX + "px";
+
+
+//         }
+
+//         const currentAudio = document.getElementById(currentAudioPlaying)
+//         const musicBarAudioTrackMinus30 = divMusicBarLenght - 30
+
+
+//         circleTrack(currentAudio.duration,musicBarAudioTrackMinus30,currentAudio.id)
+
+
+
+
+//     }
+
+
+// });
+
+// // Mouse up event to stop dragging
+// document.addEventListener("mouseup", function () {
+//     isDragging3 = false;
+//     isManualUpdate = false;
+
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Mouse down event to start dragging
+volumeCircleMusicBar.addEventListener('touchstart', function (event) {
+    isDragging3 = true;
+    offsetX = event.touches[0].clientX - volumeCircleMusicBar.offsetLeft;
+    isManualUpdate = true;  // Mark as manual update
+});
+
+// Function to handle the drag logic
+function moveCircle(event) {
+    if (isDragging3) {
+        let newLeft = event.touches[0].clientX - offsetX;
+
+        // Constrain the circle's movement within the music bar's width
+        if (newLeft < 0) {
+            volumeCircleMusicBar.style.left = '0px';
+        } else if (newLeft > divMusicBarLenght - 30) {
+            volumeCircleMusicBar.style.left = `${divMusicBarLenght - 30}px`;
+        } else {
+            volumeCircleMusicBar.style.left = `${newLeft}px`;
+        }
+    }
+}
+
+// Mouse move event to move the element (optimized with requestAnimationFrame)
+document.addEventListener('touchmove', function (event) {
+    if (isDragging3 && !animationFrameRequested) {
+        // Throttle the movement to only update on the next available frame
+        animationFrameRequested = true;
+        requestAnimationFrame(function () {
+            moveCircle(event);  // Call the function to update the circle position
+            animationFrameRequested = false;  // Allow the next frame to update
+        });
+    }
+});
+
+// Mouse up event to stop dragging and update audio
+document.addEventListener('touchend', function () {
+    if (isDragging3) {
+        isDragging3 = false;
+        isManualUpdate = false;
+
+        // When dragging ends, update the audio position to the circle's final location
+        const currentAudio = document.getElementById(currentAudioPlaying);
+        const musicBarAudioTrackMinus30 = divMusicBarLenght - 30;
+
+        // Sync the current time with the circle's final position
+        const finalPosition = volumeCircleMusicBar.offsetLeft;
+        const reason = musicBarAudioTrackMinus30 / currentAudio.duration;
+        currentAudio.currentTime = finalPosition / reason;
+
+        // Optionally, trigger the audio to continue playing after sync
+        currentAudio.play();
+
+        // Optional: Update other UI elements here (e.g., pause/play buttons)
+    }
+});
+
+
+
+
+
+// const audioTeste = document.getElementById('audioTeste')
+// const musicBarAudioTrackMinus30 = divMusicBarLenght - 30
+
+// audioTeste.addEventListener('timeupdate', () => {
+//     audioTrack(audioTeste.duration, audioTeste.currentTime, musicBarAudioTrackMinus30)
+// });
+
+
+
+
+// function audioTrack(duration, currentTimeTrack, divLenght) {
+
+//     let reason = divLenght / duration
+
+//     let reasonMovingCircle = currentTimeTrack * reason
+//     volumeCircleMusicBar.style.left = `${reasonMovingCircle}px`
+
+
+
+// }
+
+
+function circleTrack(duration, divLenght, audio) {
+
+    let reason = divLenght / duration
+    let reasonMovingAudioTrack = volumeCircleMusicBar.offsetLeft / reason
+    document.getElementById(audio).currentTime = reasonMovingAudioTrack
+    document.getElementById(audio).play()
+
+
+    console.log(reason);
+    console.log(divLenght);
+    console.log(duration);
+    console.log(volumeCircleMusicBar.offsetLeft);
+
+}
+
+
+function audioTrack(duration, currentTimeTrack, divLenght) {
+    let reason = divLenght / duration
+    let reasonMovingCircle = currentTimeTrack * reason
+    volumeCircleMusicBar.style.left = `${reasonMovingCircle}px`
+}
+
+
+console.log(currentAudioPlaying);
+
+
+document.getElementById('audioPlayMusicBar').addEventListener('click', function () {
+
+
+    document.getElementById(`${currentAudioPlaying}`).play();
+
+    document.getElementById(`audioPauseMusicBar`).style.display = 'flex'
+    document.getElementById(`audioPlayMusicBar`).style.display = 'none'
+
+    document.getElementById(`${currentBtnPause}`).style.display = 'flex'
+    document.getElementById(`${currentBtnPlay}`).style.display = 'none'
+
+
+})
+
+
+
+
+document.getElementById(`audioPauseMusicBar`).addEventListener('click', function () {
+    document.getElementById(`${currentAudioPlaying}`).pause();
+
+    document.getElementById(`audioPlayMusicBar`).style.display = 'flex'
+    document.getElementById(`audioPauseMusicBar`).style.display = 'none'
+
+    document.getElementById(`${currentBtnPlay}`).style.display = 'flex'
+    document.getElementById(`${currentBtnPause}`).style.display = 'none'
+
+
+
+})
 
 
 
