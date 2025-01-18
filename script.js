@@ -1,13 +1,13 @@
 arrayImagesColor = [{
     id: "purple",
     idImg: "purpleImg",
-    color: "linear-gradient(to left,#030328, #29033D)",
-    color1: '#030328',
-    color2: '#29033D',
+    color: "linear-gradient(to left,#0000FF, #0000FF)",
+    color1: '#0000FF',
+    color2: '#0000FF',
     div: 'a',
-    tint: "#4D13A4",
+    tint: "#0000FF",
     src: "img/teste/maxresdefault (1).jpg",
-    mix: "overlay",
+    mix: "hue",
     cover: "cover",
     linear: "to left"
 
@@ -15,9 +15,9 @@ arrayImagesColor = [{
 {
     id: "blue",
     idImg: "blueImg",
-    color: "linear-gradient(to right,#00FFF2, #000AFF)",
-    color1: '#00FFF2',
-    color2: '#000AFF',
+    color: "linear-gradient(to right,#FF0000, #FF0000)",
+    color1: '#FF0000',
+    color2: '#FF0000',
     div: 'b',
     tint: "#FF0000",
     src: "img/teste/maxresdefault.jpg",
@@ -28,9 +28,9 @@ arrayImagesColor = [{
 {
     id: "red",
     idImg: "redImg",
-    color: "linear-gradient(to bottom left,#FE8E01, #FF0000)",
-    color1: '#FE8E01',
-    color2: '#FF0000',
+    color: "linear-gradient(to bottom left,#F7F905, #F7F905)",
+    color1: '#F7F905',
+    color2: '#F7F905',
     div: 'c',
     tint: "#8E4304",
     src: "img/teste/Łaszewo.jpg",
@@ -41,11 +41,11 @@ arrayImagesColor = [{
 {
     id: "green",
     idImg: "greenImg",
-    color: "linear-gradient(to bottom right,#1AED3D, #35ED03)",
-    color1: '#1AED3D',
-    color2: '#35ED03',
+    color: "linear-gradient(to bottom right,#36FF00, #36FF00)",
+    color1: '#36FF00',
+    color2: '#36FF00',
     div: 'd',
-    tint: "#9EF509",
+    tint: "#C26AFF",
     src: "img/teste/wallpaper.jpg",
     mix: "saturation",
     cover: "cover",
@@ -209,6 +209,67 @@ function colorChangeNext() {
 
 
 
+                  function randomHue() {
+                    // Generate a random hue between 0 and 360
+                    return Math.floor(Math.random() * 361);
+                  }
+                  
+                  function changeFaviconColor() {
+                    // Get the current favicon link element
+                    const faviconLink = document.getElementById('favicon');
+                    
+                    // Check if the favicon element exists
+                    if (!faviconLink) {
+                      console.error("Favicon link element not found.");
+                      return;
+                    }
+                    
+                    // Create an image element to load the favicon image
+                    const img = new Image();
+                    
+                    // This helps prevent potential cross-origin issues
+                    img.crossOrigin = "Anonymous"; 
+                    
+                    // Set the favicon source (assuming it's a valid image URL)
+                    img.src = faviconLink.href;
+                    
+                    img.onload = function() {
+                      // Create a canvas element to manipulate the image
+                      const canvas = document.createElement('canvas');
+                      const ctx = canvas.getContext('2d');
+                      
+                      // Set canvas dimensions to match the image
+                      canvas.width = img.width;
+                      canvas.height = img.height;
+                      
+                      // Draw the image on the canvas
+                      ctx.drawImage(img, 0, 0);
+                       
+                      // Apply a random hue-rotate filter
+                      ctx.filter = `hue-rotate(${randomHue()}deg)`;
+                      
+                      // Re-draw the image with the applied filter
+                      ctx.drawImage(img, 0, 0);
+                      
+                      // Convert the canvas to a base64-encoded PNG image
+                      const newFavicon = canvas.toDataURL('image/png');
+                      
+                      // Update the favicon link with the new image
+                      faviconLink.href = newFavicon;
+                    };
+                    
+                    // Error handling for when the image fails to load
+                    img.onerror = function() {
+                      console.error("Failed to load the image.");
+                    };
+                  }
+                  
+                  // Call the function to change the favicon color
+                  changeFaviconColor();
+                  
+
+
+
             // Append the style element to the document head
             document.head.appendChild(style);
 
@@ -270,6 +331,68 @@ function colorChangePrev() {
                   animation: 1s fadeIn ease-out forwards;
                   }
                    `;
+
+
+
+                   function randomHue() {
+                    // Generate a random hue between 0 and 360
+                    return Math.floor(Math.random() * 361);
+                  }
+                  
+                  function changeFaviconColor() {
+                    // Get the current favicon link element
+                    const faviconLink = document.getElementById('favicon');
+                    
+                    // Check if the favicon element exists
+                    if (!faviconLink) {
+                      console.error("Favicon link element not found.");
+                      return;
+                    }
+                    
+                    // Create an image element to load the favicon image
+                    const img = new Image();
+                    
+                    // This helps prevent potential cross-origin issues
+                    img.crossOrigin = "Anonymous"; 
+                    
+                    // Set the favicon source (assuming it's a valid image URL)
+                    img.src = faviconLink.href;
+                    
+                    img.onload = function() {
+                      // Create a canvas element to manipulate the image
+                      const canvas = document.createElement('canvas');
+                      const ctx = canvas.getContext('2d');
+                      
+                      // Set canvas dimensions to match the image
+                      canvas.width = img.width;
+                      canvas.height = img.height;
+                      
+                      // Draw the image on the canvas
+                      ctx.drawImage(img, 0, 0);
+                       
+                      // Apply a random hue-rotate filter
+                      ctx.filter = `hue-rotate(${randomHue()}deg)`;
+                      
+                      // Re-draw the image with the applied filter
+                      ctx.drawImage(img, 0, 0);
+                      
+                      // Convert the canvas to a base64-encoded PNG image
+                      const newFavicon = canvas.toDataURL('image/png');
+                      
+                      // Update the favicon link with the new image
+                      faviconLink.href = newFavicon;
+                    };
+                    
+                    // Error handling for when the image fails to load
+                    img.onerror = function() {
+                      console.error("Failed to load the image.");
+                    };
+                  }
+                  
+                  // Call the function to change the favicon color
+                  changeFaviconColor();
+                  
+
 
 
 
@@ -729,7 +852,6 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
 
 
-
     document.body.style.paddingRight = '0'
     let div = document.getElementById('imageView'); // Get the div by its ID
     div.innerHTML = ''; // Set the content of the div to an empty string
@@ -806,14 +928,14 @@ document.getElementById('btnView'), addEventListener('click', function () {
         deleteButton.id = btnDelId
 
 
-        const clickCursor = document.getElementById('clickCursor');
-        deleteButton.addEventListener('pointerover', () => {
-            clickCursor.style.display = 'block';
-        });
+        // const clickCursor = document.getElementById('clickCursor');
+        // deleteButton.addEventListener('pointerover', () => {
+        //     clickCursor.style.display = 'block';
+        // });
 
-        deleteButton.addEventListener('pointerout', () => {
-            clickCursor.style.display = 'none';
-        });
+        // deleteButton.addEventListener('pointerout', () => {
+        //     clickCursor.style.display = 'none';
+        // });
 
 
 
@@ -825,13 +947,13 @@ document.getElementById('btnView'), addEventListener('click', function () {
         editButton.setAttribute('data-bs-toggle', 'modal');
         editButton.setAttribute('data-bs-target', '#exampleModalEdit');
 
-        editButton.addEventListener('pointerover', () => {
-            clickCursor.style.display = 'block';
-        });
+        // editButton.addEventListener('pointerover', () => {
+        //     clickCursor.style.display = 'block';
+        // });
 
-        editButton.addEventListener('pointerout', () => {
-            clickCursor.style.display = 'none';
-        });
+        // editButton.addEventListener('pointerout', () => {
+        //     clickCursor.style.display = 'none';
+        // });
 
 
 
@@ -875,15 +997,15 @@ document.getElementById('btnView'), addEventListener('click', function () {
             input.setAttribute('onchange', '');
             input.style.display = 'none'
 
-            const clickCursor = document.getElementById('clickCursor');
-            input.addEventListener('pointerover', () => {
-                clickCursor.style.display = 'block'; // Show the custom cursor
-            });
+            // const clickCursor = document.getElementById('clickCursor');
+            // input.addEventListener('pointerover', () => {
+            //     clickCursor.style.display = 'block'; // Show the custom cursor
+            // });
 
-            // Hide the custom cursor when mouse leaves the button
-            input.addEventListener('pointerout', () => {
-                clickCursor.style.display = 'none'; // Hide the custom cursor
-            });
+            // // Hide the custom cursor when mouse leaves the button
+            // input.addEventListener('pointerout', () => {
+            //     clickCursor.style.display = 'none'; // Hide the custom cursor
+            // });
 
             // Append elements to the form
             form.appendChild(label);
@@ -939,16 +1061,16 @@ document.getElementById('btnView'), addEventListener('click', function () {
             nameInput.value = imgName
 
 
-            const penCursor = document.getElementById('penCursor');
-            // Show the custom cursor when hovering over the button
-            nameInput.addEventListener('pointerover', () => {
-                penCursor.style.display = 'block'; // Show the custom cursor
-            });
+            // const penCursor = document.getElementById('penCursor');
+            // // Show the custom cursor when hovering over the button
+            // nameInput.addEventListener('pointerover', () => {
+            //     penCursor.style.display = 'block'; // Show the custom cursor
+            // });
 
-            // Hide the custom cursor when mouse leaves the button
-            nameInput.addEventListener('pointerout', () => {
-                penCursor.style.display = 'none'; // Hide the custom cursor
-            });
+            // // Hide the custom cursor when mouse leaves the button
+            // nameInput.addEventListener('pointerout', () => {
+            //     penCursor.style.display = 'none'; // Hide the custom cursor
+            // });
 
 
             // Append name text and input to itemAddName
@@ -1005,13 +1127,13 @@ document.getElementById('btnView'), addEventListener('click', function () {
                 colorDisplay.style.backgroundColor = colorId;
 
 
-                colorDisplay.addEventListener('pointerover', () => {
-                    clickCursor.style.display = 'block';
-                });
+                // colorDisplay.addEventListener('pointerover', () => {
+                //     clickCursor.style.display = 'block';
+                // });
 
-                colorDisplay.addEventListener('pointerout', () => {
-                    clickCursor.style.display = 'none';
-                });
+                // colorDisplay.addEventListener('pointerout', () => {
+                //     clickCursor.style.display = 'none';
+                // });
 
 
 
@@ -1339,14 +1461,14 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
 
 
-            saveButton.addEventListener('pointerover', () => {
-                clickCursor.style.display = 'block'; // Show the custom cursor
-            });
+            // saveButton.addEventListener('pointerover', () => {
+            //     clickCursor.style.display = 'block'; // Show the custom cursor
+            // });
 
-            // Hide the custom cursor when mouse leaves the button
-            saveButton.addEventListener('pointerout', () => {
-                clickCursor.style.display = 'none'; // Hide the custom cursor
-            });
+            // // Hide the custom cursor when mouse leaves the button
+            // saveButton.addEventListener('pointerout', () => {
+            //     clickCursor.style.display = 'none'; // Hide the custom cursor
+            // });
 
 
 
@@ -1727,15 +1849,15 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
                             cropstart() {
                                 // Hide the custom cursor when cropping starts (dragging or resizing)
-                                document.getElementsByClassName('cursor')[0].style.display = 'block';
+                                // document.getElementsByClassName('cursor')[0].style.display = 'block';
 
                             },
                             cropmove(event) {
-                                document.getElementsByClassName('cursor')[0].style.display = 'block';
+                                // document.getElementsByClassName('cursor')[0].style.display = 'block';
                             },
                             cropend() {
                                 // Hide the custom cursor when cropping ends (dragging or resizing)
-                                document.getElementsByClassName('cursor')[0].style.display = 'block';
+                                // document.getElementsByClassName('cursor')[0].style.display = 'block';
                             },
 
                         });
@@ -1839,48 +1961,50 @@ document.getElementById('btnView'), addEventListener('click', function () {
     }
 
 
-    const clickCursor = document.getElementById('clickCursor');
-    const buttons = document.querySelectorAll(`button,.color-display,#image-upload,label,.pcr-type`);
+    // const clickCursor = document.getElementById('clickCursor');
+    // const buttons = document.querySelectorAll(`button,.color-display,#image-upload,label,.pcr-type`);
 
 
 
-    // Move the custom cursor based on mouse movement
-    document.addEventListener('mousemove', (e) => {
-        clickCursor.style.left = `${e.pageX + 20}px`;
-        clickCursor.style.top = `${e.pageY + 20}px`;
-    });
+    // // Move the custom cursor based on mouse movement
+    // document.addEventListener('mousemove', (e) => {
+    //     clickCursor.style.left = `${e.pageX + 20}px`;
+    //     clickCursor.style.top = `${e.pageY + 20}px`;
+    // });
 
-    // Loop through all the buttons and add the event listeners
-    buttons.forEach(button => {
-        // Show the custom cursor when hovering over the button
-        button.addEventListener('pointerover', () => {
-            clickCursor.style.display = 'block'; // Show the custom cursor
-        });
+    // // Loop through all the buttons and add the event listeners
+    // buttons.forEach(button => {
+    //     // Show the custom cursor when hovering over the button
+    //     button.addEventListener('pointerover', () => {
+    //         clickCursor.style.display = 'block'; // Show the custom cursor
+    //     });
 
-        // Hide the custom cursor when mouse leaves the button
-        button.addEventListener('pointerout', () => {
-            clickCursor.style.display = 'none'; // Hide the custom cursor
-        });
-    });
-
-
-
-    const inputPicker = document.querySelectorAll(`.pcr-result`);
-
-    // Loop through all the buttons and add the event listeners
-    inputPicker.forEach(button => {
-        // Show the custom cursor when hovering over the button
-        button.addEventListener('pointerover', () => {
-            penCursor.style.display = 'block'; // Show the custom cursor
-        });
-
-        // Hide the custom cursor when mouse leaves the button
-        button.addEventListener('pointerout', () => {
-            penCursor.style.display = 'none'; // Hide the custom cursor
-        });
-    });
+    //     // Hide the custom cursor when mouse leaves the button
+    //     button.addEventListener('pointerout', () => {
+    //         clickCursor.style.display = 'none'; // Hide the custom cursor
+    //     });
+    // });
 
 
+
+    // const inputPicker = document.querySelectorAll(`.pcr-result`);
+
+    // // Loop through all the buttons and add the event listeners
+    // inputPicker.forEach(button => {
+    //     // Show the custom cursor when hovering over the button
+    //     button.addEventListener('pointerover', () => {
+    //         penCursor.style.display = 'block'; // Show the custom cursor
+    //     });
+
+    //     // Hide the custom cursor when mouse leaves the button
+    //     button.addEventListener('pointerout', () => {
+    //         penCursor.style.display = 'none'; // Hide the custom cursor
+    //     });
+    // });
+
+
+
+   
 
 
 })
@@ -1929,15 +2053,15 @@ for (const element of thumb) {
 //mas a div cursor não fica exatamente no click do ponteiro
 //então temos que subtrair metade para que a div fique centralizada no meio
 //conseguimos isso ao pegar o widht e height da div e dividir por 2
-const cursor = document.querySelector('.cursor');
+// const cursor = document.querySelector('.cursor');
 
 
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = `${e.pageX - cursor.offsetWidth / 2}px`;
-    cursor.style.top = `${e.pageY - cursor.offsetHeight / 2}px`;
+// document.addEventListener('mousemove', (e) => {
+//     cursor.style.left = `${e.pageX - cursor.offsetWidth / 2}px`;
+//     cursor.style.top = `${e.pageY - cursor.offsetHeight / 2}px`;
 
 
-});
+// });
 
 
 
@@ -1945,16 +2069,16 @@ document.addEventListener('mousemove', (e) => {
 
 
 
-document.addEventListener('touchstart', (e) => {
-    const touch = e.touches[0]; // Get the first touch point
+// document.addEventListener('touchstart', (e) => {
+//     const touch = e.touches[0]; // Get the first touch point
 
-    // Move the cursor to the touch position
-    cursor.style.left = `${touch.pageX - cursor.offsetWidth / 2}px`;
-    cursor.style.top = `${touch.pageY - cursor.offsetHeight / 2}px`;
+//     // Move the cursor to the touch position
+//     cursor.style.left = `${touch.pageX - cursor.offsetWidth / 2}px`;
+//     cursor.style.top = `${touch.pageY - cursor.offsetHeight / 2}px`;
 
-    // Optionally, you can add a class or style to show the cursor when touched.
-    cursor.style.display = 'block';  // Make sure it's visible when touched
-});
+//     // Optionally, you can add a class or style to show the cursor when touched.
+//     cursor.style.display = 'block';  // Make sure it's visible when touched
+// });
 
 
 
@@ -1962,38 +2086,38 @@ document.addEventListener('touchstart', (e) => {
 
 
 
-document.addEventListener('touchmove', (e) => {
-    const touch = e.touches[0]; // Get the first touch point
+// document.addEventListener('touchmove', (e) => {
+//     const touch = e.touches[0]; // Get the first touch point
 
-    // Move the cursor to the touch position
-    cursor.style.left = `${touch.pageX - cursor.offsetWidth / 2}px`;
-    cursor.style.top = `${touch.pageY - cursor.offsetHeight / 2}px`;
+//     // Move the cursor to the touch position
+//     cursor.style.left = `${touch.pageX - cursor.offsetWidth / 2}px`;
+//     cursor.style.top = `${touch.pageY - cursor.offsetHeight / 2}px`;
 
-    // Optionally, you can add a class or style to show the cursor when touched.
-    cursor.style.display = 'block';  // Make sure it's visible when touched
-});
+//     // Optionally, you can add a class or style to show the cursor when touched.
+//     cursor.style.display = 'block';  // Make sure it's visible when touched
+// });
 
 
 
-document.addEventListener('drag', (e) => {
-    const touch = e.touches[0]; // Get the first touch point
+// document.addEventListener('drag', (e) => {
+//     const touch = e.touches[0]; // Get the first touch point
 
-    // Move the cursor to the touch position
-    cursor.style.left = `${touch.pageX - cursor.offsetWidth / 2}px`;
-    cursor.style.top = `${touch.pageY - cursor.offsetHeight / 2}px`;
+//     // Move the cursor to the touch position
+//     cursor.style.left = `${touch.pageX - cursor.offsetWidth / 2}px`;
+//     cursor.style.top = `${touch.pageY - cursor.offsetHeight / 2}px`;
 
-    // Optionally, you can add a class or style to show the cursor when touched.
-    cursor.style.display = 'block';  // Make sure it's visible when touched
-});
+//     // Optionally, you can add a class or style to show the cursor when touched.
+//     cursor.style.display = 'block';  // Make sure it's visible when touched
+// });
 
 
 
 
-document.addEventListener('drag', (e) => {
-    cursor.style.left = `${e.pageX - cursor.offsetWidth / 2}px`;
-    cursor.style.top = `${e.pageY - cursor.offsetHeight / 2}px`;
-    cursor.style.display = 'block';
-});
+// document.addEventListener('drag', (e) => {
+//     cursor.style.left = `${e.pageX - cursor.offsetWidth / 2}px`;
+//     cursor.style.top = `${e.pageY - cursor.offsetHeight / 2}px`;
+//     cursor.style.display = 'block';
+// });
 
 
 
@@ -2001,43 +2125,43 @@ document.addEventListener('drag', (e) => {
 
 
 
-const clickCursor = document.getElementById('clickCursor');
-const buttons = document.querySelectorAll(`button,.color-display,#image-upload,.pcr-type`);
+// const clickCursor = document.getElementById('clickCursor');
+// const buttons = document.querySelectorAll(`button,.color-display,#image-upload,.pcr-type`);
 
 
-// Move the custom cursor based on mouse movement
-document.addEventListener('mousemove', (e) => {
-    clickCursor.style.left = `${e.pageX + 20}px`;
-    clickCursor.style.top = `${e.pageY + 20}px`;
-});
+// // Move the custom cursor based on mouse movement
+// document.addEventListener('mousemove', (e) => {
+//     clickCursor.style.left = `${e.pageX + 20}px`;
+//     clickCursor.style.top = `${e.pageY + 20}px`;
+// });
 
 
 
-document.addEventListener('touchstart', (e) => {
-    const touch = e.touches[0]; // Get the first touch point
+// document.addEventListener('touchstart', (e) => {
+//     const touch = e.touches[0]; // Get the first touch point
 
-    // Move the cursor to the touch position
-    clickCursor.style.left = `${touch.pageX + 20}px`;
-    clickCursor.style.top = `${touch.pageY + 20}px`;
+//     // Move the cursor to the touch position
+//     clickCursor.style.left = `${touch.pageX + 20}px`;
+//     clickCursor.style.top = `${touch.pageY + 20}px`;
 
 
-});
+// });
 
 
-// Loop through all the buttons and add the event listeners
-buttons.forEach(button => {
-    // Show the custom cursor when hovering over the button
-    button.addEventListener('pointerover', () => {
-        clickCursor.style.display = 'block'; // Show the custom cursor
-    });
+// // Loop through all the buttons and add the event listeners
+// buttons.forEach(button => {
+//     // Show the custom cursor when hovering over the button
+//     button.addEventListener('pointerover', () => {
+//         clickCursor.style.display = 'block'; // Show the custom cursor
+//     });
 
-    // Hide the custom cursor when mouse leaves the button
-    button.addEventListener('pointerout', () => {
-        clickCursor.style.display = 'none'; // Hide the custom cursor
-    });
+//     // Hide the custom cursor when mouse leaves the button
+//     button.addEventListener('pointerout', () => {
+//         clickCursor.style.display = 'none'; // Hide the custom cursor
+//     });
 
 
-});
+// });
 
 
 
@@ -2046,40 +2170,40 @@ buttons.forEach(button => {
 
 
 
-const penCursor = document.getElementById('penCursor');
-const input = document.getElementById(`name`);
+// const penCursor = document.getElementById('penCursor');
+// const input = document.getElementById(`name`);
 
 
-// Move the custom cursor based on mouse movement
-document.addEventListener('mousemove', (e) => {
-    penCursor.style.left = `${e.pageX + 20}px`;
-    penCursor.style.top = `${e.pageY + 20}px`;
-});
+// // Move the custom cursor based on mouse movement
+// document.addEventListener('mousemove', (e) => {
+//     penCursor.style.left = `${e.pageX + 20}px`;
+//     penCursor.style.top = `${e.pageY + 20}px`;
+// });
 
 
 
 
-document.addEventListener('touchstart', (e) => {
-    const touch = e.touches[0]; // Get the first touch point
+// document.addEventListener('touchstart', (e) => {
+//     const touch = e.touches[0]; // Get the first touch point
 
-    // Move the cursor to the touch position
-    penCursor.style.left = `${touch.pageX + 20}px`;
-    penCursor.style.top = `${touch.pageY + 20}px`;
+//     // Move the cursor to the touch position
+//     penCursor.style.left = `${touch.pageX + 20}px`;
+//     penCursor.style.top = `${touch.pageY + 20}px`;
 
 
-});
+// });
 
-// Loop through all the buttons and add the event listeners
+// // Loop through all the buttons and add the event listeners
 
-// Show the custom cursor when hovering over the button
-input.addEventListener('pointerover', () => {
-    penCursor.style.display = 'block'; // Show the custom cursor
-});
+// // Show the custom cursor when hovering over the button
+// input.addEventListener('pointerover', () => {
+//     penCursor.style.display = 'block'; // Show the custom cursor
+// });
 
-// Hide the custom cursor when mouse leaves the button
-input.addEventListener('pointerout', () => {
-    penCursor.style.display = 'none'; // Hide the custom cursor
-});
+// // Hide the custom cursor when mouse leaves the button
+// input.addEventListener('pointerout', () => {
+//     penCursor.style.display = 'none'; // Hide the custom cursor
+// });
 
 
 
@@ -2091,36 +2215,36 @@ input.addEventListener('pointerout', () => {
 
 
 
-const inputPicker = document.querySelectorAll(`.pcr-result`);
+// const inputPicker = document.querySelectorAll(`.pcr-result`);
 
-// Loop through all the buttons and add the event listeners
-inputPicker.forEach(button => {
-    // Show the custom cursor when hovering over the button
-    button.addEventListener('pointerover', () => {
-        penCursor.style.display = 'block'; // Show the custom cursor
-    });
+// // Loop through all the buttons and add the event listeners
+// inputPicker.forEach(button => {
+//     // Show the custom cursor when hovering over the button
+//     button.addEventListener('pointerover', () => {
+//         penCursor.style.display = 'block'; // Show the custom cursor
+//     });
 
-    // Hide the custom cursor when mouse leaves the button
-    button.addEventListener('pointerout', () => {
-        penCursor.style.display = 'none'; // Hide the custom cursor
-    });
-});
+//     // Hide the custom cursor when mouse leaves the button
+//     button.addEventListener('pointerout', () => {
+//         penCursor.style.display = 'none'; // Hide the custom cursor
+//     });
+// });
 
 
 
 
-const divs = document.querySelectorAll(`#song`);
+// const divs = document.querySelectorAll(`#song`);
 
-// Loop through all the buttons and add the event listeners
-divs.forEach(div => {
+// // Loop through all the buttons and add the event listeners
+// divs.forEach(div => {
 
-    div.style.setProperty('cursor', 'crosshair', 'important');
-    // Show the custom cursor when hovering over the button
-    div.addEventListener('scroll', () => {
-        document.getElementsByClassName('cursor')[0].style.display = 'block'; // Show the custom cursor
-    });
+//     div.style.setProperty('cursor', 'crosshair', 'important');
+//     // Show the custom cursor when hovering over the button
+//     div.addEventListener('scroll', () => {
+//         document.getElementsByClassName('cursor')[0].style.display = 'block'; // Show the custom cursor
+//     });
 
-});
+// });
 
 
 
@@ -2391,6 +2515,7 @@ arraySong.forEach((song) => {
         if (isDragging2) {
 
             document.getElementById('song').style.overflowX = 'hidden'
+            const currentAudioSong = document.getElementById(`audio${currentId}`)
 
 
             if ((event.touches[0].clientX - offsetX) < 0) {
@@ -2889,6 +3014,10 @@ document.getElementById('btnMusicBarExpand').addEventListener('click', function 
     const musicBarImg = document.getElementById('musicBarImg')
     const header = document.getElementById('140height')
     const circle = document.getElementById('musicBarCircle')
+    const screenWidth = document.documentElement.clientWidth;
+
+    console.log(screenWidth);
+    
 
 
     circle.classList.toggle('opacity')
@@ -2906,7 +3035,31 @@ document.getElementById('btnMusicBarExpand').addEventListener('click', function 
         header.style.height = '140px'
         musicBarImg.style.height = '100px'
         musicBarImg.style.width = '200px'
+        document.getElementById('musicBar').style.background = '#e9e3e346'
         window.scrollTo(0, 0);
+
+
+        if (screenWidth <= 550) {
+        
+            document.getElementById('pxMusicBar500').style.display = 'contents'
+            document.getElementById('musicBar').style.flexDirection = 'row'
+            document.getElementById('musicBarAudioTrack').style.width = '100%'
+            document.getElementById('musicBar').style.background = '#e9e3e346'
+            document.getElementById('audioVolumeMusicBar').style.marginLeft = '0px'
+            
+            
+           }
+
+        else if (screenWidth <= 900) {
+        
+            document.getElementById('pxMusicBar900').style.display = 'contents'
+            document.getElementById('musicBarAudioTrack').style.width = '100%'
+            document.getElementById('musicBar').style.background = '#e9e3e346'
+            
+           }
+
+
+          
 
         setTimeout(function () {
             divMusicBarLenght = document.getElementById('musicBarAudioTrack').offsetWidth
@@ -2921,7 +3074,31 @@ document.getElementById('btnMusicBarExpand').addEventListener('click', function 
         header.style.height = '0px'
         musicBarImg.style.height = '200px'
         musicBarImg.style.width = '400px'
+        document.getElementById('musicBar').style.background = '#000000f7'
         window.scrollTo(0, 0);
+
+
+      if (screenWidth <= 550) {
+            document.getElementById('musicBar').style.flexDirection = 'column'
+            document.getElementById('musicBarAudioTrack').style.width = '60%'
+            document.getElementById('musicBarImg').style.width = '700px'
+            document.getElementById('musicBarImg').style.height = '400px'
+            document.getElementById('musicBar').style.background = '#000000f7'
+            document.getElementById('audioVolumeMusicBar').style.marginLeft = '6px'
+           }
+
+       else if (screenWidth <= 900) {
+        
+        document.getElementById('pxMusicBar900').style.display = 'flex'
+        document.getElementById('pxMusicBar900').style.flexDirection = 'column'
+        document.getElementById('musicBarAudioTrack').style.width = '80%'
+        document.getElementById('musicBar').style.background = '#000000f7'
+
+
+       }
+
+
+      
 
         setTimeout(function () {
             divMusicBarLenght = document.getElementById('musicBarAudioTrack').offsetWidth
@@ -2929,12 +3106,9 @@ document.getElementById('btnMusicBarExpand').addEventListener('click', function 
         flagExpand = true
 
 
+
+
     }
-
-
-
-
-
 
 
 
@@ -3101,10 +3275,52 @@ arraySong.forEach(song => {
 
 
 
+
+// const parentDivMusicView = document.getElementById('imageView');
+// const childDivsMusicView = parentDivMusicView.querySelectorAll('.music-player');
+
+
+// childDivsMusicView.forEach(childDiv => {
+
+//     // Variables to track dragging state
+//     let isDragging5 = false;
+//     let startX;
+//     let scrollLeft;
+
+//     // Mouse down event (start dragging)
+//     childDiv.addEventListener('mousedown', (e) => {
+//         isDragging5 = true;
+//         startX = e.pageX - childDiv.offsetLeft; // Get the mouse position relative to the div
+//         scrollLeft = childDiv.scrollLeft; // Get the current scroll position of the div
+//         console.log('Started dragging');
+//     });
+
+//     // Mouse leave event (stop dragging if mouse leaves the element)
+//     childDiv.addEventListener('mouseleave', () => {
+//         isDragging5 = false;
+//     });
+
+//     // Mouse up event (stop dragging)
+//     childDiv.addEventListener('mouseup', () => {
+//         isDragging5 = false;
+//     });
+
+//     // Mouse move event (handle the drag)
+//     childDiv.addEventListener('mousemove', (e) => {
+//         if (!isDragging5) return; // If not dragging, do nothing
+//         const moveX = e.pageX - childDiv.offsetLeft - startX; // Calculate how much the mouse moved horizontally
+//         childDiv.scrollLeft = scrollLeft - moveX; // Update the scroll position based on the mouse movement
+//     });
+// });
+
+
+ 
+
+
 // setTimeout(function() {
 //     document.getElementById('botaoScroll').click();
 // }, 1000);  
 
 
 
-
+ 

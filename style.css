@@ -266,7 +266,7 @@ html span {
 
 
 body {
-    cursor: none;
+    cursor: url(img/cursorA.png) 16 16, default !important;   
     position: relative;
     width: 100%;
     height: 100%;
@@ -298,9 +298,9 @@ body {
 #clickCursor {
     display: none;
     position: absolute;
-    width: 30px;
+    width: 20px;
     /* Custom cursor image width */
-    height: 30px;
+    height: 20px;
     /* Custom cursor image height */
     background-image: url('img/click.gif');
     /* Replace with your image */
@@ -330,10 +330,10 @@ body {
     z-index: 9999;
     transition: transform 0.1s ease;
 }
-
+ 
 
 * {
-    cursor: none !important;
+    cursor: url(img/cursorA.png) 16 16, default !important;   
 }
 
 
@@ -343,7 +343,7 @@ body {
 
 
 html button {
-    cursor: none !important;
+    cursor: url(img/cursorA.png) 16 16, default !important;   
 }
 
 
@@ -505,6 +505,16 @@ html button {
         width: 76px;
         height: 76px;
 
+    }
+
+
+
+    #imageView .music-player {
+        flex-direction: row !important;
+        overflow-x: scroll;
+        scroll-behavior: smooth !important;
+        width: 100% !important;
+        transition: transform .3s ease-out;
     }
 
 
@@ -847,7 +857,6 @@ header {
 html ::-webkit-scrollbar {
     display: none;
 }
-
 
 .music-player {
     display: flex;
@@ -1408,6 +1417,7 @@ E FUNCIONA COM TODAS AS CONFIGURAÇÕES PORÉM POSSO MEXER NELAS  */
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+     
 }
 
 
@@ -1416,7 +1426,7 @@ E FUNCIONA COM TODAS AS CONFIGURAÇÕES PORÉM POSSO MEXER NELAS  */
     max-width: 100%;
     padding: .8em;
     width: 100%;
-    cursor: none !important;
+    cursor: url(img/cursorA.png) 16 16, default !important;   
 }
 
 
@@ -1434,17 +1444,17 @@ E FUNCIONA COM TODAS AS CONFIGURAÇÕES PORÉM POSSO MEXER NELAS  */
     left: 0;
     top: 0;
     border-radius: 20px;
-    cursor: none !important;
+    cursor: url(img/cursorA.png) 16 16, default !important;  
 
 }
 
 
 .pcr-hue {
-    cursor: none !important;
+    cursor: url(img/cursorA.png) 16 16, default !important;  
 }
 
 .pcr-slider {
-    cursor: none !important;
+    cursor: url(img/cursorA.png) 16 16, default !important;    
 }
 
 html .cropper-container {
@@ -1485,22 +1495,22 @@ html .cropper-container {
 
 
 .file-upload-button {
-    cursor: none !important;
+    cursor: url(img/cursorA.png) 16 16, default !important;   
 }
 
 html {
-    cursor: none !important;
+    cursor: url(img/cursorA.png) 16 16, default !important;    
 }
 
 html label,
 html input {
-    cursor: none !important;
+    cursor: url(img/cursorA.png) 16 16, default !important;    
 }
 
 
 
 .pcr-palette {
-    cursor: none;
+    cursor: url(img/cursorA.png) 16 16, default !important;    
 }
 
 
@@ -1523,7 +1533,7 @@ html input {
 .cropper-container,
 .cropper-view-box,
 .cropper-face {
-    cursor: crosshair !important;
+    cursor: url(img/cursorA.png) 16 16, default !important;   
 }
 
 
@@ -1680,8 +1690,13 @@ html {
     height: 10px;
     background-color: #ffffff;
     border-radius: 20px;
+    transition: all 0.5s ease-in-out; /* Smooth transition for all properties */
 }
 
+
+#pxMusicBar900{
+    transition: all 0.5s ease-in-out; /* Smooth transition for all properties */
+}
 
 @keyframes fadeInCircleMusicBar {
     0% {
@@ -1742,4 +1757,18 @@ html {
 
 
 
+@media screen and (max-width: 1180px) {
+  
+    #imageView .music-player {
+        flex-direction: column;
+        overflow-x: scroll;
+        scroll-behavior: smooth !important;
+        width: auto;
+        transition: transform .3s ease-out;
+    }
 
+}
+
+ 
+
+  
