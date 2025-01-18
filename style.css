@@ -1771,4 +1771,130 @@ html {
 
  
 
+
+
+footer {
+    background-color: #acacac69;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    /* backdrop-filter: invert(1);
+    mix-blend-mode: difference; */
+    font-family: Garamond;
+    backdrop-filter: brightness(0.5);
+  }
   
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .footer-logo h1 {
+    font-size: 36px;
+    color: #ecf0f1;
+  }
+
+  .footer-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .footer-links a {
+    color: #ecf0f1;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+  }
+  
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-social {
+    margin-top: 10px;
+    flex-direction: column;
+    display: flex;
+    margin-left: 0px;
+     
+  }
+  
+  .social-icon {
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50%;
+    margin: 0 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+   
+  
+  .footer-bottom {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #bdc3c7;
+  }
+  
+
+  .allSocial{
+display: flex;
+/* justify-content: right; */
+justify-content: center;
+  }
+
+
+  @media screen and (max-width: 1180px) {
+  
+    .footer-logo{
+        margin: 5px;
+    }
+}
+
+
+@media screen and (max-width: 1180px) {
+  
+    .footer-logo{
+        margin: 5px;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+  
+    .footer-content {
+        display: grid;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+         
+      }
+
+      .footer-logo h1 {
+        font-size: 76px;
+        color: #ecf0f1;
+    }
+
+    .footer-links a {
+        color: #ecf0f1;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 20px;
+    }
+
+    .footer-bottom {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #bdc3c7;
+    }
+
+    .allSocial img{
+        width: 70px;
+        height: 70px;
+    }
+}
+
