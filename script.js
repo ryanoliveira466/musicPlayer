@@ -2314,6 +2314,7 @@ arraySong.forEach((song) => {
         const imgMusicBar = document.getElementById('musicBarImg')
         let musicBarAudioTrackMinus30 = divMusicBarLenght - 30
         imgMusicBar.src = song.wallPaper
+        imgMusicBar.style.objectFit = song.cover
 
 
 
@@ -2447,6 +2448,7 @@ function audioBtnFunction(song) {
         const imgMusicBar = document.getElementById('musicBarImg')
         let musicBarAudioTrackMinus30 = divMusicBarLenght - 30
         imgMusicBar.src = song.wallPaper
+        imgMusicBar.style.objectFit = song.cover
 
 
 
@@ -4654,6 +4656,8 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
                 containerCover.appendChild(formCheckDiv);
             });
 
+            modalBody.appendChild(coverContainer)
+
 
 
 
@@ -4761,6 +4765,7 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
                             console.log('hsdfdsfdsfdsfds');
 
                             document.getElementById(`musicBarImg`).src = imgSrc
+                            document.getElementById(`musicBarImg`).style.objectFit = coverImgSongEdit
                         }
 
 
