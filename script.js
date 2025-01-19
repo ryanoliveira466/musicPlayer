@@ -188,6 +188,15 @@ function colorChangeNext() {
 
             document.getElementById(arrayImagesColor[i].idImg).style.objectFit = arrayImagesColor[i].cover
 
+            if(document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'scale-down' || document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'contain'){
+                document.getElementById(arrayImagesColor[i].idImg).style.padding = '1rem'
+             }
+
+             else{
+                document.getElementById(arrayImagesColor[i].idImg).style.padding = '0px'
+             }
+
+
 
             let divElement = document.getElementById(arrayImagesColor[i].div);
 
@@ -210,6 +219,9 @@ function colorChangeNext() {
             // Create a <style> element to add custom CSS rules dynamically
             let style = document.createElement('style');
             // style.id = `${arrayImagesColor[i].id}after`
+
+
+            //border-radius: 20px; AFTER BORDER RADIUS
             style.id = `after`
 
             style.innerHTML = `
@@ -220,7 +232,7 @@ function colorChangeNext() {
                  height: 100%;
                  background-color: ${arrayImagesColor[i].tint};
                  mix-blend-mode: ${arrayImagesColor[i].mix};
-                 border-radius: 20px;
+                
                  animation: 1s fadeIn ease-out forwards;
                  }
                   `;
@@ -309,6 +321,14 @@ function colorChangePrev() {
 
             document.getElementById(arrayImagesColor[i].idImg).style.objectFit = arrayImagesColor[i].cover
 
+            if(document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'scale-down' || document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'contain'){
+                document.getElementById(arrayImagesColor[i].idImg).style.padding = '1rem'
+             }
+
+             else{
+                document.getElementById(arrayImagesColor[i].idImg).style.padding = '0px'
+             }
+
 
             let divElement = document.getElementById(arrayImagesColor[i].div);
 
@@ -337,6 +357,8 @@ function colorChangePrev() {
 
 
             // Add the CSS rules for the ::after pseudo-element
+
+            //border-radius: 20px; AFTER BORDER RADIUS
             style.innerHTML = `
                  .imgGojo::after {
                   content: '';
@@ -345,7 +367,7 @@ function colorChangePrev() {
                   height: 100%;
                   background-color: ${arrayImagesColor[i].tint};
                   mix-blend-mode: ${arrayImagesColor[i].mix};
-                  border-radius: 20px;
+                  
                   animation: 1s fadeIn ease-out forwards;
                   }
                    `;
@@ -644,7 +666,18 @@ document.getElementById('colorDisplay3').addEventListener('click', function () {
 document.getElementById('btnImagem').addEventListener('click', function () {
     document.body.style.paddingRight = '0'
     document.getElementById('colorDisplay').click()
+    document.getElementById('name').value = ""
+     
 
+})
+
+
+
+document.getElementById('btnSong').addEventListener('click', function () {
+    document.body.style.paddingRight = '0'
+    document.getElementById('nameSong').value = ""
+    document.getElementById('nameArtist').value = ""
+     
 })
 
 
@@ -706,6 +739,12 @@ document.querySelectorAll('input[name="imageCoverSong"]').forEach(radio => {
 
 
 document.getElementById('buttonAcceptimg').addEventListener('click', function () {
+
+
+    constButtonRightCar = document.getElementById('buttonCarousel2').disabled = true
+    constButtonLeftCar = document.getElementById('buttonCarousel1').disabled = true
+
+
 
 
     let id = document.getElementById('name').value.trim();
@@ -871,10 +910,79 @@ document.getElementById('buttonAcceptimg').addEventListener('click', function ()
 
 
 
+    const actualActive = document.getElementsByClassName('carousel-item active')[0]
+    const flowUpdate =  document.getElementById(id)
+
+    actualActive.classList.remove('active')
+    flowUpdate.classList.add('active')
+
+    console.log('asdadsadsadasdd', i);
+    //DANGER
+
+      document.getElementById(arrayImagesColor[i].idImg).style.objectFit = arrayImagesColor[i].cover
+
+                        if(document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'scale-down' || document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'contain'){
+                            document.getElementById(arrayImagesColor[i].idImg).style.padding = '1rem'
+                         }
+
+                         else{
+                            document.getElementById(arrayImagesColor[i].idImg).style.padding = '0px'
+                         }
+
+
+                        let divElement = document.getElementById(arrayImagesColor[i].div);
+
+                        divElement.style.backgroundImage = arrayImagesColor[i].color;
+                        divElement.style.animation = '1s fadeIn ease-out forwards';
+
+                        divElement.addEventListener("animationend", function () {
+                            document.body.style.backgroundImage = arrayImagesColor[i].color;
+                            divElement.style.animation = 'none';
+                        });
+
+
+
+                        try {
+                            let removeStyleLoop = document.getElementById('after')
+                            document.head.removeChild(removeStyleLoop)
+                        } catch (error) {
+
+                        }
+
+
+                        // Create a <style> element to add custom CSS rules dynamically
+                        let style = document.createElement('style');
+                        style.id = `after`
+
+                        //border-radius: 20px; AFTER BORDER RADIUS
+
+                        style.innerHTML = `
+                         .imgGojo::after {
+                             content: '';
+                             position: absolute;
+                             width: 100%;
+                             height: 100%;
+                             background-color: ${arrayImagesColor[i].tint};
+                             mix-blend-mode: ${arrayImagesColor[i].mix};
+                           
+                             animation: 1s fadeIn ease-out forwards;
+                             }
+                              `;
+
+
+
+                        // Append the style element to the document head
+                        document.head.appendChild(style);
 
 
     document.getElementById('btnCloseModalImagem').click()
     document.getElementById('name').value = ''
+
+    setTimeout(function(){
+        constButtonRightCar = document.getElementById('buttonCarousel2').disabled = false
+    constButtonLeftCar = document.getElementById('buttonCarousel1').disabled = false
+
+    },2000)
 
 })
 
@@ -1615,6 +1723,14 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
                         document.getElementById(arrayImagesColor[i].idImg).style.objectFit = arrayImagesColor[i].cover
 
+                        if(document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'scale-down' || document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'contain'){
+                            document.getElementById(arrayImagesColor[i].idImg).style.padding = '1rem'
+                         }
+
+                         else{
+                            document.getElementById(arrayImagesColor[i].idImg).style.padding = '0px'
+                         }
+
 
                         let divElement = document.getElementById(arrayImagesColor[i].div);
 
@@ -1640,6 +1756,8 @@ document.getElementById('btnView'), addEventListener('click', function () {
                         let style = document.createElement('style');
                         style.id = `after`
 
+                        //border-radius: 20px; AFTER BORDER RADIUS
+
                         style.innerHTML = `
                          .imgGojo::after {
                              content: '';
@@ -1648,7 +1766,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
                              height: 100%;
                              background-color: ${arrayImagesColor[i].tint};
                              mix-blend-mode: ${arrayImagesColor[i].mix};
-                             border-radius: 20px;
+                           
                              animation: 1s fadeIn ease-out forwards;
                              }
                               `;
@@ -1916,7 +2034,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
                     const croppedImageURL = canvas.toDataURL('image/png');
 
                     // Apply border-radius to the cropped image using a temporary canvas
-                    const radius = 20; // Set the border-radius here
+                    const radius = 20; // Set the border-radius here  //////const radius = 20 CHECKPOINT CROPPER
 
                     // Create a temporary canvas to apply the border-radius effect
                     let tempCanvas = document.createElement('canvas');
@@ -4599,7 +4717,7 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
 
             const coverContainer = document.createElement('div');
             // Set the ID for the div
-            coverContainer.id = 'cover-container';
+            coverContainer.id = 'cover-containerSong';
             // Apply the styles
             coverContainer.style.display = 'flex';
             coverContainer.style.justifyContent = 'center';
@@ -4621,7 +4739,7 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
             ];
 
             // Get the parent container to append radio buttons
-            const containerCover = document.getElementById('cover-container');
+            const containerCover = document.getElementById('cover-containerSong');
 
             // Loop through the blend modes array and create radio buttons dynamically
             coverModes.forEach((mode, index) => {
@@ -4895,7 +5013,7 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
                     const croppedImageURL = canvas.toDataURL('image/png');
 
                     // Apply border-radius to the cropped image using a temporary canvas
-                    const radius = 20; // Set the border-radius here
+                    const radius = 20; // Set the border-radius here //////const radius = 20 CHECKPOINT CROPPER
 
                     // Create a temporary canvas to apply the border-radius effect
                     let tempCanvas = document.createElement('canvas');
@@ -4992,12 +5110,12 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
 
 
 
- document.getElementById('musicBarCircle').addEventListener('mousedown', function () {
+document.getElementById('musicBarCircle').addEventListener('mousedown', function () {
 
-     
-    
 
-    if(document.getElementById(currentAudioPlaying).paused === true){
+
+
+    if (document.getElementById(currentAudioPlaying).paused === true) {
         document.body.addEventListener('mouseup', function () {
 
             document.getElementById('audioPauseMusicBar').style.display = 'flex'
@@ -5005,19 +5123,19 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
 
             document.getElementById(currentBtnPause).style.display = 'flex'
             document.getElementById(currentBtnPlay).style.display = 'none'
-         
-        
-          
 
-        },{ once: true })
+
+
+
+        }, { once: true })
     }
 
-     
- })
 
- document.getElementById('musicBarCircle').addEventListener('touchstart', function () {
+})
 
-    if(document.getElementById(currentAudioPlaying).paused === true){
+document.getElementById('musicBarCircle').addEventListener('touchstart', function () {
+
+    if (document.getElementById(currentAudioPlaying).paused === true) {
         document.body.addEventListener('touchend', function () {
 
             document.getElementById('audioPauseMusicBar').style.display = 'flex'
@@ -5025,13 +5143,286 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
 
             document.getElementById(currentBtnPause).style.display = 'flex'
             document.getElementById(currentBtnPlay).style.display = 'none'
-         
-        
-          
 
-        },{ once: true })
+
+
+
+        }, { once: true })
     }
 
-     
 
- })
+
+})
+
+
+
+
+
+
+
+document.getElementById('searchBar').addEventListener('click', function () {
+
+    this.disabled = true
+    document.getElementById('searchBarSearching').value = ""
+    document.getElementById('resultSearching').innerHTML = ""
+     for (var i = 0; i < arraySong.length; i++) {
+                const patternResultSearchingDiv = document.createElement('div');
+                patternResultSearchingDiv.classList.add('patternResultSearching');
+    
+                // Create the image element
+                const patternResultSearchingImg = document.createElement('img');
+                patternResultSearchingImg.classList.add('patternResultSearchingImg');
+                patternResultSearchingImg.id = `patternResultSearchingImg${arraySong[i].nameSong}`;
+                patternResultSearchingImg.src = arraySong[i].wallPaper;
+                patternResultSearchingImg.style.objectFit = arraySong[i].cover;
+                patternResultSearchingImg.alt = '';
+    
+                // Create the title div
+                const patternResultSearchingTitleDiv = document.createElement('div');
+                patternResultSearchingTitleDiv.classList.add('patternResultSearchingTitle');
+    
+                // Create the h3 element
+                const patternResultSearchingTitle = document.createElement('h3');
+                patternResultSearchingTitle.textContent = arraySong[i].title;
+    
+                // Append the title and image to their respective parent elements
+                patternResultSearchingTitleDiv.appendChild(patternResultSearchingTitle);
+                patternResultSearchingDiv.appendChild(patternResultSearchingImg);
+                patternResultSearchingDiv.appendChild(patternResultSearchingTitleDiv);
+    
+                document.getElementById('resultSearching').appendChild(patternResultSearchingDiv);   
+        }
+
+    const bar = document.getElementById('searchBarSearching')
+    const imgSearch = document.getElementsByClassName('imgSearchSarching')[0]
+    const button = document.getElementById('searchingDivExpand')
+    const allItems = document.getElementsByClassName('searchingDivHeader')[0]
+    const resultDiv = document.getElementById('resultSearching')
+
+    const searchDiv = document.getElementById('searchingDiv')
+    if (searchDiv.style.height = '0%') {
+        searchDiv.style.height = '100%'
+        allItems.style.display = 'flex'
+        resultDiv.style.display = 'flex'
+    }
+
+    else {
+        searchDiv.style.height = '0%'
+        allItems.style.display = 'none'
+        resultDiv.style.display = 'none'
+    }
+
+
+    bar.classList.toggle('opacity')
+    imgSearch.classList.toggle('opacity')
+    button.classList.toggle('opacity')
+    resultDiv.classList.toggle('opacity')
+
+    setTimeout(function () {
+        bar.classList.remove('opacity')
+        imgSearch.classList.remove('opacity')
+        button.classList.remove('opacity')
+        resultDiv.classList.remove('opacity')
+    }, 1000);
+
+
+})
+
+
+
+
+
+document.getElementById('searchingDivExpand').addEventListener('click', function () {
+
+    document.getElementById('searchBar').disabled = false
+
+   
+
+    const buttonExpand = this;  // "this" refers to the button that was clicked
+
+    // Disable the button
+    buttonExpand.disabled = true;
+
+    // Set a timeout to enable the button after 1 second
+    setTimeout(function () {
+        buttonExpand.disabled = false;
+    }, 1000); // 1000 milliseconds = 1 second
+
+
+    const bar = document.getElementById('searchBarSearching')
+    const imgSearch = document.getElementsByClassName('imgSearchSarching')[0]
+    const button = document.getElementById('searchingDivExpand')
+
+    const allItems = document.getElementsByClassName('searchingDivHeader')[0]
+    const searchDiv = document.getElementById('searchingDiv')
+    const resultDiv = document.getElementById('resultSearching')
+
+
+    bar.classList.toggle('opacityRemove')
+    imgSearch.classList.toggle('opacityRemove')
+    button.classList.toggle('opacityRemove')
+    resultDiv.classList.toggle('opacityRemove')
+
+
+
+    // Set a timeout to enable the button after 1 second
+    setTimeout(function () {
+        allItems.style.display = 'none'
+        resultDiv.style.display = 'none'
+        searchDiv.style.height = '0%'
+        bar.classList.remove('opacityRemove')
+        imgSearch.classList.remove('opacityRemove')
+        button.classList.remove('opacityRemove')
+        resultDiv.classList.toggle('opacityRemove')
+    }, 1000); // 1000 milliseconds = 1 second
+
+    setTimeout(function(){
+        window.scrollTo(0, 0);
+    }, 1200)
+
+
+
+
+})
+
+
+
+document.getElementById('searchBarSearching').addEventListener('input', function () {
+
+    document.getElementById('resultSearching').innerHTML = ""
+    let textFromInput = document.getElementById('searchBarSearching').value
+
+
+    function normalizeString(str) {
+        // Normalize and handle diacritical marks, and manually replace specific characters
+        return str
+            .normalize("NFD")  // Normalize to decompose accented characters
+            .replace(/[\u0300-\u036f]/g, '')  // Remove diacritical marks (accents)
+            
+            // Manually replace specific accented characters and diacritic marks
+            .replace(/à/g, 'a').replace(/á/g, 'a').replace(/â/g, 'a').replace(/ã/g, 'a').replace(/ä/g, 'a').replace(/å/g, 'a').replace(/ā/g, 'a')
+            .replace(/ç/g, 'c').replace(/è/g, 'e').replace(/é/g, 'e').replace(/ê/g, 'e').replace(/ë/g, 'e')
+            .replace(/ì/g, 'i').replace(/í/g, 'i').replace(/î/g, 'i').replace(/ï/g, 'i')
+            .replace(/ñ/g, 'n')
+            .replace(/ò/g, 'o').replace(/ó/g, 'o').replace(/ô/g, 'o').replace(/õ/g, 'o').replace(/ö/g, 'o').replace(/ø/g, 'o')
+            .replace(/ù/g, 'u').replace(/ú/g, 'u').replace(/û/g, 'u').replace(/ü/g, 'u')
+            .replace(/ý/g, 'y').replace(/ÿ/g, 'y')
+            
+            // Uppercase mappings
+            .replace(/À/g, 'A').replace(/Á/g, 'A').replace(/Â/g, 'A').replace(/Ã/g, 'A').replace(/Ä/g, 'A').replace(/Å/g, 'A').replace(/Ā/g, 'A')
+            .replace(/Ç/g, 'C').replace(/È/g, 'E').replace(/É/g, 'E').replace(/Ê/g, 'E').replace(/Ë/g, 'E')
+            .replace(/Ì/g, 'I').replace(/Í/g, 'I').replace(/Î/g, 'I').replace(/Ï/g, 'I')
+            .replace(/Ñ/g, 'N')
+            .replace(/Ò/g, 'O').replace(/Ó/g, 'O').replace(/Ô/g, 'O').replace(/Õ/g, 'O').replace(/Ö/g, 'O').replace(/Ø/g, 'O')
+            .replace(/Ù/g, 'U').replace(/Ú/g, 'U').replace(/Û/g, 'U').replace(/Ü/g, 'U')
+            .replace(/Ý/g, 'Y').replace(/Λ/g, 'A')
+            
+            // Polish-specific letters
+            .replace(/ł/g, 'l').replace(/Ł/g, 'L')
+            
+            // Caron (háček) characters (Č, Š, Ž, etc.)
+            .replace(/š/g, 's').replace(/Š/g, 'S').replace(/ž/g, 'z').replace(/Ž/g, 'Z').replace(/č/g, 'c').replace(/Č/g, 'C')
+            .replace(/ć/g, 'c').replace(/Ć/g, 'C').replace(/đ/g, 'd').replace(/Đ/g, 'D')
+    
+            // Double acute accent characters
+            .replace(/ő/g, 'o').replace(/Ő/g, 'O').replace(/ű/g, 'u').replace(/Ű/g, 'U')
+
+              // Remove non-alphanumeric characters (like spaces, punctuation, dashes)
+            .replace(/[^a-z0-9]/gi, '');  // Removes anything that's not a letter or number
+    }
+    
+    function filterSearch(inputValue, targetString) {
+        // Normalize both the input and target strings
+        const normalizedInput = normalizeString(inputValue).toLowerCase().trim();
+        const normalizedTarget = normalizeString(targetString).toLowerCase().trim();
+    
+        let finalTrueOrFalse;
+        // Check if the normalized input is a prefix of the normalized target
+        if(normalizedTarget.startsWith(normalizedInput) == true || normalizedTarget.includes(normalizedInput) == true){
+            finalTrueOrFalse = true
+        }
+    
+        else{
+            finalTrueOrFalse = false
+        }
+    
+        return finalTrueOrFalse
+    }
+
+  
+    
+  
+ 
+
+    if(textFromInput == ""){
+        for (var i = 0; i < arraySong.length; i++) {
+                const patternResultSearchingDiv = document.createElement('div');
+                patternResultSearchingDiv.classList.add('patternResultSearching');
+    
+                // Create the image element
+                const patternResultSearchingImg = document.createElement('img');
+                patternResultSearchingImg.classList.add('patternResultSearchingImg');
+                patternResultSearchingImg.id = `patternResultSearchingImg${arraySong[i].nameSong}`;
+                patternResultSearchingImg.src = arraySong[i].wallPaper;
+                patternResultSearchingImg.alt = '';
+    
+                // Create the title div
+                const patternResultSearchingTitleDiv = document.createElement('div');
+                patternResultSearchingTitleDiv.classList.add('patternResultSearchingTitle');
+    
+                // Create the h3 element
+                const patternResultSearchingTitle = document.createElement('h3');
+                patternResultSearchingTitle.textContent = arraySong[i].title;
+    
+                // Append the title and image to their respective parent elements
+                patternResultSearchingTitleDiv.appendChild(patternResultSearchingTitle);
+                patternResultSearchingDiv.appendChild(patternResultSearchingImg);
+                patternResultSearchingDiv.appendChild(patternResultSearchingTitleDiv);
+    
+                document.getElementById('resultSearching').appendChild(patternResultSearchingDiv);   
+        }
+    }
+
+    
+
+    else{
+
+       
+    
+        
+
+        for (var i = 0; i < arraySong.length; i++) {
+            if (filterSearch(textFromInput,arraySong[i].title) == true) {
+
+                const patternResultSearchingDiv = document.createElement('div');
+                patternResultSearchingDiv.classList.add('patternResultSearching');
+    
+                // Create the image element
+                const patternResultSearchingImg = document.createElement('img');
+                patternResultSearchingImg.classList.add('patternResultSearchingImg');
+                patternResultSearchingImg.id = `patternResultSearchingImg${arraySong[i].nameSong}`;
+                patternResultSearchingImg.src = arraySong[i].wallPaper;
+                patternResultSearchingImg.alt = '';
+    
+                // Create the title div
+                const patternResultSearchingTitleDiv = document.createElement('div');
+                patternResultSearchingTitleDiv.classList.add('patternResultSearchingTitle');
+    
+                // Create the h3 element
+                const patternResultSearchingTitle = document.createElement('h3');
+                patternResultSearchingTitle.textContent = arraySong[i].title;
+    
+                // Append the title and image to their respective parent elements
+                patternResultSearchingTitleDiv.appendChild(patternResultSearchingTitle);
+                patternResultSearchingDiv.appendChild(patternResultSearchingImg);
+                patternResultSearchingDiv.appendChild(patternResultSearchingTitleDiv);
+    
+                document.getElementById('resultSearching').appendChild(patternResultSearchingDiv);
+    
+            }
+        }
+    
+    }
+
+ 
+})
