@@ -102,15 +102,22 @@ input[type="image"] {
 
                     <div class="itemAdd">
                         <button class="btn btn btnOptions" id="btnSong"><img src="img/plus.png" style="border-radius: 0px;object-fit: none;"
-                                width="80px" height="80px" alt="" srcset=""></button>
-                        <p style="margin: 1rem;" aria-describedby="">Song</p>
+                                width="80px" height="80px" alt="" data-bs-toggle="modal" data-bs-target="#exampleModalSong" srcset=""></button>
+                        <p style="margin: 1rem;" aria-describedby="btnSong">Song</p>
                     </div>
 
                     <div class="itemAdd">
                         <button class="btn btn btnOptions" id="btnView"><img src="img/viewEye.png"
                                 style="border-radius: 10px;object-fit: cover;" width="82px" height="80px" alt=""
                                 data-bs-toggle="modal" data-bs-target="#exampleModalView" srcset=""></button>
-                        <p style="margin: 1rem;" for="btnView">View</p>
+                        <p style="margin: 1rem;" for="btnView">View Image</p>
+                    </div>
+
+                    <div class="itemAdd">
+                        <button class="btn btn btnOptions" id="btnViewSong"><img src="img/logo.png"
+                                style="border-radius: 10px;object-fit: cover;" width="82px" height="80px" alt=""
+                                data-bs-toggle="modal" data-bs-target="#exampleModalViewSong" srcset=""></button>
+                        <p style="margin: 1rem;" for="btnView">View Song</p>
                     </div>
 
                    
@@ -150,7 +157,7 @@ input[type="image"] {
                             <label for="image-upload">Choose an image to upload:</label>
                             <input type="file" style="font-size: x-large; display: none;" id="image-upload"  accept="image/*"
                                 onchange="">
-                            <br><br>
+                            
                         </form>
                     </div>
 
@@ -195,6 +202,8 @@ input[type="image"] {
                             <p>Color 3: <span id="colorValue3" style="display: none;">#ff0000</span></p>
                             <div id="colorDisplay3" class="color-display" style="background-color: #ff0000;"></div>
                         </div>
+
+                        
 
                     </div>
 
@@ -499,6 +508,73 @@ input[type="image"] {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal VIEW SONG -->
+<div class="modalRef fade modal" data-bs-theme="dark" id="exampleModalViewSong" tabindex="-1"
+aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content" style="font-family: Garamond; font-size: xxx-large;">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+
+        </div>
+        <div class="modal-body" id="modal-body-img" style="color: rgb(218, 223, 223); position: relative;">
+
+            <div id="imageViewSong">
+
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn-close" id="btnCloseModalViewSong" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Vertically centered modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- Vertically centered modal -->
 
     <!-- Modal EDIT -->
@@ -585,6 +661,384 @@ input[type="image"] {
     </div>
 
     <!-- Vertically centered modal -->
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Modal EDIT SONG -->
+    <div class="modalRef fade modal" data-bs-theme="dark" id="exampleModalSongEdit" tabindex="-1"
+    aria-labelledby="exampleModalSongEditLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="font-family: Garamond; font-size: xxx-large;">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalSongEditLabel"></h1>
+
+            </div>
+            <div class="modal-body" id="modal-body-songEdit" style="color: rgb(218, 223, 223); position: relative;">
+
+                <div class="itemAdd">
+                    <form id="upload-formSongEdit" enctype="multipart/form-data">
+                        <label for="image-uploadSongEdit">Choose an image to upload:</label>
+                        <input type="file" style="font-size: x-large; display: none;" id="image-uploadSongEdit"  accept="image/*"
+                            onchange="">
+                        <br><br>
+                    </form>
+                </div>
+
+
+                <div class="itemAdd">
+                   <form id="upload-formSongEdit" enctype="multipart/form-data">
+                       <label for="audio-uploadSongEdit">Choose an audio file to upload:</label>
+                       <input type="file" style="font-size: x-large; display: none;" id="audio-uploadSongEdit" accept="audio/mp3, audio/*"
+                           onchange="">
+                       <br><br>
+
+                       <p id="song-nameEdit" style="display: none; font-size: 16px;"></p>
+                   </form>
+               </div>
+               
+
+
+                <div class="preview-container" id="preview-containerSongEdit" style="width: 100%; height: 500px;">
+                    <img id="image-previewSongEdit" class="rounded"
+                        style="padding: 0.5rem; border-radius: 5px;object-fit: scale-down;" src="img/notFound.jpg"
+                        alt="Image Preview">
+                </div>
+
+                <div class="itemAdd" style="justify-content: center;">
+                    <input type="text" class="form-control" id="nameSongEdit" style="padding: 1rem; font-size: unset;"
+                        placeholder="Name:">
+                </div>
+
+                <div class="itemAdd" style="justify-content: center;">
+                   <input type="text" class="form-control" id="nameArtistEdit" style="padding: 1rem; font-size: unset;"
+                       placeholder="Artist:">
+               </div>
+
+
+            <br>
+
+            <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; flex-direction: row; font-size: x-large;">
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="imageCoverSongEdit" id="imageCoverSongEdit1" value="fill">
+                    <label class="form-check-label" for="imageCoverSongEdit1">
+                        fill
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="imageCoverSongEdit" id="imageCoverSongEdit2" value="contain">
+                    <label class="form-check-label" for="imageCoverSongEdit2">
+                        contain
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="imageCoverSongEdit" id="imageCoverSongEdit3" value="cover" checked>
+                    <label class="form-check-label" for="imageCoverSongEdit3">
+                        cover
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="imageCoverSongEdit" id="imageCoverSongEdit4" value="scale-down">
+                    <label class="form-check-label" for="imageCoverSongEdit4">
+                        scale-down
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="imageCoverSongEdit" id="imageCoverSongEdit5" value="none">
+                    <label class="form-check-label" for="imageCoverSongEdit5">
+                        none
+                    </label>
+                </div>
+
+            </div>
+
+            <br>
+
+
+
+
+           
+
+
+
+
+                <div style="display: flex; width: 100%; padding: 8px;justify-content: center; align-items: center;">
+                    <button id="buttonAcceptimgSongEdit" class="btn btn-secondary" style="font-size: xx-large;">
+                        <img src="img/save.png" alt="" srcset="" width="90px" height="90px">
+                    </button>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-close" id="btnCloseModalSongEdit" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Vertically centered modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <!-- Modal IMAGENS SONG -->
+     <div class="modalRef fade modal" data-bs-theme="dark" id="exampleModalSong" tabindex="-1"
+     aria-labelledby="exampleModalSongLabel" aria-hidden="true">
+     <div class="modal-dialog">
+         <div class="modal-content" style="font-family: Garamond; font-size: xxx-large;">
+             <div class="modal-header">
+                 <h1 class="modal-title fs-5" id="exampleModalSongLabel"></h1>
+
+             </div>
+             <div class="modal-body" id="modal-body-song" style="color: rgb(218, 223, 223); position: relative;">
+
+                 <div class="itemAdd">
+                     <form id="upload-formSong" enctype="multipart/form-data">
+                         <label for="image-uploadSong">Choose an image to upload:</label>
+                         <input type="file" style="font-size: x-large; display: none;" id="image-uploadSong"  accept="image/*"
+                             onchange="">
+                          
+                     </form>
+                 </div>
+
+
+                 <div class="itemAdd">
+                    <form id="upload-formSong" enctype="multipart/form-data">
+                        <label for="audio-uploadSong">Choose an audio file to upload:</label>
+                        <input type="file" style="font-size: x-large; display: none;" id="audio-uploadSong" accept="audio/mp3, audio/*"
+                            onchange="">
+                    
+
+                        <p id="song-name" style="display: none; font-size: 16px;"></p>
+                    </form>
+                </div>
+                
+
+
+                 <div class="preview-container" id="preview-containerSong" style="width: 100%; height: 500px;">
+                     <img id="image-previewSong" class="rounded"
+                         style="padding: 0.5rem; border-radius: 5px;object-fit: scale-down;" src="img/notFound.jpg"
+                         alt="Image Preview">
+                 </div>
+
+                 <div class="itemAdd" style="justify-content: center;">
+                     <input type="text" class="form-control" id="nameSong" style="padding: 1rem; font-size: unset;"
+                         placeholder="Name:">
+                 </div>
+
+                 <div class="itemAdd" style="justify-content: center;">
+                    <input type="text" class="form-control" id="nameArtist" style="padding: 1rem; font-size: unset;"
+                        placeholder="Artist:">
+                </div>
+
+
+             <br>
+
+             <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; flex-direction: row; font-size: x-large;">
+
+                 <div class="form-check">
+                     <input class="form-check-input" type="radio" name="imageCoverSong" id="imageCoverSong1" value="fill">
+                     <label class="form-check-label" for="imageCoverSong1">
+                         fill
+                     </label>
+                 </div>
+                 <div class="form-check">
+                     <input class="form-check-input" type="radio" name="imageCoverSong" id="imageCoverSong2" value="contain">
+                     <label class="form-check-label" for="imageCoverSong2">
+                         contain
+                     </label>
+                 </div>
+                 <div class="form-check">
+                     <input class="form-check-input" type="radio" name="imageCoverSong" id="imageCoverSong3" value="cover" checked>
+                     <label class="form-check-label" for="imageCoverSong3">
+                         cover
+                     </label>
+                 </div>
+                 <div class="form-check">
+                     <input class="form-check-input" type="radio" name="imageCoverSong" id="imageCoverSong4" value="scale-down">
+                     <label class="form-check-label" for="imageCoverSong4">
+                         scale-down
+                     </label>
+                 </div>
+                 <div class="form-check">
+                     <input class="form-check-input" type="radio" name="imageCoverSong" id="imageCoverSong5" value="none">
+                     <label class="form-check-label" for="imageCoverSong5">
+                         none
+                     </label>
+                 </div>
+
+             </div>
+
+             <br>
+
+
+
+
+            
+
+
+
+
+                 <div style="display: flex; width: 100%; padding: 8px;justify-content: center; align-items: center;">
+                     <button id="buttonAcceptimgSong" class="btn btn-secondary" style="font-size: xx-large;">
+                         <img src="img/save.png" alt="" srcset="" width="90px" height="90px">
+                     </button>
+                 </div>
+
+
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn-close" id="btnCloseModalSong" data-bs-dismiss="modal"
+                     aria-label="Close"></button>
+             </div>
+         </div>
+     </div>
+ </div>
+
+
+<!-- Modal IMAGENS SONG -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -844,11 +1298,11 @@ input[type="image"] {
                     <div class="music-player" id="music-player">
                         <!-- <div class="backgroundGif"></div> -->
                         
-                        <img src="img/teste/maxresdefault (1).jpg" class="musicImg" alt="Album Cover">
+                        <img src="img/teste/maxresdefault (1).jpg" id="coverImagePlaylist1" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
-                            <h3>XYLØ - Blue Light</h3>
+                            <h3 id="titlePlaylist1">XYLØ - Blue Light</h3>
                         </div>
-                        <p id="artist" class="artist">XYLØ</p>
+                        <p id="artistPlaylist1" class="artist">XYLØ</p>
 
                         <div class="audio-player">
 
@@ -875,11 +1329,11 @@ input[type="image"] {
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/teste/Łaszewo.jpg" class="musicImg" alt="Album Cover">
+                        <img src="img/teste/Łaszewo.jpg" id="coverImagePlaylist2" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
-                            <h3>Łaszewo - Don't Walk Away (feat. KEEVΛ)</h3>
+                            <h3 id="titlePlaylist2">Łaszewo - Don't Walk Away (feat. KEEVΛ)</h3>
                         </div>
-                        <p id="artist">Łaszewo</p>
+                        <p id="artistPlaylist2" class="artist">Łaszewo</p>
                         <div class="audio-player">
                             <button class="btn btnPlay" id="audioPlay2"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
                             <button class="btn btnPause" style="display: none;" id="audioPause2"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
@@ -903,11 +1357,11 @@ input[type="image"] {
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/teste/xKM-jgaOW2Y-HD.jpg" class="musicImg" alt="Album Cover">
+                        <img src="img/teste/xKM-jgaOW2Y-HD.jpg" id="coverImagePlaylist3" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
-                            <h3>Dabin - Alive (feat. RUNN)</h3>
+                            <h3 id="titlePlaylist3">Dabin - Alive (feat. RUNN)</h3>
                         </div>
-                        <p id="artist">Dabin</p>
+                        <p id="artistPlaylist3" class="artist">Dabin</p>
                         <div class="audio-player">
                             <button class="btn btnPlay" id="audioPlay3"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
                             <button class="btn btnPause" style="display: none;" id="audioPause3"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
@@ -933,11 +1387,11 @@ input[type="image"] {
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/teste/jacek-babinski-img-8028-2afxxxxx.jpg" class="musicImg" alt="Album Cover">
+                        <img src="img/teste/jacek-babinski-img-8028-2afxxxxx.jpg" id="coverImagePlaylist4" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
-                            <h3>Far Out - Lost With You (feat. Ruby Chase)</h3>
+                            <h3 id="titlePlaylist4">Far Out - Lost With You (feat. Ruby Chase)</h3>
                         </div>
-                        <p id="artist">Far Out</p>
+                        <p id="artistPlaylist4" class="artist">Far Out</p>
                         <div class="audio-player">
                             <button class="btn btnPlay" id="audioPlay4"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
                             <button class="btn btnPause" style="display: none;" id="audioPause4"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
@@ -963,11 +1417,11 @@ input[type="image"] {
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/teste/karmen-loh-clementine-withlogo-compressed.jpg" class="musicImg" alt="Album Cover">
+                        <img src="img/teste/karmen-loh-clementine-withlogo-compressed.jpg" id="coverImagePlaylist5" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
-                            <h3>Módl - Clementine</h3>
+                            <h3 id="titlePlaylist5">Módl - Clementine</h3>
                         </div>
-                        <p id="artist">Módl</p>
+                        <p id="artistPlaylist5" class="artist">Módl</p>
                         <div class="audio-player">
                             <button class="btn btnPlay" id="audioPlay5"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
                             <button class="btn btnPause" style="display: none;" id="audioPause5"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
@@ -995,11 +1449,11 @@ input[type="image"] {
 
                 <div>
                     <div class="music-player" id="music-player">
-                        <img src="img/teste/maxresdefault.jpg" class="musicImg" alt="Album Cover">
+                        <img src="img/teste/maxresdefault.jpg" id="coverImagePlaylist6" class="musicImg" alt="Album Cover">
                         <div class="music-info" id="music-info">
-                            <h3>Said The Sky - Erase Me (feat. NÉONHÈART)</h3>
+                            <h3 id="titlePlaylist6">Said The Sky - Erase Me (feat. NÉONHÈART)</h3>
                         </div>
-                        <p id="artist">Said The Sky</p>
+                        <p id="artistPlaylist6" class="artist">Said The Sky</p>
                         <div class="audio-player">
                             <button class="btn btnPlay" id="audioPlay6"><img src="img/play.png" alt="" srcset="" width="30px" height="30px"></button>
                             <button class="btn btnPause" style="display: none;" id="audioPause6"><img src="img/pause.png" alt="" srcset="" width="30px" height="30px"></button>
