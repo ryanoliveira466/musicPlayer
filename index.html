@@ -33,6 +33,57 @@
         }
       </style> -->
 
+      <style id="afterExpand">
+   
+  #imgExpand {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    position: relative;
+  }
+
+
+  #resultImgExpand {
+    display: none;  
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgb(0, 0, 0);  
+    top: 0;
+    left: 0;
+    z-index: 9900;
+  }
+
+   
+  #divImageExpand {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } 
+  
+  #divImageExpand::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: darken;
+    background-color: rgba(33, 8, 255, 0.952); /* Blue overlay */
+    animation: fadeIn 1s ease-out forwards;
+    z-index: 9900;
+  }
+
+
+ 
+      </style>
+
 
       <style>
         * {
@@ -60,11 +111,24 @@ input[type="image"] {
 
 <body>
 
+    <canvas id="myCanvas" style="display: none;"></canvas>
+    
+
+    <div id="blackCover"></div>
+   
+    <div id="resultImgExpand">
+        <div id="divImageExpand">
+            <button class="btn btnOptions" id="expandColoredImageBtnBack"><img src="img/expandColoredImage.png" alt="" srcset=""></button>
+            <button class="btn btnOptions" id="expandColoredImageBtnHide"><img src="img/hide.png" width="30px" height="30px" alt="" srcset=""></button>
+            <img id="imgExpand" src="img/teste/maxresdefault (1).jpg" alt="Expanded Image">
+         </div>
+    </div>
+
     <!-- <div class="cursor" id="cursor"></div>
     <div id="clickCursor"></div>
     <div id="penCursor"></div> -->
 
-    <button class="btn btn-danger" id="scroll" style="display: none;">testeScrol</button>
+    <button class="" id="scroll" style="display: none;">testeScrol</button>
     <button id="botaoScroll" style="display: none;">reset</button>
     
 
@@ -477,10 +541,10 @@ input[type="image"] {
     <!-- Vertically centered modal -->
 
     <!-- Modal VIEW -->
-    <div class="modalRef fade modal" data-bs-theme="dark" id="exampleModalView" tabindex="-1"
+    <div class="modalRef fade modal" data-bs-theme="dark" id="exampleModalView"  tabindex="-1"
         aria-labelledby="exampleModalViewLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content" style="font-family: Garamond; font-size: xxx-large;">
+            <div class="modal-content" id="scrollSongImg" style="font-family: Garamond; font-size: xxx-large;">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
 
@@ -527,7 +591,7 @@ input[type="image"] {
 <div class="modalRef fade modal" data-bs-theme="dark" id="exampleModalViewSong" tabindex="-1"
 aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
 <div class="modal-dialog">
-    <div class="modal-content" style="font-family: Garamond; font-size: xxx-large;">
+    <div class="modal-content" id="scrollSong" style="font-family: Garamond; font-size: xxx-large;">
         <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
 
@@ -1062,7 +1126,7 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
                     aria-label="Close"></button>
             </div>
             <div class="toast-body" style="color: aliceblue;">
-                <p style="font-size: xx-large;">Empty spaces/img not allowed!</p>
+                <p id="changeTextToast" style="font-size: xx-large;">Empty spaces/img not allowed!</p>
             </div>
         </div>
     </div>
@@ -1092,6 +1156,73 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+<!-- AHHHHHHHHHHHHHHHHHHHHHHHHHH -->
+
+
+ <!-- Button to show toast -->
+ <button type="button" class="btn btn-primary" id="liveToastBtnDelete" style="display: none;">Show live toast</button>
+
+ <!-- Toast container -->
+ <div class="toast-container position-fixed bottom-0 end-0 p-3" data-bs-theme="dark" id="toatsAlert">
+     <div id="liveToastDelete" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+         <div class="toast-header">
+             <img src="img/alert.png" class="rounded me-2" alt="..." width="100px" height="100px">
+             <strong class="me-auto">
+                 <p style="font-size: xx-large;">Alert</p>
+             </strong>
+             <small>
+                 <p style="font-size: x-large;">Now</p>
+             </small>
+             <button type="button" class="btn-close" id="liveToastBtnClose" data-bs-dismiss="toast"
+                 aria-label="Close"></button>
+         </div>
+         <div class="toast-body" style="color: aliceblue;">
+             <p id="changeTextToast" style="font-size: xx-large;">Not allowed to delete</p>
+         </div>
+     </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+     <!-- Button to show toast -->
+     <!-- <button type="button" class="btn btn-primary" id="liveToastBtnDelete" style="display: flex;">Show live toast</button> -->
+
+     <!-- Toast container -->
+     <div class="toast-container position-fixed bottom-0 end-0 p-3" data-bs-theme="dark" id="toatsAlert">
+         <div id="liveToastDelete" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+             <div class="toast-header">
+                 <img src="img/alert.png" class="rounded me-2" alt="..." width="100px" height="100px">
+                 <strong class="me-auto">
+                     <p style="font-size: xx-large;">Alert</p>
+                 </strong>
+                 <small>
+                     <p style="font-size: x-large;">Now</p>
+                 </small>
+                 <button type="button" class="btn-close" id="liveToastBtnDeleteClose" data-bs-dismiss="toast"
+                     aria-label="Close"></button>
+             </div>
+             <div class="toast-body" style="color: aliceblue;">
+                 <p style="font-size: xx-large;">Not allowed to delete</p>
+             </div>
+         </div>
+     </div>
+ 
 
 
 
@@ -1189,16 +1320,71 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
             </div>
         
 
-        
-
-    
-
-   
-
     
   </div>
 
 
+
+
+
+  <!-- MODAL ALERT DELETE -->
+  <!-- Button trigger modal -->
+ 
+  <!-- Modal -->
+  <button class="btn btn-primary" style="display: none;" type="button" id="offcanvasBottomBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Toggle bottom offcanvas</button>
+
+  <div class="offcanvas offcanvas-bottom" tabindex="-1" data-bs-backdrop="static" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasBottomLabel">Are you sure?</h5>
+      <button type="button" style="display: none;" class="btn-close" data-bs-dismiss="offcanvas" id="offcanvasBottomCloseBtn" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body small">
+      <button class="btn btnOptions"><img src="img/accept.png" id="acceptDeleteImg" alt="" srcset=""></button>
+      <button class="btn btnOptions"><img src="img/no.png" id="noDeleteImg" alt="" srcset=""></button>
+    </div>
+  </div>
+  <!-- MODAL ALERT DELETE -->
+
+
+
+
+
+
+
+
+
+  <!-- MODAL ALERT DELETE SONG -->
+  <!-- Button trigger modal -->
+ 
+  <!-- Modal -->
+  <button class="btn btn-primary" style="display: none;" type="button" id="offcanvasBottomBtnSong" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottomSong" aria-controls="offcanvasBottom">Toggle bottom offcanvas</button>
+
+  <div class="offcanvas offcanvas-bottom" tabindex="-1" data-bs-backdrop="static" id="offcanvasBottomSong" aria-labelledby="offcanvasBottomLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasBottomLabel">Are you sure?</h5>
+      <button type="button" style="display: none;" class="btn-close" data-bs-dismiss="offcanvas" id="offcanvasBottomCloseBtnSong" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body small">
+      <button class="btn btnOptions"><img src="img/accept.png" id="acceptDeleteImgSong" alt="" srcset=""></button>
+      <button class="btn btnOptions"><img src="img/no.png" id="noDeleteImgSong" alt="" srcset=""></button>
+    </div>
+  </div>
+  <!-- MODAL ALERT DELETE -->
+
+
+
+
+
+
+
+
+
+
+    
+  
+ 
+
+    
 
 
     <!-- MAIN CONTENT STARTS HERE -->
@@ -1214,6 +1400,8 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
             <img src="img/menu.png" alt="" srcset="" width="60px" height="60px">
         </button>
 
+        
+
 
         <div class="searchDiv">
             <div class="imgSearch">
@@ -1221,6 +1409,8 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
         </div>
             <input type="text" id="searchBar" placeholder="Search" class="form-control" style="font-size: large; padding: 1rem;">
         </div>
+
+         
 
 
         <button class="btn btn" id="configButton" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -1272,7 +1462,11 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
     <main>
         <article>
 
+       
+         
+
             <div id="carouselExampleFade" class="carousel slide carousel-fade">
+
                 <div class="carousel-inner">
                     <div class="carousel-item" id="purple">
                         <div class="container-fluid" id="purple">
@@ -1315,6 +1509,8 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
                         </div>
                     </div>
 
+                   
+
                 </div>
                 <button class="carousel-control-prev" id="buttonCarousel1" type="button"
                     data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -1326,7 +1522,18 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
+
+                 <div style="width: 100%; display: flex;justify-content: center;align-items: center;">
+                <div class="donwloadAndExpand">
+                    <button class="btn btnOptions" id="expandColoredImageBtn"><img src="img/expandColoredImage.png" alt="" srcset="" width="45px" height="45px"></button>
+                    <button class="btn btnOptions" id="downloadColoredImageBtn"><img src="img/download.png" alt="" srcset="" width="45px" height="45px"></button>
+                   </div>
+                </div> 
+
+              
             </div>
+
+            
 
         </article>
 
@@ -1570,6 +1777,8 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
 
     </main>
 
+  
+
 
 
     <!-- <script>
@@ -1621,6 +1830,8 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
 
 
 
+
+   
 
     <script src="https://cdn.jsdelivr.net/npm/cropperjs/dist/cropper.min.js"></script>
     <script>
@@ -2018,6 +2229,7 @@ if (cropper3) {
 
     <!-- SÓ FUNCIONA SE FOR ANTES -->
     <!-- Include Pickr JavaScript from CDN -->
+    
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr@1.8.0/dist/pickr.min.js"></script>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -2050,6 +2262,21 @@ if (cropper3) {
         toastButton2.addEventListener('click', function () {
             toast2.show();
         });
+
+
+
+         // Get the button and the toast element
+         const toastButton3 = document.getElementById('liveToastBtnDelete');
+        const toastElement3 = document.getElementById('liveToastDelete');
+
+        // Initialize toast using Bootstrap's Toast class
+        const toast3 = new bootstrap.Toast(toastElement3);
+
+        // Add event listener to the button to show the toast
+        toastButton3.addEventListener('click', function () {
+            toast3.show();
+        });
+
 
 
 

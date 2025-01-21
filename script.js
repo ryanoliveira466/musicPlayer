@@ -188,13 +188,13 @@ function colorChangeNext() {
 
             document.getElementById(arrayImagesColor[i].idImg).style.objectFit = arrayImagesColor[i].cover
 
-            if(document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'scale-down' || document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'contain'){
+            if (document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'scale-down' || document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'contain') {
                 document.getElementById(arrayImagesColor[i].idImg).style.padding = '1rem'
-             }
+            }
 
-             else{
+            else {
                 document.getElementById(arrayImagesColor[i].idImg).style.padding = '0px'
-             }
+            }
 
 
 
@@ -321,13 +321,13 @@ function colorChangePrev() {
 
             document.getElementById(arrayImagesColor[i].idImg).style.objectFit = arrayImagesColor[i].cover
 
-            if(document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'scale-down' || document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'contain'){
+            if (document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'scale-down' || document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'contain') {
                 document.getElementById(arrayImagesColor[i].idImg).style.padding = '1rem'
-             }
+            }
 
-             else{
+            else {
                 document.getElementById(arrayImagesColor[i].idImg).style.padding = '0px'
-             }
+            }
 
 
             let divElement = document.getElementById(arrayImagesColor[i].div);
@@ -667,7 +667,7 @@ document.getElementById('btnImagem').addEventListener('click', function () {
     document.body.style.paddingRight = '0'
     document.getElementById('colorDisplay').click()
     document.getElementById('name').value = ""
-     
+
 
 })
 
@@ -677,7 +677,7 @@ document.getElementById('btnSong').addEventListener('click', function () {
     document.body.style.paddingRight = '0'
     document.getElementById('nameSong').value = ""
     document.getElementById('nameArtist').value = ""
-     
+
 })
 
 
@@ -911,7 +911,7 @@ document.getElementById('buttonAcceptimg').addEventListener('click', function ()
 
 
     const actualActive = document.getElementsByClassName('carousel-item active')[0]
-    const flowUpdate =  document.getElementById(id)
+    const flowUpdate = document.getElementById(id)
 
     actualActive.classList.remove('active')
     flowUpdate.classList.add('active')
@@ -919,44 +919,44 @@ document.getElementById('buttonAcceptimg').addEventListener('click', function ()
     console.log('asdadsadsadasdd', i);
     //DANGER
 
-      document.getElementById(arrayImagesColor[i].idImg).style.objectFit = arrayImagesColor[i].cover
+    document.getElementById(arrayImagesColor[i].idImg).style.objectFit = arrayImagesColor[i].cover
 
-                        if(document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'scale-down' || document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'contain'){
-                            document.getElementById(arrayImagesColor[i].idImg).style.padding = '1rem'
-                         }
+    if (document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'scale-down' || document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'contain') {
+        document.getElementById(arrayImagesColor[i].idImg).style.padding = '1rem'
+    }
 
-                         else{
-                            document.getElementById(arrayImagesColor[i].idImg).style.padding = '0px'
-                         }
-
-
-                        let divElement = document.getElementById(arrayImagesColor[i].div);
-
-                        divElement.style.backgroundImage = arrayImagesColor[i].color;
-                        divElement.style.animation = '1s fadeIn ease-out forwards';
-
-                        divElement.addEventListener("animationend", function () {
-                            document.body.style.backgroundImage = arrayImagesColor[i].color;
-                            divElement.style.animation = 'none';
-                        });
+    else {
+        document.getElementById(arrayImagesColor[i].idImg).style.padding = '0px'
+    }
 
 
+    let divElement = document.getElementById(arrayImagesColor[i].div);
 
-                        try {
-                            let removeStyleLoop = document.getElementById('after')
-                            document.head.removeChild(removeStyleLoop)
-                        } catch (error) {
+    divElement.style.backgroundImage = arrayImagesColor[i].color;
+    divElement.style.animation = '1s fadeIn ease-out forwards';
 
-                        }
+    divElement.addEventListener("animationend", function () {
+        document.body.style.backgroundImage = arrayImagesColor[i].color;
+        divElement.style.animation = 'none';
+    });
 
 
-                        // Create a <style> element to add custom CSS rules dynamically
-                        let style = document.createElement('style');
-                        style.id = `after`
 
-                        //border-radius: 20px; AFTER BORDER RADIUS
+    try {
+        let removeStyleLoop = document.getElementById('after')
+        document.head.removeChild(removeStyleLoop)
+    } catch (error) {
 
-                        style.innerHTML = `
+    }
+
+
+    // Create a <style> element to add custom CSS rules dynamically
+    let style = document.createElement('style');
+    style.id = `after`
+
+    //border-radius: 20px; AFTER BORDER RADIUS
+
+    style.innerHTML = `
                          .imgGojo::after {
                              content: '';
                              position: absolute;
@@ -971,22 +971,68 @@ document.getElementById('buttonAcceptimg').addEventListener('click', function ()
 
 
 
-                        // Append the style element to the document head
-                        document.head.appendChild(style);
+    // Append the style element to the document head
+    document.head.appendChild(style);
 
 
     document.getElementById('btnCloseModalImagem').click()
     document.getElementById('name').value = ''
 
-    setTimeout(function(){
+    setTimeout(function () {
         constButtonRightCar = document.getElementById('buttonCarousel2').disabled = false
-    constButtonLeftCar = document.getElementById('buttonCarousel1').disabled = false
+        constButtonLeftCar = document.getElementById('buttonCarousel1').disabled = false
 
-    },2000)
+    }, 2000)
 
 })
 
 
+
+
+
+let flagDelete = false
+
+// This function returns a promise that resolves when either the "Accept" or "No" button is clicked
+function waitForUserResponse() {
+    return new Promise(resolve => {
+        // Event listener for the "Accept" button
+        document.getElementById('acceptDeleteBtn').addEventListener('click', function () {
+            flagDelete = true;
+            console.log('User accepted deletion');
+            resolve(); // Resolves when the user accepts
+        });
+
+        // Event listener for the "No" button
+        document.getElementById('noDeleteBtn').addEventListener('click', function () {
+            flagDelete = false;
+            console.log('User declined deletion');
+            resolve(); // Resolves when the user declines
+        });
+    });
+}
+
+// This function returns a promise that resolves to true/false based on user response
+function handleDelete() {
+    return new Promise(resolve => {
+        // Event listener for the "Accept" button
+        document.getElementById('acceptDeleteImg').addEventListener('click', function () {
+            flagDelete = true;
+            console.log('User accepted deletion');
+            resolve(true); // Resolve with true when user accepts
+            document.getElementById('offcanvasBottomCloseBtn').click()
+        });
+
+        // Event listener for the "No" button
+        document.getElementById('noDeleteImg').addEventListener('click', function () {
+            flagDelete = false;
+            console.log('User declined deletion');
+            resolve(false); // Resolve with false when user declines
+            document.getElementById('offcanvasBottomCloseBtn').click()
+        });
+
+
+    });
+}
 
 
 
@@ -1019,7 +1065,7 @@ document.getElementById('btnView'), addEventListener('click', function () {
         // Create the main music player container
         const musicPlayerDiv = document.createElement('div');
         musicPlayerDiv.classList.add('music-player');
-        musicPlayerDiv.id = 'music-player';
+        musicPlayerDiv.id = `music-player${arrayImagesColor[i].id}`
 
         // Create the image element for the album cover
         const albumImage = document.createElement('img');
@@ -1069,6 +1115,329 @@ document.getElementById('btnView'), addEventListener('click', function () {
         deleteButton.classList.add('btn', 'btn-danger', 'itemAdd');
         deleteButton.innerHTML = '<img src="img/trash.png" alt="" srcset="" width="90px" height="90px">';
         deleteButton.id = btnDelId
+
+
+
+
+
+        let deletedElement = i
+        let indexNextActive = i
+
+        deleteButton.addEventListener('click', async function () {
+
+
+            if (arrayImagesColor.length == 1) {
+
+                document.getElementById('liveToastBtnDelete').click()
+
+
+
+                return;
+            }
+
+            document.getElementById('offcanvasBottomBtn').click()
+
+
+
+
+            document.getElementById('imageView').style.pointerEvents = 'none'
+            document.getElementById('exampleModalView').style.pointerEvents = 'none'
+
+
+
+
+
+
+
+            const isDeleted = await handleDelete();
+
+            if (isDeleted) {
+
+
+
+
+                document.getElementById('imageView').style.pointerEvents = 'all'
+                document.getElementById('exampleModalView').style.pointerEvents = 'all'
+
+
+
+
+
+
+                document.getElementsByClassName('carousel-inner')[0].innerHTML = ""
+
+                document.getElementById('coresBackgorund').removeChild(document.getElementById(arrayImagesColor[deletedElement].div))
+
+                arrayImagesColor.splice(deletedElement, 1)
+
+
+                for (var i = 0; i < arrayImagesColor.length; i++) {
+
+                    // Create the <div> element with the class "carousel-item" and id "teste"
+                    const carouselItem = document.createElement('div');
+                    carouselItem.classList.add('carousel-item');
+                    carouselItem.id = arrayImagesColor[i].id;
+
+                    // Create the inner <div> element with the class "container-fluid imgGojo" and id "teste"
+                    const containerFluid = document.createElement('div');
+                    containerFluid.classList.add('container-fluid');
+                    containerFluid.id = arrayImagesColor[i].id;
+
+
+
+
+                    const containerImg = document.createElement('div');
+                    containerImg.classList.add('imgGojo');
+
+
+
+                    const blurStats = document.createElement("div")
+                    blurStats.classList.add('stats')
+
+
+                    const titleStats = document.createElement('h1')
+                    titleStats.classList.add('statsTitle')
+                    titleStats.id = `title${arrayImagesColor[i].id}`
+                    titleStats.innerHTML = arrayImagesColor[i].id
+
+
+
+
+                    // Create the <img> element with the source and id attributes
+                    const image = document.createElement('img');
+                    image.src = arrayImagesColor[i].src;
+                    image.alt = '';
+                    image.id = arrayImagesColor[i].idImg;
+
+
+
+
+                    containerImg.appendChild(blurStats)
+                    containerImg.appendChild(titleStats)
+                    containerImg.appendChild(image)
+
+
+
+                    containerImg.addEventListener("pointerover", function () {
+                        blurStats.style.display = 'flex'
+                        titleStats.style.display = 'flex'
+
+                    })
+
+
+                    containerImg.addEventListener("pointerout", function () {
+                        blurStats.style.display = 'none'
+                        titleStats.style.display = 'none'
+
+                    })
+
+
+
+                    // Append the image to the containerFluid div
+                    containerFluid.appendChild(containerImg);
+
+                    // Append the containerFluid to the carouselItem div
+                    carouselItem.appendChild(containerFluid);
+
+                    // Optionally, append the carouselItem to a parent element in the document
+                    // For example, assuming there's a container with id 'carouselContainer'
+                    const carouselContainer = document.getElementsByClassName('carousel-inner')[0];
+                    carouselContainer.appendChild(carouselItem);
+
+
+
+                }
+
+
+                // let flagAnimationChange = false
+
+                //  if ((indexNextActive == 0) && (activadedCarousel.id == arrayImagesColor[deletedElement].id)) {
+                //      indexNextActive = 0
+                //  }
+
+                //  else if((indexNextActive == arrayImagesColor.length) && ((activadedCarousel.id == arrayImagesColor[deletedElement].id))){
+                //     indexNextActive = (arrayImagesColor.length - 1)
+                //  }
+                //  else  {
+                //     flagAnimationChange = true
+                //  }
+
+                indexNextActive = 0
+
+                indexNextActive = Math.floor(Math.random() * arrayImagesColor.length);
+
+
+
+
+
+
+                //  if(flagAnimationChange){ 
+
+
+                document.getElementById(arrayImagesColor[indexNextActive].id).classList.add('active')
+
+
+
+
+
+                let elements = document.getElementsByClassName('carousel-item active')[0];
+
+                if (elements.id == arrayImagesColor[indexNextActive].id) {
+
+
+                    document.getElementById(arrayImagesColor[indexNextActive].idImg).style.objectFit = arrayImagesColor[indexNextActive].cover
+
+                    if (document.getElementById(arrayImagesColor[indexNextActive].idImg).style.objectFit == 'scale-down' || document.getElementById(arrayImagesColor[indexNextActive].idImg).style.objectFit == 'contain') {
+                        document.getElementById(arrayImagesColor[indexNextActive].idImg).style.padding = '1rem'
+                    }
+
+                    else {
+                        document.getElementById(arrayImagesColor[indexNextActive].idImg).style.padding = '0px'
+                    }
+
+
+
+                    let divElement = document.getElementById(arrayImagesColor[indexNextActive].div);
+
+                    divElement.style.backgroundImage = arrayImagesColor[indexNextActive].color;
+                    divElement.style.animation = '1s fadeIn ease-out forwards';
+
+                    divElement.addEventListener("animationend", function () {
+                        document.body.style.backgroundImage = arrayImagesColor[indexNextActive].color;
+                        divElement.style.animation = 'none';
+                    });
+
+
+                    try {
+                        let removeStyleLoop = document.getElementById('after')
+                        document.head.removeChild(removeStyleLoop)
+                    } catch (error) {
+
+                    }
+
+                    // Create a <style> element to add custom CSS rules dynamically
+                    let style = document.createElement('style');
+                    // style.id = `${arrayImagesColor[i].id}after`
+
+
+                    //border-radius: 20px; AFTER BORDER RADIUS
+                    style.id = `after`
+
+                    style.innerHTML = `
+                 .imgGojo::after {
+                     content: '';
+                     position: absolute;
+                     width: 100%;
+                     height: 100%;
+                     background-color: ${arrayImagesColor[indexNextActive].tint};
+                     mix-blend-mode: ${arrayImagesColor[indexNextActive].mix};
+                    
+                     animation: 1s fadeIn ease-out forwards;
+                     }
+                      `;
+
+
+
+                    function randomHue() {
+                        // Generate a random hue between 0 and 360
+                        return Math.floor(Math.random() * 361);
+                    }
+
+                    function changeFaviconColor() {
+                        // Get the current favicon link element
+                        const faviconLink = document.getElementById('favicon');
+
+                        // Check if the favicon element exists
+                        if (!faviconLink) {
+                            console.error("Favicon link element not found.");
+                            return;
+                        }
+
+                        // Create an image element to load the favicon image
+                        const img = new Image();
+
+                        // This helps prevent potential cross-origin issues
+                        img.crossOrigin = "Anonymous";
+
+                        // Set the favicon source (assuming it's a valid image URL)
+                        img.src = faviconLink.href;
+
+                        img.onload = function () {
+                            // Create a canvas element to manipulate the image
+                            const canvas = document.createElement('canvas');
+                            const ctx = canvas.getContext('2d');
+
+                            // Set canvas dimensions to match the image
+                            canvas.width = img.width;
+                            canvas.height = img.height;
+
+                            // Draw the image on the canvas
+                            ctx.drawImage(img, 0, 0);
+
+                            // Apply a random hue-rotate filter
+                            ctx.filter = `hue-rotate(${randomHue()}deg)`;
+
+                            // Re-draw the image with the applied filter
+                            ctx.drawImage(img, 0, 0);
+
+                            // Convert the canvas to a base64-encoded PNG image
+                            const newFavicon = canvas.toDataURL('image/png');
+
+                            // Update the favicon link with the new image
+                            faviconLink.href = newFavicon;
+                        };
+
+                        // Error handling for when the image fails to load
+                        img.onerror = function () {
+                            console.error("Failed to load the image.");
+                        };
+                    }
+
+                    // Call the function to change the favicon color
+                    changeFaviconColor();
+
+
+
+
+                    // Append the style element to the document head
+                    document.head.appendChild(style);
+
+
+
+
+
+                }
+
+                else {
+                    console.log('ahhh');
+
+                }
+
+                // }
+
+
+
+                document.getElementById('offcanvasBottomCloseBtn').click()
+
+
+            }
+
+            else {
+
+                document.getElementById('imageView').style.pointerEvents = 'all'
+                document.getElementById('exampleModalView').style.pointerEvents = 'all'
+
+                document.getElementById('offcanvasBottomCloseBtn').click()
+                return;
+            }
+
+
+
+
+            //  ///DELETE
+
+
+        })
 
 
         // const clickCursor = document.getElementById('clickCursor');
@@ -1723,13 +2092,13 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
                         document.getElementById(arrayImagesColor[i].idImg).style.objectFit = arrayImagesColor[i].cover
 
-                        if(document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'scale-down' || document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'contain'){
+                        if (document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'scale-down' || document.getElementById(arrayImagesColor[i].idImg).style.objectFit == 'contain') {
                             document.getElementById(arrayImagesColor[i].idImg).style.padding = '1rem'
-                         }
+                        }
 
-                         else{
+                        else {
                             document.getElementById(arrayImagesColor[i].idImg).style.padding = '0px'
-                         }
+                        }
 
 
                         let divElement = document.getElementById(arrayImagesColor[i].div);
@@ -3563,8 +3932,10 @@ document.getElementById('btnMusicBarExpand').addEventListener('click', function 
 
 
 
+//SCROLL REVER
+
 document.getElementById('botaoScroll').addEventListener('click', function () {
-    const divScrolls = document.querySelectorAll('.modal-content')
+    const divScrolls = document.querySelectorAll('.modal-content,.modalRef')
     divScrolls.forEach(div => {
 
         div.scrollTo(0, 0)
@@ -4394,6 +4765,28 @@ document.getElementById('buttonAcceptimgSong').addEventListener('click', functio
 
 
 
+// This function returns a promise that resolves to true/false based on user response
+function handleDeleteSong() {
+    return new Promise(resolve => {
+        // Event listener for the "Accept" button
+        document.getElementById('acceptDeleteImgSong').addEventListener('click', function () {
+            flagDelete = true;
+            console.log('User accepted deletion');
+            resolve(true); // Resolve with true when user accepts
+            document.getElementById('offcanvasBottomCloseBtnSong').click()
+        });
+
+        // Event listener for the "No" button
+        document.getElementById('noDeleteImgSong').addEventListener('click', function () {
+            flagDelete = false;
+            console.log('User declined deletion');
+            resolve(false); // Resolve with false when user declines
+            document.getElementById('offcanvasBottomCloseBtnSong').click()
+        });
+
+
+    });
+}
 
 
 
@@ -4484,6 +4877,257 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
 
 
 
+        let deletedElement = i
+        let indexNextActive = i
+
+        deleteButton.addEventListener('click', async function () {
+
+
+
+
+
+
+            if (arraySong.length == 1) {
+
+                document.getElementById('liveToastBtnDelete').click()
+                return;
+            }
+
+
+            document.getElementById('offcanvasBottomBtnSong').click()
+
+            
+            document.getElementById('imageViewSong').style.pointerEvents = 'none'
+            document.getElementById('exampleModalViewSong').style.pointerEvents = 'none'
+
+
+            const isDeleted = await handleDeleteSong();
+
+            if (isDeleted) {
+
+                
+            document.getElementById('imageViewSong').style.pointerEvents = 'all'
+            document.getElementById('exampleModalViewSong').style.pointerEvents = 'all'
+
+
+                console.log(arraySong);
+
+
+                document.getElementById('song').innerHTML = ""
+                arraySong.splice(deletedElement, 1)
+
+                for (var x = 0; x < arraySong.length; x++) {
+                    let coverImg = arraySong[x].cover
+                    let idImg = arraySong[x].nameSong
+                    let imgSrc = arraySong[x].wallPaper
+                    let titleName = arraySong[x].title
+                    let artistName = arraySong[x].artist
+                    let musicSrc = arraySong[x].songSrc
+
+                    console.log('testeArraydsdsds');
+
+
+
+
+
+
+                    // Get the container element where you want to append the music player
+                    const songContainer = document.getElementById('song');
+
+                    // Create the container div for the music player
+                    let musicPlayerContainer = document.createElement('div');
+
+
+                    // Create the music player div
+                    let musicPlayer = document.createElement('div');
+                    musicPlayer.classList.add('music-player');
+                    musicPlayer.id = 'music-player';
+
+                    // Create the music image (album cover)
+                    let musicImg = document.createElement('img');
+                    musicImg.src = imgSrc; // Ensure imgSrc is defined with a valid path
+                    musicImg.classList.add('musicImg');
+                    musicImg.style.objectFit = coverImg;
+                    musicImg.alt = 'Album Cover';
+                    musicImg.id = `coverImagePlaylist${idImg}`
+
+                    // Append the image to the music player div
+                    musicPlayer.appendChild(musicImg);
+
+                    // Create the music info div
+                    let musicInfo = document.createElement('div');
+                    musicInfo.classList.add('music-info');
+                    musicInfo.id = 'music-info';
+
+                    // Create the song name heading
+                    let songName = document.createElement('h3');
+                    songName.textContent = titleName; // Ensure titleName is defined
+                    songName.id = `titlePlaylist${idImg}`
+
+                    // Append the song name to the music info div
+                    musicInfo.appendChild(songName);
+
+                    // Append the music info to the music player div
+                    musicPlayer.appendChild(musicInfo);
+
+                    // Create the artist paragraph
+                    let artist = document.createElement('p');
+                    artist.textContent = artistName; // Ensure artistName is defined
+                    artist.className = 'artist'
+                    artist.id = `artistPlaylist${idImg}`
+
+                    // Append the artist paragraph to the music player div
+                    musicPlayer.appendChild(artist);
+
+                    // Create the audio player div
+                    let audioPlayer = document.createElement('div');
+                    audioPlayer.classList.add('audio-player');
+
+                    // Create play button
+                    let playButton = document.createElement('button');
+                    playButton.classList.add('btn', 'btnPlay');
+                    playButton.id = `audioPlay${idImg}`; // Ensure idImg is defined
+
+                    let playImg = document.createElement('img');
+                    playImg.src = 'img/play.png';
+                    playImg.alt = '';
+                    playImg.width = 30;
+                    playImg.height = 30;
+
+                    playButton.appendChild(playImg);
+
+                    // Create pause button (initially hidden)
+                    let pauseButton = document.createElement('button');
+                    pauseButton.classList.add('btn', 'btnPause');
+                    pauseButton.style.display = 'none';
+                    pauseButton.id = `audioPause${idImg}`;
+
+                    let pauseImg = document.createElement('img');
+                    pauseImg.src = 'img/pause.png';
+                    pauseImg.alt = '';
+                    pauseImg.width = 30;
+                    pauseImg.height = 30;
+
+                    pauseButton.appendChild(pauseImg);
+
+                    // Create the audio length div
+                    let audioLength = document.createElement('div');
+                    audioLength.classList.add('audioLength');
+
+                    // Create the volume button
+                    let volumeButton = document.createElement('button');
+                    volumeButton.classList.add('btn', 'btnVolume');
+                    volumeButton.id = `audioVolume${idImg}`;
+
+                    let volumeImg = document.createElement('img');
+                    volumeImg.src = 'img/volume.png';
+                    volumeImg.alt = '';
+                    volumeImg.width = 30;
+                    volumeImg.height = 30;
+
+                    volumeButton.appendChild(volumeImg);
+
+                    // Create the mute button (initially hidden)
+                    let muteButton = document.createElement('button');
+                    muteButton.classList.add('btn', 'btnMutado');
+                    muteButton.style.display = 'none';
+                    muteButton.id = `audioMutado${idImg}`;
+
+                    let muteImg = document.createElement('img');
+                    muteImg.src = 'img/muted.png';
+                    muteImg.alt = '';
+                    muteImg.width = 30;
+                    muteImg.height = 30;
+
+                    muteButton.appendChild(muteImg);
+
+                    // Create the volume bar div
+                    let volumeBar = document.createElement('div');
+                    volumeBar.classList.add('volumeBar');
+
+                    // Create the volume circle div
+                    let volumeCircle = document.createElement('div');
+                    volumeCircle.id = `volumeCircle${idImg}`;
+                    volumeCircle.classList.add('volumeCircle');
+
+                    let volumeCircleImg = document.createElement('img');
+                    volumeCircleImg.src = 'img/circleCursor.png';
+                    volumeCircleImg.alt = '';
+                    volumeCircleImg.width = 30;
+                    volumeCircleImg.height = 30;
+
+                    volumeCircle.appendChild(volumeCircleImg);
+                    volumeBar.appendChild(volumeCircle);
+
+                    // Create the audio element (hidden)
+                    let audioElement = document.createElement('audio');
+                    audioElement.id = `audio${idImg}`;
+                    audioElement.style.display = 'none';
+                    audioElement.controls = true;
+
+                    let audioSource = document.createElement('source');
+                    audioSource.src = musicSrc; // Ensure musicSrc is defined
+                    audioSource.type = 'audio/mp3';
+
+                    audioElement.appendChild(audioSource);
+
+                    // Append all elements to the audio player div
+                    audioPlayer.appendChild(playButton);
+                    audioPlayer.appendChild(pauseButton);
+                    audioPlayer.appendChild(audioLength);
+                    audioPlayer.appendChild(volumeButton);
+                    audioPlayer.appendChild(muteButton);
+                    audioPlayer.appendChild(volumeBar);
+                    audioPlayer.appendChild(audioElement);
+
+                    // Append the audio player to the music player div
+                    musicPlayer.appendChild(audioPlayer);
+
+                    // Finally, append the music player container to the song container
+                    songContainer.appendChild(musicPlayerContainer);
+
+                    // Append the music player to the container div
+                    musicPlayerContainer.appendChild(musicPlayer);
+
+                    let positionArray;
+
+                    for (var i = 0; i < arraySong.length; i++) {
+                        if (arraySong[i].nameSong == idImg) {
+                            positionArray = arraySong[i]
+                        }
+                    }
+
+                    console.log(positionArray);
+
+
+                    audioBtnFunction(positionArray)
+                    volumeBtnAudio(positionArray)
+                    shuffleSong(positionArray)
+
+                }
+
+
+
+                console.log(arraySong);
+
+                document.getElementById('offcanvasBottomCloseBtnSong').click()
+
+
+
+            }
+
+
+            else {
+
+                
+            document.getElementById('imageViewSong').style.pointerEvents = 'all'
+            document.getElementById('exampleModalViewSong').style.pointerEvents = 'all'
+
+                document.getElementById('offcanvasBottomCloseBtnSong').click()
+                return;
+            }
+
+        })
 
 
 
@@ -5078,7 +5722,7 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
 
             setTimeout(function () {
                 document.getElementById('botaoScroll').click();
-            }, 200);
+            }, 3000);
 
 
 
@@ -5162,36 +5806,38 @@ document.getElementById('musicBarCircle').addEventListener('touchstart', functio
 
 document.getElementById('searchBar').addEventListener('click', function () {
 
+   
+
     this.disabled = true
     document.getElementById('searchBarSearching').value = ""
     document.getElementById('resultSearching').innerHTML = ""
-     for (var i = 0; i < arraySong.length; i++) {
-                const patternResultSearchingDiv = document.createElement('div');
-                patternResultSearchingDiv.classList.add('patternResultSearching');
-    
-                // Create the image element
-                const patternResultSearchingImg = document.createElement('img');
-                patternResultSearchingImg.classList.add('patternResultSearchingImg');
-                patternResultSearchingImg.id = `patternResultSearchingImg${arraySong[i].nameSong}`;
-                patternResultSearchingImg.src = arraySong[i].wallPaper;
-                patternResultSearchingImg.style.objectFit = arraySong[i].cover;
-                patternResultSearchingImg.alt = '';
-    
-                // Create the title div
-                const patternResultSearchingTitleDiv = document.createElement('div');
-                patternResultSearchingTitleDiv.classList.add('patternResultSearchingTitle');
-    
-                // Create the h3 element
-                const patternResultSearchingTitle = document.createElement('h3');
-                patternResultSearchingTitle.textContent = arraySong[i].title;
-    
-                // Append the title and image to their respective parent elements
-                patternResultSearchingTitleDiv.appendChild(patternResultSearchingTitle);
-                patternResultSearchingDiv.appendChild(patternResultSearchingImg);
-                patternResultSearchingDiv.appendChild(patternResultSearchingTitleDiv);
-    
-                document.getElementById('resultSearching').appendChild(patternResultSearchingDiv);   
-        }
+    for (var i = 0; i < arraySong.length; i++) {
+        const patternResultSearchingDiv = document.createElement('div');
+        patternResultSearchingDiv.classList.add('patternResultSearching');
+
+        // Create the image element
+        const patternResultSearchingImg = document.createElement('img');
+        patternResultSearchingImg.classList.add('patternResultSearchingImg');
+        patternResultSearchingImg.id = `patternResultSearchingImg${arraySong[i].nameSong}`;
+        patternResultSearchingImg.src = arraySong[i].wallPaper;
+        patternResultSearchingImg.style.objectFit = arraySong[i].cover;
+        patternResultSearchingImg.alt = '';
+
+        // Create the title div
+        const patternResultSearchingTitleDiv = document.createElement('div');
+        patternResultSearchingTitleDiv.classList.add('patternResultSearchingTitle');
+
+        // Create the h3 element
+        const patternResultSearchingTitle = document.createElement('h3');
+        patternResultSearchingTitle.textContent = arraySong[i].title;
+
+        // Append the title and image to their respective parent elements
+        patternResultSearchingTitleDiv.appendChild(patternResultSearchingTitle);
+        patternResultSearchingDiv.appendChild(patternResultSearchingImg);
+        patternResultSearchingDiv.appendChild(patternResultSearchingTitleDiv);
+
+        document.getElementById('resultSearching').appendChild(patternResultSearchingDiv);
+    }
 
     const bar = document.getElementById('searchBarSearching')
     const imgSearch = document.getElementsByClassName('imgSearchSarching')[0]
@@ -5225,6 +5871,7 @@ document.getElementById('searchBar').addEventListener('click', function () {
         resultDiv.classList.remove('opacity')
     }, 1000);
 
+    document.getElementById(`resultSearching`).scrollTo(0,0)
 
 })
 
@@ -5236,7 +5883,7 @@ document.getElementById('searchingDivExpand').addEventListener('click', function
 
     document.getElementById('searchBar').disabled = false
 
-   
+
 
     const buttonExpand = this;  // "this" refers to the button that was clicked
 
@@ -5276,7 +5923,7 @@ document.getElementById('searchingDivExpand').addEventListener('click', function
         resultDiv.classList.toggle('opacityRemove')
     }, 1000); // 1000 milliseconds = 1 second
 
-    setTimeout(function(){
+    setTimeout(function () {
         window.scrollTo(0, 0);
     }, 1200)
 
@@ -5298,7 +5945,7 @@ document.getElementById('searchBarSearching').addEventListener('input', function
         return str
             .normalize("NFD")  // Normalize to decompose accented characters
             .replace(/[\u0300-\u036f]/g, '')  // Remove diacritical marks (accents)
-            
+
             // Manually replace specific accented characters and diacritic marks
             .replace(/à/g, 'a').replace(/á/g, 'a').replace(/â/g, 'a').replace(/ã/g, 'a').replace(/ä/g, 'a').replace(/å/g, 'a').replace(/ā/g, 'a')
             .replace(/ç/g, 'c').replace(/è/g, 'e').replace(/é/g, 'e').replace(/ê/g, 'e').replace(/ë/g, 'e')
@@ -5307,7 +5954,7 @@ document.getElementById('searchBarSearching').addEventListener('input', function
             .replace(/ò/g, 'o').replace(/ó/g, 'o').replace(/ô/g, 'o').replace(/õ/g, 'o').replace(/ö/g, 'o').replace(/ø/g, 'o')
             .replace(/ù/g, 'u').replace(/ú/g, 'u').replace(/û/g, 'u').replace(/ü/g, 'u')
             .replace(/ý/g, 'y').replace(/ÿ/g, 'y')
-            
+
             // Uppercase mappings
             .replace(/À/g, 'A').replace(/Á/g, 'A').replace(/Â/g, 'A').replace(/Ã/g, 'A').replace(/Ä/g, 'A').replace(/Å/g, 'A').replace(/Ā/g, 'A')
             .replace(/Ç/g, 'C').replace(/È/g, 'E').replace(/É/g, 'E').replace(/Ê/g, 'E').replace(/Ë/g, 'E')
@@ -5316,113 +5963,430 @@ document.getElementById('searchBarSearching').addEventListener('input', function
             .replace(/Ò/g, 'O').replace(/Ó/g, 'O').replace(/Ô/g, 'O').replace(/Õ/g, 'O').replace(/Ö/g, 'O').replace(/Ø/g, 'O')
             .replace(/Ù/g, 'U').replace(/Ú/g, 'U').replace(/Û/g, 'U').replace(/Ü/g, 'U')
             .replace(/Ý/g, 'Y').replace(/Λ/g, 'A')
-            
+
             // Polish-specific letters
             .replace(/ł/g, 'l').replace(/Ł/g, 'L')
-            
+
             // Caron (háček) characters (Č, Š, Ž, etc.)
             .replace(/š/g, 's').replace(/Š/g, 'S').replace(/ž/g, 'z').replace(/Ž/g, 'Z').replace(/č/g, 'c').replace(/Č/g, 'C')
             .replace(/ć/g, 'c').replace(/Ć/g, 'C').replace(/đ/g, 'd').replace(/Đ/g, 'D')
-    
+
             // Double acute accent characters
             .replace(/ő/g, 'o').replace(/Ő/g, 'O').replace(/ű/g, 'u').replace(/Ű/g, 'U')
 
-              // Remove non-alphanumeric characters (like spaces, punctuation, dashes)
+            // Remove non-alphanumeric characters (like spaces, punctuation, dashes)
             .replace(/[^a-z0-9]/gi, '');  // Removes anything that's not a letter or number
     }
-    
+
     function filterSearch(inputValue, targetString) {
         // Normalize both the input and target strings
         const normalizedInput = normalizeString(inputValue).toLowerCase().trim();
         const normalizedTarget = normalizeString(targetString).toLowerCase().trim();
-    
+
         let finalTrueOrFalse;
         // Check if the normalized input is a prefix of the normalized target
-        if(normalizedTarget.startsWith(normalizedInput) == true || normalizedTarget.includes(normalizedInput) == true){
+        if (normalizedTarget.startsWith(normalizedInput) == true || normalizedTarget.includes(normalizedInput) == true) {
             finalTrueOrFalse = true
         }
-    
-        else{
+
+        else {
             finalTrueOrFalse = false
         }
-    
+
         return finalTrueOrFalse
     }
 
-  
-    
-  
- 
 
-    if(textFromInput == ""){
+
+
+
+
+    if (textFromInput == "") {
         for (var i = 0; i < arraySong.length; i++) {
-                const patternResultSearchingDiv = document.createElement('div');
-                patternResultSearchingDiv.classList.add('patternResultSearching');
-    
-                // Create the image element
-                const patternResultSearchingImg = document.createElement('img');
-                patternResultSearchingImg.classList.add('patternResultSearchingImg');
-                patternResultSearchingImg.id = `patternResultSearchingImg${arraySong[i].nameSong}`;
-                patternResultSearchingImg.src = arraySong[i].wallPaper;
-                patternResultSearchingImg.alt = '';
-    
-                // Create the title div
-                const patternResultSearchingTitleDiv = document.createElement('div');
-                patternResultSearchingTitleDiv.classList.add('patternResultSearchingTitle');
-    
-                // Create the h3 element
-                const patternResultSearchingTitle = document.createElement('h3');
-                patternResultSearchingTitle.textContent = arraySong[i].title;
-    
-                // Append the title and image to their respective parent elements
-                patternResultSearchingTitleDiv.appendChild(patternResultSearchingTitle);
-                patternResultSearchingDiv.appendChild(patternResultSearchingImg);
-                patternResultSearchingDiv.appendChild(patternResultSearchingTitleDiv);
-    
-                document.getElementById('resultSearching').appendChild(patternResultSearchingDiv);   
+            const patternResultSearchingDiv = document.createElement('div');
+            patternResultSearchingDiv.classList.add('patternResultSearching');
+
+            // Create the image element
+            const patternResultSearchingImg = document.createElement('img');
+            patternResultSearchingImg.classList.add('patternResultSearchingImg');
+            patternResultSearchingImg.id = `patternResultSearchingImg${arraySong[i].nameSong}`;
+            patternResultSearchingImg.src = arraySong[i].wallPaper;
+            patternResultSearchingImg.alt = '';
+
+            // Create the title div
+            const patternResultSearchingTitleDiv = document.createElement('div');
+            patternResultSearchingTitleDiv.classList.add('patternResultSearchingTitle');
+
+            // Create the h3 element
+            const patternResultSearchingTitle = document.createElement('h3');
+            patternResultSearchingTitle.textContent = arraySong[i].title;
+
+            // Append the title and image to their respective parent elements
+            patternResultSearchingTitleDiv.appendChild(patternResultSearchingTitle);
+            patternResultSearchingDiv.appendChild(patternResultSearchingImg);
+            patternResultSearchingDiv.appendChild(patternResultSearchingTitleDiv);
+
+            document.getElementById('resultSearching').appendChild(patternResultSearchingDiv);
         }
     }
 
-    
 
-    else{
 
-       
-    
-        
+    else {
+
+
+
+
 
         for (var i = 0; i < arraySong.length; i++) {
-            if (filterSearch(textFromInput,arraySong[i].title) == true) {
+            if (filterSearch(textFromInput, arraySong[i].title) == true) {
 
                 const patternResultSearchingDiv = document.createElement('div');
                 patternResultSearchingDiv.classList.add('patternResultSearching');
-    
+
                 // Create the image element
                 const patternResultSearchingImg = document.createElement('img');
                 patternResultSearchingImg.classList.add('patternResultSearchingImg');
                 patternResultSearchingImg.id = `patternResultSearchingImg${arraySong[i].nameSong}`;
                 patternResultSearchingImg.src = arraySong[i].wallPaper;
                 patternResultSearchingImg.alt = '';
-    
+
                 // Create the title div
                 const patternResultSearchingTitleDiv = document.createElement('div');
                 patternResultSearchingTitleDiv.classList.add('patternResultSearchingTitle');
-    
+
                 // Create the h3 element
                 const patternResultSearchingTitle = document.createElement('h3');
                 patternResultSearchingTitle.textContent = arraySong[i].title;
-    
+
                 // Append the title and image to their respective parent elements
                 patternResultSearchingTitleDiv.appendChild(patternResultSearchingTitle);
                 patternResultSearchingDiv.appendChild(patternResultSearchingImg);
                 patternResultSearchingDiv.appendChild(patternResultSearchingTitleDiv);
-    
+
                 document.getElementById('resultSearching').appendChild(patternResultSearchingDiv);
-    
+
             }
         }
-    
+
     }
 
- 
+
 })
+
+
+
+
+
+document.getElementById('expandColoredImageBtn').addEventListener('click', function () {
+    const image = (document.getElementsByClassName('carousel-item active')[0].id)
+    const divImage = document.getElementById('divImageExpand')
+    const imageExpand = document.getElementById(`${image}Img`).src
+    const fullImage = document.getElementById('resultImgExpand')
+    const imageExpandedShowing = document.getElementById('imgExpand')
+    const expandBack = document.getElementById('expandColoredImageBtnBack')
+
+
+    document.getElementById('blackCover').style.display = 'flex'
+
+    expandBack.style.display = 'flex'
+    divImage.style.display = 'flex'
+    fullImage.style.display = 'flex'
+    imageExpandedShowing.src = imageExpand
+
+    let chosen;
+
+    for (var i = 0; i < arrayImagesColor.length; i++) {
+        if ((arrayImagesColor[i].id) == image)
+            chosen = i
+    }
+
+    console.log('lkefewewe', chosen);
+
+
+
+    document.getElementById('afterExpand').innerHTML = ''
+    document.getElementById('afterExpand').innerHTML = `
+      #imgExpand {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: ${arrayImagesColor[chosen].cover};
+    position: relative;
+  }
+
+
+  #resultImgExpand {
+    display: none;  
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+     
+    top: 0;
+    left: 0;
+    z-index: 9900;
+  }
+
+   
+  #divImageExpand {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } 
+  
+  #divImageExpand::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: ${arrayImagesColor[chosen].mix};
+    background-color: ${arrayImagesColor[chosen].tint};
+    animation: fadeIn 1s ease-out forwards;
+    z-index: 9900;
+  }
+
+
+
+`
+
+
+    // Check if the browser supports the full-screen API
+    if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+    } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+        document.documentElement.mozRequestFullScreen();
+    } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari
+        document.documentElement.webkitRequestFullscreen();
+    } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+        document.documentElement.msRequestFullscreen();
+    }
+
+
+
+
+
+
+
+
+})
+
+
+
+document.getElementById('expandColoredImageBtnBack').addEventListener('click', function () {
+
+    this.disabled = true
+
+    document.getElementById('blackCover').style.display = 'none'
+
+
+    const expandBack = document.getElementById('expandColoredImageBtnBack')
+    const divImage = document.getElementById('divImageExpand')
+    const fullImage = document.getElementById('resultImgExpand')
+
+    fullImage.classList.toggle('opacityRemove')
+
+
+
+    setTimeout(function () {
+
+        document.getElementById('expandColoredImageBtnBack').disabled = false
+        expandBack.style.display = 'none'
+        divImage.style.display = 'none'
+        fullImage.style.display = 'none'
+        fullImage.classList.remove('opacityRemove')
+
+
+        window.scrollTo(0, 0)
+
+    }, 1200)
+
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) { // Firefox
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) { // Chrome, Safari
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { // IE/Edge
+        document.msExitFullscreen();
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.getElementById('downloadColoredImageBtn').addEventListener('click', function () {
+    const id = document.getElementsByClassName('carousel-item active')[0].id;
+    let index;
+
+    // Find the index for the active image in arrayImagesColor
+    for (var i = 0; i < arrayImagesColor.length; i++) {
+        if (arrayImagesColor[i].id == id) {
+            index = i;
+            break; // Exit the loop once the index is found
+        }
+    }
+
+
+
+
+    // Image source URL
+    const imgSrc = document.getElementById(`${id}Img`).src; // Replace with your actual image URL
+
+    console.log(imgSrc);
+
+
+    // Access the canvas and context
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Create a new image object
+    const img = new Image();
+    img.src = imgSrc;
+
+    // Once the image is loaded, set canvas dimensions and draw the image
+
+    // Set canvas dimensions to the image's natural size
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    // Draw the image on the canvas
+    ctx.drawImage(img, 0, 0);
+
+
+    // Add an event listener to the download button
+
+    // Convert the canvas content to a data URL
+    const imageUrl = canvas.toDataURL('image/png');
+
+    // Create a temporary link element for downloading the image
+    const link = document.createElement('a');
+    link.href = imageUrl;
+    link.download = `${id}`; // Set the file name for download
+    link.click(); // Trigger the download
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+
+
+});
+
+
+
+document.getElementById('expandColoredImageBtnHide').addEventListener('click', function () {
+
+
+    document.getElementById('expandColoredImageBtnHide').style.opacity = 0
+    document.getElementById('expandColoredImageBtnBack').style.opacity = 0
+
+    document.getElementById('expandColoredImageBtnHide').disabled = true
+    document.getElementById('expandColoredImageBtnBack').disabled = true
+
+    setTimeout(function () {
+        document.getElementById('expandColoredImageBtnHide').disabled = false
+        document.getElementById('expandColoredImageBtnBack').disabled = false
+    }, 1500)
+
+
+})
+
+
+document.getElementById('expandColoredImageBtnBack').addEventListener('pointerover', function () {
+
+    document.getElementById('expandColoredImageBtnHide').style.opacity = 1
+    document.getElementById('expandColoredImageBtnBack').style.opacity = 1
+
+
+})
+
+
+
+document.getElementById('expandColoredImageBtnHide').addEventListener('pointerover', function () {
+
+    document.getElementById('expandColoredImageBtnHide').style.opacity = 1
+    document.getElementById('expandColoredImageBtnBack').style.opacity = 1
+
+
+})
+
+
+
+
+
+document.getElementById('expandColoredImageBtnHide').addEventListener('touchstart', function () {
+
+    document.getElementById('expandColoredImageBtnHide').style.opacity = 1
+    document.getElementById('expandColoredImageBtnBack').style.opacity = 1
+
+
+})
+
+
+
+
+document.getElementById('expandColoredImageBtnBack').addEventListener('touchstart', function () {
+
+    document.getElementById('expandColoredImageBtnHide').style.opacity = 1
+    document.getElementById('expandColoredImageBtnBack').style.opacity = 1
+
+
+})
+
+
+
+
+document.getElementById('expandColoredImageBtnHide').addEventListener('touchmove', function () {
+
+    document.getElementById('expandColoredImageBtnHide').style.opacity = 1
+    document.getElementById('expandColoredImageBtnBack').style.opacity = 1
+
+
+})
+
+
+
+
+document.getElementById('expandColoredImageBtnBack').addEventListener('touchmove', function () {
+
+    document.getElementById('expandColoredImageBtnHide').style.opacity = 1
+    document.getElementById('expandColoredImageBtnBack').style.opacity = 1
+
+
+})
+
+
+
+
+
+
+
+
+
+
+

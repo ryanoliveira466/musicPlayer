@@ -533,10 +533,24 @@ body {
 
     }
 
+    .music-player {
+        width: 800px;
+        /* height: 790px; */
+        overflow: hidden;
+        margin: 0px;
+
+    }
+
     #music-player p {
         font-size: xx-large;
 
     }
+
+    .music-player p {
+        font-size: xx-large;
+
+    }
+
 
     #buttonAcceptimg p {
         font-size: xx-large;
@@ -553,10 +567,25 @@ body {
 
     }
 
+    .music-info {
+        width: 710px;
+        height: 80px;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        word-wrap: now-rap;
+        overflow: scroll;
+
+    }
+
 
     #music-info h3 {
         font-size: xx-large;
     }
+
+    .music-info h3 {
+        font-size: xx-large;
+    }
+
 
     #song {
         height: 700px;
@@ -574,12 +603,32 @@ body {
         /* object-fit: contain; */
     }
 
+    .music-player img {
+        width: 100%;
+        /* width: 700px; */
+        height: 400px;
+        border-radius: 10px;
+        object-fit: cover;
+        /* object-fit: contain; */
+        /* height: auto; */
+        /* object-fit: contain; */
+    }
+
+
     #music-player button img {
 
         object-fit: cover;
         width: 90px;
         height: 90px;
     }
+
+    .music-player button img {
+
+        object-fit: cover;
+        width: 90px;
+        height: 90px;
+    }
+
 
     .volumeBar {
         width: 80px !important;
@@ -631,7 +680,7 @@ body {
 
 
     #imageView .music-player {
-        flex-direction: row !important;
+        flex-direction: column !important;
         overflow-x: scroll;
         scroll-behavior: smooth !important;
         width: 100% !important;
@@ -646,6 +695,8 @@ body {
         transition: transform .3s ease-out;
     } */
 
+
+  
 
 
 }
@@ -696,13 +747,20 @@ body {
 }  */
 
 
+
+
+
+ 
+
+
 .container-fluid {
     position: relative;
     display: inline-flex;
     justify-content: center;
     overflow: hidden;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     border-radius: 20px;
+    padding: 0px !important;
 }
 
 .imgGojo {
@@ -2507,3 +2565,203 @@ footer {
         overflow: scroll;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+.alert-box {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FF4C4C;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    max-width: 80%;
+    text-align: center;
+    font-family: Garamond;
+    z-index: 7767;
+}
+
+.alert-box.show {
+    display: block;
+}
+
+.alert-box button {
+    background-color: #ffffff;
+    color: #FF4C4C;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.alert-box button:hover {
+    background-color: #FF7070;
+}
+
+.delete-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #FF4C4C;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.delete-button:hover {
+    background-color: #FF7070;
+}
+
+
+
+
+ 
+
+ .offcanvas-backdrop{
+    height: 100% !important;
+
+ }
+
+ #offcanvasBottom{
+    display: flex;
+    background: #fffefe;
+    mix-blend-mode: normal;
+    backdrop-filter: brightness(0.5);
+    z-index: 7566;
+    font-family: Garamond;
+ }
+
+
+ #offcanvasBottomSong{
+    display: flex;
+    background: #fffefe;
+    mix-blend-mode: normal;
+    backdrop-filter: brightness(0.5);
+    z-index: 7566;
+    font-family: Garamond;
+ }
+
+
+ #expandColoredImageBtn{
+    backdrop-filter: brightness(0.5);
+    margin: 1rem;
+ }
+
+ #downloadColoredImageBtn {
+    backdrop-filter: brightness(0.5);
+    margin: 1rem;
+}
+
+.donwloadAndExpand{
+    display: flex;
+    justify-content: left; 
+    align-items: center;
+    text-align: center;
+    width: 900px;
+    margin-left: 12px;
+    margin-right: 12px;
+    
+    
+}
+
+body div{
+    scroll-behavior: smooth !important;
+}
+
+
+
+@media screen and (max-width: 1200px){
+    .donwloadAndExpand{
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        text-align: center;
+        width: 900px;
+        margin-left: 12px;
+        margin-right: 12px;
+        
+        
+    }
+    
+}
+
+
+
+
+#expandColoredImageBtnBack{
+    display: flex;
+    position: absolute;
+    z-index: 9999;
+    backdrop-filter: brightness(0.5);
+    top: 0;
+    left: 0;
+    margin: 1rem;
+
+    transition: opacity 0.6s ease-in-out;
+     
+}
+
+
+#expandColoredImageBtnHide{
+    display: flex;
+    position: absolute;
+    z-index: 9999;
+    backdrop-filter: brightness(0.5);
+    top: 0;
+    left: 130px;
+    margin: 1rem;
+
+    transition: opacity 0.6s ease-in-out;
+     
+}
+
+
+
+
+
+
+ 
+
+
+ #blackCover{
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 8000;
+     
+ }
