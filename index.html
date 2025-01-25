@@ -636,7 +636,7 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
 
 
 
-
+<img src="song/Refuzion - Follow Me (feat. Christian Carlucci) (Official Video Clip) [TubeRipper.com].mp3" alt="" srcset="">
 
 
 
@@ -1431,6 +1431,10 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
 
   <div id="musicBar">
 
+    <div id="bgImage">
+        <img id="bgImageReal" src="" alt="" srcset="">
+    </div>
+
     <div id="pxMusicBar900" style="display: contents;justify-content: center; align-items: center;">
     <img src="img/teste/maxresdefault.jpg" alt="" srcset="" class="musicBarImg" id="musicBarImg">
     <div class="musicBarAudioTrack" id="musicBarAudioTrack"><div id="musicBarCircle" style="user-select: none;" class="musicBarCircle"><img src="img/circleCursor.png" alt="" srcset=""></div></div>
@@ -1623,11 +1627,22 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
         </div>
 
          
+        <div style="display: flex;justify-content: center;flex-direction: row;margin-left: auto;">
+            <div id="divRemoveImg">
+                <button class="btn btnOptions" id="removeCarousel"><img src="img/imgCarouselShow.png" id="imgRemoveCarousel" alt="" srcset=""></button>
+            </div>
+        
+            <div id="divRemoveSong">
+                <button class="btn btnOptions" id="removeSong"><img src="img/notSongBar.png" id="imgRemoveSong" alt="" srcset=""></button>
+            </div>
+            </div>
 
 
         <button class="btn btn" id="configButton" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <img src="img/dot.png" alt="" srcset="" width="60px" height="60px">
         </button>
+
+        
 
         <div class="offcanvas offcanvas-start"
             style="color: rgb(221, 238, 238); font-family: Garamond;backdrop-filter: blur(40px);
@@ -1654,6 +1669,24 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
                            </div>
                         </div>
 
+                        <div class="playListItem" id="hardStylePlayListPattern">
+                            <img src="img/hardStyle.jpg" class="playListCoverImg" id="hardStylePlayListImg" alt="" srcset="">
+                           <h3>HardStyle</h3>
+                           <div class="buttonsPlayList">
+                           <button class="btn btn-danger"  id="hardStylePlayListDelete"><img src="img/trash.png" width="60px" height="60px" alt=""></button>
+                           <button class="btn btn-secondary"  id="hardStylePlayListEdit"><img src="img/pen.png" width="60px" height="60px" alt=""></button>
+                           </div>
+                        </div>
+
+                        <div class="playListItem" id="juicePlayListPattern">
+                            <img src="img/Juice WRLD.jpg" class="playListCoverImg" id="juicePlayListImg" alt="" srcset="">
+                           <h3>Juice - WRLD</h3>
+                           <div class="buttonsPlayList">
+                           <button class="btn btn-danger"  id="juicePlayListDelete"><img src="img/trash.png" width="60px" height="60px" alt=""></button>
+                           <button class="btn btn-secondary"  id="juicePlayListEdit"><img src="img/pen.png" width="60px" height="60px" alt=""></button>
+                           </div>
+                        </div>
+
                     </div>
 
                     <button id="addPlayList" class="btn btn"><img src="img/addPlayList.png" alt="" srcset="" data-bs-target="#exampleModalPlayList" data-bs-toggle="modal"></button>
@@ -1665,11 +1698,16 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
 
     </header>
 
+   
+
     <main>
         <article>
 
        
          
+            <div id="showPlayListImageDiv">
+                <img id="imagePlayList" src="img/suicideSheep.jpg" alt="" srcset="">
+            </div>
 
             <div id="carouselExampleFade" class="carousel slide carousel-fade">
 
@@ -1738,6 +1776,8 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
 
               
             </div>
+
+
 
             
 
@@ -2506,9 +2546,7 @@ if (cropper3) {
       });
   </script> -->
   
-
-
-
+ 
 
 </body>
 

@@ -185,10 +185,64 @@ playlist = [
 
 ]
 
+playlist2 = [
+    {
+        namePlaylist: 'HardStyle',
+        indexPlayList: 'hardStylePlayList',
+        coverPlaylist: `img/hardStyle.jpg`,
+        coverObjFit: 'cover'
+    },
+    {
+        nameSong: '1',
+        wallPaper: 'img/teste/zyzz.jpg',
+        songSrc: 'song/Refuzion - Follow Me (feat. Christian Carlucci) (Official Video Clip) [TubeRipper.com].mp3',
+        title: 'Refuzion - Follow Me (feat. Christian Carlucci)',
+        artist: 'Refuzion',
+        cover: 'cover'
+    },
+
+]
+
+playlist3 = [
+    {
+        namePlaylist: 'Juice WRLD',
+        indexPlayList: 'juicePlayList',
+        coverPlaylist: `img/Juice WRLD.jpg`,
+        coverObjFit: 'cover'
+    },
+    {
+        nameSong: '1',
+        wallPaper: 'img/teste/armedAndDangerous.jpg',
+        songSrc: 'song/Juice WRLD - Armed & Dangerous (Official Music Video) [TubeRipper.com].mp3',
+        title: 'Juice WRLD - Armed & Dangerous',
+        artist: 'Jarad Anthony Higgins',
+        cover: 'cover'
+    },
+    {
+        nameSong: '2',
+        wallPaper: 'img/teste/empty.jpg',
+        songSrc: 'song/Juice WRLD - Empty (Official Audio) [TubeRipper.com].mp3',
+        title: 'Juice WRLD - Empty',
+        artist: 'Jarad Anthony Higgins',
+        cover: 'cover'
+    },
+    {
+        nameSong: '3',
+        wallPaper: 'img/teste/legends.jpg',
+        songSrc: 'song/Juice WRLD - Legends (Official Audio) [TubeRipper.com].mp3',
+        title: 'Juice WRLD - Legends',
+        artist: 'Jarad Anthony Higgins',
+        cover: 'cover'
+    },
+
+]
 
 
 
-arrayPlayList = [playlist]
+
+
+
+arrayPlayList = [playlist,playlist2,playlist3]
 
 
 
@@ -3982,11 +4036,15 @@ document.getElementById('btnMusicBarExpand').addEventListener('click', function 
 
 
     if (musicBar.style.height == '100%') {
+
+        document.getElementById('bgImage').style.display = 'none'
+
+
         musicBar.style.height = '140px'
         header.style.height = '140px'
         musicBarImg.style.height = '100px'
         musicBarImg.style.width = '200px'
-        document.getElementById('musicBar').style.background = '#e9e3e346'
+        document.getElementById('musicBar').style.background = 'transparent'
         window.scrollTo(0, 0);
 
 
@@ -3995,7 +4053,7 @@ document.getElementById('btnMusicBarExpand').addEventListener('click', function 
             document.getElementById('pxMusicBar500').style.display = 'contents'
             document.getElementById('musicBar').style.flexDirection = 'row'
             document.getElementById('musicBarAudioTrack').style.width = '100%'
-            document.getElementById('musicBar').style.background = '#e9e3e346'
+            document.getElementById('musicBar').style.background = 'transparent'
             document.getElementById('audioVolumeMusicBar').style.marginLeft = '0px'
 
 
@@ -4005,7 +4063,7 @@ document.getElementById('btnMusicBarExpand').addEventListener('click', function 
 
             document.getElementById('pxMusicBar900').style.display = 'contents'
             document.getElementById('musicBarAudioTrack').style.width = '100%'
-            document.getElementById('musicBar').style.background = '#e9e3e346'
+            document.getElementById('musicBar').style.background = 'transparent'
 
         }
 
@@ -4021,6 +4079,21 @@ document.getElementById('btnMusicBarExpand').addEventListener('click', function 
     }
 
     else {
+
+
+        document.getElementById('bgImage').style.display = 'flex'
+        document.getElementById('bgImageReal').src = `${document.getElementById(`musicBarImg`).src}`;
+
+        document.getElementById('bgImageReal').style.pointerEvents = 'none'
+
+        setTimeout(function () {
+            document.getElementById('bgImageReal').style.pointerEvents = 'all'
+        }, 1000)
+
+
+
+
+
         musicBar.style.height = '100%'
         header.style.height = '0px'
         musicBarImg.style.height = '200px'
@@ -4115,6 +4188,15 @@ document.getElementById('arrowRightMusicBar').addEventListener('click', function
                 document.getElementById(`audioPlay${arraySong[nextAudioPlaylist].nameSong}`).click()
                 document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
                 document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
+                //
+                document.getElementById('bgImageReal').src = `${document.getElementById(`musicBarImg`).src}`;
+
+                document.getElementById('bgImageReal').style.pointerEvents = 'none'
+
+                setTimeout(function () {
+                    document.getElementById('bgImageReal').style.pointerEvents = 'all'
+                }, 1000)
+                //
 
             }
 
@@ -4151,6 +4233,16 @@ document.getElementById('arrowLeftMusicBar').addEventListener('click', function 
                 document.getElementById(`audioPlay${arraySong[nextAudioPlaylist].nameSong}`).click()
                 document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
                 document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
+
+                //
+                document.getElementById('bgImageReal').src = `${document.getElementById(`musicBarImg`).src}`;
+
+                document.getElementById('bgImageReal').style.pointerEvents = 'none'
+
+                setTimeout(function () {
+                    document.getElementById('bgImageReal').style.pointerEvents = 'all'
+                }, 1000)
+                //
 
             }
 
@@ -4216,6 +4308,53 @@ arraySong.forEach(song => {
     })
 
 });
+
+
+
+
+//Next
+arraySong.forEach(song => {
+    document.getElementById(`audio${song.nameSong}`).addEventListener('ended', function () {
+
+        let nextSongPlaylist;
+
+        if (flagShuffle == false) {
+
+            for (var i = 0; i < arraySong.length; i++) {
+                if (currentId == arraySong[i].nameSong) {
+                    nextSongPlaylist = i + 1
+                }
+            }
+
+            if (((nextSongPlaylist) > (arraySong.length - 1)) == false) {
+
+                document.getElementById(`audio${arraySong[nextSongPlaylist].nameSong}`).load()
+                document.getElementById(`audioPlay${arraySong[nextSongPlaylist].nameSong}`).click()
+
+                //
+                document.getElementById('bgImageReal').src = `${document.getElementById(`musicBarImg`).src}`;
+
+                document.getElementById('bgImageReal').style.pointerEvents = 'none'
+
+                setTimeout(function () {
+                    document.getElementById('bgImageReal').style.pointerEvents = 'all'
+                }, 1000)
+                //
+
+            }
+
+            else {
+                document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRightMax.png'
+            }
+
+
+
+        }
+    })
+
+});
+
+//Next
 
 
 
@@ -6155,12 +6294,19 @@ document.getElementById('searchBar').addEventListener('click', function () {
         searchDiv.style.height = '100%'
         allItems.style.display = 'flex'
         resultDiv.style.display = 'flex'
+
+        //
+        document.getElementById('musicBar').style.display = 'none'
+        document.getElementById('height260').style.display = 'none'
+        //
+
     }
 
     else {
         searchDiv.style.height = '0%'
         allItems.style.display = 'none'
         resultDiv.style.display = 'none'
+
     }
 
 
@@ -6187,6 +6333,8 @@ document.getElementById('searchBar').addEventListener('click', function () {
 document.getElementById('searchingDivExpand').addEventListener('click', function () {
 
     document.getElementById('searchBar').disabled = false
+
+
 
 
 
@@ -6217,6 +6365,8 @@ document.getElementById('searchingDivExpand').addEventListener('click', function
 
 
 
+
+
     // Set a timeout to enable the button after 1 second
     setTimeout(function () {
         allItems.style.display = 'none'
@@ -6226,7 +6376,16 @@ document.getElementById('searchingDivExpand').addEventListener('click', function
         imgSearch.classList.remove('opacityRemove')
         button.classList.remove('opacityRemove')
         resultDiv.classList.toggle('opacityRemove')
+
     }, 1000); // 1000 milliseconds = 1 second
+
+
+    setTimeout(function () {
+        //
+        document.getElementById('musicBar').style.display = 'flex'
+        document.getElementById('height260').style.display = 'flex'
+        //
+    }, 1500)
 
     setTimeout(function () {
         window.scrollTo(0, 0);
@@ -6768,9 +6927,6 @@ buttonsToast.forEach(button => {
 
 
 
-
-
-
 //PLAYLIST
 
 
@@ -6968,7 +7124,7 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
 
     arraySong = []
     //
-    
+
     //
 
 
@@ -7010,6 +7166,13 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
 
 
         imgPl.addEventListener('click', function () {
+
+
+            document.getElementById('imagePlayList').src = img
+            document.getElementById('imagePlayList').style.objectFit = cover
+
+
+
             flagActualPlayList = id
 
             let index = id
@@ -7220,6 +7383,8 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
 
             }
 
+            allArraySongFunctions()
+
         })
 
 
@@ -7266,7 +7431,7 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
             document.getElementById('offcanvasBottomBtnPlayList').click()
 
             document.getElementById('staticBackdrop').style.pointerEvents = 'none'
-             
+
 
             const isDeleted = await handleDeletePlayList();
 
@@ -7284,13 +7449,13 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
                     }
                 }
 
-                
+
                 arrayPlayList.splice(deletedElementIndex, 1)
 
                 document.getElementById('musicOffCan').removeChild(document.getElementById(`${deletedElement}Pattern`))
 
                 console.log(arrayPlayList);
-                
+
                 document.getElementById('staticBackdrop').style.pointerEvents = 'all'
 
 
@@ -7303,7 +7468,7 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
                 flagActualPlayList = arrayPlayList[randomChoisePlayList][0].indexPlayList
 
                 document.getElementById('song').innerHTML = ''
-                 
+
                 arraySong = []
 
                 for (var x = 1; x < arrayPlayList[randomChoisePlayList].length; x++) {
@@ -7316,20 +7481,20 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
                     let titleName = arrayPlayList[randomChoisePlayList][x].title
                     let artistName = arrayPlayList[randomChoisePlayList][x].artist
                     let musicSrc = arrayPlayList[randomChoisePlayList][x].songSrc
-    
-    
+
+
                     // Get the container element where you want to append the music player
                     const songContainer = document.getElementById('song');
-    
+
                     // Create the container div for the music player
                     let musicPlayerContainer = document.createElement('div');
-    
-    
+
+
                     // Create the music player div
                     let musicPlayer = document.createElement('div');
                     musicPlayer.classList.add('music-player');
                     musicPlayer.id = 'music-player';
-    
+
                     // Create the music image (album cover)
                     let musicImg = document.createElement('img');
                     musicImg.src = imgSrc; // Ensure imgSrc is defined with a valid path
@@ -7337,127 +7502,127 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
                     musicImg.style.objectFit = coverImg;
                     musicImg.alt = 'Album Cover';
                     musicImg.id = `coverImagePlaylist${idImg}`
-    
+
                     // Append the image to the music player div
                     musicPlayer.appendChild(musicImg);
-    
+
                     // Create the music info div
                     let musicInfo = document.createElement('div');
                     musicInfo.classList.add('music-info');
                     musicInfo.id = 'music-info';
-    
+
                     // Create the song name heading
                     let songName = document.createElement('h3');
                     songName.textContent = titleName; // Ensure titleName is defined
                     songName.id = `titlePlaylist${idImg}`
-    
+
                     // Append the song name to the music info div
                     musicInfo.appendChild(songName);
-    
+
                     // Append the music info to the music player div
                     musicPlayer.appendChild(musicInfo);
-    
+
                     // Create the artist paragraph
                     let artist = document.createElement('p');
                     artist.textContent = artistName; // Ensure artistName is defined
                     artist.className = 'artist'
                     artist.id = `artistPlaylist${idImg}`
-    
+
                     // Append the artist paragraph to the music player div
                     musicPlayer.appendChild(artist);
-    
+
                     // Create the audio player div
                     let audioPlayer = document.createElement('div');
                     audioPlayer.classList.add('audio-player');
-    
+
                     // Create play button
                     let playButton = document.createElement('button');
                     playButton.classList.add('btn', 'btnPlay');
                     playButton.id = `audioPlay${idImg}`; // Ensure idImg is defined
-    
+
                     let playImg = document.createElement('img');
                     playImg.src = 'img/play.png';
                     playImg.alt = '';
                     playImg.width = 30;
                     playImg.height = 30;
-    
+
                     playButton.appendChild(playImg);
-    
+
                     // Create pause button (initially hidden)
                     let pauseButton = document.createElement('button');
                     pauseButton.classList.add('btn', 'btnPause');
                     pauseButton.style.display = 'none';
                     pauseButton.id = `audioPause${idImg}`;
-    
+
                     let pauseImg = document.createElement('img');
                     pauseImg.src = 'img/pause.png';
                     pauseImg.alt = '';
                     pauseImg.width = 30;
                     pauseImg.height = 30;
-    
+
                     pauseButton.appendChild(pauseImg);
-    
+
                     // Create the audio length div
                     let audioLength = document.createElement('div');
                     audioLength.classList.add('audioLength');
-    
+
                     // Create the volume button
                     let volumeButton = document.createElement('button');
                     volumeButton.classList.add('btn', 'btnVolume');
                     volumeButton.id = `audioVolume${idImg}`;
-    
+
                     let volumeImg = document.createElement('img');
                     volumeImg.src = 'img/volume.png';
                     volumeImg.alt = '';
                     volumeImg.width = 30;
                     volumeImg.height = 30;
-    
+
                     volumeButton.appendChild(volumeImg);
-    
+
                     // Create the mute button (initially hidden)
                     let muteButton = document.createElement('button');
                     muteButton.classList.add('btn', 'btnMutado');
                     muteButton.style.display = 'none';
                     muteButton.id = `audioMutado${idImg}`;
-    
+
                     let muteImg = document.createElement('img');
                     muteImg.src = 'img/muted.png';
                     muteImg.alt = '';
                     muteImg.width = 30;
                     muteImg.height = 30;
-    
+
                     muteButton.appendChild(muteImg);
-    
+
                     // Create the volume bar div
                     let volumeBar = document.createElement('div');
                     volumeBar.classList.add('volumeBar');
-    
+
                     // Create the volume circle div
                     let volumeCircle = document.createElement('div');
                     volumeCircle.id = `volumeCircle${idImg}`;
                     volumeCircle.classList.add('volumeCircle');
-    
+
                     let volumeCircleImg = document.createElement('img');
                     volumeCircleImg.src = 'img/circleCursor.png';
                     volumeCircleImg.alt = '';
                     volumeCircleImg.width = 30;
                     volumeCircleImg.height = 30;
-    
+
                     volumeCircle.appendChild(volumeCircleImg);
                     volumeBar.appendChild(volumeCircle);
-    
+
                     // Create the audio element (hidden)
                     let audioElement = document.createElement('audio');
                     audioElement.id = `audio${idImg}`;
                     audioElement.style.display = 'none';
                     audioElement.controls = true;
-    
+
                     let audioSource = document.createElement('source');
                     audioSource.src = musicSrc; // Ensure musicSrc is defined
                     audioSource.type = 'audio/mp3';
-    
+
                     audioElement.appendChild(audioSource);
-    
+
                     // Append all elements to the audio player div
                     audioPlayer.appendChild(playButton);
                     audioPlayer.appendChild(pauseButton);
@@ -7466,52 +7631,58 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
                     audioPlayer.appendChild(muteButton);
                     audioPlayer.appendChild(volumeBar);
                     audioPlayer.appendChild(audioElement);
-    
+
                     // Append the audio player to the music player div
                     musicPlayer.appendChild(audioPlayer);
-    
+
                     // Finally, append the music player container to the song container
                     songContainer.appendChild(musicPlayerContainer);
-    
+
                     // Append the music player to the container div
                     musicPlayerContainer.appendChild(musicPlayer);
-    
+
                     let positionArray;
-    
+
                     for (var i = 0; i < arraySong.length; i++) {
                         if (arraySong[i].nameSong == idImg) {
                             positionArray = arraySong[i]
                         }
                     }
-    
-    
-    
-    
+
+
+
+
                     audioBtnFunction(positionArray)
                     volumeBtnAudio(positionArray)
                     shuffleSong(positionArray)
 
-                    
-                    
-    
+                    allArraySongFunctions()
+
+
+
+
                 }
 
 
                 console.log('arraySong', arraySong);
-                    console.log('flagPlayList', flagActualPlayList);
-                    console.log('list', arrayPlayList[randomChoisePlayList]);
+                console.log('flagPlayList', flagActualPlayList);
+                console.log('list', arrayPlayList[randomChoisePlayList]);
 
-                 ////////BBBBBBBBBBBBBBBB
-
-
-
-                
+                ////////BBBBBBBBBBBBBBBB
 
 
 
 
 
-              
+
+
+
+
+
+            }
+
+            else{
+                document.getElementById('staticBackdrop').style.pointerEvents = 'all'
             }
 
 
@@ -7729,7 +7900,11 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
         audioBtnFunction(positionArray)
         volumeBtnAudio(positionArray)
         shuffleSong(positionArray)
+
+        allArraySongFunctions()
     }
+
+    allArraySongFunctions()
 
     document.getElementById('btnCloseModalPlayList').click()
 
@@ -7773,51 +7948,51 @@ document.getElementById('offCanvasButton').addEventListener('click', function ()
 
 
 
-document.getElementById('buttonAcceptimgPlayList').addEventListener('focus', function(){
-      // Handle the cropping process
-       
-        if (cropper5) {
-            // Get the cropped image data as a Data URL
-            const canvas = cropper5.getCroppedCanvas();
-            const croppedImageURL = canvas.toDataURL('image/png');
+document.getElementById('buttonAcceptimgPlayList').addEventListener('focus', function () {
+    // Handle the cropping process
 
-            // Apply border-radius to the cropped image using a temporary canvas
-            const radius = 20; // Set the border-radius here  //////const radius = 20 CHECKPOINT CROPPER
+    if (cropper5) {
+        // Get the cropped image data as a Data URL
+        const canvas = cropper5.getCroppedCanvas();
+        const croppedImageURL = canvas.toDataURL('image/png');
 
-            // Create a temporary canvas to apply the border-radius effect
-            let tempCanvas = document.createElement('canvas');
-            let tempCtx = tempCanvas.getContext('2d');
+        // Apply border-radius to the cropped image using a temporary canvas
+        const radius = 20; // Set the border-radius here  //////const radius = 20 CHECKPOINT CROPPER
 
-            // Set canvas dimensions to match the cropped canvas
-            tempCanvas.width = canvas.width;
-            tempCanvas.height = canvas.height;
+        // Create a temporary canvas to apply the border-radius effect
+        let tempCanvas = document.createElement('canvas');
+        let tempCtx = tempCanvas.getContext('2d');
 
-            // Draw a rounded rectangle on the temporary canvas
-            tempCtx.beginPath();
-            tempCtx.moveTo(radius, 0);
-            tempCtx.lineTo(tempCanvas.width - radius, 0);
-            tempCtx.quadraticCurveTo(tempCanvas.width, 0, tempCanvas.width, radius);
-            tempCtx.lineTo(tempCanvas.width, tempCanvas.height - radius);
-            tempCtx.quadraticCurveTo(tempCanvas.width, tempCanvas.height, tempCanvas.width - radius, tempCanvas.height);
-            tempCtx.lineTo(radius, tempCanvas.height);
-            tempCtx.quadraticCurveTo(0, tempCanvas.height, 0, tempCanvas.height - radius);
-            tempCtx.lineTo(0, radius);
-            tempCtx.quadraticCurveTo(0, 0, radius, 0);
-            tempCtx.closePath();
-            tempCtx.clip();
+        // Set canvas dimensions to match the cropped canvas
+        tempCanvas.width = canvas.width;
+        tempCanvas.height = canvas.height;
 
-            // Draw the cropped image onto the temporary canvas with rounded corners
-            tempCtx.drawImage(canvas, 0, 0);
+        // Draw a rounded rectangle on the temporary canvas
+        tempCtx.beginPath();
+        tempCtx.moveTo(radius, 0);
+        tempCtx.lineTo(tempCanvas.width - radius, 0);
+        tempCtx.quadraticCurveTo(tempCanvas.width, 0, tempCanvas.width, radius);
+        tempCtx.lineTo(tempCanvas.width, tempCanvas.height - radius);
+        tempCtx.quadraticCurveTo(tempCanvas.width, tempCanvas.height, tempCanvas.width - radius, tempCanvas.height);
+        tempCtx.lineTo(radius, tempCanvas.height);
+        tempCtx.quadraticCurveTo(0, tempCanvas.height, 0, tempCanvas.height - radius);
+        tempCtx.lineTo(0, radius);
+        tempCtx.quadraticCurveTo(0, 0, radius, 0);
+        tempCtx.closePath();
+        tempCtx.clip();
 
-            // Convert the temporary canvas to a data URL
-            const roundedCroppedImageURL = tempCanvas.toDataURL('image/png');
-            document.getElementById('image-previewPlayList').src = roundedCroppedImageURL
+        // Draw the cropped image onto the temporary canvas with rounded corners
+        tempCtx.drawImage(canvas, 0, 0);
 
-            // Set the cropped and rounded image to the result <img> element
-        } else {
+        // Convert the temporary canvas to a data URL
+        const roundedCroppedImageURL = tempCanvas.toDataURL('image/png');
+        document.getElementById('image-previewPlayList').src = roundedCroppedImageURL
 
-        }
-     
+        // Set the cropped and rounded image to the result <img> element
+    } else {
+
+    }
+
 })
 
 
@@ -7828,7 +8003,1019 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('focus', fun
 
 
 
+const container = document.getElementById('song');
+
+// Listen for the wheel event on the container
+container.addEventListener('wheel', function (event) {
+    // Check if the wheel is scrolling horizontally
+    if (event.deltaY !== 0) {
+        // Scroll horizontally based on the wheel movement
+        container.scrollLeft += (event.deltaY * 10);
+    }
+
+    // Prevent the default vertical scroll behavior
+    event.preventDefault();
+});
 
 
 
 
+
+
+
+
+document.addEventListener('DOMContentLoaded', function(){
+    document.getElementById('musicOffCan').innerHTML = ''
+
+    for (var i = 0; i < arrayPlayList.length; i++) {
+        let name = arrayPlayList[i][0].namePlaylist
+        let id = arrayPlayList[i][0].indexPlayList
+        let img = arrayPlayList[i][0].coverPlaylist
+        let cover = arrayPlayList[i][0].coverObjFit
+
+        const playListContainer = document.getElementById('musicOffCan'); // Assuming this is the container where you want to append
+
+        const playListItem = document.createElement('div');
+        playListItem.classList.add('playListItem');
+        playListItem.id = `${id}Pattern`
+
+        const imgPl = document.createElement('img');
+        imgPl.src = img;
+        imgPl.classList.add('playListCoverImg');
+        imgPl.id = `${id}Img`;
+        imgPl.alt = "";
+        imgPl.srcset = "";
+        imgPl.style.objectFit = cover
+
+
+        if (cover == 'scale-down' || cover == 'contain') {
+            imgPl.style.padding = '1rem'
+        }
+
+        else {
+            imgPl.style.padding = '0px'
+        }
+
+
+
+
+        imgPl.addEventListener('click', function () {
+
+
+            document.getElementById('imagePlayList').src = img
+            document.getElementById('imagePlayList').style.objectFit = cover
+
+
+
+            flagActualPlayList = id
+
+            let index = id
+            let playListIndex
+
+            for (var i = 0; i < arrayPlayList.length; i++) {
+
+                if (index == arrayPlayList[i][0].indexPlayList) {
+                    playListIndex = i
+                }
+
+            }
+
+
+            document.getElementById('song').innerHTML = ""
+            arraySong = []
+
+
+            for (var r = 1; r < arrayPlayList[playListIndex].length; r++) {
+                arraySong.push(arrayPlayList[playListIndex][r])
+            }
+
+            console.log('click', arraySong);
+
+
+
+            for (var x = 0; x < arraySong.length; x++) {
+                let coverImg = arraySong[x].cover
+                let idImg = arraySong[x].nameSong
+                let imgSrc = arraySong[x].wallPaper
+                let titleName = arraySong[x].title
+                let artistName = arraySong[x].artist
+                let musicSrc = arraySong[x].songSrc
+
+
+                // Get the container element where you want to append the music player
+                const songContainer = document.getElementById('song');
+
+                // Create the container div for the music player
+                let musicPlayerContainer = document.createElement('div');
+
+
+                // Create the music player div
+                let musicPlayer = document.createElement('div');
+                musicPlayer.classList.add('music-player');
+                musicPlayer.id = 'music-player';
+
+                // Create the music image (album cover)
+                let musicImg = document.createElement('img');
+                musicImg.src = imgSrc; // Ensure imgSrc is defined with a valid path
+                musicImg.classList.add('musicImg');
+                musicImg.style.objectFit = coverImg;
+                musicImg.alt = 'Album Cover';
+                musicImg.id = `coverImagePlaylist${idImg}`
+
+                // Append the image to the music player div
+                musicPlayer.appendChild(musicImg);
+
+                // Create the music info div
+                let musicInfo = document.createElement('div');
+                musicInfo.classList.add('music-info');
+                musicInfo.id = 'music-info';
+
+                // Create the song name heading
+                let songName = document.createElement('h3');
+                songName.textContent = titleName; // Ensure titleName is defined
+                songName.id = `titlePlaylist${idImg}`
+
+                // Append the song name to the music info div
+                musicInfo.appendChild(songName);
+
+                // Append the music info to the music player div
+                musicPlayer.appendChild(musicInfo);
+
+                // Create the artist paragraph
+                let artist = document.createElement('p');
+                artist.textContent = artistName; // Ensure artistName is defined
+                artist.className = 'artist'
+                artist.id = `artistPlaylist${idImg}`
+
+                // Append the artist paragraph to the music player div
+                musicPlayer.appendChild(artist);
+
+                // Create the audio player div
+                let audioPlayer = document.createElement('div');
+                audioPlayer.classList.add('audio-player');
+
+                // Create play button
+                let playButton = document.createElement('button');
+                playButton.classList.add('btn', 'btnPlay');
+                playButton.id = `audioPlay${idImg}`; // Ensure idImg is defined
+
+                let playImg = document.createElement('img');
+                playImg.src = 'img/play.png';
+                playImg.alt = '';
+                playImg.width = 30;
+                playImg.height = 30;
+
+                playButton.appendChild(playImg);
+
+                // Create pause button (initially hidden)
+                let pauseButton = document.createElement('button');
+                pauseButton.classList.add('btn', 'btnPause');
+                pauseButton.style.display = 'none';
+                pauseButton.id = `audioPause${idImg}`;
+
+                let pauseImg = document.createElement('img');
+                pauseImg.src = 'img/pause.png';
+                pauseImg.alt = '';
+                pauseImg.width = 30;
+                pauseImg.height = 30;
+
+                pauseButton.appendChild(pauseImg);
+
+                // Create the audio length div
+                let audioLength = document.createElement('div');
+                audioLength.classList.add('audioLength');
+
+                // Create the volume button
+                let volumeButton = document.createElement('button');
+                volumeButton.classList.add('btn', 'btnVolume');
+                volumeButton.id = `audioVolume${idImg}`;
+
+                let volumeImg = document.createElement('img');
+                volumeImg.src = 'img/volume.png';
+                volumeImg.alt = '';
+                volumeImg.width = 30;
+                volumeImg.height = 30;
+
+                volumeButton.appendChild(volumeImg);
+
+                // Create the mute button (initially hidden)
+                let muteButton = document.createElement('button');
+                muteButton.classList.add('btn', 'btnMutado');
+                muteButton.style.display = 'none';
+                muteButton.id = `audioMutado${idImg}`;
+
+                let muteImg = document.createElement('img');
+                muteImg.src = 'img/muted.png';
+                muteImg.alt = '';
+                muteImg.width = 30;
+                muteImg.height = 30;
+
+                muteButton.appendChild(muteImg);
+
+                // Create the volume bar div
+                let volumeBar = document.createElement('div');
+                volumeBar.classList.add('volumeBar');
+
+                // Create the volume circle div
+                let volumeCircle = document.createElement('div');
+                volumeCircle.id = `volumeCircle${idImg}`;
+                volumeCircle.classList.add('volumeCircle');
+
+                let volumeCircleImg = document.createElement('img');
+                volumeCircleImg.src = 'img/circleCursor.png';
+                volumeCircleImg.alt = '';
+                volumeCircleImg.width = 30;
+                volumeCircleImg.height = 30;
+
+                volumeCircle.appendChild(volumeCircleImg);
+                volumeBar.appendChild(volumeCircle);
+
+                // Create the audio element (hidden)
+                let audioElement = document.createElement('audio');
+                audioElement.id = `audio${idImg}`;
+                audioElement.style.display = 'none';
+                audioElement.controls = true;
+
+                let audioSource = document.createElement('source');
+                audioSource.src = musicSrc; // Ensure musicSrc is defined
+                audioSource.type = 'audio/mp3';
+
+                audioElement.appendChild(audioSource);
+
+                // Append all elements to the audio player div
+                audioPlayer.appendChild(playButton);
+                audioPlayer.appendChild(pauseButton);
+                audioPlayer.appendChild(audioLength);
+                audioPlayer.appendChild(volumeButton);
+                audioPlayer.appendChild(muteButton);
+                audioPlayer.appendChild(volumeBar);
+                audioPlayer.appendChild(audioElement);
+
+                // Append the audio player to the music player div
+                musicPlayer.appendChild(audioPlayer);
+
+                // Finally, append the music player container to the song container
+                songContainer.appendChild(musicPlayerContainer);
+
+                // Append the music player to the container div
+                musicPlayerContainer.appendChild(musicPlayer);
+
+                let positionArray;
+
+                for (var i = 0; i < arraySong.length; i++) {
+                    if (arraySong[i].nameSong == idImg) {
+                        positionArray = arraySong[i]
+                    }
+                }
+
+
+
+
+                audioBtnFunction(positionArray)
+                volumeBtnAudio(positionArray)
+                shuffleSong(positionArray)
+
+            }
+
+            allArraySongFunctions()
+
+        })
+
+
+
+        const h3 = document.createElement('h3');
+        h3.textContent = name;
+
+        const buttonsDiv = document.createElement('div');
+        buttonsDiv.classList.add('buttonsPlayList');
+
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('btn', 'btn-danger');
+        deleteButton.id = `${id}Delete`;
+        const deleteImg = document.createElement('img');
+        deleteImg.src = "img/trash.png";
+        deleteImg.width = 60;
+        deleteImg.height = 60;
+        deleteImg.alt = "";
+        deleteButton.appendChild(deleteImg);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        deleteButton.addEventListener('click', async function () {
+            if (arrayPlayList.length == 1) {
+
+                document.getElementById('liveToastBtnDelete').click()
+
+                return;
+            }
+
+
+            document.getElementById('offcanvasBottomBtnPlayList').click()
+
+            document.getElementById('staticBackdrop').style.pointerEvents = 'none'
+
+
+            const isDeleted = await handleDeletePlayList();
+
+            if (isDeleted) {
+
+
+                let deletedElementIndex;
+                let deletedElement;
+
+
+                for (var h = 0; h < arrayPlayList.length; h++) {
+                    if (arrayPlayList[h][0].indexPlayList == id) {
+                        deletedElementIndex = h
+                        deletedElement = arrayPlayList[h][0].indexPlayList
+                    }
+                }
+
+
+                arrayPlayList.splice(deletedElementIndex, 1)
+
+                document.getElementById('musicOffCan').removeChild(document.getElementById(`${deletedElement}Pattern`))
+
+                console.log(arrayPlayList);
+
+                document.getElementById('staticBackdrop').style.pointerEvents = 'all'
+
+
+
+
+                ////////BBBBBBBBBBBBBBBB
+
+                let randomChoisePlayList = Math.floor(Math.random() * arrayPlayList.length)
+
+                flagActualPlayList = arrayPlayList[randomChoisePlayList][0].indexPlayList
+
+                document.getElementById('song').innerHTML = ''
+
+                arraySong = []
+
+                for (var x = 1; x < arrayPlayList[randomChoisePlayList].length; x++) {
+
+                    arraySong.push(arrayPlayList[randomChoisePlayList][x])
+
+                    let coverImg = arrayPlayList[randomChoisePlayList][x].cover
+                    let idImg = arrayPlayList[randomChoisePlayList][x].nameSong
+                    let imgSrc = arrayPlayList[randomChoisePlayList][x].wallPaper
+                    let titleName = arrayPlayList[randomChoisePlayList][x].title
+                    let artistName = arrayPlayList[randomChoisePlayList][x].artist
+                    let musicSrc = arrayPlayList[randomChoisePlayList][x].songSrc
+
+
+                    // Get the container element where you want to append the music player
+                    const songContainer = document.getElementById('song');
+
+                    // Create the container div for the music player
+                    let musicPlayerContainer = document.createElement('div');
+
+
+                    // Create the music player div
+                    let musicPlayer = document.createElement('div');
+                    musicPlayer.classList.add('music-player');
+                    musicPlayer.id = 'music-player';
+
+                    // Create the music image (album cover)
+                    let musicImg = document.createElement('img');
+                    musicImg.src = imgSrc; // Ensure imgSrc is defined with a valid path
+                    musicImg.classList.add('musicImg');
+                    musicImg.style.objectFit = coverImg;
+                    musicImg.alt = 'Album Cover';
+                    musicImg.id = `coverImagePlaylist${idImg}`
+
+                    // Append the image to the music player div
+                    musicPlayer.appendChild(musicImg);
+
+                    // Create the music info div
+                    let musicInfo = document.createElement('div');
+                    musicInfo.classList.add('music-info');
+                    musicInfo.id = 'music-info';
+
+                    // Create the song name heading
+                    let songName = document.createElement('h3');
+                    songName.textContent = titleName; // Ensure titleName is defined
+                    songName.id = `titlePlaylist${idImg}`
+
+                    // Append the song name to the music info div
+                    musicInfo.appendChild(songName);
+
+                    // Append the music info to the music player div
+                    musicPlayer.appendChild(musicInfo);
+
+                    // Create the artist paragraph
+                    let artist = document.createElement('p');
+                    artist.textContent = artistName; // Ensure artistName is defined
+                    artist.className = 'artist'
+                    artist.id = `artistPlaylist${idImg}`
+
+                    // Append the artist paragraph to the music player div
+                    musicPlayer.appendChild(artist);
+
+                    // Create the audio player div
+                    let audioPlayer = document.createElement('div');
+                    audioPlayer.classList.add('audio-player');
+
+                    // Create play button
+                    let playButton = document.createElement('button');
+                    playButton.classList.add('btn', 'btnPlay');
+                    playButton.id = `audioPlay${idImg}`; // Ensure idImg is defined
+
+                    let playImg = document.createElement('img');
+                    playImg.src = 'img/play.png';
+                    playImg.alt = '';
+                    playImg.width = 30;
+                    playImg.height = 30;
+
+                    playButton.appendChild(playImg);
+
+                    // Create pause button (initially hidden)
+                    let pauseButton = document.createElement('button');
+                    pauseButton.classList.add('btn', 'btnPause');
+                    pauseButton.style.display = 'none';
+                    pauseButton.id = `audioPause${idImg}`;
+
+                    let pauseImg = document.createElement('img');
+                    pauseImg.src = 'img/pause.png';
+                    pauseImg.alt = '';
+                    pauseImg.width = 30;
+                    pauseImg.height = 30;
+
+                    pauseButton.appendChild(pauseImg);
+
+                    // Create the audio length div
+                    let audioLength = document.createElement('div');
+                    audioLength.classList.add('audioLength');
+
+                    // Create the volume button
+                    let volumeButton = document.createElement('button');
+                    volumeButton.classList.add('btn', 'btnVolume');
+                    volumeButton.id = `audioVolume${idImg}`;
+
+                    let volumeImg = document.createElement('img');
+                    volumeImg.src = 'img/volume.png';
+                    volumeImg.alt = '';
+                    volumeImg.width = 30;
+                    volumeImg.height = 30;
+
+                    volumeButton.appendChild(volumeImg);
+
+                    // Create the mute button (initially hidden)
+                    let muteButton = document.createElement('button');
+                    muteButton.classList.add('btn', 'btnMutado');
+                    muteButton.style.display = 'none';
+                    muteButton.id = `audioMutado${idImg}`;
+
+                    let muteImg = document.createElement('img');
+                    muteImg.src = 'img/muted.png';
+                    muteImg.alt = '';
+                    muteImg.width = 30;
+                    muteImg.height = 30;
+
+                    muteButton.appendChild(muteImg);
+
+                    // Create the volume bar div
+                    let volumeBar = document.createElement('div');
+                    volumeBar.classList.add('volumeBar');
+
+                    // Create the volume circle div
+                    let volumeCircle = document.createElement('div');
+                    volumeCircle.id = `volumeCircle${idImg}`;
+                    volumeCircle.classList.add('volumeCircle');
+
+                    let volumeCircleImg = document.createElement('img');
+                    volumeCircleImg.src = 'img/circleCursor.png';
+                    volumeCircleImg.alt = '';
+                    volumeCircleImg.width = 30;
+                    volumeCircleImg.height = 30;
+
+                    volumeCircle.appendChild(volumeCircleImg);
+                    volumeBar.appendChild(volumeCircle);
+
+                    // Create the audio element (hidden)
+                    let audioElement = document.createElement('audio');
+                    audioElement.id = `audio${idImg}`;
+                    audioElement.style.display = 'none';
+                    audioElement.controls = true;
+
+                    let audioSource = document.createElement('source');
+                    audioSource.src = musicSrc; // Ensure musicSrc is defined
+                    audioSource.type = 'audio/mp3';
+
+                    audioElement.appendChild(audioSource);
+
+                    // Append all elements to the audio player div
+                    audioPlayer.appendChild(playButton);
+                    audioPlayer.appendChild(pauseButton);
+                    audioPlayer.appendChild(audioLength);
+                    audioPlayer.appendChild(volumeButton);
+                    audioPlayer.appendChild(muteButton);
+                    audioPlayer.appendChild(volumeBar);
+                    audioPlayer.appendChild(audioElement);
+
+                    // Append the audio player to the music player div
+                    musicPlayer.appendChild(audioPlayer);
+
+                    // Finally, append the music player container to the song container
+                    songContainer.appendChild(musicPlayerContainer);
+
+                    // Append the music player to the container div
+                    musicPlayerContainer.appendChild(musicPlayer);
+
+                    let positionArray;
+
+                    for (var i = 0; i < arraySong.length; i++) {
+                        if (arraySong[i].nameSong == idImg) {
+                            positionArray = arraySong[i]
+                        }
+                    }
+
+
+
+
+                    audioBtnFunction(positionArray)
+                    volumeBtnAudio(positionArray)
+                    shuffleSong(positionArray)
+
+                    allArraySongFunctions()
+
+
+
+
+                }
+
+
+                console.log('arraySong', arraySong);
+                console.log('flagPlayList', flagActualPlayList);
+                console.log('list', arrayPlayList[randomChoisePlayList]);
+
+                ////////BBBBBBBBBBBBBBBB
+
+
+            }
+
+            else{
+                document.getElementById('staticBackdrop').style.pointerEvents = 'all'
+            }
+
+
+
+
+        })
+
+
+        ////
+
+        /////AHHHHHHHHHHHHHHHHH
+
+        const editButton = document.createElement('button');
+        editButton.classList.add('btn', 'btn-secondary');
+        editButton.id = `${id}Edit`;
+        const editImg = document.createElement('img');
+        editImg.src = "img/pen.png";
+        editImg.width = 60;
+        editImg.height = 60;
+        editImg.alt = "";
+        editButton.appendChild(editImg);
+
+        // Append buttons to the buttons div
+        buttonsDiv.appendChild(deleteButton);
+        buttonsDiv.appendChild(editButton);
+
+        // Append elements to the playlist item
+        playListItem.appendChild(imgPl);
+        playListItem.appendChild(h3);
+        playListItem.appendChild(buttonsDiv);
+
+        // Append the playlist item to the container
+        playListContainer.appendChild(playListItem);
+    }
+
+
+    allArraySongFunctions()
+}) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+function allArraySongFunctions(){
+    arraySong.forEach((song) => {
+
+
+
+
+        document.getElementById(`audioPlay${song.nameSong}`).addEventListener('click', function () {
+    
+    
+            const imageAudioBar = document.getElementById('audioVolumeMusicBarImg')
+            const audioSong = document.getElementById(`audio${song.nameSong}`)
+    
+    
+    
+            const audioTeste = document.getElementById(`audio${song.nameSong}`)
+            currentAudioPlaying = audioTeste.id
+            currentBtnPlay = `audioPlay${song.nameSong}`
+            currentBtnPause = `audioPause${song.nameSong}`
+            currentId = song.nameSong
+            console.log(currentAudioPlaying);
+    
+            const imgMusicBar = document.getElementById('musicBarImg')
+            let musicBarAudioTrackMinus30 = divMusicBarLenght - 30
+            imgMusicBar.src = song.wallPaper
+            imgMusicBar.style.objectFit = song.cover
+    
+    
+    
+            audioTeste.addEventListener('timeupdate', function () {
+                if (!isManualUpdate && flagExpand == false) {
+    
+    
+                    musicBarAudioTrackMinus30 = divMusicBarLenght - 30
+                    audioTrack(audioTeste.duration, audioTeste.currentTime, musicBarAudioTrackMinus30);
+                }
+                if (!isManualUpdate && flagExpand == true) {
+    
+    
+                    musicBarAudioTrackMinus30 = divMusicBarLenght - 30
+                    audioTrack(audioTeste.duration, audioTeste.currentTime, musicBarAudioTrackMinus30);
+                }
+            });
+    
+    
+    
+    
+    
+            document.getElementById(`audio${song.nameSong}`).play();
+    
+            if (parseFloat(audioSong.volume.toFixed(8)) >= 0 && parseFloat(audioSong.volume.toFixed(8)) <= 0.3) {
+                imageAudioBar.src = 'img/volumeLow.png'
+            }
+    
+            else if (parseFloat(audioSong.volume.toFixed(8)) >= 0.4 && parseFloat(audioSong.volume.toFixed(8)) <= 0.7) {
+                imageAudioBar.src = 'img/volumeMedium.png'
+            }
+    
+            else if (parseFloat(audioSong.volume.toFixed(8)) >= 0.8 && parseFloat(audioSong.volume.toFixed(8)) <= 0.9) {
+                imageAudioBar.src = 'img/volume.png'
+            }
+    
+            else if (parseFloat(audioSong.volume.toFixed(8)) == 1) {
+                imageAudioBar.src = 'img/volumeMax.png'
+            }
+    
+    
+            document.getElementById(`audioPause${song.nameSong}`).style.display = 'flex'
+            document.getElementById(`audioPlay${song.nameSong}`).style.display = 'none'
+    
+    
+    
+            document.getElementById(`audioPauseMusicBar`).style.display = 'flex'
+            document.getElementById(`audioPlayMusicBar`).style.display = 'none'
+    
+    
+    
+            for (var i = 0; i < arraySong.length; i++) {
+    
+                if (arraySong[i].nameSong == song.nameSong) {
+                    document.getElementById(`audio${song.nameSong}`).play();
+                }
+    
+                else {
+                    document.getElementById(`audio${arraySong[i].nameSong}`).pause()
+                    document.getElementById(`audioPlay${arraySong[i].nameSong}`).style.display = 'flex'
+                    document.getElementById(`audioPause${arraySong[i].nameSong}`).style.display = 'none'
+                }
+    
+            }
+    
+        })
+    
+        document.getElementById(`audioPause${song.nameSong}`).addEventListener('click', function () {
+            document.getElementById(`audio${song.nameSong}`).pause();
+    
+            document.getElementById(`audioPlay${song.nameSong}`).style.display = 'flex'
+            document.getElementById(`audioPause${song.nameSong}`).style.display = 'none'
+    
+    
+    
+            document.getElementById(`audioPlayMusicBar`).style.display = 'flex'
+            document.getElementById(`audioPauseMusicBar`).style.display = 'none'
+    
+    
+        })
+    
+    
+    
+    
+    
+    
+    
+        document.getElementById(`audioVolume${song.nameSong}`).addEventListener('click', function () {
+            document.getElementById(`audio${song.nameSong}`).muted = true
+    
+            document.getElementById(`audioVolume${song.nameSong}`).style.display = 'none'
+            document.getElementById(`audioMutado${song.nameSong}`).style.display = 'flex'
+    
+        })
+    
+    
+        document.getElementById(`audioMutado${song.nameSong}`).addEventListener('click', function () {
+            document.getElementById(`audio${song.nameSong}`).muted = false
+    
+            document.getElementById(`audioMutado${song.nameSong}`).style.display = 'none'
+            document.getElementById(`audioVolume${song.nameSong}`).style.display = 'flex'
+    
+    
+        })
+    
+    
+    })
+
+    /////
+
+
+    arraySong.forEach((song) => {
+
+        const volumeCircle = document.getElementById(`volumeCircle${song.nameSong}`);
+        const imageAudioBar = document.getElementById('audioVolumeMusicBarImg')
+        const audioSong = document.getElementById(`audio${song.nameSong}`)
+    
+    
+        let isDragging1 = false;
+        let offsetX;
+    
+        // Mouse down event to start dragging
+        volumeCircle.addEventListener("mousedown", function (event) {
+            isDragging1 = true;
+            offsetX = event.clientX - volumeCircle.offsetLeft;
+            console.log('oi');
+    
+        });
+    
+        // Mouse move event to move the element
+        document.addEventListener("mousemove", function (event) {
+            if (isDragging1) {
+    
+                const currentAudioSong = document.getElementById(`audio${currentId}`)
+    
+                if ((event.clientX - offsetX) < 0) {
+                    volumeCircle.style.left = '0px'
+                    audioSong.volume = 0
+    
+                }
+    
+                else if ((event.clientX - offsetX) > 20) {
+                    volumeCircle.style.left = '20px'
+                    audioSong.volume = 1
+                }
+    
+                else {
+                    volumeCircle.style.left = event.clientX - offsetX + "px";
+                    audioSong.volume = (event.clientX - offsetX) / 20
+                }
+    
+    
+    
+    
+    
+    
+    
+    
+                if (parseFloat(currentAudioSong.volume.toFixed(8)) >= 0 && parseFloat(currentAudioSong.volume.toFixed(8)) <= 0.3) {
+                    imageAudioBar.src = 'img/volumeLow.png'
+                }
+    
+                else if (parseFloat(currentAudioSong.volume.toFixed(8)) >= 0.4 && parseFloat(currentAudioSong.volume.toFixed(8)) <= 0.7) {
+                    imageAudioBar.src = 'img/volumeMedium.png'
+                }
+    
+                else if (parseFloat(currentAudioSong.volume.toFixed(8)) >= 0.8 && parseFloat(currentAudioSong.volume.toFixed(8)) <= 0.9) {
+                    imageAudioBar.src = 'img/volume.png'
+                }
+    
+                else if (parseFloat(currentAudioSong.volume.toFixed(8)) == 1) {
+                    imageAudioBar.src = 'img/volumeMax.png'
+                }
+    
+    
+    
+    
+    
+    
+            }
+        });
+    
+        // Mouse up event to stop dragging
+        document.addEventListener("mouseup", function () {
+            isDragging1 = false;
+        });
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        let isDragging2
+        // Mouse down event to start dragging
+        volumeCircle.addEventListener("touchstart", function (event) {
+            isDragging2 = true;
+            offsetX = event.touches[0].clientX; - volumeCircle.offsetLeft;
+            console.log('oi');
+    
+        });
+    
+        // Mouse move event to move the element
+        document.addEventListener("touchmove", function (event) {
+            if (isDragging2) {
+    
+                document.getElementById('song').style.overflowX = 'hidden'
+                const currentAudioSong = document.getElementById(`audio${currentId}`)
+    
+    
+                if ((event.touches[0].clientX - offsetX) < 0) {
+                    volumeCircle.style.left = '0px'
+                    audioSong.volume = 0
+    
+                }
+    
+                else if ((event.touches[0].clientX - offsetX) > 20) {
+                    volumeCircle.style.left = '20px'
+                    audioSong.volume = 1
+                }
+    
+                else {
+                    volumeCircle.style.left = event.touches[0].clientX - offsetX + "px";
+                    audioSong.volume = (event.touches[0].clientX - offsetX) / 20
+                }
+    
+    
+    
+                if (parseFloat(currentAudioSong.volume.toFixed(8)) >= 0 && parseFloat(currentAudioSong.volume.toFixed(8)) <= 0.3) {
+                    imageAudioBar.src = 'img/volumeLow.png'
+                }
+    
+                else if (parseFloat(currentAudioSong.volume.toFixed(8)) >= 0.4 && parseFloat(currentAudioSong.volume.toFixed(8)) <= 0.7) {
+                    imageAudioBar.src = 'img/volumeMedium.png'
+                }
+    
+                else if (parseFloat(currentAudioSong.volume.toFixed(8)) >= 0.8 && parseFloat(currentAudioSong.volume.toFixed(8)) <= 0.9) {
+                    imageAudioBar.src = 'img/volume.png'
+                }
+    
+                else if (parseFloat(currentAudioSong.volume.toFixed(8)) == 1) {
+                    imageAudioBar.src = 'img/volumeMax.png'
+                }
+    
+    
+    
+    
+    
+    
+    
+            }
+        });
+    
+        // Mouse up event to stop dragging
+        document.addEventListener("touchend", function () {
+            isDragging2 = false;
+            document.getElementById('song').style.overflowX = 'scroll'
+        });
+    
+    
+    
+    
+    })
+
+    /////
+
+    arraySong.forEach(song => {
+        document.getElementById(`audio${song.nameSong}`).addEventListener('ended', function () {
+    
+            let randomSongPlaylist;
+    
+            if (flagShuffle == true) {
+                function getRandomInt(max) {
+                    return Math.floor(Math.random() * max);
+                }
+    
+                randomSongPlaylist = getRandomInt(arraySong.length)
+                document.getElementById(`audio${arraySong[randomSongPlaylist].nameSong}`).load()
+                document.getElementById(`audioPlay${arraySong[randomSongPlaylist].nameSong}`).click()
+    
+            }
+        })
+    
+    });
+
+    ///
+
+    arraySong.forEach(song => {
+        document.getElementById(`audio${song.nameSong}`).addEventListener('ended', function () {
+    
+            let nextSongPlaylist;
+    
+            if (flagShuffle == false) {
+    
+                for (var i = 0; i < arraySong.length; i++) {
+                    if (currentId == arraySong[i].nameSong) {
+                        nextSongPlaylist = i + 1
+                    }
+                }
+    
+                if (((nextSongPlaylist) > (arraySong.length - 1)) == false) {
+    
+                    document.getElementById(`audio${arraySong[nextSongPlaylist].nameSong}`).load()
+                    document.getElementById(`audioPlay${arraySong[nextSongPlaylist].nameSong}`).click()
+    
+                    //
+                    document.getElementById('bgImageReal').src = `${document.getElementById(`musicBarImg`).src}`;
+    
+                    document.getElementById('bgImageReal').style.pointerEvents = 'none'
+    
+                    setTimeout(function () {
+                        document.getElementById('bgImageReal').style.pointerEvents = 'all'
+                    }, 1000)
+                    //
+    
+                }
+    
+                else {
+                    document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRightMax.png'
+                }
+    
+    
+    
+            }
+        })
+    
+    });
+
+
+    
+}
+
+
+
+
+
+document.getElementById('removeCarousel').addEventListener('click', function() {
+    var carousel = document.getElementById('carouselExampleFade');
+    var imgRemoveCarousel = document.getElementById('imgRemoveCarousel');
+    var imgPlayList = document.getElementById('showPlayListImageDiv')
+
+    if (imgRemoveCarousel.src.endsWith('hideImgCarousel.png')) {
+        imgPlayList.style.display = 'flex'
+        carousel.style.display = 'none'; // Hides the carousel
+        imgRemoveCarousel.src = 'img/imgCarouselShow.png'; // Changes the image
+    } else {
+        imgPlayList.style.display = 'none'
+        carousel.style.display = 'block'; // Shows the carousel
+        imgRemoveCarousel.src = 'img/hideImgCarousel.png'; // Changes the image back
+    }
+});
+
+
+
+
+
+
+
+document.getElementById('removeSong').addEventListener('click', function() {
+    var song = document.getElementById('song');
+    var imgButton = document.getElementById('imgRemoveSong');
+     
+
+    if (imgButton.src.endsWith('img/notSongBar.png')) {
+        song.style.display = 'none'
+        imgButton.src = 'img/enableSongBar.png'; // Changes the image
+    } else {
+        song.style.display = 'flex'
+        imgButton.src = 'img/notSongBar.png'; // Changes the image back
+    }
+});
