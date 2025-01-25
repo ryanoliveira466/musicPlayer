@@ -111,6 +111,7 @@ input[type="image"] {
 
 <body>
 
+    
     <canvas id="myCanvas" style="display: none;"></canvas>
     
 
@@ -128,7 +129,7 @@ input[type="image"] {
     <div id="clickCursor"></div>
     <div id="penCursor"></div> -->
 
-    <button class="" id="scroll" style="display: none;">testeScrol</button>
+   
     <button id="botaoScroll" style="display: none;">reset</button>
     
 
@@ -212,6 +213,7 @@ input[type="image"] {
             <div class="modal-content" style="font-family: Garamond; font-size: xxx-large;">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                    <button id="scroll"  style="display: none;">scroll</button>
 
                 </div>
                 <div class="modal-body" id="modal-body-img" style="color: rgb(218, 223, 223); position: relative;">
@@ -523,7 +525,9 @@ input[type="image"] {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-close" id="btnCloseModalImagem" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                        aria-label="Close"></button>   
+                        
+                   
                 </div>
             </div>
         </div>
@@ -544,7 +548,7 @@ input[type="image"] {
     <div class="modalRef fade modal" data-bs-theme="dark" id="exampleModalView"  tabindex="-1"
         aria-labelledby="exampleModalViewLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content" id="scrollSongImg" style="font-family: Garamond; font-size: xxx-large;">
+            <div class="modal-content" id="scrollImg" style="font-family: Garamond; font-size: xxx-large;">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
 
@@ -645,7 +649,7 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
     <div class="modalRef fade modal" data-bs-theme="dark" id="exampleModalEdit" tabindex="-1"
         aria-labelledby="exampleModalEditLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content" style="font-family: Garamond; font-size: xxx-large;">
+            <div class="modal-content" id="scrollImgEdit" style="font-family: Garamond; font-size: xxx-large;">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
 
@@ -751,7 +755,7 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
     <div class="modalRef fade modal" data-bs-theme="dark" id="exampleModalSongEdit" tabindex="-1"
     aria-labelledby="exampleModalSongEditLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content" style="font-family: Garamond; font-size: xxx-large;">
+        <div class="modal-content" id="scrollSongEdit" style="font-family: Garamond; font-size: xxx-large;">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalSongEditLabel"></h1>
 
@@ -856,6 +860,8 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
             <div class="modal-footer">
                 <button type="button" class="btn-close" id="btnCloseModalSongEdit" data-bs-dismiss="modal"
                     aria-label="Close"></button>
+
+                     
             </div>
         </div>
     </div>
@@ -1066,6 +1072,191 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Modal PLAYLIST-->
+  <div class="modalRef fade modal" data-bs-theme="dark" id="exampleModalPlayList" tabindex="-1"
+  aria-labelledby="exampleModalPlayList" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content" style="font-family: Garamond; font-size: xxx-large;">
+          <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalSongLabel"></h1>
+
+          </div>
+          <div class="modal-body" id="modal-body-playlist" style="color: rgb(218, 223, 223); position: relative;">
+
+              <div class="itemAdd">
+                  <form id="upload-formPlayList" enctype="multipart/form-data">
+                      <label for="image-uploadPlayList">Choose an image to upload:</label>
+                      <input type="file" style="font-size: x-large; display: none;" id="image-uploadPlayList"  accept="image/*"
+                          onchange="">
+                       
+                  </form>
+              </div>
+
+
+              
+             
+
+
+              <div class="preview-container" id="preview-containerPlayList" style="width: 100%; height: 500px;">
+                  <img id="image-previewPlayList" class="rounded"
+                      style="padding: 0.5rem; border-radius: 5px;object-fit: scale-down;" src="img/notFound.jpg"
+                      alt="Image Preview">
+              </div>
+
+              <div class="itemAdd" style="justify-content: center;">
+                  <input type="text" class="form-control" id="namePlayList" style="padding: 1rem; font-size: unset;"
+                      placeholder="Name:">
+              </div>
+
+              
+
+
+          <br>
+
+          <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; flex-direction: row; font-size: x-large;">
+
+              <div class="form-check">
+                  <input class="form-check-input" type="radio" name="imageCoverPlayList" id="imageCoverPlayList1" value="fill">
+                  <label class="form-check-label" for="imageCoverPlayList1">
+                      fill
+                  </label>
+              </div>
+              <div class="form-check">
+                  <input class="form-check-input" type="radio" name="imageCoverPlayList" id="imageCoverPlayList2" value="contain">
+                  <label class="form-check-label" for="imageCoverPlayList2">
+                      contain
+                  </label>
+              </div>
+              <div class="form-check">
+                  <input class="form-check-input" type="radio" name="imageCoverPlayList" id="imageCoverPlayList3" value="cover" checked>
+                  <label class="form-check-label" for="imageCoverPlayList3">
+                      cover
+                  </label>
+              </div>
+              <div class="form-check">
+                  <input class="form-check-input" type="radio" name="imageCoverPlayList" id="imageCoverPlayList4" value="scale-down">
+                  <label class="form-check-label" for="imageCoverPlayList4">
+                      scale-down
+                  </label>
+              </div>
+              <div class="form-check">
+                  <input class="form-check-input" type="radio" name="imageCoverPlayList" id="imageCoverPlayList5" value="none">
+                  <label class="form-check-label" for="imageCoverPlayList5">
+                      none
+                  </label>
+              </div>
+
+          </div>
+
+          <br>
+
+
+
+
+         
+
+
+
+
+              <div style="display: flex; width: 100%; padding: 8px;justify-content: center; align-items: center;">
+                  <button id="buttonAcceptimgPlayList" class="btn btn-secondary" style="font-size: xx-large;">
+                      <img src="img/save.png" alt="" srcset="" width="90px" height="90px">
+                  </button>
+              </div>
+
+
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn-close" id="btnCloseModalPlayList" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<!-- PLAYLIST -->
 
 
 
@@ -1378,13 +1569,34 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
 
 
 
+  
+  <!-- MODAL ALERT DELETE PLAYLIST -->
+  <!-- Button trigger modal -->
+ 
+  <!-- Modal -->
+  <button class="btn btn-primary" style="display: none;" type="button" id="offcanvasBottomBtnPlayList" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottomPlayList" aria-controls="offcanvasBottom">Toggle bottom offcanvas</button>
+
+  <div class="offcanvas offcanvas-bottom" tabindex="-1" data-bs-backdrop="static" id="offcanvasBottomPlayList" aria-labelledby="offcanvasBottomLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasBottomLabel">Are you sure?</h5>
+      <button type="button" style="display: none;" class="btn-close" data-bs-dismiss="offcanvas" id="offcanvasBottomCloseBtnPlayList" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body small">
+      <button class="btn btnOptions"><img src="img/accept.png" id="acceptDeleteImgPlayList" alt="" srcset=""></button>
+      <button class="btn btnOptions"><img src="img/no.png" id="noDeleteImgSongPlayList" alt="" srcset=""></button>
+    </div>
+  </div>
+  <!-- MODAL ALERT DELETE -->
+
+
+
 
 
     
   
  
 
-    
+     
 
 
     <!-- MAIN CONTENT STARTS HERE -->
@@ -1422,7 +1634,7 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
     -webkit-backdrop-filter: blur(10px);"
             data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="staticBackdropLabel"></h5>
+                <h5 class="offcanvas-title" id="staticBackdropLabel">Playlist</h5>
                 <button type="button" class="btn btn" style="margin-left: auto;" data-bs-dismiss="offcanvas"
                     aria-label="Close">
                     <img src="img/close.png" alt="" srcset="" width="30px" height="30px">
@@ -1430,27 +1642,21 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
             </div>
             <div class="offcanvas-body">
                 <div>
-                    <!-- <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac velit sit amet lectus
-                        scelerisque tempus. Ut ac nisi vel tortor aliquet lacinia. Curabitur posuere, orci ac lacinia
-                        ullamcorper, nisi turpis vehicula ligula, at condimentum nisi odio ac risus. Sed auctor felis at
-                        tortor feugiat vehicula. Duis tincidunt magna et eros bibendum, eget varius odio venenatis.
-                        Phasellus gravida erat nec nunc dictum tincidunt. Nulla facilisi.
-                    </p>
-                    <p>
-                        Vivamus fermentum metus sit amet nulla cursus, sed venenatis sapien dignissim. Integer vel sem
-                        at elit pharetra euismod. Mauris nec nunc sit amet ligula vulputate convallis. Aliquam erat
-                        volutpat. Fusce volutpat malesuada neque, ac eleifend felis laoreet eget. Sed id purus eu metus
-                        cursus maximus. Donec viverra, magna in convallis facilisis, ipsum lectus aliquam nunc, nec
-                        porttitor enim nisi sed lorem. Etiam convallis gravida eros ac bibendum.
-                    </p> -->
-
+                
                     <div id="musicOffCan">
-                    <img src="img/musicalNote1.webp" class="musicImgOffCan" alt="" srcset="">
-                    <img src="img/musicalNote2.webp" class="musicImgOffCan" alt="" srcset="">
-                    <img src="img/musicalNote3.webp" class="musicImgOffCan" alt="" srcset="">
-                    <img src="img/musicalNote4.webp" class="musicImgOffCan" alt="" srcset="">
+                         
+                        <div class="playListItem" id="eletronicPlayListPattern">
+                            <img src="img/suicideSheep.jpg" class="playListCoverImg" id="eletronicPlayListImg" alt="" srcset="">
+                           <h3>Eletronic/Remixes</h3>
+                           <div class="buttonsPlayList">
+                           <button class="btn btn-danger"  id="eletronicPlayListDelete"><img src="img/trash.png" width="60px" height="60px" alt=""></button>
+                           <button class="btn btn-secondary"  id="eletronicPlayListEdit"><img src="img/pen.png" width="60px" height="60px" alt=""></button>
+                           </div>
+                        </div>
+
                     </div>
+
+                    <button id="addPlayList" class="btn btn"><img src="img/addPlayList.png" alt="" srcset="" data-bs-target="#exampleModalPlayList" data-bs-toggle="modal"></button>
 
                 </div>
 
@@ -2248,6 +2454,8 @@ if (cropper3) {
             toast.show();
         });
 
+
+ 
 
 
 
