@@ -242,7 +242,7 @@ playlist3 = [
 
 
 
-arrayPlayList = [playlist,playlist2,playlist3]
+arrayPlayList = [playlist, playlist2, playlist3]
 
 
 
@@ -5085,7 +5085,7 @@ function handleDeleteSong() {
 
 
 
-
+let flagBugDeleteSongIfNotPlaying = false
 document.getElementById('btnViewSong'), addEventListener('click', function () {
 
 
@@ -5193,11 +5193,36 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
 
             if (isDeleted) {
 
+                let positionAfterDelete;
+                let volumeAfterDelete;
+                let circleVolumeAfterDelete;
+                let playPausedAfterDelete;
+
+
+                try {
+                    positionAfterDelete = document.getElementById(currentAudioPlaying).currentTime
+                    volumeAfterDelete = document.getElementById(currentAudioPlaying).volume
+                    circleVolumeAfterDelete = document.getElementById(`volumeCircle${currentId}`).style.left
+                    playPausedAfterDelete = document.getElementById(currentAudioPlaying).paused
+                    flagBugDeleteSongIfNotPlaying = false
+                } catch (error) {
+                    flagBugDeleteSongIfNotPlaying = true
+                }
+
+
+                console.log(flagBugDeleteSongIfNotPlaying);
+                
+
+
+
+
+
+
                 //BUG MUSIC BAR
-                let positionAfterDelete = document.getElementById(currentAudioPlaying).currentTime
-                let volumeAfterDelete = document.getElementById(currentAudioPlaying).volume
-                let circleVolumeAfterDelete = document.getElementById(`volumeCircle${currentId}`).style.left
-                let playPausedAfterDelete = document.getElementById(currentAudioPlaying).paused
+                // let positionAfterDelete = document.getElementById(currentAudioPlaying).currentTime
+                // volumeAfterDelete = document.getElementById(currentAudioPlaying).volume
+                // circleVolumeAfterDelete = document.getElementById(`volumeCircle${currentId}`).style.left
+                // playPausedAfterDelete = document.getElementById(currentAudioPlaying).paused
                 //BUG MUSIC BAR
 
 
@@ -5413,7 +5438,7 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
 
                 console.log(document.getElementById(currentAudioPlaying).paused);
 
-                if (playPausedAfterDelete == true) {
+                if (playPausedAfterDelete == true && flagBugDeleteSongIfNotPlaying == false) {
 
                     document.getElementById(currentAudioPlaying).currentTime = positionAfterDelete
                     document.getElementById(currentAudioPlaying).volume = 0
@@ -5447,7 +5472,7 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
 
                 }
 
-                else {
+                else if (playPausedAfterDelete == false && flagBugDeleteSongIfNotPlaying == false) {
 
                     document.getElementById(currentAudioPlaying).currentTime = positionAfterDelete
                     document.getElementById(currentAudioPlaying).volume = 0
@@ -5512,6 +5537,10 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
 
 
                     //BUG MUSIC BAR
+                }
+
+                else {
+                    console.log('Is it the solution?');
                 }
 
 
@@ -7167,6 +7196,16 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
 
         imgPl.addEventListener('click', function () {
 
+            document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
+            document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
+            document.getElementById('shuffleMusicBarImg').src = 'img/shuffle.png'
+            document.getElementById('musicBarImg').src = 'img/notFound.jpg'
+            setTimeout(function () {
+                document.getElementById('musicBarCircle').style.setProperty('left', '0px');
+            }, 200);
+            document.getElementById('audioPauseMusicBar').style.display = 'none'
+            document.getElementById('audioPlayMusicBar').style.display = 'flex'
+            document.getElementById('audioVolumeMusicBarImg').src = 'img/volume.png'
 
             document.getElementById('imagePlayList').src = img
             document.getElementById('imagePlayList').style.objectFit = cover
@@ -7467,6 +7506,8 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
 
                 flagActualPlayList = arrayPlayList[randomChoisePlayList][0].indexPlayList
 
+                document.getElementById('imagePlayList').src = arrayPlayList[randomChoisePlayList][0].coverPlaylist
+
                 document.getElementById('song').innerHTML = ''
 
                 arraySong = []
@@ -7681,7 +7722,7 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
 
             }
 
-            else{
+            else {
                 document.getElementById('staticBackdrop').style.pointerEvents = 'all'
             }
 
@@ -8024,7 +8065,7 @@ container.addEventListener('wheel', function (event) {
 
 
 
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('musicOffCan').innerHTML = ''
 
     for (var i = 0; i < arrayPlayList.length; i++) {
@@ -8061,6 +8102,16 @@ document.addEventListener('DOMContentLoaded', function(){
 
         imgPl.addEventListener('click', function () {
 
+            document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
+            document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
+            document.getElementById('shuffleMusicBarImg').src = 'img/shuffle.png'
+            document.getElementById('musicBarImg').src = 'img/notFound.jpg'
+            setTimeout(function () {
+                document.getElementById('musicBarCircle').style.setProperty('left', '0px');
+            }, 200);
+            document.getElementById('audioPauseMusicBar').style.display = 'none'
+            document.getElementById('audioPlayMusicBar').style.display = 'flex'
+            document.getElementById('audioVolumeMusicBarImg').src = 'img/volume.png'
 
             document.getElementById('imagePlayList').src = img
             document.getElementById('imagePlayList').style.objectFit = cover
@@ -8361,6 +8412,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
                 flagActualPlayList = arrayPlayList[randomChoisePlayList][0].indexPlayList
 
+                document.getElementById('imagePlayList').src = arrayPlayList[randomChoisePlayList][0].coverPlaylist
+
                 document.getElementById('song').innerHTML = ''
 
                 arraySong = []
@@ -8567,7 +8620,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
             }
 
-            else{
+            else {
                 document.getElementById('staticBackdrop').style.pointerEvents = 'all'
             }
 
@@ -8606,7 +8659,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
     allArraySongFunctions()
-}) 
+})
 
 
 
@@ -8620,137 +8673,137 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 
-function allArraySongFunctions(){
+function allArraySongFunctions() {
     arraySong.forEach((song) => {
 
 
 
 
         document.getElementById(`audioPlay${song.nameSong}`).addEventListener('click', function () {
-    
-    
+
+
             const imageAudioBar = document.getElementById('audioVolumeMusicBarImg')
             const audioSong = document.getElementById(`audio${song.nameSong}`)
-    
-    
-    
+
+
+
             const audioTeste = document.getElementById(`audio${song.nameSong}`)
             currentAudioPlaying = audioTeste.id
             currentBtnPlay = `audioPlay${song.nameSong}`
             currentBtnPause = `audioPause${song.nameSong}`
             currentId = song.nameSong
             console.log(currentAudioPlaying);
-    
+
             const imgMusicBar = document.getElementById('musicBarImg')
             let musicBarAudioTrackMinus30 = divMusicBarLenght - 30
             imgMusicBar.src = song.wallPaper
             imgMusicBar.style.objectFit = song.cover
-    
-    
-    
+
+
+
             audioTeste.addEventListener('timeupdate', function () {
                 if (!isManualUpdate && flagExpand == false) {
-    
-    
+
+
                     musicBarAudioTrackMinus30 = divMusicBarLenght - 30
                     audioTrack(audioTeste.duration, audioTeste.currentTime, musicBarAudioTrackMinus30);
                 }
                 if (!isManualUpdate && flagExpand == true) {
-    
-    
+
+
                     musicBarAudioTrackMinus30 = divMusicBarLenght - 30
                     audioTrack(audioTeste.duration, audioTeste.currentTime, musicBarAudioTrackMinus30);
                 }
             });
-    
-    
-    
-    
-    
+
+
+
+
+
             document.getElementById(`audio${song.nameSong}`).play();
-    
+
             if (parseFloat(audioSong.volume.toFixed(8)) >= 0 && parseFloat(audioSong.volume.toFixed(8)) <= 0.3) {
                 imageAudioBar.src = 'img/volumeLow.png'
             }
-    
+
             else if (parseFloat(audioSong.volume.toFixed(8)) >= 0.4 && parseFloat(audioSong.volume.toFixed(8)) <= 0.7) {
                 imageAudioBar.src = 'img/volumeMedium.png'
             }
-    
+
             else if (parseFloat(audioSong.volume.toFixed(8)) >= 0.8 && parseFloat(audioSong.volume.toFixed(8)) <= 0.9) {
                 imageAudioBar.src = 'img/volume.png'
             }
-    
+
             else if (parseFloat(audioSong.volume.toFixed(8)) == 1) {
                 imageAudioBar.src = 'img/volumeMax.png'
             }
-    
-    
+
+
             document.getElementById(`audioPause${song.nameSong}`).style.display = 'flex'
             document.getElementById(`audioPlay${song.nameSong}`).style.display = 'none'
-    
-    
-    
+
+
+
             document.getElementById(`audioPauseMusicBar`).style.display = 'flex'
             document.getElementById(`audioPlayMusicBar`).style.display = 'none'
-    
-    
-    
+
+
+
             for (var i = 0; i < arraySong.length; i++) {
-    
+
                 if (arraySong[i].nameSong == song.nameSong) {
                     document.getElementById(`audio${song.nameSong}`).play();
                 }
-    
+
                 else {
                     document.getElementById(`audio${arraySong[i].nameSong}`).pause()
                     document.getElementById(`audioPlay${arraySong[i].nameSong}`).style.display = 'flex'
                     document.getElementById(`audioPause${arraySong[i].nameSong}`).style.display = 'none'
                 }
-    
+
             }
-    
+
         })
-    
+
         document.getElementById(`audioPause${song.nameSong}`).addEventListener('click', function () {
             document.getElementById(`audio${song.nameSong}`).pause();
-    
+
             document.getElementById(`audioPlay${song.nameSong}`).style.display = 'flex'
             document.getElementById(`audioPause${song.nameSong}`).style.display = 'none'
-    
-    
-    
+
+
+
             document.getElementById(`audioPlayMusicBar`).style.display = 'flex'
             document.getElementById(`audioPauseMusicBar`).style.display = 'none'
-    
-    
+
+
         })
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
         document.getElementById(`audioVolume${song.nameSong}`).addEventListener('click', function () {
             document.getElementById(`audio${song.nameSong}`).muted = true
-    
+
             document.getElementById(`audioVolume${song.nameSong}`).style.display = 'none'
             document.getElementById(`audioMutado${song.nameSong}`).style.display = 'flex'
-    
+
         })
-    
-    
+
+
         document.getElementById(`audioMutado${song.nameSong}`).addEventListener('click', function () {
             document.getElementById(`audio${song.nameSong}`).muted = false
-    
+
             document.getElementById(`audioMutado${song.nameSong}`).style.display = 'none'
             document.getElementById(`audioVolume${song.nameSong}`).style.display = 'flex'
-    
-    
+
+
         })
-    
-    
+
+
     })
 
     /////
@@ -8761,230 +8814,230 @@ function allArraySongFunctions(){
         const volumeCircle = document.getElementById(`volumeCircle${song.nameSong}`);
         const imageAudioBar = document.getElementById('audioVolumeMusicBarImg')
         const audioSong = document.getElementById(`audio${song.nameSong}`)
-    
-    
+
+
         let isDragging1 = false;
         let offsetX;
-    
+
         // Mouse down event to start dragging
         volumeCircle.addEventListener("mousedown", function (event) {
             isDragging1 = true;
             offsetX = event.clientX - volumeCircle.offsetLeft;
             console.log('oi');
-    
+
         });
-    
+
         // Mouse move event to move the element
         document.addEventListener("mousemove", function (event) {
             if (isDragging1) {
-    
+
                 const currentAudioSong = document.getElementById(`audio${currentId}`)
-    
+
                 if ((event.clientX - offsetX) < 0) {
                     volumeCircle.style.left = '0px'
                     audioSong.volume = 0
-    
+
                 }
-    
+
                 else if ((event.clientX - offsetX) > 20) {
                     volumeCircle.style.left = '20px'
                     audioSong.volume = 1
                 }
-    
+
                 else {
                     volumeCircle.style.left = event.clientX - offsetX + "px";
                     audioSong.volume = (event.clientX - offsetX) / 20
                 }
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
                 if (parseFloat(currentAudioSong.volume.toFixed(8)) >= 0 && parseFloat(currentAudioSong.volume.toFixed(8)) <= 0.3) {
                     imageAudioBar.src = 'img/volumeLow.png'
                 }
-    
+
                 else if (parseFloat(currentAudioSong.volume.toFixed(8)) >= 0.4 && parseFloat(currentAudioSong.volume.toFixed(8)) <= 0.7) {
                     imageAudioBar.src = 'img/volumeMedium.png'
                 }
-    
+
                 else if (parseFloat(currentAudioSong.volume.toFixed(8)) >= 0.8 && parseFloat(currentAudioSong.volume.toFixed(8)) <= 0.9) {
                     imageAudioBar.src = 'img/volume.png'
                 }
-    
+
                 else if (parseFloat(currentAudioSong.volume.toFixed(8)) == 1) {
                     imageAudioBar.src = 'img/volumeMax.png'
                 }
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
             }
         });
-    
+
         // Mouse up event to stop dragging
         document.addEventListener("mouseup", function () {
             isDragging1 = false;
         });
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
         let isDragging2
         // Mouse down event to start dragging
         volumeCircle.addEventListener("touchstart", function (event) {
             isDragging2 = true;
             offsetX = event.touches[0].clientX; - volumeCircle.offsetLeft;
             console.log('oi');
-    
+
         });
-    
+
         // Mouse move event to move the element
         document.addEventListener("touchmove", function (event) {
             if (isDragging2) {
-    
+
                 document.getElementById('song').style.overflowX = 'hidden'
                 const currentAudioSong = document.getElementById(`audio${currentId}`)
-    
-    
+
+
                 if ((event.touches[0].clientX - offsetX) < 0) {
                     volumeCircle.style.left = '0px'
                     audioSong.volume = 0
-    
+
                 }
-    
+
                 else if ((event.touches[0].clientX - offsetX) > 20) {
                     volumeCircle.style.left = '20px'
                     audioSong.volume = 1
                 }
-    
+
                 else {
                     volumeCircle.style.left = event.touches[0].clientX - offsetX + "px";
                     audioSong.volume = (event.touches[0].clientX - offsetX) / 20
                 }
-    
-    
-    
+
+
+
                 if (parseFloat(currentAudioSong.volume.toFixed(8)) >= 0 && parseFloat(currentAudioSong.volume.toFixed(8)) <= 0.3) {
                     imageAudioBar.src = 'img/volumeLow.png'
                 }
-    
+
                 else if (parseFloat(currentAudioSong.volume.toFixed(8)) >= 0.4 && parseFloat(currentAudioSong.volume.toFixed(8)) <= 0.7) {
                     imageAudioBar.src = 'img/volumeMedium.png'
                 }
-    
+
                 else if (parseFloat(currentAudioSong.volume.toFixed(8)) >= 0.8 && parseFloat(currentAudioSong.volume.toFixed(8)) <= 0.9) {
                     imageAudioBar.src = 'img/volume.png'
                 }
-    
+
                 else if (parseFloat(currentAudioSong.volume.toFixed(8)) == 1) {
                     imageAudioBar.src = 'img/volumeMax.png'
                 }
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
             }
         });
-    
+
         // Mouse up event to stop dragging
         document.addEventListener("touchend", function () {
             isDragging2 = false;
             document.getElementById('song').style.overflowX = 'scroll'
         });
-    
-    
-    
-    
+
+
+
+
     })
 
     /////
 
     arraySong.forEach(song => {
         document.getElementById(`audio${song.nameSong}`).addEventListener('ended', function () {
-    
+
             let randomSongPlaylist;
-    
+
             if (flagShuffle == true) {
                 function getRandomInt(max) {
                     return Math.floor(Math.random() * max);
                 }
-    
+
                 randomSongPlaylist = getRandomInt(arraySong.length)
                 document.getElementById(`audio${arraySong[randomSongPlaylist].nameSong}`).load()
                 document.getElementById(`audioPlay${arraySong[randomSongPlaylist].nameSong}`).click()
-    
+
             }
         })
-    
+
     });
 
     ///
 
     arraySong.forEach(song => {
         document.getElementById(`audio${song.nameSong}`).addEventListener('ended', function () {
-    
+
             let nextSongPlaylist;
-    
+
             if (flagShuffle == false) {
-    
+
                 for (var i = 0; i < arraySong.length; i++) {
                     if (currentId == arraySong[i].nameSong) {
                         nextSongPlaylist = i + 1
                     }
                 }
-    
+
                 if (((nextSongPlaylist) > (arraySong.length - 1)) == false) {
-    
+
                     document.getElementById(`audio${arraySong[nextSongPlaylist].nameSong}`).load()
                     document.getElementById(`audioPlay${arraySong[nextSongPlaylist].nameSong}`).click()
-    
+
                     //
                     document.getElementById('bgImageReal').src = `${document.getElementById(`musicBarImg`).src}`;
-    
+
                     document.getElementById('bgImageReal').style.pointerEvents = 'none'
-    
+
                     setTimeout(function () {
                         document.getElementById('bgImageReal').style.pointerEvents = 'all'
                     }, 1000)
                     //
-    
+
                 }
-    
+
                 else {
                     document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRightMax.png'
                 }
-    
-    
-    
+
+
+
             }
         })
-    
+
     });
 
 
-    
+
 }
 
 
 
 
 
-document.getElementById('removeCarousel').addEventListener('click', function() {
+document.getElementById('removeCarousel').addEventListener('click', function () {
     var carousel = document.getElementById('carouselExampleFade');
     var imgRemoveCarousel = document.getElementById('imgRemoveCarousel');
     var imgPlayList = document.getElementById('showPlayListImageDiv')
@@ -9006,10 +9059,10 @@ document.getElementById('removeCarousel').addEventListener('click', function() {
 
 
 
-document.getElementById('removeSong').addEventListener('click', function() {
+document.getElementById('removeSong').addEventListener('click', function () {
     var song = document.getElementById('song');
     var imgButton = document.getElementById('imgRemoveSong');
-     
+
 
     if (imgButton.src.endsWith('img/notSongBar.png')) {
         song.style.display = 'none'

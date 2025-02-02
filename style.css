@@ -547,6 +547,15 @@ body {
 
 @media screen and (max-width: 600px) {
 
+
+
+    #song .music-player:hover{  
+        transform: none !important;
+    }
+    
+
+
+
     #imgRemoveCarousel{
         width: 76px !important;
         height: 76px !important;
@@ -581,6 +590,7 @@ body {
         /* height: 790px; */
         overflow: hidden;
         margin: 0px;
+        border-radius: 0px !important;
 
     }
 
@@ -589,6 +599,7 @@ body {
         /* height: 790px; */
         overflow: hidden;
         margin: 0px;
+        border-radius: 0px !important;
 
     }
 
@@ -1143,6 +1154,26 @@ html ::-webkit-scrollbar {
     margin: 1rem;
     transition: transform 1s ease;
 }
+
+
+
+#song .music-player{  
+    background-color: #000000c2; 
+}
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
 
  
 .music-player:hover {
