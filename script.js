@@ -7143,7 +7143,7 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
         cover: 'cover'
     }
 
-    flagActualPlayList = idPlayList
+    // flagActualPlayList = idPlayList
 
     let playlist = []
     playlist.push(nameIndex)
@@ -7151,7 +7151,7 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
     arrayPlayList.push(playlist)
 
 
-    arraySong = []
+    // arraySong = []
     //
 
     //
@@ -7209,6 +7209,7 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
 
             document.getElementById('imagePlayList').src = img
             document.getElementById('imagePlayList').style.objectFit = cover
+            currentAudioPlaying = ""
 
 
 
@@ -7475,6 +7476,24 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
             const isDeleted = await handleDeletePlayList();
 
             if (isDeleted) {
+
+
+
+
+
+                //
+                document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
+                document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
+                document.getElementById('shuffleMusicBarImg').src = 'img/shuffle.png'
+                document.getElementById('musicBarImg').src = 'img/notFound.jpg'
+                setTimeout(function () {
+                    document.getElementById('musicBarCircle').style.setProperty('left', '0px');
+                }, 200);
+                document.getElementById('audioPauseMusicBar').style.display = 'none'
+                document.getElementById('audioPlayMusicBar').style.display = 'flex'
+                document.getElementById('audioVolumeMusicBarImg').src = 'img/volume.png'
+                currentAudioPlaying = ""
+                //
 
 
                 let deletedElementIndex;
@@ -7760,192 +7779,192 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
     }
 
     document.getElementById('namePlayList').value = ''
-    for (var x = 0; x < arraySong.length; x++) {
-        let coverImg = arraySong[x].cover
-        let idImg = arraySong[x].nameSong
-        let imgSrc = arraySong[x].wallPaper
-        let titleName = arraySong[x].title
-        let artistName = arraySong[x].artist
-        let musicSrc = arraySong[x].songSrc
+    // for (var x = 0; x < arraySong.length; x++) {
+    //     let coverImg = arraySong[x].cover
+    //     let idImg = arraySong[x].nameSong
+    //     let imgSrc = arraySong[x].wallPaper
+    //     let titleName = arraySong[x].title
+    //     let artistName = arraySong[x].artist
+    //     let musicSrc = arraySong[x].songSrc
 
 
-        // Get the container element where you want to append the music player
-        const songContainer = document.getElementById('song');
+    //     // Get the container element where you want to append the music player
+    //     const songContainer = document.getElementById('song');
 
-        // Create the container div for the music player
-        let musicPlayerContainer = document.createElement('div');
-
-
-        // Create the music player div
-        let musicPlayer = document.createElement('div');
-        musicPlayer.classList.add('music-player');
-        musicPlayer.id = 'music-player';
-
-        // Create the music image (album cover)
-        let musicImg = document.createElement('img');
-        musicImg.src = imgSrc; // Ensure imgSrc is defined with a valid path
-        musicImg.classList.add('musicImg');
-        musicImg.style.objectFit = coverImg;
-        musicImg.alt = 'Album Cover';
-        musicImg.id = `coverImagePlaylist${idImg}`
-
-        // Append the image to the music player div
-        musicPlayer.appendChild(musicImg);
-
-        // Create the music info div
-        let musicInfo = document.createElement('div');
-        musicInfo.classList.add('music-info');
-        musicInfo.id = 'music-info';
-
-        // Create the song name heading
-        let songName = document.createElement('h3');
-        songName.textContent = titleName; // Ensure titleName is defined
-        songName.id = `titlePlaylist${idImg}`
-
-        // Append the song name to the music info div
-        musicInfo.appendChild(songName);
-
-        // Append the music info to the music player div
-        musicPlayer.appendChild(musicInfo);
-
-        // Create the artist paragraph
-        let artist = document.createElement('p');
-        artist.textContent = artistName; // Ensure artistName is defined
-        artist.className = 'artist'
-        artist.id = `artistPlaylist${idImg}`
-
-        // Append the artist paragraph to the music player div
-        musicPlayer.appendChild(artist);
-
-        // Create the audio player div
-        let audioPlayer = document.createElement('div');
-        audioPlayer.classList.add('audio-player');
-
-        // Create play button
-        let playButton = document.createElement('button');
-        playButton.classList.add('btn', 'btnPlay');
-        playButton.id = `audioPlay${idImg}`; // Ensure idImg is defined
-
-        let playImg = document.createElement('img');
-        playImg.src = 'img/play.png';
-        playImg.alt = '';
-        playImg.width = 30;
-        playImg.height = 30;
-
-        playButton.appendChild(playImg);
-
-        // Create pause button (initially hidden)
-        let pauseButton = document.createElement('button');
-        pauseButton.classList.add('btn', 'btnPause');
-        pauseButton.style.display = 'none';
-        pauseButton.id = `audioPause${idImg}`;
-
-        let pauseImg = document.createElement('img');
-        pauseImg.src = 'img/pause.png';
-        pauseImg.alt = '';
-        pauseImg.width = 30;
-        pauseImg.height = 30;
-
-        pauseButton.appendChild(pauseImg);
-
-        // Create the audio length div
-        let audioLength = document.createElement('div');
-        audioLength.classList.add('audioLength');
-
-        // Create the volume button
-        let volumeButton = document.createElement('button');
-        volumeButton.classList.add('btn', 'btnVolume');
-        volumeButton.id = `audioVolume${idImg}`;
-
-        let volumeImg = document.createElement('img');
-        volumeImg.src = 'img/volume.png';
-        volumeImg.alt = '';
-        volumeImg.width = 30;
-        volumeImg.height = 30;
-
-        volumeButton.appendChild(volumeImg);
-
-        // Create the mute button (initially hidden)
-        let muteButton = document.createElement('button');
-        muteButton.classList.add('btn', 'btnMutado');
-        muteButton.style.display = 'none';
-        muteButton.id = `audioMutado${idImg}`;
-
-        let muteImg = document.createElement('img');
-        muteImg.src = 'img/muted.png';
-        muteImg.alt = '';
-        muteImg.width = 30;
-        muteImg.height = 30;
-
-        muteButton.appendChild(muteImg);
-
-        // Create the volume bar div
-        let volumeBar = document.createElement('div');
-        volumeBar.classList.add('volumeBar');
-
-        // Create the volume circle div
-        let volumeCircle = document.createElement('div');
-        volumeCircle.id = `volumeCircle${idImg}`;
-        volumeCircle.classList.add('volumeCircle');
-
-        let volumeCircleImg = document.createElement('img');
-        volumeCircleImg.src = 'img/circleCursor.png';
-        volumeCircleImg.alt = '';
-        volumeCircleImg.width = 30;
-        volumeCircleImg.height = 30;
-
-        volumeCircle.appendChild(volumeCircleImg);
-        volumeBar.appendChild(volumeCircle);
-
-        // Create the audio element (hidden)
-        let audioElement = document.createElement('audio');
-        audioElement.id = `audio${idImg}`;
-        audioElement.style.display = 'none';
-        audioElement.controls = true;
-
-        let audioSource = document.createElement('source');
-        audioSource.src = musicSrc; // Ensure musicSrc is defined
-        audioSource.type = 'audio/mp3';
-
-        audioElement.appendChild(audioSource);
-
-        // Append all elements to the audio player div
-        audioPlayer.appendChild(playButton);
-        audioPlayer.appendChild(pauseButton);
-        audioPlayer.appendChild(audioLength);
-        audioPlayer.appendChild(volumeButton);
-        audioPlayer.appendChild(muteButton);
-        audioPlayer.appendChild(volumeBar);
-        audioPlayer.appendChild(audioElement);
-
-        // Append the audio player to the music player div
-        musicPlayer.appendChild(audioPlayer);
-
-        // Finally, append the music player container to the song container
-        songContainer.appendChild(musicPlayerContainer);
-
-        // Append the music player to the container div
-        musicPlayerContainer.appendChild(musicPlayer);
-
-        let positionArray;
-
-        for (var i = 0; i < arraySong.length; i++) {
-            if (arraySong[i].nameSong == idImg) {
-                positionArray = arraySong[i]
-            }
-        }
+    //     // Create the container div for the music player
+    //     let musicPlayerContainer = document.createElement('div');
 
 
+    //     // Create the music player div
+    //     let musicPlayer = document.createElement('div');
+    //     musicPlayer.classList.add('music-player');
+    //     musicPlayer.id = 'music-player';
+
+    //     // Create the music image (album cover)
+    //     let musicImg = document.createElement('img');
+    //     musicImg.src = imgSrc; // Ensure imgSrc is defined with a valid path
+    //     musicImg.classList.add('musicImg');
+    //     musicImg.style.objectFit = coverImg;
+    //     musicImg.alt = 'Album Cover';
+    //     musicImg.id = `coverImagePlaylist${idImg}`
+
+    //     // Append the image to the music player div
+    //     musicPlayer.appendChild(musicImg);
+
+    //     // Create the music info div
+    //     let musicInfo = document.createElement('div');
+    //     musicInfo.classList.add('music-info');
+    //     musicInfo.id = 'music-info';
+
+    //     // Create the song name heading
+    //     let songName = document.createElement('h3');
+    //     songName.textContent = titleName; // Ensure titleName is defined
+    //     songName.id = `titlePlaylist${idImg}`
+
+    //     // Append the song name to the music info div
+    //     musicInfo.appendChild(songName);
+
+    //     // Append the music info to the music player div
+    //     musicPlayer.appendChild(musicInfo);
+
+    //     // Create the artist paragraph
+    //     let artist = document.createElement('p');
+    //     artist.textContent = artistName; // Ensure artistName is defined
+    //     artist.className = 'artist'
+    //     artist.id = `artistPlaylist${idImg}`
+
+    //     // Append the artist paragraph to the music player div
+    //     musicPlayer.appendChild(artist);
+
+    //     // Create the audio player div
+    //     let audioPlayer = document.createElement('div');
+    //     audioPlayer.classList.add('audio-player');
+
+    //     // Create play button
+    //     let playButton = document.createElement('button');
+    //     playButton.classList.add('btn', 'btnPlay');
+    //     playButton.id = `audioPlay${idImg}`; // Ensure idImg is defined
+
+    //     let playImg = document.createElement('img');
+    //     playImg.src = 'img/play.png';
+    //     playImg.alt = '';
+    //     playImg.width = 30;
+    //     playImg.height = 30;
+
+    //     playButton.appendChild(playImg);
+
+    //     // Create pause button (initially hidden)
+    //     let pauseButton = document.createElement('button');
+    //     pauseButton.classList.add('btn', 'btnPause');
+    //     pauseButton.style.display = 'none';
+    //     pauseButton.id = `audioPause${idImg}`;
+
+    //     let pauseImg = document.createElement('img');
+    //     pauseImg.src = 'img/pause.png';
+    //     pauseImg.alt = '';
+    //     pauseImg.width = 30;
+    //     pauseImg.height = 30;
+
+    //     pauseButton.appendChild(pauseImg);
+
+    //     // Create the audio length div
+    //     let audioLength = document.createElement('div');
+    //     audioLength.classList.add('audioLength');
+
+    //     // Create the volume button
+    //     let volumeButton = document.createElement('button');
+    //     volumeButton.classList.add('btn', 'btnVolume');
+    //     volumeButton.id = `audioVolume${idImg}`;
+
+    //     let volumeImg = document.createElement('img');
+    //     volumeImg.src = 'img/volume.png';
+    //     volumeImg.alt = '';
+    //     volumeImg.width = 30;
+    //     volumeImg.height = 30;
+
+    //     volumeButton.appendChild(volumeImg);
+
+    //     // Create the mute button (initially hidden)
+    //     let muteButton = document.createElement('button');
+    //     muteButton.classList.add('btn', 'btnMutado');
+    //     muteButton.style.display = 'none';
+    //     muteButton.id = `audioMutado${idImg}`;
+
+    //     let muteImg = document.createElement('img');
+    //     muteImg.src = 'img/muted.png';
+    //     muteImg.alt = '';
+    //     muteImg.width = 30;
+    //     muteImg.height = 30;
+
+    //     muteButton.appendChild(muteImg);
+
+    //     // Create the volume bar div
+    //     let volumeBar = document.createElement('div');
+    //     volumeBar.classList.add('volumeBar');
+
+    //     // Create the volume circle div
+    //     let volumeCircle = document.createElement('div');
+    //     volumeCircle.id = `volumeCircle${idImg}`;
+    //     volumeCircle.classList.add('volumeCircle');
+
+    //     let volumeCircleImg = document.createElement('img');
+    //     volumeCircleImg.src = 'img/circleCursor.png';
+    //     volumeCircleImg.alt = '';
+    //     volumeCircleImg.width = 30;
+    //     volumeCircleImg.height = 30;
+
+    //     volumeCircle.appendChild(volumeCircleImg);
+    //     volumeBar.appendChild(volumeCircle);
+
+    //     // Create the audio element (hidden)
+    //     let audioElement = document.createElement('audio');
+    //     audioElement.id = `audio${idImg}`;
+    //     audioElement.style.display = 'none';
+    //     audioElement.controls = true;
+
+    //     let audioSource = document.createElement('source');
+    //     audioSource.src = musicSrc; // Ensure musicSrc is defined
+    //     audioSource.type = 'audio/mp3';
+
+    //     audioElement.appendChild(audioSource);
+
+    //     // Append all elements to the audio player div
+    //     audioPlayer.appendChild(playButton);
+    //     audioPlayer.appendChild(pauseButton);
+    //     audioPlayer.appendChild(audioLength);
+    //     audioPlayer.appendChild(volumeButton);
+    //     audioPlayer.appendChild(muteButton);
+    //     audioPlayer.appendChild(volumeBar);
+    //     audioPlayer.appendChild(audioElement);
+
+    //     // Append the audio player to the music player div
+    //     musicPlayer.appendChild(audioPlayer);
+
+    //     // Finally, append the music player container to the song container
+    //     songContainer.appendChild(musicPlayerContainer);
+
+    //     // Append the music player to the container div
+    //     musicPlayerContainer.appendChild(musicPlayer);
+
+    //     let positionArray;
+
+    //     for (var i = 0; i < arraySong.length; i++) {
+    //         if (arraySong[i].nameSong == idImg) {
+    //             positionArray = arraySong[i]
+    //         }
+    //     }
 
 
-        audioBtnFunction(positionArray)
-        volumeBtnAudio(positionArray)
-        shuffleSong(positionArray)
 
-        allArraySongFunctions()
-    }
 
-    allArraySongFunctions()
+    //     audioBtnFunction(positionArray)
+    //     volumeBtnAudio(positionArray)
+    //     shuffleSong(positionArray)
+
+    //     allArraySongFunctions()
+    // }
+
+    // allArraySongFunctions()
 
     document.getElementById('btnCloseModalPlayList').click()
 
@@ -8115,6 +8134,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             document.getElementById('imagePlayList').src = img
             document.getElementById('imagePlayList').style.objectFit = cover
+            currentAudioPlaying = ""
 
 
 
@@ -8381,6 +8401,23 @@ document.addEventListener('DOMContentLoaded', function () {
             const isDeleted = await handleDeletePlayList();
 
             if (isDeleted) {
+
+
+
+                
+                //
+                document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
+                document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
+                document.getElementById('shuffleMusicBarImg').src = 'img/shuffle.png'
+                document.getElementById('musicBarImg').src = 'img/notFound.jpg'
+                setTimeout(function () {
+                    document.getElementById('musicBarCircle').style.setProperty('left', '0px');
+                }, 200);
+                document.getElementById('audioPauseMusicBar').style.display = 'none'
+                document.getElementById('audioPlayMusicBar').style.display = 'flex'
+                document.getElementById('audioVolumeMusicBarImg').src = 'img/volume.png'
+                currentAudioPlaying = ""
+                //
 
 
                 let deletedElementIndex;
@@ -9072,3 +9109,13 @@ document.getElementById('removeSong').addEventListener('click', function () {
         imgButton.src = 'img/notSongBar.png'; // Changes the image back
     }
 });
+
+
+
+//CURSOR
+
+
+ 
+ 
+
+//CURSOR

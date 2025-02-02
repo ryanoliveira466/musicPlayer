@@ -129,6 +129,51 @@ table {
     border-spacing: 0;
 }
 
+
+ 
+
+/* CURSOR */
+
+html,
+body {
+    cursor: url(cursor/testeCursorCustom.png) 16 16, pointer !important;
+}
+
+.pcr-palette,
+.pcr-slider,
+.pcr-picker {
+    cursor: url(cursor/grab.png) 16 16, grab !important;
+}
+
+.pcr-palette:active,
+.pcr-slider:active,
+.pcr-picker:active {
+    cursor: url(cursor/grabbing.png) 16 16, grabbing !important;
+}
+
+html input {
+    cursor: url(cursor/text.png) 16 16, text !important;
+}
+
+html button {
+    cursor: url(cursor/pointer.png) 16 16, pointer !important;
+}
+
+.form-check input {
+    cursor: url(cursor/pointer.png) 16 16, pointer !important;
+}
+
+.form-check label {
+    cursor: url(cursor/pointer.png) 16 16, pointer !important;
+}
+
+html a{
+    cursor: url(cursor/testeCursorCustom.png) 16 16, pointer !important;
+}
+
+/* CURSOR */
+
+
 @font-face {
     font-family: Garamond;
     src: url(text/Roboto-Thin.ttf);
@@ -140,7 +185,7 @@ table {
 
 #song {
     font-family: Garamond;
-    
+
 }
 
 .form-check {
@@ -347,7 +392,7 @@ html span {
 
 
 body {
-    
+
     position: relative;
     width: 100%;
     height: 100%;
@@ -413,7 +458,7 @@ body {
 }
 
 
- 
+
 
 
 .cursor:hover {
@@ -421,7 +466,7 @@ body {
 }
 
 
- 
+
 
 .padraoBackground {
     opacity: 0;
@@ -497,6 +542,7 @@ body {
     #exampleModalEdit .modal-content {
         height: 100% !important;
     }
+
     #exampleModalEdit .modal-dialog {
         height: 100% !important;
 
@@ -549,25 +595,25 @@ body {
 
 
 
-    #song .music-player:hover{  
+    #song .music-player:hover {
         transform: none !important;
     }
-    
 
 
 
-    #imgRemoveCarousel{
+
+    #imgRemoveCarousel {
         width: 76px !important;
         height: 76px !important;
     }
-    
-    #imgRemoveSong{
+
+    #imgRemoveSong {
         width: 76px !important;
         height: 76px !important;
     }
-    
 
-    .artist{
+
+    .artist {
         width: 90% !important;
     }
 
@@ -733,11 +779,11 @@ body {
         font-size: xx-large !important;
     }
 
-    .patternResultSearchingTitle h3{
+    .patternResultSearchingTitle h3 {
         font-size: xx-large !important;
     }
 
-     
+
 
 
 
@@ -758,7 +804,7 @@ body {
     } */
 
 
-  
+
 
 
 }
@@ -813,7 +859,7 @@ body {
 
 
 
- 
+
 
 
 .container-fluid {
@@ -834,14 +880,14 @@ body {
     overflow: hidden;
     margin-top: 50px;
     margin-bottom: 60px;
-    /* border-radius: 50px; AHHHHA */ 
+    /* border-radius: 50px; AHHHHA */
     /* border: 6px solid rgba(0, 0, 0, 0.144); */
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.753);
     /* clip-path: inset(1px 1px 1px 1px round 50px); */
     transition: transform 1s ease;
 }
 
-.imgGojo:hover{
+.imgGojo:hover {
     transform: scale(1.05);
 }
 
@@ -999,7 +1045,7 @@ input[type="text"]:hover {
 
 #configButton {
     mix-blend-mode: difference;
-    
+
 }
 
 #offCanvasButton {
@@ -1007,7 +1053,7 @@ input[type="text"]:hover {
     mix-blend-mode: difference;
 }
 
-#removeCarousel{
+#removeCarousel {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1016,7 +1062,7 @@ input[type="text"]:hover {
     backdrop-filter: brightness(0.5);
 }
 
-#removeSong{
+#removeSong {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1024,8 +1070,8 @@ input[type="text"]:hover {
     margin: 2rem;
     backdrop-filter: brightness(0.5);
 }
- 
- 
+
+
 
 #buttonCarousel1 {
 
@@ -1157,8 +1203,8 @@ html ::-webkit-scrollbar {
 
 
 
-#song .music-player{  
-    background-color: #000000c2; 
+#song .music-player {
+    background-color: #000000c2;
 }
 
 
@@ -1170,18 +1216,18 @@ html ::-webkit-scrollbar {
 
 
 
- 
 
 
 
 
- 
+
+
 .music-player:hover {
     transform: scale(1.02);
 }
 
 
- 
+
 .musicImg {
     /* width: 100%; */
     width: 350px;
@@ -1953,7 +1999,7 @@ E FUNCIONA COM TODAS AS CONFIGURAÇÕES PORÉM POSSO MEXER NELAS  */
     box-shadow: 0px 2px 13px -3px rgba(0, 0, 0, 1);
 }
 
- 
+
 
 #image-previewSongEdit {
     width: 100%;
@@ -2104,7 +2150,7 @@ E FUNCIONA COM TODAS AS CONFIGURAÇÕES PORÉM POSSO MEXER NELAS  */
     max-width: 100%;
     padding: .8em;
     width: 100%;
-    
+
 }
 
 
@@ -2122,14 +2168,14 @@ E FUNCIONA COM TODAS AS CONFIGURAÇÕES PORÉM POSSO MEXER NELAS  */
     left: 0;
     top: 0;
     border-radius: 20px;
-    
+
 
 }
 
 
- 
 
- 
+
+
 html .cropper-container {
     height: 0px !important;
 }
@@ -2166,7 +2212,7 @@ html .cropper-container {
     font-weight: bold;
 }
 
- 
+
 
 
 
@@ -2183,7 +2229,7 @@ html .cropper-container {
 
 
 
- 
+
 
 .musicImgOffCan {
     display: flex;
@@ -2200,17 +2246,17 @@ html .cropper-container {
     backdrop-filter: blur(20px);
 }
 
- 
+
 .offcanvas-backdrop.show {
     opacity: .2 !important;
 }
 
-.offcanvas-body{
-   
+.offcanvas-body {
+
     justify-content: center;
     align-items: center;
     text-align: center;
-    
+
 }
 
 
@@ -2314,7 +2360,7 @@ html {
     backdrop-filter: brightness(0.5);
     transition: all 0.5s ease-in-out;
     /* Add smooth transition */
-   
+
 }
 
 .musicBarImg {
@@ -2402,7 +2448,7 @@ html {
 
     100% {
         opacity: 0;
-         
+
     }
 }
 
@@ -2413,7 +2459,7 @@ html {
     animation: fadeInCircleMusicBar 1s ease-in
 }
 
-.opacityRemove{
+.opacityRemove {
     animation: fadeOff 1s ease-in forwards
 }
 
@@ -2629,13 +2675,13 @@ footer {
     #exampleModalView .music-player {
         box-shadow: 0px 2px 13px -3px rgba(0, 0, 0, 1);
         margin: 1rem;
-        border: 0px solid transparent; 
+        border: 0px solid transparent;
     }
 
     #exampleModalViewSong .music-player {
         box-shadow: 0px 2px 13px -3px rgba(0, 0, 0, 1);
         margin: 1rem;
-        border: 0px solid transparent; 
+        border: 0px solid transparent;
     }
 
 
@@ -2653,15 +2699,15 @@ footer {
         padding-right: 0px !important;
     }
 
-     
+
 
 
 }
 
 
- 
 
-#searchingDiv{
+
+#searchingDiv {
     position: fixed;
     display: flex;
     justify-content: center;
@@ -2677,11 +2723,11 @@ footer {
     transition: all 0.5s ease-in-out;
 }
 
-#searchingDivExpand{
-   margin: 1rem;
+#searchingDivExpand {
+    margin: 1rem;
 }
 
-.searchingDivHeader{
+.searchingDivHeader {
     display: none;
     width: 100%;
     justify-content: center;
@@ -2691,7 +2737,7 @@ footer {
 }
 
 
-#searchBarSearching{
+#searchBarSearching {
     border-radius: 10px;
     color: #e9e3e3;
     font-family: 'Garamond';
@@ -2699,7 +2745,7 @@ footer {
     width: 80%;
 }
 
-.imgSearchSarching{
+.imgSearchSarching {
     margin: 1rem;
     display: flex;
     justify-content: center;
@@ -2710,7 +2756,7 @@ footer {
 
 
 
-#resultSearching{
+#resultSearching {
     display: none;
     z-index: 77;
     overflow: scroll;
@@ -2725,10 +2771,10 @@ footer {
     /* border-radius: 20px; */
     /* margin-top: 340px; */
     color: white;
-     
+
 }
 
-.patternResultSearching{
+.patternResultSearching {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2748,20 +2794,20 @@ footer {
 
 .patternResultSearching:hover {
     transform: scale(1.01);
-    
+
 }
 
-.patternResultSearchingImg{
+.patternResultSearchingImg {
     object-fit: cover;
     width: 300px;
     height: 200px;
     flex-shrink: 0;
     border-radius: 20px;
     margin: 1rem;
-    
+
 }
 
-.patternResultSearchingTitle{
+.patternResultSearchingTitle {
     display: grid;
     justify-content: center;
     align-items: center;
@@ -2776,7 +2822,7 @@ footer {
 
 
 
- 
+
 
 
 
@@ -2784,22 +2830,22 @@ footer {
 
 @media screen and (max-height: 600px) {
 
- 
 
- #searchingDivExpand img{
-    width: 45px;
-    height: 45px;
-    
-} 
 
- 
-    
+    #searchingDivExpand img {
+        width: 45px;
+        height: 45px;
+
+    }
+
+
+
 }
 
 
 
 
-@media screen and (max-height: 500px){
+@media screen and (max-height: 500px) {
     #exampleModal .modal-content {
         font-family: Garamond;
         font-size: xxx-large;
@@ -2834,7 +2880,7 @@ footer {
 
 
 
- 
+
 .alert-box {
     display: flex;
     position: fixed;
@@ -2890,86 +2936,86 @@ footer {
 
 
 
- 
 
- .offcanvas-backdrop{
+
+.offcanvas-backdrop {
     height: 100% !important;
 
- }
+}
 
- #offcanvasBottom{
+#offcanvasBottom {
     display: flex;
     background: #fffefe;
     mix-blend-mode: normal;
     backdrop-filter: brightness(0.5);
     z-index: 7566;
     font-family: Garamond;
- }
+}
 
 
- #offcanvasBottomSong{
+#offcanvasBottomSong {
     display: flex;
     background: #fffefe;
     mix-blend-mode: normal;
     backdrop-filter: brightness(0.5);
     z-index: 7566;
     font-family: Garamond;
- }
+}
 
- #offcanvasBottomPlayList{
+#offcanvasBottomPlayList {
     display: flex;
     background: #fffefe;
     mix-blend-mode: normal;
     backdrop-filter: brightness(0.5);
     z-index: 7566;
     font-family: Garamond;
- }
+}
 
 
- #expandColoredImageBtn{
-    backdrop-filter: brightness(0.5);
-    margin: 1rem;
- }
-
- #downloadColoredImageBtn {
+#expandColoredImageBtn {
     backdrop-filter: brightness(0.5);
     margin: 1rem;
 }
 
-.donwloadAndExpand{
+#downloadColoredImageBtn {
+    backdrop-filter: brightness(0.5);
+    margin: 1rem;
+}
+
+.donwloadAndExpand {
     display: flex;
-    justify-content: left; 
+    justify-content: left;
     align-items: center;
     text-align: center;
     width: 900px;
     margin-left: 12px;
     margin-right: 12px;
-    
-    
+
+
 }
 
 
 
 
-@media screen and (max-width: 1200px){
-    .donwloadAndExpand{
+@media screen and (max-width: 1200px) {
+    .donwloadAndExpand {
         display: flex;
-        justify-content: center; 
+        justify-content: center;
         align-items: center;
         text-align: center;
         width: 900px;
         margin-left: 12px;
         margin-right: 12px;
-        
-        
+
+
     }
-    
+
 }
 
 
 
 
-#expandColoredImageBtnBack{
+#expandColoredImageBtnBack {
     display: flex;
     position: absolute;
     z-index: 9999;
@@ -2979,11 +3025,11 @@ footer {
     margin: 1rem;
 
     transition: opacity 0.6s ease-in-out;
-     
+
 }
 
 
-#expandColoredImageBtnHide{
+#expandColoredImageBtnHide {
     display: flex;
     position: absolute;
     z-index: 9999;
@@ -2993,7 +3039,7 @@ footer {
     margin: 1rem;
 
     transition: opacity 0.6s ease-in-out;
-     
+
 }
 
 
@@ -3001,52 +3047,52 @@ footer {
 
 
 
- 
 
 
- #blackCover{
+
+#blackCover {
     position: absolute;
     display: none;
     width: 100%;
     height: 100%;
     background-color: #000;
     z-index: 8000;
-     
- }
 
-
- body div{
-    scroll-behavior: smooth;
- }
-
-
-
-
-
- @media screen and (max-width: 910px){
-    .imgGojo{
-       border-radius: 0px;   
-    }
-    
 }
 
 
-.buttonsPlayList{
+body div {
+    scroll-behavior: smooth;
+}
+
+
+
+
+
+@media screen and (max-width: 910px) {
+    .imgGojo {
+        border-radius: 0px;
+    }
+
+}
+
+
+.buttonsPlayList {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 
-.buttonsPlayList button{
- margin: 1rem;
-}
-
-#musicOffCan h3{
+.buttonsPlayList button {
     margin: 1rem;
 }
 
- 
+#musicOffCan h3 {
+    margin: 1rem;
+}
+
+
 .playListCoverImg {
 
     position: relative;
@@ -3054,11 +3100,11 @@ footer {
     height: 300px;
     border-radius: 20px;
     object-fit: cover;
-     
+
 }
 
 
-#bgImage{
+#bgImage {
     display: none;
     position: absolute;
     /* background-image: url();
@@ -3066,25 +3112,25 @@ footer {
   background-position: center;
   background-repeat: no-repeat;
   */
-  filter: blur(5px);   
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+    filter: blur(5px);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
-#bgImageReal{
+#bgImageReal {
     object-fit: cover;
     width: 100%;
     height: 100%;
 }
 
 
-#showPlayListImageDiv{
+#showPlayListImageDiv {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    
+
 }
 
 /* #imagePlayList{
@@ -3097,7 +3143,7 @@ footer {
     border-radius: 30px;
 } */
 
-#imagePlayList{
+#imagePlayList {
     height: 85vh;
     max-height: 500px;
     width: 650px;
@@ -3108,28 +3154,25 @@ footer {
 
 
 @media screen and (max-width: 900px) {
-     #imagePlayList{
-    height: 85vh;
-    max-height: 500px;
-    width: 650px;
-    min-width: 650px;
-    /* max-width: 100vw; */
-    object-fit: cover;
-    border-radius: 30px;
+    #imagePlayList {
+        height: 85vh;
+        max-height: 500px;
+        width: 650px;
+        min-width: 650px;
+        /* max-width: 100vw; */
+        object-fit: cover;
+        border-radius: 30px;
+    }
 }
-}
 
 
 
-#imgRemoveCarousel{
+#imgRemoveCarousel {
     width: 58px;
     height: 58px;
 }
 
-#imgRemoveSong{
+#imgRemoveSong {
     width: 58px;
     height: 58px;
 }
-
-
-  
