@@ -12,4 +12,4 @@
 
 
 
-[ryanoliveira466.github.io/musicPlayer](https://ryanoliveira466.github.io/musicPLayer/)
+[ryanoliveira466.github.io/musicPlayer](https://ryanoliveira466.github.io/musicPlayer/)
