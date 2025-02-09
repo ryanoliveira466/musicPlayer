@@ -134,7 +134,7 @@ table {
 
 /* CURSOR */
 
-html,
+/* html,
 body {
     cursor: url(cursor/testeCursorCustom.png) 16 16, pointer !important;
 }
@@ -159,6 +159,15 @@ html button {
     cursor: url(cursor/pointer.png) 16 16, pointer !important;
 }
 
+
+#colorOption .color-display {
+    cursor: url(cursor/pointer.png) 16 16, pointer !important;
+}
+
+html label {
+    cursor: url(cursor/pointer.png) 16 16, pointer !important;
+}
+
 .form-check input {
     cursor: url(cursor/pointer.png) 16 16, pointer !important;
 }
@@ -169,7 +178,40 @@ html button {
 
 html a{
     cursor: url(cursor/testeCursorCustom.png) 16 16, pointer !important;
+} */
+
+
+@media (hover: hover) { 
+    html, body {
+        cursor: url(cursor/testeCursorCustom.png) 16 16, pointer !important;
+    }
+
+    .pcr-palette,
+    .pcr-slider,
+    .pcr-picker {
+        cursor: url(cursor/grab.png) 16 16, grab !important;
+    }
+
+    .pcr-palette:active,
+    .pcr-slider:active,
+    .pcr-picker:active {
+        cursor: url(cursor/grabbing.png) 16 16, grabbing !important;
+    }
+
+    html input {
+        cursor: url(cursor/text.png) 16 16, text !important;
+    }
+
+    html button,
+    #colorOption .color-display,
+    html label,
+    .form-check input,
+    .form-check label,
+    html a {
+        cursor: url(cursor/pointer.png) 16 16, pointer !important;
+    }
 }
+
 
 /* CURSOR */
 
@@ -1198,13 +1240,20 @@ html ::-webkit-scrollbar {
     overflow: hidden;
     text-overflow: clip;
     margin: 1rem;
-    transition: transform 1s ease;
+    transition: transform .3s ease-out;
 }
 
 
 
 #song .music-player {
     background-color: #000000c2;
+    transition: transform .3s ease-out;
+}
+
+
+
+.music-player img {
+    transition: transform 0.2s ease;
 }
 
 
@@ -2787,7 +2836,7 @@ footer {
     border-radius: 30px;
     box-shadow: 0 4px 17px 8px rgba(0, 0, 0, 0.1);
     background-color: #afd2d208;
-    transition: transform 1s ease;
+    transition: transform .3s ease;
 }
 
 
@@ -2804,6 +2853,7 @@ footer {
     flex-shrink: 0;
     border-radius: 20px;
     margin: 1rem;
+    transition: transform 0.2s;
 
 }
 
@@ -2950,6 +3000,7 @@ footer {
     backdrop-filter: brightness(0.5);
     z-index: 7566;
     font-family: Garamond;
+    height: 20vw;
 }
 
 
@@ -2960,6 +3011,7 @@ footer {
     backdrop-filter: brightness(0.5);
     z-index: 7566;
     font-family: Garamond;
+    height: 20vw;
 }
 
 #offcanvasBottomPlayList {
@@ -2969,6 +3021,7 @@ footer {
     backdrop-filter: brightness(0.5);
     z-index: 7566;
     font-family: Garamond;
+    height: 20vw;
 }
 
 
@@ -3150,6 +3203,7 @@ body div {
     min-width: 650px;
     object-fit: cover;
     border-radius: 30px;
+    border: 20px solid #0000004a;
 }
 
 
@@ -3176,3 +3230,5 @@ body div {
     width: 58px;
     height: 58px;
 }
+
+
