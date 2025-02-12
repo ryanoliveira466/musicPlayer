@@ -9277,19 +9277,125 @@ document.getElementById('removeCarousel').addEventListener('click', function () 
 
 
 
-document.getElementById('removeSong').addEventListener('click', function () {
-    var song = document.getElementById('song');
-    var imgButton = document.getElementById('imgRemoveSong');
+//  document.getElementById('removeSong').addEventListener('click', function () {
+//      var song = document.getElementById('song');
+//      var imgButton = document.getElementById('imgRemoveSong');
 
 
-    if (imgButton.src.endsWith('img/notSongBar.png')) {
-        song.style.display = 'none'
-        imgButton.src = 'img/enableSongBar.png'; // Changes the image
-    } else {
-        song.style.display = 'flex'
-        imgButton.src = 'img/notSongBar.png'; // Changes the image back
+//      if (imgButton.src.endsWith('img/notSongBar.png')) {
+//          imgButton.src = 'img/enableSongBar.png';  //Changes the image
+//          document.getElementById("song").classList.add("slide-left");
+
+//          setTimeout(() => {
+//              song.style.display = 'none'
+//          }, 2000);
+
+
+//      } else {
+//          song.style.display = 'flex'
+//          imgButton.src = 'img/notSongBar.png';  //Changes the image back
+
+//          document.getElementById("song").classList.add("slide-back");
+//      }
+//  });
+
+
+  document.getElementById('removeSong').addEventListener('click', function () {
+
+    function scrollToStart() {
+        var song = document.getElementById('song');
+        
+        // Set a delay before scrolling
+        setTimeout(function() {
+            // Smooth scroll to the start (0)
+            song.scrollTo({
+                left: 0,
+                behavior: 'smooth'
+            });
+        }, 1000); // Delay of 1000ms (1 second)
     }
-});
+
+
+      var song = document.getElementById('song');
+      var imgButton = document.getElementById('imgRemoveSong');
+      var screenWidth = document.documentElement.clientWidth;
+
+      console.log(screenWidth);
+      
+
+       //Check if screen width is <= 800px (mobile)
+      if (screenWidth <= 800) {
+          if (imgButton.src.endsWith('img/notSongBar.png')) {
+              imgButton.src = 'img/enableSongBar.png';
+              song.classList.remove("slide-back-mobile", "hidden");
+              song.classList.add("slide-left-mobile");
+              song.scrollLeft = song.scrollWidth
+              this.disabled = true
+              song.style.setProperty('pointer-events', 'none', 'important');
+             
+
+              setTimeout(() => {
+                  song.classList.add("hidden");
+                  this.disabled = false
+                  song.style.setProperty('pointer-events', 'auto', 'important');
+              }, 2000);
+          } else {
+              scrollToStart()
+              song.classList.remove("hidden");
+              imgButton.src = 'img/notSongBar.png';
+              this.disabled = true
+              song.style.setProperty('pointer-events', 'none', 'important');
+
+              setTimeout(() => {
+                  song.classList.remove("slide-left-mobile");
+                  song.classList.add("slide-back-mobile");
+              }, 10);
+
+              setTimeout(() => {
+                this.disabled = false
+                song.style.setProperty('pointer-events', 'auto', 'important');
+            }, 2000);
+          }
+      } else {  //For larger screens
+          if (imgButton.src.endsWith('img/notSongBar.png')) {
+              imgButton.src = 'img/enableSongBar.png';
+              song.classList.remove("slide-back", "hidden");
+              song.classList.add("slide-left");
+              song.scrollLeft = song.scrollWidth
+              this.disabled = true
+              song.style.setProperty('pointer-events', 'none', 'important');
+
+              setTimeout(() => {
+                  song.classList.add("hidden");
+                  this.disabled = false
+                  song.style.setProperty('pointer-events', 'auto', 'important');
+              }, 2000);
+          } else {
+              scrollToStart()
+              song.classList.remove("hidden");
+              imgButton.src = 'img/notSongBar.png';
+              this.disabled = true
+              song.style.setProperty('pointer-events', 'none', 'important');
+
+              setTimeout(() => {
+                  song.classList.remove("slide-left");
+                  song.classList.add("slide-back");
+              }, 10);
+
+              setTimeout(() => {
+                this.disabled = false
+                song.style.setProperty('pointer-events', 'auto', 'important');
+            }, 2000);
+          }
+      }
+  });
+
+
+
+
+
+
+
 
 
 

@@ -928,6 +928,8 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.753);
     /* clip-path: inset(1px 1px 1px 1px round 50px); */
     transition: transform 1s ease;
+    border-radius: 30px;
+    border: 20px solid #0000004a;
 }
 
 .imgGojo:hover {
@@ -1192,7 +1194,7 @@ header button{
     margin-top: 60px;
     min-width: 800px;
     max-width: 100vw;
-    
+    border: 15px solid transparent;
     /* backdrop-filter: invert(1); */
     backdrop-filter: contrast(0.5);
     /* transition: all 1s ease-in-out; Add smooth transition */
@@ -3295,7 +3297,81 @@ body div {
 
 
 
+/* DIV ANIMATION TRIGGER */
 
+/* Default animation for desktop */
+@keyframes slide-left {
+    0% { transform: translateX(0); opacity: 1; height: 469px; }
+    100% { transform: translateX(-100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
+  }
+  
+  @keyframes slide-back {
+    0% { transform: translateX(-100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
+    100% { transform: translateX(0); opacity: 1; height: 469px; }
+  }
+  
+  /* Animation for mobile screens (width <= 800px) */
+  @keyframes slide-left-mobile {
+    0% { transform: translateX(0); opacity: 1; height: 800px; }
+    100% { transform: translateX(-100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
+  }
+  
+  @keyframes slide-back-mobile {
+    0% { transform: translateX(-100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
+    100% { transform: translateX(0); opacity: 1; height: 800px; }
+  }
+  
+  /* Slide animation class for desktop */
+  .slide-left {
+    animation: slide-left 2s ease-in-out forwards;
+  }
+  
+  .slide-back {
+    animation: slide-back 2s ease-in-out forwards;
+  }
+  
+  /* Slide animation class for mobile */
+  .slide-left-mobile {
+    animation: slide-left-mobile 2s ease-in-out forwards;
+  }
+  
+  .slide-back-mobile {
+    animation: slide-back-mobile 2s ease-in-out forwards;
+  }
+  
+  /* Hidden class with transition */
+  .hidden {
+    height: 0;
+    overflow: hidden !important;
+    opacity: 0;
+    transition: height 2s ease-in-out, opacity 2s ease-in-out;
+  }
+  
+  /* Media query for mobile screens */
+  /* @media (max-width: 800px) {
+    .slide-left {
+      animation: slide-left-mobile 2s ease-in-out forwards;
+    }
+  
+    .slide-back {
+      animation: slide-back-mobile 2s ease-in-out forwards;
+    }
+  } */
+
+
+
+
+
+   
+  
+  
+  
+  
+
+   
+
+
+  /* DIV ANIMATION TRIGGER */
 
 
 
