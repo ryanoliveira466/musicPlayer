@@ -5445,6 +5445,7 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
          
              // Append button to a desired container
              document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
+             addButtonDivScroll()
 
              ////
 
@@ -6946,6 +6947,45 @@ buttons.forEach(button => {
 
 
 
+function addButtonDivScroll(){
+    const buttons = document.querySelectorAll('#btnImagem,#btnSong,#btnView,#btnViewSong,#addPlayList,#newSong')
+
+buttons.forEach(button => {
+
+    button.addEventListener('click', function () {
+
+        const divs = document.querySelectorAll('.modal-content,.modalRef')
+
+        divs.forEach(div => {
+
+
+
+            setTimeout(function () {
+                div.style.scrollBehavior = 'auto'
+                div.scrollTop = div.scrollHeight;
+            }, 160)
+
+
+
+
+
+            setTimeout(function () {
+                div.style.scrollBehavior = 'smooth'
+                div.scrollTo(0, 0)
+            }, 457)
+        })
+
+    })
+
+
+})
+
+}
+
+
+
+
+
 
 
 
@@ -7466,6 +7506,7 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
         
             // Append button to a desired container
             document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
+            addButtonDivScroll()
 
             ////
 
@@ -7787,6 +7828,7 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
          
              // Append button to a desired container
              document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
+             addButtonDivScroll()
 
              ////
 
@@ -8433,6 +8475,7 @@ document.addEventListener('DOMContentLoaded', function () {
          
              // Append button to a desired container
              document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
+             addButtonDivScroll()
 
              ////
 
@@ -8753,6 +8796,7 @@ document.addEventListener('DOMContentLoaded', function () {
          
              // Append button to a desired container
              document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
+             addButtonDivScroll()
 
              ////
 
