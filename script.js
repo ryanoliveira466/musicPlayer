@@ -2977,6 +2977,9 @@ arraySong.forEach((song) => {
 
     document.getElementById(`audioPlay${song.nameSong}`).addEventListener('click', function () {
 
+        document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
+        document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
+
 
         const imageAudioBar = document.getElementById('audioVolumeMusicBarImg')
         const audioSong = document.getElementById(`audio${song.nameSong}`)
@@ -3111,6 +3114,8 @@ function audioBtnFunction(song) {
 
     document.getElementById(`audioPlay${song.nameSong}`).addEventListener('click', function () {
 
+        document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
+        document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
 
         const imageAudioBar = document.getElementById('audioVolumeMusicBarImg')
         const audioSong = document.getElementById(`audio${song.nameSong}`)
@@ -4875,6 +4880,29 @@ document.getElementById('buttonAcceptimgSong').addEventListener('click', functio
     }
 
     console.log(positionArray);
+
+    document.getElementById('song').removeChild(document.getElementById('newSong'))
+
+
+    ///
+    let buttonAddNew = document.createElement("button");
+    buttonAddNew.id = "newSong";
+    buttonAddNew.className = "btn btn";
+    buttonAddNew.setAttribute("data-bs-toggle", "modal");
+    buttonAddNew.setAttribute("data-bs-target", "#exampleModalSong");
+
+    // Create image element
+    let imgAddNew = document.createElement("img");
+    imgAddNew.src = "img/addPlayList.png";
+    imgAddNew.alt = "";
+
+    // Append image inside button
+    buttonAddNew.appendChild(imgAddNew);
+
+    // Append button to a desired container
+    document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
+    addButtonDivScroll()
+    ///
 
 
     audioBtnFunction(positionArray)
@@ -6911,7 +6939,7 @@ document.getElementById('expandColoredImageBtnBack').addEventListener('touchmove
 
 //SCROLL DIV
 
-const buttons = document.querySelectorAll('#btnImagem,#btnSong,#btnView,#btnViewSong,#addPlayList,#newSong')
+const buttons = document.querySelectorAll('#btnImagem,#btnSong,#btnView,#btnViewSong,#addPlayList,#newSong,.stickyClick')
 
 buttons.forEach(button => {
 
@@ -6948,7 +6976,7 @@ buttons.forEach(button => {
 
 
 function addButtonDivScroll(){
-    const buttons = document.querySelectorAll('#btnImagem,#btnSong,#btnView,#btnViewSong,#addPlayList,#newSong')
+    const buttons = document.querySelectorAll('#btnImagem,#btnSong,#btnView,#btnViewSong,#addPlayList,#newSong,.stickyClick')
 
 buttons.forEach(button => {
 
@@ -9270,7 +9298,7 @@ document.getElementById('removeSong').addEventListener('click', function () {
 document.addEventListener('scroll', function() {
     // Get the scroll position
     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    console.log(scrollTop);
+    
 
     if (scrollTop > 30) {
         // When scrolled down, reduce height

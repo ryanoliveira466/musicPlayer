@@ -2391,7 +2391,10 @@ html {
     transition: all 0.1s ease;
     pointer-events: all;
     user-select: none;
+    transform: 0.2s ease-out;
 }
+
+ 
 
 /* Circle appearance */
 .volumeCircle img {
@@ -2418,7 +2421,7 @@ html {
     top: 0;
     left: 0;
     z-index: 100;
-    backdrop-filter: brightness(0.5);
+    backdrop-filter: contrast(0);
     transition: all 0.5s ease-in-out;
     /* Add smooth transition */
 
@@ -2590,6 +2593,7 @@ footer {
     mix-blend-mode: difference; */
     font-family: Garamond;
     backdrop-filter: brightness(0.5);
+    padding-bottom: 100px;
 }
 
 .footer-content {
@@ -2845,7 +2849,7 @@ footer {
     flex-direction: row;
     height: 300px;
     margin: 1rem;
-    border-radius: 30px;
+    border-radius: 10px;
     box-shadow: 0 4px 17px 8px rgba(0, 0, 0, 0.1);
     background-color: #afd2d208;
     transition: transform .3s ease;
@@ -3012,7 +3016,7 @@ footer {
     backdrop-filter: brightness(0.5);
     z-index: 7566;
     font-family: Garamond;
-    height: 20vw;
+    height: 40%;
 }
 
 
@@ -3023,7 +3027,7 @@ footer {
     backdrop-filter: brightness(0.5);
     z-index: 7566;
     font-family: Garamond;
-    height: 20vw;
+    height: 40%;
 }
 
 #offcanvasBottomPlayList {
@@ -3033,7 +3037,7 @@ footer {
     backdrop-filter: brightness(0.5);
     z-index: 7566;
     font-family: Garamond;
-    height: 20vw;
+    height: 40%;
 }
 
 
@@ -3245,6 +3249,56 @@ body div {
     width: 58px;
     height: 58px;
 }
+
+
+#stickyButtons {
+    position: fixed;
+    bottom: 0; /* Fixes the div to the bottom of the viewport */
+    left: 0;
+    width: 100%; /* Ensures it spans the entire width */
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+    background-color: transparent;
+    z-index: 10;
+    padding: 10px; /* Optional: Adds some spacing */
+}
+
+#stickyButtons button :hover{
+    transform: scale(1.1);
+}
+
+#stickyButtons button{
+    margin: 5px;
+    backdrop-filter: brightness(0.5);
+    background-color:#1d1b1b0e;
+    transition: transform 0.2s ease-out;
+}
+
+#stickyButtons img{
+   width: 50px;
+   height: 50px;
+}
+
+#newSong{
+    backdrop-filter: brightness(0.5);
+    background-color: #1818187d;
+    margin: 1rem;
+}
+
+#addPlayList{
+    backdrop-filter: brightness(0.5);
+    background-color: #1818187d;
+}
+
+
+
+
+
+
+
 
  
 
