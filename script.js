@@ -4040,7 +4040,7 @@ document.getElementById('btnMusicBarExpand').addEventListener('click', function 
         document.getElementById('bgImage').style.display = 'none'
 
 
-        musicBar.style.height = '140px'
+        musicBar.style.height = '158px'
         header.style.height = '140px'
         musicBarImg.style.height = '100px'
         musicBarImg.style.width = '200px'
@@ -5426,6 +5426,31 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
                     shuffleSong(positionArray)
 
                 }
+
+                ////
+
+             let buttonAddNew = document.createElement("button");
+             buttonAddNew.id = "newSong";
+             buttonAddNew.className = "btn btn";
+             buttonAddNew.setAttribute("data-bs-toggle", "modal");
+             buttonAddNew.setAttribute("data-bs-target", "#exampleModalSong");
+         
+             // Create image element
+             let imgAddNew = document.createElement("img");
+             imgAddNew.src = "img/addPlayList.png";
+             imgAddNew.alt = "";
+         
+             // Append image inside button
+             buttonAddNew.appendChild(imgAddNew);
+         
+             // Append button to a desired container
+             document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
+
+             ////
+
+               
+
+                
 
 
 
@@ -6885,7 +6910,7 @@ document.getElementById('expandColoredImageBtnBack').addEventListener('touchmove
 
 //SCROLL DIV
 
-const buttons = document.querySelectorAll('#btnImagem,#btnSong,#btnView,#btnViewSong,#addPlayList')
+const buttons = document.querySelectorAll('#btnImagem,#btnSong,#btnView,#btnViewSong,#addPlayList,#newSong')
 
 buttons.forEach(button => {
 
@@ -7423,6 +7448,27 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
 
             }
 
+            ////
+
+            let buttonAddNew = document.createElement("button");
+            buttonAddNew.id = "newSong";
+            buttonAddNew.className = "btn btn";
+            buttonAddNew.setAttribute("data-bs-toggle", "modal");
+            buttonAddNew.setAttribute("data-bs-target", "#exampleModalSong");
+        
+            // Create image element
+            let imgAddNew = document.createElement("img");
+            imgAddNew.src = "img/addPlayList.png";
+            imgAddNew.alt = "";
+        
+            // Append image inside button
+            buttonAddNew.appendChild(imgAddNew);
+        
+            // Append button to a desired container
+            document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
+
+            ////
+
             allArraySongFunctions()
 
         })
@@ -7722,6 +7768,27 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
 
 
                 }
+
+                ////
+
+             let buttonAddNew = document.createElement("button");
+             buttonAddNew.id = "newSong";
+             buttonAddNew.className = "btn btn";
+             buttonAddNew.setAttribute("data-bs-toggle", "modal");
+             buttonAddNew.setAttribute("data-bs-target", "#exampleModalSong");
+         
+             // Create image element
+             let imgAddNew = document.createElement("img");
+             imgAddNew.src = "img/addPlayList.png";
+             imgAddNew.alt = "";
+         
+             // Append image inside button
+             buttonAddNew.appendChild(imgAddNew);
+         
+             // Append button to a desired container
+             document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
+
+             ////
 
 
                 console.log('arraySong', arraySong);
@@ -8348,6 +8415,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
             }
 
+             ////
+
+             let buttonAddNew = document.createElement("button");
+             buttonAddNew.id = "newSong";
+             buttonAddNew.className = "btn btn";
+             buttonAddNew.setAttribute("data-bs-toggle", "modal");
+             buttonAddNew.setAttribute("data-bs-target", "#exampleModalSong");
+         
+             // Create image element
+             let imgAddNew = document.createElement("img");
+             imgAddNew.src = "img/addPlayList.png";
+             imgAddNew.alt = "";
+         
+             // Append image inside button
+             buttonAddNew.appendChild(imgAddNew);
+         
+             // Append button to a desired container
+             document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
+
+             ////
+
             allArraySongFunctions()
 
         })
@@ -8646,6 +8734,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
                 }
+
+                ////
+
+             let buttonAddNew = document.createElement("button");
+             buttonAddNew.id = "newSong";
+             buttonAddNew.className = "btn btn";
+             buttonAddNew.setAttribute("data-bs-toggle", "modal");
+             buttonAddNew.setAttribute("data-bs-target", "#exampleModalSong");
+         
+             // Create image element
+             let imgAddNew = document.createElement("img");
+             imgAddNew.src = "img/addPlayList.png";
+             imgAddNew.alt = "";
+         
+             // Append image inside button
+             buttonAddNew.appendChild(imgAddNew);
+         
+             // Append button to a desired container
+             document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
+
+             ////
 
 
                 console.log('arraySong', arraySong);
@@ -9113,6 +9222,20 @@ document.getElementById('removeSong').addEventListener('click', function () {
 
 
 //CURSOR
+ 
+document.addEventListener('scroll', function() {
+    // Get the scroll position
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    console.log(scrollTop);
+
+    if (scrollTop > 30) {
+        // When scrolled down, reduce height
+        document.getElementById('140height').style.height = "0px";
+    } else {
+        // When at the top, restore height
+        document.getElementById('140height').style.height = "140px";
+    }
+});
 
 
  

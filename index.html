@@ -84,8 +84,12 @@
  
       </style>
 
+      
+
 
       <style>
+
+      
        
 
  
@@ -107,7 +111,7 @@ input[type="image"] {
 
 
 
-<body>
+<body id="body">
 
     
     <canvas id="myCanvas" style="display: none;"></canvas>
@@ -1594,7 +1598,57 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
 
 
 
-    
+  <div class="offcanvas offcanvas-start"
+  style="color: rgb(221, 238, 238); font-family: Garamond;backdrop-filter: blur(40px);
+-webkit-backdrop-filter: blur(10px);"
+  data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+  <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="staticBackdropLabel">Playlist</h5>
+      <button type="button" class="btn btn" style="margin-left: auto;" data-bs-dismiss="offcanvas"
+          aria-label="Close">
+          <img src="img/close.png" alt="" srcset="" width="30px" height="30px">
+      </button>
+  </div>
+  <div class="offcanvas-body">
+      <div>
+      
+          <div id="musicOffCan">
+               
+              <div class="playListItem" id="eletronicPlayListPattern">
+                  <img src="img/suicideSheep.jpg" class="playListCoverImg" id="eletronicPlayListImg" alt="" srcset="">
+                 <h3>Eletronic/Remixes</h3>
+                 <div class="buttonsPlayList">
+                 <button class="btn btn-danger"  id="eletronicPlayListDelete"><img src="img/trash.png" width="60px" height="60px" alt=""></button>
+                 <button class="btn btn-secondary"  id="eletronicPlayListEdit"><img src="img/pen.png" width="60px" height="60px" alt=""></button>
+                 </div>
+              </div>
+
+              <div class="playListItem" id="hardStylePlayListPattern">
+                  <img src="img/hardStyle.jpg" class="playListCoverImg" id="hardStylePlayListImg" alt="" srcset="">
+                 <h3>HardStyle</h3>
+                 <div class="buttonsPlayList">
+                 <button class="btn btn-danger"  id="hardStylePlayListDelete"><img src="img/trash.png" width="60px" height="60px" alt=""></button>
+                 <button class="btn btn-secondary"  id="hardStylePlayListEdit"><img src="img/pen.png" width="60px" height="60px" alt=""></button>
+                 </div>
+              </div>
+
+              <div class="playListItem" id="juicePlayListPattern">
+                  <img src="img/Juice WRLD.jpg" class="playListCoverImg" id="juicePlayListImg" alt="" srcset="">
+                 <h3>Juice - WRLD</h3>
+                 <div class="buttonsPlayList">
+                 <button class="btn btn-danger"  id="juicePlayListDelete"><img src="img/trash.png" width="60px" height="60px" alt=""></button>
+                 <button class="btn btn-secondary"  id="juicePlayListEdit"><img src="img/pen.png" width="60px" height="60px" alt=""></button>
+                 </div>
+              </div>
+
+          </div>
+
+          <button id="addPlayList" class="btn btn"><img src="img/addPlayList.png" alt="" srcset="" data-bs-target="#exampleModalPlayList" data-bs-toggle="modal"></button>
+
+      </div>
+
+  </div>
+</div>
   
  
 
@@ -1642,63 +1696,18 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
 
         
 
-        <div class="offcanvas offcanvas-start"
-            style="color: rgb(221, 238, 238); font-family: Garamond;backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(10px);"
-            data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="staticBackdropLabel">Playlist</h5>
-                <button type="button" class="btn btn" style="margin-left: auto;" data-bs-dismiss="offcanvas"
-                    aria-label="Close">
-                    <img src="img/close.png" alt="" srcset="" width="30px" height="30px">
-                </button>
-            </div>
-            <div class="offcanvas-body">
-                <div>
-                
-                    <div id="musicOffCan">
-                         
-                        <div class="playListItem" id="eletronicPlayListPattern">
-                            <img src="img/suicideSheep.jpg" class="playListCoverImg" id="eletronicPlayListImg" alt="" srcset="">
-                           <h3>Eletronic/Remixes</h3>
-                           <div class="buttonsPlayList">
-                           <button class="btn btn-danger"  id="eletronicPlayListDelete"><img src="img/trash.png" width="60px" height="60px" alt=""></button>
-                           <button class="btn btn-secondary"  id="eletronicPlayListEdit"><img src="img/pen.png" width="60px" height="60px" alt=""></button>
-                           </div>
-                        </div>
-
-                        <div class="playListItem" id="hardStylePlayListPattern">
-                            <img src="img/hardStyle.jpg" class="playListCoverImg" id="hardStylePlayListImg" alt="" srcset="">
-                           <h3>HardStyle</h3>
-                           <div class="buttonsPlayList">
-                           <button class="btn btn-danger"  id="hardStylePlayListDelete"><img src="img/trash.png" width="60px" height="60px" alt=""></button>
-                           <button class="btn btn-secondary"  id="hardStylePlayListEdit"><img src="img/pen.png" width="60px" height="60px" alt=""></button>
-                           </div>
-                        </div>
-
-                        <div class="playListItem" id="juicePlayListPattern">
-                            <img src="img/Juice WRLD.jpg" class="playListCoverImg" id="juicePlayListImg" alt="" srcset="">
-                           <h3>Juice - WRLD</h3>
-                           <div class="buttonsPlayList">
-                           <button class="btn btn-danger"  id="juicePlayListDelete"><img src="img/trash.png" width="60px" height="60px" alt=""></button>
-                           <button class="btn btn-secondary"  id="juicePlayListEdit"><img src="img/pen.png" width="60px" height="60px" alt=""></button>
-                           </div>
-                        </div>
-
-                    </div>
-
-                    <button id="addPlayList" class="btn btn"><img src="img/addPlayList.png" alt="" srcset="" data-bs-target="#exampleModalPlayList" data-bs-toggle="modal"></button>
-
-                </div>
-
-            </div>
-        </div>
+        
 
     </header>
 
    
 
     <main>
+
+
+        
+
+
         <article>
 
        
@@ -1781,23 +1790,7 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
 
         </article>
 
-        <!-- <div class="container-fluid"
-            style="display: flex;justify-content: center; margin-top: 30px; max-width: 1100px;min-width: 800px;">
-            <span class="border" id="line"></span>
-        </div> -->
-
-        <!-- <article style="padding-bottom: 100px;">
-            <div class="container-fluid" id="text1">
-                <h1>Satoru Gojo</h1>
-                <p>Entre os céus e a terra</p>
-                <p>Eu sou o mais honrado</p>
-            </div>
-        </article> -->
-
-        <!-- <div class="container-fluid"
-            style="display: flex;justify-content: center; margin-top: 30px; max-width: 1100px;min-width: 800px;">
-            <span class="border" id="line"></span>
-        </div> -->
+         
 
 
         <article style="padding-bottom: 100px;">
@@ -1983,8 +1976,13 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
                     </div>
                 </div>
 
+
+                <button id="newSong" data-bs-toggle="modal" data-bs-target="#exampleModalSong" class="btn btn"><img src="img/addPlayList.png"  alt="" srcset=""></button>
+
             </div>
         </article>
+
+    
 
 
 
