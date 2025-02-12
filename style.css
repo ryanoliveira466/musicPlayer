@@ -293,6 +293,11 @@ html {
 }
 
 
+.showAni{
+    animation: show 0.6s ease alternate;
+}
+
+
 
 html p {
     margin: 0px
@@ -741,6 +746,7 @@ body {
     #song {
         height: 800px;
         overflow-y: hidden;
+        border: 0px !important;
     }
 
     #music-player img {
@@ -870,6 +876,7 @@ body {
 #carouselExampleFade {
     min-width: 800px;
     display: none;
+    animation: show 0.6s ease alternate;
 }
 
 /* #imgGojo {

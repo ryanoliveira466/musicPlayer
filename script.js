@@ -5239,7 +5239,7 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
 
 
                 console.log(flagBugDeleteSongIfNotPlaying);
-                
+
 
 
 
@@ -5457,29 +5457,29 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
 
                 ////
 
-             let buttonAddNew = document.createElement("button");
-             buttonAddNew.id = "newSong";
-             buttonAddNew.className = "btn btn";
-             buttonAddNew.setAttribute("data-bs-toggle", "modal");
-             buttonAddNew.setAttribute("data-bs-target", "#exampleModalSong");
-         
-             // Create image element
-             let imgAddNew = document.createElement("img");
-             imgAddNew.src = "img/addPlayList.png";
-             imgAddNew.alt = "";
-         
-             // Append image inside button
-             buttonAddNew.appendChild(imgAddNew);
-         
-             // Append button to a desired container
-             document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
-             addButtonDivScroll()
+                let buttonAddNew = document.createElement("button");
+                buttonAddNew.id = "newSong";
+                buttonAddNew.className = "btn btn";
+                buttonAddNew.setAttribute("data-bs-toggle", "modal");
+                buttonAddNew.setAttribute("data-bs-target", "#exampleModalSong");
 
-             ////
+                // Create image element
+                let imgAddNew = document.createElement("img");
+                imgAddNew.src = "img/addPlayList.png";
+                imgAddNew.alt = "";
 
-               
+                // Append image inside button
+                buttonAddNew.appendChild(imgAddNew);
 
-                
+                // Append button to a desired container
+                document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
+                addButtonDivScroll()
+
+                ////
+
+
+
+
 
 
 
@@ -6975,38 +6975,38 @@ buttons.forEach(button => {
 
 
 
-function addButtonDivScroll(){
+function addButtonDivScroll() {
     const buttons = document.querySelectorAll('#btnImagem,#btnSong,#btnView,#btnViewSong,#addPlayList,#newSong,.stickyClick')
 
-buttons.forEach(button => {
+    buttons.forEach(button => {
 
-    button.addEventListener('click', function () {
+        button.addEventListener('click', function () {
 
-        const divs = document.querySelectorAll('.modal-content,.modalRef')
+            const divs = document.querySelectorAll('.modal-content,.modalRef')
 
-        divs.forEach(div => {
-
-
-
-            setTimeout(function () {
-                div.style.scrollBehavior = 'auto'
-                div.scrollTop = div.scrollHeight;
-            }, 160)
+            divs.forEach(div => {
 
 
 
+                setTimeout(function () {
+                    div.style.scrollBehavior = 'auto'
+                    div.scrollTop = div.scrollHeight;
+                }, 160)
 
 
-            setTimeout(function () {
-                div.style.scrollBehavior = 'smooth'
-                div.scrollTo(0, 0)
-            }, 457)
+
+
+
+                setTimeout(function () {
+                    div.style.scrollBehavior = 'smooth'
+                    div.scrollTo(0, 0)
+                }, 457)
+            })
+
         })
 
+
     })
-
-
-})
 
 }
 
@@ -7302,6 +7302,25 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
 
             document.getElementById('imagePlayList').src = img
             document.getElementById('imagePlayList').style.objectFit = cover
+            // document.getElementById('showPlayListImageDiv').classList.remove('showAni')
+            // document.getElementById('showPlayListImageDiv').classList.add('showAni')
+            let element = document.getElementById('showPlayListImageDiv');
+
+            element.classList.remove('showAni'); // Remove the class
+
+            // Wait for a short delay before re-adding the class
+            setTimeout(() => {
+                element.classList.add('showAni'); // Re-add the class to trigger the animation again
+            }, 1); // Small delay ensures browser registers the change
+
+
+
+
+
+
+
+
+
             currentAudioPlaying = ""
 
 
@@ -7523,15 +7542,15 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
             buttonAddNew.className = "btn btn";
             buttonAddNew.setAttribute("data-bs-toggle", "modal");
             buttonAddNew.setAttribute("data-bs-target", "#exampleModalSong");
-        
+
             // Create image element
             let imgAddNew = document.createElement("img");
             imgAddNew.src = "img/addPlayList.png";
             imgAddNew.alt = "";
-        
+
             // Append image inside button
             buttonAddNew.appendChild(imgAddNew);
-        
+
             // Append button to a desired container
             document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
             addButtonDivScroll()
@@ -7840,25 +7859,25 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
 
                 ////
 
-             let buttonAddNew = document.createElement("button");
-             buttonAddNew.id = "newSong";
-             buttonAddNew.className = "btn btn";
-             buttonAddNew.setAttribute("data-bs-toggle", "modal");
-             buttonAddNew.setAttribute("data-bs-target", "#exampleModalSong");
-         
-             // Create image element
-             let imgAddNew = document.createElement("img");
-             imgAddNew.src = "img/addPlayList.png";
-             imgAddNew.alt = "";
-         
-             // Append image inside button
-             buttonAddNew.appendChild(imgAddNew);
-         
-             // Append button to a desired container
-             document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
-             addButtonDivScroll()
+                let buttonAddNew = document.createElement("button");
+                buttonAddNew.id = "newSong";
+                buttonAddNew.className = "btn btn";
+                buttonAddNew.setAttribute("data-bs-toggle", "modal");
+                buttonAddNew.setAttribute("data-bs-target", "#exampleModalSong");
 
-             ////
+                // Create image element
+                let imgAddNew = document.createElement("img");
+                imgAddNew.src = "img/addPlayList.png";
+                imgAddNew.alt = "";
+
+                // Append image inside button
+                buttonAddNew.appendChild(imgAddNew);
+
+                // Append button to a desired container
+                document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
+                addButtonDivScroll()
+
+                ////
 
 
                 console.log('arraySong', arraySong);
@@ -8271,6 +8290,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
             document.getElementById('imagePlayList').src = img
             document.getElementById('imagePlayList').style.objectFit = cover
+            // document.getElementById('showPlayListImageDiv').classList.remove('showAni')
+            // document.getElementById('showPlayListImageDiv').classList.add('showAni')
+
+            let element = document.getElementById('showPlayListImageDiv');
+
+            element.classList.remove('showAni'); // Remove the class
+
+            // Wait for a short delay before re-adding the class
+            setTimeout(() => {
+                element.classList.add('showAni'); // Re-add the class to trigger the animation again
+            }, 1); // Small delay ensures browser registers the change
+
+
+
+
+
+
+
+
+
+
             currentAudioPlaying = ""
 
 
@@ -8485,27 +8525,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
             }
 
-             ////
+            ////
 
-             let buttonAddNew = document.createElement("button");
-             buttonAddNew.id = "newSong";
-             buttonAddNew.className = "btn btn";
-             buttonAddNew.setAttribute("data-bs-toggle", "modal");
-             buttonAddNew.setAttribute("data-bs-target", "#exampleModalSong");
-         
-             // Create image element
-             let imgAddNew = document.createElement("img");
-             imgAddNew.src = "img/addPlayList.png";
-             imgAddNew.alt = "";
-         
-             // Append image inside button
-             buttonAddNew.appendChild(imgAddNew);
-         
-             // Append button to a desired container
-             document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
-             addButtonDivScroll()
+            let buttonAddNew = document.createElement("button");
+            buttonAddNew.id = "newSong";
+            buttonAddNew.className = "btn btn";
+            buttonAddNew.setAttribute("data-bs-toggle", "modal");
+            buttonAddNew.setAttribute("data-bs-target", "#exampleModalSong");
 
-             ////
+            // Create image element
+            let imgAddNew = document.createElement("img");
+            imgAddNew.src = "img/addPlayList.png";
+            imgAddNew.alt = "";
+
+            // Append image inside button
+            buttonAddNew.appendChild(imgAddNew);
+
+            // Append button to a desired container
+            document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
+            addButtonDivScroll()
+
+            ////
 
             allArraySongFunctions()
 
@@ -8563,7 +8603,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-                
+
                 //
                 document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
                 document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
@@ -8808,25 +8848,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 ////
 
-             let buttonAddNew = document.createElement("button");
-             buttonAddNew.id = "newSong";
-             buttonAddNew.className = "btn btn";
-             buttonAddNew.setAttribute("data-bs-toggle", "modal");
-             buttonAddNew.setAttribute("data-bs-target", "#exampleModalSong");
-         
-             // Create image element
-             let imgAddNew = document.createElement("img");
-             imgAddNew.src = "img/addPlayList.png";
-             imgAddNew.alt = "";
-         
-             // Append image inside button
-             buttonAddNew.appendChild(imgAddNew);
-         
-             // Append button to a desired container
-             document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
-             addButtonDivScroll()
+                let buttonAddNew = document.createElement("button");
+                buttonAddNew.id = "newSong";
+                buttonAddNew.className = "btn btn";
+                buttonAddNew.setAttribute("data-bs-toggle", "modal");
+                buttonAddNew.setAttribute("data-bs-target", "#exampleModalSong");
 
-             ////
+                // Create image element
+                let imgAddNew = document.createElement("img");
+                imgAddNew.src = "img/addPlayList.png";
+                imgAddNew.alt = "";
+
+                // Append image inside button
+                buttonAddNew.appendChild(imgAddNew);
+
+                // Append button to a desired container
+                document.getElementById('song').appendChild(buttonAddNew); // Change `document.body` to your desired parent element
+                addButtonDivScroll()
+
+                ////
 
 
                 console.log('arraySong', arraySong);
@@ -9300,13 +9340,13 @@ document.getElementById('removeCarousel').addEventListener('click', function () 
 //  });
 
 
-  document.getElementById('removeSong').addEventListener('click', function () {
+document.getElementById('removeSong').addEventListener('click', function () {
 
     function scrollToStart() {
         var song = document.getElementById('song');
-        
+
         // Set a delay before scrolling
-        setTimeout(function() {
+        setTimeout(function () {
             // Smooth scroll to the start (0)
             song.scrollTo({
                 left: 0,
@@ -9316,79 +9356,79 @@ document.getElementById('removeCarousel').addEventListener('click', function () 
     }
 
 
-      var song = document.getElementById('song');
-      var imgButton = document.getElementById('imgRemoveSong');
-      var screenWidth = document.documentElement.clientWidth;
+    var song = document.getElementById('song');
+    var imgButton = document.getElementById('imgRemoveSong');
+    var screenWidth = document.documentElement.clientWidth;
 
-      console.log(screenWidth);
-      
+    console.log(screenWidth);
 
-       //Check if screen width is <= 800px (mobile)
-      if (screenWidth <= 800) {
-          if (imgButton.src.endsWith('img/notSongBar.png')) {
-              imgButton.src = 'img/enableSongBar.png';
-              song.classList.remove("slide-back-mobile", "hidden");
-              song.classList.add("slide-left-mobile");
-              song.scrollLeft = song.scrollWidth
-              this.disabled = true
-              song.style.setProperty('pointer-events', 'none', 'important');
-             
 
-              setTimeout(() => {
-                  song.classList.add("hidden");
-                  this.disabled = false
-                  song.style.setProperty('pointer-events', 'auto', 'important');
-              }, 2000);
-          } else {
-              scrollToStart()
-              song.classList.remove("hidden");
-              imgButton.src = 'img/notSongBar.png';
-              this.disabled = true
-              song.style.setProperty('pointer-events', 'none', 'important');
+    //Check if screen width is <= 800px (mobile)
+    if (screenWidth <= 600) {
+        if (imgButton.src.endsWith('img/notSongBar.png')) {
+            imgButton.src = 'img/enableSongBar.png';
+            song.classList.remove("slide-back-mobile", "hidden");
+            song.classList.add("slide-left-mobile");
+            song.scrollLeft = song.scrollWidth
+            this.disabled = true
+            song.style.setProperty('pointer-events', 'none', 'important');
 
-              setTimeout(() => {
-                  song.classList.remove("slide-left-mobile");
-                  song.classList.add("slide-back-mobile");
-              }, 10);
 
-              setTimeout(() => {
+            setTimeout(() => {
+                song.classList.add("hidden");
                 this.disabled = false
                 song.style.setProperty('pointer-events', 'auto', 'important');
             }, 2000);
-          }
-      } else {  //For larger screens
-          if (imgButton.src.endsWith('img/notSongBar.png')) {
-              imgButton.src = 'img/enableSongBar.png';
-              song.classList.remove("slide-back", "hidden");
-              song.classList.add("slide-left");
-              song.scrollLeft = song.scrollWidth
-              this.disabled = true
-              song.style.setProperty('pointer-events', 'none', 'important');
+        } else {
+            scrollToStart()
+            song.classList.remove("hidden");
+            imgButton.src = 'img/notSongBar.png';
+            this.disabled = true
+            song.style.setProperty('pointer-events', 'none', 'important');
 
-              setTimeout(() => {
-                  song.classList.add("hidden");
-                  this.disabled = false
-                  song.style.setProperty('pointer-events', 'auto', 'important');
-              }, 2000);
-          } else {
-              scrollToStart()
-              song.classList.remove("hidden");
-              imgButton.src = 'img/notSongBar.png';
-              this.disabled = true
-              song.style.setProperty('pointer-events', 'none', 'important');
+            setTimeout(() => {
+                song.classList.remove("slide-left-mobile");
+                song.classList.add("slide-back-mobile");
+            }, 10);
 
-              setTimeout(() => {
-                  song.classList.remove("slide-left");
-                  song.classList.add("slide-back");
-              }, 10);
-
-              setTimeout(() => {
+            setTimeout(() => {
                 this.disabled = false
                 song.style.setProperty('pointer-events', 'auto', 'important');
             }, 2000);
-          }
-      }
-  });
+        }
+    } else {  //For larger screens
+        if (imgButton.src.endsWith('img/notSongBar.png')) {
+            imgButton.src = 'img/enableSongBar.png';
+            song.classList.remove("slide-back", "hidden");
+            song.classList.add("slide-left");
+            song.scrollLeft = song.scrollWidth
+            this.disabled = true
+            song.style.setProperty('pointer-events', 'none', 'important');
+
+            setTimeout(() => {
+                song.classList.add("hidden");
+                this.disabled = false
+                song.style.setProperty('pointer-events', 'auto', 'important');
+            }, 2000);
+        } else {
+            scrollToStart()
+            song.classList.remove("hidden");
+            imgButton.src = 'img/notSongBar.png';
+            this.disabled = true
+            song.style.setProperty('pointer-events', 'none', 'important');
+
+            setTimeout(() => {
+                song.classList.remove("slide-left");
+                song.classList.add("slide-back");
+            }, 10);
+
+            setTimeout(() => {
+                this.disabled = false
+                song.style.setProperty('pointer-events', 'auto', 'important');
+            }, 2000);
+        }
+    }
+});
 
 
 
@@ -9400,11 +9440,11 @@ document.getElementById('removeCarousel').addEventListener('click', function () 
 
 
 //CURSOR
- 
-document.addEventListener('scroll', function() {
+
+document.addEventListener('scroll', function () {
     // Get the scroll position
     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    
+
 
     if (scrollTop > 30) {
         // When scrolled down, reduce height
@@ -9416,7 +9456,7 @@ document.addEventListener('scroll', function() {
 });
 
 
- 
- 
+
+
 
 //CURSOR
