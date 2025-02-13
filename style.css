@@ -1195,7 +1195,9 @@ header button{
     display: flex;
     align-items: center;
     flex-direction: row;
-    overflow-x: auto;
+    /* overflow-x: auto; */
+     overflow-x: auto; /* Permite rolagem horizontal */
+     overflow-y: hidden; /* Remove a rolagem vertical */
     /* Enable horizontal scrolling */
     scroll-behavior: smooth;
     margin-top: 60px;
@@ -1212,12 +1214,11 @@ header button{
     /* Apply blur effect to background */
     /* -webkit-backdrop-filter: blur(10px); */
     /* Safari support */
+
 }
 
 #song::-webkit-scrollbar {
-    display: none;
-    height: 8px;
-
+    display: flex;
     /* Set the height for horizontal scrollbar */
 }
 
@@ -3308,13 +3309,13 @@ body div {
 
 /* Default animation for desktop */
 @keyframes slide-left {
-    0% { transform: translateX(0); opacity: 1; height: 469px; }
+    0% { transform: translateX(0); opacity: 1; height: 516px; }
     100% { transform: translateX(-100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
   }
   
   @keyframes slide-back {
     0% { transform: translateX(-100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
-    100% { transform: translateX(0); opacity: 1; height: 469px; }
+    100% { transform: translateX(0); opacity: 1; height: 516px; }
   }
   
   /* Animation for mobile screens (width <= 800px) */
@@ -3382,7 +3383,14 @@ body div {
 
 
 
-
  
 
 
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh !important;
+    box-sizing: border-box;
+}
+
+ 
