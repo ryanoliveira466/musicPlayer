@@ -9382,18 +9382,48 @@ document.getElementById('removeCarousel').addEventListener('click', function () 
 
 document.getElementById('removeSong').addEventListener('click', function () {
 
-    function scrollToStart() {
-        var song = document.getElementById('song');
+    // function scrollToStart() {
+    //     var song = document.getElementById('song');
 
-        // Set a delay before scrolling
-        setTimeout(function () {
-            // Smooth scroll to the start (0)
-            song.scrollTo({
-                left: 0,
-                behavior: 'smooth'
-            });
-        }, 1000); // Delay of 1000ms (1 second)
+    //     // Set a delay before scrolling
+    //     setTimeout(function () {
+    //         // Smooth scroll to the start (0)
+    //         song.scrollTo({
+    //             left: 0,
+    //             behavior: 'smooth'
+    //         });
+    //     }, 1000); // Delay of 1000ms (1 second)
+    // }
+
+
+    function scrollToStart() {
+        const song = document.getElementById('song');
+        const startPosition = song.scrollLeft;
+        const targetPosition = 0;
+        const duration = 4000; // 1 second
+        const startTime = performance.now();
+    
+        function animateScroll(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1); // Cap at 1
+            const ease = easeOutQuad(progress);
+    
+            // Calculate the current scroll position
+            song.scrollLeft = startPosition + (targetPosition - startPosition) * ease;
+    
+            if (progress < 1) {
+                requestAnimationFrame(animateScroll);
+            }
+        }
+    
+        requestAnimationFrame(animateScroll);
     }
+    
+    // Easing function for a smoother effect
+    function easeOutQuad(t) {
+        return t * (2 - t);
+    }
+    
 
 
     var song = document.getElementById('song');
