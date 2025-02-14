@@ -887,6 +887,8 @@ body {
 #carouselExampleFade {
     min-width: 800px;
     display: none;
+    will-change: transform, opacity;
+    transform: translate3d(0, 0, 0);
 }
 
 /* #imgGojo {
@@ -1246,6 +1248,8 @@ header button{
     /* Apply blur effect to background */
     /* -webkit-backdrop-filter: blur(10px); */
     /* Safari support */
+    will-change: transform, opacity;
+    transform: translate3d(0, 0, 0);
 }
 
  
@@ -3246,6 +3250,8 @@ body div {
     align-items: center;
     text-align: center;
     margin-top: 45px;
+    will-change: transform, opacity;
+    transform: translate3d(0, 0, 0);
     
 
 }
