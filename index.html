@@ -113,6 +113,56 @@ input[type="image"] {
 
 <body id="body">
 
+    <!-- background change color -->
+    <div id="coresBackgorund">
+        <div class="padraoBackground" id="a"></div>
+        <div class="padraoBackground" id="b"></div>
+        <div class="padraoBackground" id="c"></div>
+        <div class="padraoBackground" id="d"></div>
+    </div>
+    <!-- background change color -->
+
+    <div id="140height" style="width: 100%; height: 158px; transition: all 0.5s ease-in-out;background-color: transparent; display: flex;"></div>
+    <header id="header">
+
+        <button class="btn btn" id="offCanvasButton" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+            <img src="img/menu.png" alt="" srcset="" width="60px" height="60px">
+        </button>
+
+        
+
+
+        <div class="searchDiv">
+            <div class="imgSearch">
+            <img src="img/search.png" style="padding: 4px;" alt="" srcset="" width="58px" height="58px">
+        </div>
+            <input type="text" id="searchBar" placeholder="Search" class="form-control" style="font-size: large; padding: 1rem;">
+        </div>
+
+         
+        <!-- <div style="display: flex;justify-content: center;flex-direction: row;margin-left: auto;">
+            <div id="divRemoveImg">
+                <button class="btn btnOptions" id="removeCarousel"><img src="img/imgCarouselShow.png" id="imgRemoveCarousel" alt="" srcset=""></button>
+            </div>
+        
+            <div id="divRemoveSong">
+                <button class="btn btnOptions" id="removeSong"><img src="img/notSongBar.png" id="imgRemoveSong" alt="" srcset=""></button>
+            </div>
+
+            </div> -->
+
+
+        <button class="btn btn" id="configButton" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <img src="img/dot.png" alt="" srcset="" width="60px" height="60px">
+        </button>
+
+        
+
+        
+
+    </header>
+
     
     <canvas id="myCanvas" style="display: none;"></canvas>
     
@@ -138,14 +188,7 @@ input[type="image"] {
 
 
 
-    <!-- background change color -->
-    <div id="coresBackgorund">
-        <div class="padraoBackground" id="a"></div>
-        <div class="padraoBackground" id="b"></div>
-        <div class="padraoBackground" id="c"></div>
-        <div class="padraoBackground" id="d"></div>
-    </div>
-    <!-- background change color -->
+    
 
     <!-- Vertically centered modal -->
 
@@ -1667,6 +1710,12 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
 </div>
 
 <div id="stickyButtonsLayOutOptions">
+
+    <div style="display: flex; flex-direction: column;">
+    <button class="btn btn stickyClick" id="imageMode">Image mode</button>
+    <button class="btn btn stickyClick" id="musicMode">Music mode</button>
+    </div>
+
     <button class="btn btn stickyClick" id="hideBarMusic"><img src="img/barMusicImgNo.png" id="hideBarMusicImg" alt="" srcset=""></button>
     <button class="btn btn stickyClick" id="removeCarousel"><img src="img/imgCarouselShow.png" id="imgRemoveCarousel" alt="" srcset=""></button>
     <button class="btn btn stickyClick" id="removeSong"><img src="img/notSongBar.png" id="imgRemoveSong" alt="" srcset=""></button>
@@ -1684,48 +1733,10 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
     <!-- MAIN CONTENT STARTS HERE -->
 
 
-    <div id="140height" style="width: 100%; height: 140px; transition: all 0.5s ease-in-out;background-color: transparent;"></div>
+    
 
 
-    <header id="header">
-
-        <button class="btn btn" id="offCanvasButton" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
-            <img src="img/menu.png" alt="" srcset="" width="60px" height="60px">
-        </button>
-
-        
-
-
-        <div class="searchDiv">
-            <div class="imgSearch">
-            <img src="img/search.png" style="padding: 4px;" alt="" srcset="" width="58px" height="58px">
-        </div>
-            <input type="text" id="searchBar" placeholder="Search" class="form-control" style="font-size: large; padding: 1rem;">
-        </div>
-
-         
-        <!-- <div style="display: flex;justify-content: center;flex-direction: row;margin-left: auto;">
-            <div id="divRemoveImg">
-                <button class="btn btnOptions" id="removeCarousel"><img src="img/imgCarouselShow.png" id="imgRemoveCarousel" alt="" srcset=""></button>
-            </div>
-        
-            <div id="divRemoveSong">
-                <button class="btn btnOptions" id="removeSong"><img src="img/notSongBar.png" id="imgRemoveSong" alt="" srcset=""></button>
-            </div>
-
-            </div> -->
-
-
-        <button class="btn btn" id="configButton" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <img src="img/dot.png" alt="" srcset="" width="60px" height="60px">
-        </button>
-
-        
-
-        
-
-    </header>
+   
 
    
 
@@ -1739,9 +1750,7 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
 
        
          
-            <div id="showPlayListImageDiv">
-                <img id="imagePlayList" src="img/suicideSheep.jpg" alt="" srcset="">
-            </div>
+           
 
             <div id="carouselExampleFade" class="carousel slide carousel-fade">
 
@@ -1809,6 +1818,10 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
                 </div> 
 
               
+            </div>
+
+            <div id="showPlayListImageDiv">
+                <img id="imagePlayList" src="img/suicideSheep.jpg" alt="" srcset="">
             </div>
 
 
@@ -2004,7 +2017,7 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
                 </div>
 
 
-                <button id="newSong" data-bs-toggle="modal" data-bs-target="#exampleModalSong" class="btn btn"><img src="img/addPlayList.png"  alt="" srcset=""></button>
+                <button id="newSong" data-bs-toggle="modal" data-bs-target="#exampleModalSong" class="btn hoverClass"><img src="img/addPlayList.png"  alt="" srcset=""></button>
 
             </div>
         </article>

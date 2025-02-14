@@ -4046,7 +4046,7 @@ document.getElementById('btnMusicBarExpand').addEventListener('click', function 
 
 
         musicBar.style.height = '158px'
-        header.style.height = '140px'
+        header.style.height = '158px'
         musicBarImg.style.height = '100px'
         musicBarImg.style.width = '200px'
         document.getElementById('musicBar').style.background = 'transparent'
@@ -6379,7 +6379,7 @@ document.getElementById('searchBar').addEventListener('click', function () {
         resultDiv.style.display = 'flex'
 
         //
-        document.getElementById('musicBar').style.display = 'none'
+        // document.getElementById('musicBar').style.display = 'none'
         document.getElementById('height260').style.display = 'none'
         //
 
@@ -7306,6 +7306,7 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
             // document.getElementById('showPlayListImageDiv').classList.add('showAni')
             let element = document.getElementById('showPlayListImageDiv');
 
+            element.classList.remove('slide-back-imgPlaylist'); // Remove the class
             element.classList.remove('showAni'); // Remove the class
 
             // Wait for a short delay before re-adding the class
@@ -8295,6 +8296,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             let element = document.getElementById('showPlayListImageDiv');
 
+            element.classList.remove('slide-back-imgPlaylist'); // Remove the class
             element.classList.remove('showAni'); // Remove the class
 
             // Wait for a short delay before re-adding the class
@@ -9310,8 +9312,8 @@ document.getElementById('removeCarousel').addEventListener('click', function () 
         carousel.style.pointerEvents = 'none'
 
           
-         imgPlayList.classList.remove('slide-left')
-         imgPlayList.classList.add('slide-back')
+         imgPlayList.classList.remove('slide-left-imgPlaylist')
+         imgPlayList.classList.add('slide-back-imgPlaylist')
 
          carousel.classList.remove('slide-back-carousel')
          carousel.classList.add('slide-left-carousel')
@@ -9331,8 +9333,8 @@ document.getElementById('removeCarousel').addEventListener('click', function () 
         imgPlayList.style.pointerEvents = 'none'
         carousel.style.pointerEvents = 'all'
         
-        imgPlayList.classList.add('slide-left')
-        imgPlayList.classList.remove('slide-back')
+        imgPlayList.classList.add('slide-left-imgPlaylist')
+        imgPlayList.classList.remove('slide-back-imgPlaylist')
 
         carousel.style.display = 'block'
         carousel.classList.remove('slide-left-carousel')
@@ -9405,7 +9407,7 @@ document.getElementById('removeSong').addEventListener('click', function () {
     if (screenWidth <= 600) {
         if (imgButton.src.endsWith('img/notSongBar.png')) {
             imgButton.src = 'img/enableSongBar.png';
-            song.classList.remove("slide-back-mobile", "hidden");
+            song.classList.remove("slide-back-mobile","hidden");  
             song.classList.add("slide-left-mobile");
             song.scrollLeft = song.scrollWidth
             this.disabled = true
@@ -9479,19 +9481,19 @@ document.getElementById('removeSong').addEventListener('click', function () {
 
 //CURSOR
 
-document.addEventListener('scroll', function () {
-    // Get the scroll position
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+// document.addEventListener('scroll', function () {
+//     // Get the scroll position
+//     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 
 
-    if (scrollTop > 30) {
-        // When scrolled down, reduce height
-        document.getElementById('140height').style.height = "0px";
-    } else {
-        // When at the top, restore height
-        document.getElementById('140height').style.height = "140px";
-    }
-});
+//     if (scrollTop > 30) {
+//         // When scrolled down, reduce height
+//         document.getElementById('140height').style.height = "0px";
+//     } else {
+//         // When at the top, restore height
+//         document.getElementById('140height').style.height = "140px";
+//     }
+// });
 
 
 
@@ -9547,4 +9549,72 @@ document.getElementById('hideBarMusic').addEventListener('click', function() {
 
 
 
+ 
+document.getElementById('musicMode').addEventListener('click', function(){
+    let hideMusic = document.getElementById('hideBarMusicImg').src.split('/').pop()
+    let hideImageCarousel = document.getElementById('imgRemoveCarousel').src.split('/').pop()
+    let imageBarSong = document.getElementById('imgRemoveSong').src.split('/').pop()
+
+    console.log(hideMusic);
+    
+
+    if (hideMusic === 'barMusicImg.png') {
+        document.getElementById('hideBarMusic').click()
+    }
+
+    if (hideImageCarousel === 'hideImgCarousel.png') {
+        document.getElementById('removeCarousel').click()
+    }
+
+    if (imageBarSong === 'enableSongBar.png') {
+        document.getElementById('removeSong').click()
+    }
+
+
+    this.disabled = true
+    document.getElementById('imageMode').disabled = true
+    setTimeout(() => {
+        this.disabled = false
+        document.getElementById('imageMode').disabled = false
+    }, 2000);
+
+    
+    
+})
+
+
+
+
+
+
+document.getElementById('imageMode').addEventListener('click', function(){
+    let hideMusic = document.getElementById('hideBarMusicImg').src.split('/').pop()
+    let hideImageCarousel = document.getElementById('imgRemoveCarousel').src.split('/').pop()
+    let imageBarSong = document.getElementById('imgRemoveSong').src.split('/').pop()
+
+    console.log(hideMusic);
+    
+
+    if (hideMusic !== 'barMusicImg.png') {
+        document.getElementById('hideBarMusic').click()
+    }
+
+    if (hideImageCarousel !== 'hideImgCarousel.png') {
+        document.getElementById('removeCarousel').click()
+    }
+
+    if (imageBarSong !== 'enableSongBar.png') {
+        document.getElementById('removeSong').click()
+    }
+
+    this.disabled = true
+    document.getElementById('musicMode').disabled = true
+    setTimeout(() => {
+        this.disabled = false
+        document.getElementById('musicMode').disabled = false
+    }, 2000);
+
+    
+    
+})
 

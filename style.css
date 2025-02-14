@@ -207,6 +207,7 @@ html a{
     html label,
     .form-check input,
     .form-check label,
+    .playListCoverImg,
     html a {
         cursor: url(cursor/pointer.png) 16 16, pointer !important;
     }
@@ -822,6 +823,7 @@ body {
 
     #searchBar {
         font-size: xx-large !important;
+        width: 425px;
     }
 
     .imgSearch img {
@@ -1082,11 +1084,11 @@ input[type="text"]:hover {
 }
 
 #offCanvasButton:hover {
-    animation: bounce 1s ease;
+    /* animation: bounce 1s ease; */
 }
 
 #configButton:hover {
-    animation: bounce 1s ease;
+    /* animation: bounce 1s ease; */
 }
 
 
@@ -1103,8 +1105,8 @@ input[type="text"]:hover {
 #configButton {
     mix-blend-mode: difference;
     margin-left: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     margin-right: 20px;
 
 }
@@ -1232,6 +1234,7 @@ header button{
     border: 15px solid transparent;
     /* backdrop-filter: invert(1); */
     backdrop-filter: contrast(0.5);
+    /* backdrop-filter: invert(0.7); */
     /* transition: all 1s ease-in-out; Add smooth transition */
     /* background-color: rgb(159 128 128 / 59%);
     mix-blend-mode: difference; */
@@ -1293,9 +1296,12 @@ html ::-webkit-scrollbar {
 
 
 #song .music-player {
-    background-color: #000000c2;
+    background-color: #403a3a8f;
     transition: transform .3s ease-out;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
+
+ 
 
 
 
@@ -2457,8 +2463,8 @@ html {
     background-color: transparent;
     top: 0;
     left: 0;
-    z-index: 100;
-    backdrop-filter: contrast(0);
+    z-index: 50;
+    backdrop-filter: brightness(0.5);
     transition: all 0.5s ease-in-out;
     /* Add smooth transition */
 
@@ -2901,7 +2907,7 @@ footer {
 
 .patternResultSearchingImg {
     object-fit: cover;
-    width: 300px;
+    width: 350px;
     height: 200px;
     flex-shrink: 0;
     border-radius: 20px;
@@ -3237,6 +3243,7 @@ body div {
     align-items: center;
     text-align: center;
     margin-top: 45px;
+    
 
 }
 
@@ -3291,8 +3298,8 @@ body div {
 #stickyButtons {
     position: fixed;
     bottom: 0; /* Fixes the div to the bottom of the viewport */
-    left: 0;
-    width: 100%; /* Ensures it spans the entire width */
+    right: 0;
+    width: auto; /* Ensures it spans the entire width */
     display: flex;
     justify-content: right;
     align-items: center;
@@ -3343,8 +3350,8 @@ body div {
 #stickyButtonsLayOutOptions {
     position: fixed;
     bottom: 0; /* Fixes the div to the bottom of the viewport */
-    left: 0;
-    width: 100%; /* Ensures it spans the entire width */
+    right: 0;
+    width: auto; /* Ensures it spans the entire width */
     display: flex;
     justify-content: right;
     align-items: center;
@@ -3401,35 +3408,35 @@ body div {
 
 /* Default animation for desktop */
 @keyframes slide-left {
-    0% { transform: translateX(0); opacity: 1; height: 516px; }
-    100% { transform: translateX(-100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
+    0% { transform: translateY(0); opacity: 1; height: 516px; }
+    100% { transform: translateY(5vw); opacity: 0; height: 0; padding: 0; margin: 0; }
   }
   
   @keyframes slide-back {
-    0% { transform: translateX(-100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
-    100% { transform: translateX(0); opacity: 1; height: 516px; }
+    0% { transform: translateY(5vw); opacity: 0; height: 0; padding: 0; margin: 0; }
+    100% { transform: translateY(0); opacity: 1; height: 516px; }
   }
   
   /* Animation for mobile screens (width <= 800px) */
   @keyframes slide-left-mobile {
-    0% { transform: translateX(0); opacity: 1; height: 800px; }
-    100% { transform: translateX(-100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
+    0% { transform: translateY(0); opacity: 1; height: 800px; }
+    100% { transform: translateY(5vw); opacity: 0; height: 0; padding: 0; margin: 0; }
   }
   
   @keyframes slide-back-mobile {
-    0% { transform: translateX(-100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
-    100% { transform: translateX(0); opacity: 1; height: 800px; }
+    0% { transform: translateY(5vw); opacity: 0; height: 0; padding: 0; margin: 0; }
+    100% { transform: translateY(0); opacity: 1; height: 800px; }
   }
 
 
   @keyframes slide-left-140 {
-    0% { transform: translateX(0); opacity: 1; height: 140px; }
+    0% { transform: translateX(0); opacity: 1; height: 158px; }
     100% { transform: translateX(-100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
   }
   
   @keyframes slide-back-140 {
     0% { transform: translateX(-100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
-    100% { transform: translateX(0); opacity: 1; height: 140px; }
+    100% { transform: translateX(0); opacity: 1; height: 158px; }
   }
 
 
@@ -3441,6 +3448,16 @@ body div {
   @keyframes slide-back-carousel {
     0% { transform: translateX(-100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
     100% { transform: translateX(0); opacity: 1; height: 800px; }
+  }
+
+  @keyframes slide-left-imgPlaylist {
+    0% { transform: translateY(0); opacity: 1; height: 500px; }
+    100% { transform: translateY(100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
+  }
+  
+  @keyframes slide-back-imgPlaylist {
+    0% { transform: translateY(100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
+    100% { transform: translateY(0); opacity: 1; height: 500px; }
   }
   
   
@@ -3479,6 +3496,16 @@ body div {
   
   .slide-back-carousel {
     animation: slide-back-carousel 2s ease-in-out forwards;
+  }
+
+
+  
+  .slide-left-imgPlaylist {
+    animation: slide-left-imgPlaylist 2s ease-in-out forwards;
+  }
+  
+  .slide-back-imgPlaylist {
+    animation: slide-back-imgPlaylist 2s ease-in-out forwards;
   }
   
   /* Hidden class with transition */
@@ -3541,7 +3568,7 @@ body div {
 
 
 
- 
+   
 
 
   html, body {
@@ -3551,4 +3578,84 @@ body div {
     box-sizing: border-box;
 }
 
- 
+
+
+
+html button:hover {
+    transform: scale(1.05);
+}
+
+
+html button{
+    transition: transform .3s ease-out !important;
+}
+
+#searchBar:hover{
+    transform: scale(1.03);
+}
+
+#searchBar{
+    transition: transform .3s ease-out !important;
+}
+
+.imgSearch:hover{
+    transform: scale(1.03);
+}
+
+.imgSearch{
+    transition: transform .3s ease-out !important;
+}
+
+.imgSearchSarching:hover{
+    transform: scale(1.03);
+}
+
+.imgSearchSarching{
+    transition: transform .3s ease-out !important;
+}
+
+
+.volumeCircle:hover{
+    transform: scale(1.05);
+}
+
+.volumeCircle{
+    transition: transform .3s ease-out !important;
+}
+
+@media screen and (max-width: 800px) {
+
+    #searchBar{
+        width: 450px;
+    }
+
+}
+
+
+#musicMode{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Garamond;
+    width: auto !important;
+    color: white;
+    font-size: 11px;
+    margin: 1px !important;
+    text-align: center;
+}
+
+#imageMode{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Garamond;
+    width: auto !important;
+    color: white;
+    font-size: 11px;
+    margin: 1px !important;
+    text-align: center;
+}
+
+main{
+    overflow-y: hidden;
+}
