@@ -427,7 +427,7 @@ html span {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #FF0000;
+    background-color: #1600FF;
     mix-blend-mode: exclusion;
     /* border-radius: 20px; */
     animation: 1s fadeIn ease-out forwards;
@@ -443,7 +443,7 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(rgb(255, 0, 0), rgb(255, 0, 0));
+    background-image: linear-gradient(to right,#00FFB6, #01FFFD);
     
 }
 
@@ -644,7 +644,11 @@ body {
 
 
     #song .music-player:hover {
-        transform: none !important;
+        transform: scale(0.97) !important;
+    }
+
+    #song .music-player img:hover {
+        transform: scale(1.01) !important;
     }
 
 
@@ -680,20 +684,22 @@ body {
 
 
     #music-player {
+        transform: scale(0.95);
         width: 800px;
         /* height: 790px; */
         overflow: hidden;
         margin: 0px;
-        border-radius: 0px !important;
+        border-radius: 10px !important;
 
     }
 
     .music-player {
+        transform: scale(0.95);
         width: 800px;
         /* height: 790px; */
         overflow: hidden;
         margin: 0px;
-        border-radius: 0px !important;
+        border-radius: 10px !important;
 
     }
 
@@ -876,7 +882,6 @@ body {
 #carouselExampleFade {
     min-width: 800px;
     display: none;
-    animation: show 0.6s ease alternate;
 }
 
 /* #imgGojo {
@@ -936,7 +941,7 @@ body {
     /* clip-path: inset(1px 1px 1px 1px round 50px); */
     transition: transform 1s ease;
     border-radius: 30px;
-    border: 20px solid #0000004a;
+    border: 20px solid #7b7b7b8f;
 }
 
 .imgGojo:hover {
@@ -1097,7 +1102,10 @@ input[type="text"]:hover {
 
 #configButton {
     mix-blend-mode: difference;
-    margin: 5px;
+    margin-left: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 20px;
 
 }
 
@@ -1116,6 +1124,8 @@ input[type="text"]:hover {
     background-color: #00000040 !important;
 }
 
+
+
 #removeSong {
     display: flex;
     justify-content: center;
@@ -1130,12 +1140,28 @@ input[type="text"]:hover {
 
 #buttonCarousel1 {
 
-    mix-blend-mode: difference;
+    
+    width: 90px;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.315);
+    margin-left: 30px;
+    border-radius: 20px
+
+    /* background-color: #0000008f !important;
+    mix-blend-mode: difference; */
 }
 
 #buttonCarousel2 {
 
-    mix-blend-mode: difference;
+    margin-left: 200px;
+    width: 90px;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.315);
+    margin-right: 30px;
+    border-radius: 20px
+
+    /* background-color: #0000008f !important;
+    mix-blend-mode: difference; */
 }
 
 html .carousel-control-next,
@@ -1214,8 +1240,9 @@ header button{
     /* Apply blur effect to background */
     /* -webkit-backdrop-filter: blur(10px); */
     /* Safari support */
-
 }
+
+ 
 
 #song::-webkit-scrollbar {
     display: flex;
@@ -2603,7 +2630,7 @@ footer {
     mix-blend-mode: difference; */
     font-family: Garamond;
     backdrop-filter: brightness(0.5);
-    padding-bottom: 100px;
+    padding-bottom: 200px;
 }
 
 .footer-content {
@@ -3052,12 +3079,12 @@ footer {
 
 
 #expandColoredImageBtn {
-    backdrop-filter: brightness(0.5);
+    background-color: #0000008f !important;
     margin: 1rem;
 }
 
 #downloadColoredImageBtn {
-    backdrop-filter: brightness(0.5);
+    background-color: #0000008f !important;
     margin: 1rem;
 }
 
@@ -3230,8 +3257,8 @@ body div {
     min-width: 650px;
     object-fit: cover;
     border-radius: 30px;
-    border: 20px solid #0000004a;
-    backdrop-filter: contrast(0.5);
+    border: 20px solid #7b7b7b8f;
+    /* backdrop-filter: contrast(0.5); */
     /* backdrop-filter: invert(1); */
 }
 
@@ -3292,6 +3319,71 @@ body div {
    height: 50px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#stickyButtonsLayOutOptions {
+    position: fixed;
+    bottom: 0; /* Fixes the div to the bottom of the viewport */
+    left: 0;
+    width: 100%; /* Ensures it spans the entire width */
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+    background-color: transparent;
+    z-index: 10;
+    padding: 10px; /* Optional: Adds some spacing */
+    margin-bottom: 90px;
+}
+
+#stickyButtonsLayOutOptions button :hover{
+    transform: scale(1.1);
+}
+
+#stickyButtonsLayOutOptions button{
+    margin: 5px;
+    backdrop-filter: brightness(0.5);
+    background-color:#1d1b1b0e;
+    transition: transform 0.2s ease-out;
+}
+
+#stickyButtonsLayOutOptions img{
+   width: 50px !important;
+   height: 50px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 #newSong{
     backdrop-filter: brightness(0.5);
     background-color: #1818187d;
@@ -3328,6 +3420,29 @@ body div {
     0% { transform: translateX(-100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
     100% { transform: translateX(0); opacity: 1; height: 800px; }
   }
+
+
+  @keyframes slide-left-140 {
+    0% { transform: translateX(0); opacity: 1; height: 140px; }
+    100% { transform: translateX(-100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
+  }
+  
+  @keyframes slide-back-140 {
+    0% { transform: translateX(-100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
+    100% { transform: translateX(0); opacity: 1; height: 140px; }
+  }
+
+
+  @keyframes slide-left-carousel {
+    0% { transform: translateX(0); opacity: 1; height: 800px; }
+    100% { transform: translateX(-100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
+  }
+  
+  @keyframes slide-back-carousel {
+    0% { transform: translateX(-100vw); opacity: 0; height: 0; padding: 0; margin: 0; }
+    100% { transform: translateX(0); opacity: 1; height: 800px; }
+  }
+  
   
   /* Slide animation class for desktop */
   .slide-left {
@@ -3345,6 +3460,25 @@ body div {
   
   .slide-back-mobile {
     animation: slide-back-mobile 2s ease-in-out forwards;
+  }
+
+
+  /* Slide animation class for desktop */
+  .slide-left-140 {
+    animation: slide-left-140 2s forwards;
+  }
+  
+  .slide-back-140 {
+    animation: slide-back-140 2s forwards;
+  }
+
+
+  .slide-left-carousel {
+    animation: slide-left-carousel 2s ease-in-out forwards;
+  }
+  
+  .slide-back-carousel {
+    animation: slide-back-carousel 2s ease-in-out forwards;
   }
   
   /* Hidden class with transition */
@@ -3369,15 +3503,39 @@ body div {
 
 
 
+  @keyframes moveUpDisappear {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    100% {
+        transform: translateY(-200px);
+        opacity: 0;
+    }
+}
 
-   
-  
-  
-  
-  
 
-   
 
+@keyframes moveUpDisappearBack {
+    0% {
+        transform: translateY(-200px);
+        opacity: 0;
+    }
+    
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.box {
+    animation: moveUpDisappear 2s forwards;
+}
+
+.boxBack {
+    animation: moveUpDisappearBack 2s forwards;
+}
 
   /* DIV ANIMATION TRIGGER */
 

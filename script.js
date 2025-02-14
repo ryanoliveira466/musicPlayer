@@ -1,25 +1,25 @@
 arrayImagesColor = [{
     id: "purple",
     idImg: "purpleImg",
-    color: "linear-gradient(to left,#0000FF, #0000FF)",
-    color1: '#0000FF',
-    color2: '#0000FF',
+    color: "linear-gradient(to bottom,#FF0000, #FF4A00)",
+    color1: '#FF0000',
+    color2: '#FF4A00',
     div: 'a',
-    tint: "#0000FF",
+    tint: "#00FFBE",
     src: "img/teste/maxresdefault (1).jpg",
     mix: "hue",
     cover: "cover",
-    linear: "to left"
+    linear: "to bottom"
 
 },
 {
     id: "blue",
     idImg: "blueImg",
-    color: "linear-gradient(to right,#FF0000, #FF0000)",
-    color1: '#FF0000',
-    color2: '#FF0000',
+    color: "linear-gradient(to right,#00FFB6, #01FFFD)",
+    color1: '#00FFB6',
+    color2: '#01FFFD',
     div: 'b',
-    tint: "#FF0000",
+    tint: "#1600FF",
     src: "img/teste/maxresdefault.jpg",
     mix: "exclusion",
     cover: "cover",
@@ -28,26 +28,26 @@ arrayImagesColor = [{
 {
     id: "red",
     idImg: "redImg",
-    color: "linear-gradient(to bottom left,#F7F905, #F7F905)",
-    color1: '#F7F905',
-    color2: '#F7F905',
+    color: "linear-gradient(to bottom,#FFFFFF, #151616)",
+    color1: '#FFFFFF',
+    color2: '#151616',
     div: 'c',
-    tint: "#8E4304",
+    tint: "#010101",
     src: "img/teste/Łaszewo.jpg",
-    mix: "hue",
+    mix: "color",
     cover: "cover",
-    linear: "to bottom left"
+    linear: "to bottom"
 },
 {
     id: "green",
     idImg: "greenImg",
-    color: "linear-gradient(to bottom right,#36FF00, #36FF00)",
-    color1: '#36FF00',
-    color2: '#36FF00',
+    color: "linear-gradient(to bottom right,#E600FF, #FF16F5)",
+    color1: '#E600FF',
+    color2: '#FF16F5',
     div: 'd',
-    tint: "#C26AFF",
+    tint: "#5FBD2A",
     src: "img/teste/wallpaper.jpg",
-    mix: "saturation",
+    mix: "overlay",
     cover: "cover",
     linear: "to bottom right"
 }
@@ -8219,19 +8219,19 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('focus', fun
 
 
 
-const container = document.getElementById('song');
+// const container = document.getElementById('song');
 
-// Listen for the wheel event on the container
-container.addEventListener('wheel', function (event) {
-    // Check if the wheel is scrolling horizontally
-    if (event.deltaY !== 0) {
-        // Scroll horizontally based on the wheel movement
-        container.scrollLeft += (event.deltaY * 10);
-    }
+// // Listen for the wheel event on the container
+// container.addEventListener('wheel', function (event) {
+//     // Check if the wheel is scrolling horizontally
+//     if (event.deltaY !== 0) {
+//         // Scroll horizontally based on the wheel movement
+//         container.scrollLeft += (event.deltaY * 10);
+//     }
 
-    // Prevent the default vertical scroll behavior
-    event.preventDefault();
-});
+//     // Prevent the default vertical scroll behavior
+//     event.preventDefault();
+// });
 
 
 
@@ -9299,14 +9299,52 @@ document.getElementById('removeCarousel').addEventListener('click', function () 
     var carousel = document.getElementById('carouselExampleFade');
     var imgRemoveCarousel = document.getElementById('imgRemoveCarousel');
     var imgPlayList = document.getElementById('showPlayListImageDiv')
+ 
+    
 
     if (imgRemoveCarousel.src.endsWith('hideImgCarousel.png')) {
-        imgPlayList.style.display = 'flex'
-        carousel.style.display = 'none'; // Hides the carousel
+        
+
+        this.disabled = true
+        imgPlayList.style.pointerEvents = 'all'
+        carousel.style.pointerEvents = 'none'
+
+          
+         imgPlayList.classList.remove('slide-left')
+         imgPlayList.classList.add('slide-back')
+
+         carousel.classList.remove('slide-back-carousel')
+         carousel.classList.add('slide-left-carousel')
+
+         setTimeout(() => {
+             this.disabled = false
+         }, 2000);
+        
+
+
+        // imgPlayList.style.display = 'flex'
+        // carousel.style.display = 'none'; // Hides the carousel
         imgRemoveCarousel.src = 'img/imgCarouselShow.png'; // Changes the image
     } else {
-        imgPlayList.style.display = 'none'
-        carousel.style.display = 'block'; // Shows the carousel
+
+        this.disabled = true
+        imgPlayList.style.pointerEvents = 'none'
+        carousel.style.pointerEvents = 'all'
+        
+        imgPlayList.classList.add('slide-left')
+        imgPlayList.classList.remove('slide-back')
+
+        carousel.style.display = 'block'
+        carousel.classList.remove('slide-left-carousel')
+        carousel.classList.add('slide-back-carousel')
+
+        setTimeout(() => {
+            this.disabled = false
+        }, 2000); 
+
+       
+        // imgPlayList.style.display = 'none'
+        // carousel.style.display = 'block'; // Shows the carousel
         imgRemoveCarousel.src = 'img/hideImgCarousel.png'; // Changes the image back
     }
 });
@@ -9460,3 +9498,53 @@ document.addEventListener('scroll', function () {
 
 
 //CURSOR
+
+
+document.getElementById('hideBarMusic').addEventListener('click', function() {
+    var musicBar = document.getElementById('musicBar');
+    var image = document.getElementById('hideBarMusicImg');
+    var height140 = document.getElementById('140height') 
+    
+    // Get the filename part of the image source
+    var imageName = image.src.split('/').pop(); // Extracts just the filename
+    
+    if (imageName === 'barMusicImg.png') {
+       height140.classList.remove("hidden");
+       this.disabled = true
+
+        setTimeout(() => {
+            height140.classList.remove("slide-left-140");
+            height140.classList.add("slide-back-140");
+        }, 10);
+
+        setTimeout(() => {
+            this.disabled = false
+        }, 2000);
+        
+
+        musicBar.classList.remove('box')
+        musicBar.classList.add('boxBack')
+        image.src = 'img/barMusicImgNo.png';    
+    } else {
+        this.disabled = true
+      
+         height140.classList.add("slide-left-140");
+         height140.classList.remove("slide-back-140", "hidden");
+        
+
+         setTimeout(() => {
+             height140.classList.add("hidden");
+             this.disabled = false
+         }, 2000);
+
+     
+
+        musicBar.classList.remove('boxBack')
+        musicBar.classList.add('box')
+        image.src = 'img/barMusicImg.png';   
+    }
+});
+
+
+
+

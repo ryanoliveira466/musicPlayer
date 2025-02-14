@@ -1431,7 +1431,7 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
 
 
 
-  <div id="musicBar">
+  <div id="musicBar" class="boxBack">
 
     <div id="bgImage">
         <img id="bgImageReal" src="" alt="" srcset="">
@@ -1656,6 +1656,8 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
 
 <!-- DIV STICKY BUTTONS -->
 
+ 
+
 <div id="stickyButtons">
     <button class="btn btn stickyClick" data-bs-toggle="modal" data-bs-target="#exampleModalImagens"><img src="img/addImageSticky.png" alt="" srcset=""></button>
     <button class="btn btn stickyClick" data-bs-toggle="modal" data-bs-target="#exampleModalSong"><img src="img/addSongSticky.png" alt="" srcset=""></button>
@@ -1663,6 +1665,14 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
     <button class="btn btn stickyClick" data-bs-toggle="modal" data-bs-target="#exampleModalView"><img src="img/viewEye.png" alt="" srcset=""></button>
     <button class="btn btn stickyClick" data-bs-toggle="modal" data-bs-target="#exampleModalViewSong"><img src="img/logo.png" alt="" srcset=""></button>
 </div>
+
+<div id="stickyButtonsLayOutOptions">
+    <button class="btn btn stickyClick" id="hideBarMusic"><img src="img/barMusicImgNo.png" id="hideBarMusicImg" alt="" srcset=""></button>
+    <button class="btn btn stickyClick" id="removeCarousel"><img src="img/imgCarouselShow.png" id="imgRemoveCarousel" alt="" srcset=""></button>
+    <button class="btn btn stickyClick" id="removeSong"><img src="img/notSongBar.png" id="imgRemoveSong" alt="" srcset=""></button>
+</div>
+
+ 
 
 <!-- DIV STICKY BUTTONS -->
   
@@ -1674,7 +1684,7 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
     <!-- MAIN CONTENT STARTS HERE -->
 
 
-    <div id="140height" style="width: 100%; height: 140px; transition: all 0.5s ease-in-out;"></div>
+    <div id="140height" style="width: 100%; height: 140px; transition: all 0.5s ease-in-out;background-color: transparent;"></div>
 
 
     <header id="header">
@@ -1695,7 +1705,7 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
         </div>
 
          
-        <div style="display: flex;justify-content: center;flex-direction: row;margin-left: auto;">
+        <!-- <div style="display: flex;justify-content: center;flex-direction: row;margin-left: auto;">
             <div id="divRemoveImg">
                 <button class="btn btnOptions" id="removeCarousel"><img src="img/imgCarouselShow.png" id="imgRemoveCarousel" alt="" srcset=""></button>
             </div>
@@ -1703,7 +1713,8 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
             <div id="divRemoveSong">
                 <button class="btn btnOptions" id="removeSong"><img src="img/notSongBar.png" id="imgRemoveSong" alt="" srcset=""></button>
             </div>
-            </div>
+
+            </div> -->
 
 
         <button class="btn btn" id="configButton" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
