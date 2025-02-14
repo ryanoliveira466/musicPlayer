@@ -644,6 +644,9 @@ body {
 
 
 
+     
+
+
     #song .music-player:hover {
         transform: scale(0.97) !important;
     }
@@ -684,7 +687,7 @@ body {
     }
 
 
-    #music-player {
+    #song #music-player {
         transform: scale(0.95);
         width: 800px;
         /* height: 790px; */
@@ -694,7 +697,7 @@ body {
 
     }
 
-    .music-player {
+    #song .music-player {
         transform: scale(0.95);
         width: 800px;
         /* height: 790px; */
