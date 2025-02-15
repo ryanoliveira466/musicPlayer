@@ -2977,6 +2977,8 @@ arraySong.forEach((song) => {
 
     document.getElementById(`audioPlay${song.nameSong}`).addEventListener('click', function () {
 
+        
+
 
 
         //
@@ -4404,6 +4406,56 @@ arraySong.forEach(song => {
 
 
 
+function nextSongAuto() {
+
+    console.log('teste next song auto');
+    
+
+    arraySong.forEach(song => {
+        document.getElementById(`audio${song.nameSong}`).addEventListener('ended', function () {
+    
+            let nextSongPlaylist;
+    
+            if (flagShuffle == false) {
+    
+                for (var i = 0; i < arraySong.length; i++) {
+                    if (currentId == arraySong[i].nameSong) {
+                        nextSongPlaylist = i + 1
+                    }
+                }
+    
+                if (((nextSongPlaylist) > (arraySong.length - 1)) == false) {
+    
+                    document.getElementById(`audio${arraySong[nextSongPlaylist].nameSong}`).load()
+                    document.getElementById(`audioPlay${arraySong[nextSongPlaylist].nameSong}`).click()
+    
+                    //
+                    document.getElementById('bgImageReal').src = `${document.getElementById(`musicBarImg`).src}`;
+    
+                    document.getElementById('bgImageReal').style.pointerEvents = 'none'
+    
+                    setTimeout(function () {
+                        document.getElementById('bgImageReal').style.pointerEvents = 'all'
+                    }, 1000)
+                    //
+    
+                }
+    
+                else {
+                    document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRightMax.png'
+                }
+    
+    
+    
+            }
+        })
+    
+    });
+    
+}
+
+
+
 
 function shuffleSong(song) {
 
@@ -5523,6 +5575,7 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
                     audioBtnFunction(positionArray)
                     volumeBtnAudio(positionArray)
                     shuffleSong(positionArray)
+                    
 
                 }
 
@@ -5556,12 +5609,14 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
 
                 console.log(arraySong);
 
+                nextSongAuto()
+
                 document.getElementById('offcanvasBottomCloseBtnSong').click()
 
 
                 //BUG MUSIC BAR
 
-                console.log(document.getElementById(currentAudioPlaying).paused);
+                // console.log(document.getElementById(currentAudioPlaying).paused);
 
                 if (playPausedAfterDelete == true && flagBugDeleteSongIfNotPlaying == false) {
 
@@ -5685,6 +5740,7 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
 
 
 
+           
 
 
 
@@ -9095,6 +9151,8 @@ function allArraySongFunctions() {
 
 
         document.getElementById(`audioPlay${song.nameSong}`).addEventListener('click', function () {
+
+           
 
 
             const imageAudioBar = document.getElementById('audioVolumeMusicBarImg')
