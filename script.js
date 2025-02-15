@@ -5,7 +5,7 @@ arrayImagesColor = [{
     color1: '#FF0000',
     color2: '#FF4A00',
     div: 'a',
-    tint: "#00FFBE",
+    tint: "#FF0000",
     src: "img/teste/maxresdefault (1).jpg",
     mix: "hue",
     cover: "cover",
@@ -2977,6 +2977,12 @@ arraySong.forEach((song) => {
 
     document.getElementById(`audioPlay${song.nameSong}`).addEventListener('click', function () {
 
+
+
+        //
+        document.getElementById(`soundWave${song.nameSong}`).style.display = 'flex'
+        //
+
         document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
         document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
 
@@ -3052,10 +3058,16 @@ arraySong.forEach((song) => {
 
             if (arraySong[i].nameSong == song.nameSong) {
                 document.getElementById(`audio${song.nameSong}`).play();
+               //
+               document.getElementById(`soundWave${arraySong[i].nameSong}`).style.display = 'flex'
+               //
             }
 
             else {
                 document.getElementById(`audio${arraySong[i].nameSong}`).pause()
+                //
+                document.getElementById(`soundWave${arraySong[i].nameSong}`).style.display = 'none'
+                //
                 document.getElementById(`audioPlay${arraySong[i].nameSong}`).style.display = 'flex'
                 document.getElementById(`audioPause${arraySong[i].nameSong}`).style.display = 'none'
             }
@@ -3065,6 +3077,12 @@ arraySong.forEach((song) => {
     })
 
     document.getElementById(`audioPause${song.nameSong}`).addEventListener('click', function () {
+
+
+        //
+        document.getElementById(`soundWave${song.nameSong}`).style.display = 'none'
+        //
+
         document.getElementById(`audio${song.nameSong}`).pause();
 
         document.getElementById(`audioPlay${song.nameSong}`).style.display = 'flex'
@@ -3114,6 +3132,10 @@ function audioBtnFunction(song) {
 
     document.getElementById(`audioPlay${song.nameSong}`).addEventListener('click', function () {
 
+        //
+        document.getElementById(`soundWave${song.nameSong}`).style.display = 'flex'
+        //
+
         document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
         document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
 
@@ -3188,9 +3210,15 @@ function audioBtnFunction(song) {
 
             if (arraySong[i].nameSong == song.nameSong) {
                 document.getElementById(`audio${song.nameSong}`).play();
+                //
+               document.getElementById(`soundWave${arraySong[i].nameSong}`).style.display = 'flex'
+               //
             }
 
             else {
+                //
+               document.getElementById(`soundWave${arraySong[i].nameSong}`).style.display = 'none'
+               //
                 document.getElementById(`audio${arraySong[i].nameSong}`).pause()
                 document.getElementById(`audioPlay${arraySong[i].nameSong}`).style.display = 'flex'
                 document.getElementById(`audioPause${arraySong[i].nameSong}`).style.display = 'none'
@@ -3201,6 +3229,11 @@ function audioBtnFunction(song) {
     })
 
     document.getElementById(`audioPause${song.nameSong}`).addEventListener('click', function () {
+
+        //
+        document.getElementById(`soundWave${song.nameSong}`).style.display = 'none'
+        //
+
         document.getElementById(`audio${song.nameSong}`).pause();
 
         document.getElementById(`audioPlay${song.nameSong}`).style.display = 'flex'
@@ -3937,6 +3970,10 @@ document.getElementById('audioPlayMusicBar').addEventListener('click', function 
 
     document.getElementById(`${currentAudioPlaying}`).play();
 
+    //
+    document.getElementById(`soundWave${currentId}`).style.display = 'flex'
+    //
+
     document.getElementById(`audioPauseMusicBar`).style.display = 'flex'
     document.getElementById(`audioPlayMusicBar`).style.display = 'none'
 
@@ -3951,6 +3988,10 @@ document.getElementById('audioPlayMusicBar').addEventListener('click', function 
 
 document.getElementById(`audioPauseMusicBar`).addEventListener('click', function () {
     document.getElementById(`${currentAudioPlaying}`).pause();
+
+    //
+    document.getElementById(`soundWave${currentId}`).style.display = 'none'
+    //
 
     document.getElementById(`audioPlayMusicBar`).style.display = 'flex'
     document.getElementById(`audioPauseMusicBar`).style.display = 'none'
@@ -4720,10 +4761,26 @@ document.getElementById('buttonAcceptimgSong').addEventListener('click', functio
     let musicPlayerContainer = document.createElement('div');
 
 
+
+
     // Create the music player div
     let musicPlayer = document.createElement('div');
     musicPlayer.classList.add('music-player');
     musicPlayer.id = 'music-player';
+
+    //Sound Wave
+    const soundWaveDiv = document.createElement("div");
+    soundWaveDiv.classList.add("soundWave");
+    soundWaveDiv.id = `soundWave${idImg}`;
+
+    const imgSoundWave = document.createElement("img");
+    imgSoundWave.src = "img/soundWave.gif";
+    imgSoundWave.alt = "";
+    imgSoundWave.classList.add("soundWaveimg");
+
+    soundWaveDiv.appendChild(imgSoundWave);
+    musicPlayer.appendChild(soundWaveDiv);
+    //Sound Wave
 
     // Create the music image (album cover)
     let musicImg = document.createElement('img');
@@ -5291,6 +5348,20 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
                     let musicPlayer = document.createElement('div');
                     musicPlayer.classList.add('music-player');
                     musicPlayer.id = 'music-player';
+
+                    //Sound Wave
+                    const soundWaveDiv = document.createElement("div");
+                    soundWaveDiv.classList.add("soundWave");
+                    soundWaveDiv.id = `soundWave${idImg}`;
+
+                    const imgSoundWave = document.createElement("img");
+                    imgSoundWave.src = "img/soundWave.gif";
+                    imgSoundWave.alt = "";
+                    imgSoundWave.classList.add("soundWaveimg");
+
+                    soundWaveDiv.appendChild(imgSoundWave);
+                    musicPlayer.appendChild(soundWaveDiv);
+                    //Sound Wave
 
                     // Create the music image (album cover)
                     let musicImg = document.createElement('img');
@@ -6635,6 +6706,7 @@ document.getElementById('expandColoredImageBtn').addEventListener('click', funct
 
 
     document.getElementById('blackCover').style.display = 'flex'
+    document.getElementById('header').style.display = 'none'
 
     expandBack.style.display = 'flex'
     divImage.style.display = 'flex'
@@ -6731,6 +6803,7 @@ document.getElementById('expandColoredImageBtnBack').addEventListener('click', f
     this.disabled = true
 
     document.getElementById('blackCover').style.display = 'none'
+    document.getElementById('header').style.display = 'flex'
 
 
     const expandBack = document.getElementById('expandColoredImageBtnBack')
@@ -7373,6 +7446,20 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
                 musicPlayer.classList.add('music-player');
                 musicPlayer.id = 'music-player';
 
+                //Sound Wave
+                const soundWaveDiv = document.createElement("div");
+                soundWaveDiv.classList.add("soundWave");
+                soundWaveDiv.id = `soundWave${idImg}`;
+
+                const imgSoundWave = document.createElement("img");
+                imgSoundWave.src = "img/soundWave.gif";
+                imgSoundWave.alt = "";
+                imgSoundWave.classList.add("soundWaveimg");
+
+                soundWaveDiv.appendChild(imgSoundWave);
+                musicPlayer.appendChild(soundWaveDiv);
+                //Sound Wave
+
                 // Create the music image (album cover)
                 let musicImg = document.createElement('img');
                 musicImg.src = imgSrc; // Ensure imgSrc is defined with a valid path
@@ -7560,6 +7647,14 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
 
             allArraySongFunctions()
 
+            const songDiv = document.getElementById('song');
+
+            // Temporarily remove smooth scrolling
+            songDiv.style.setProperty('scroll-behavior', 'auto', 'important');
+            songDiv.scrollLeft = 0; // Reset scroll position
+            songDiv.style.setProperty('scroll-behavior', 'smooth', 'important'); // Reapply smooth scrolling
+            
+
         })
 
 
@@ -7689,6 +7784,20 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
                     let musicPlayer = document.createElement('div');
                     musicPlayer.classList.add('music-player');
                     musicPlayer.id = 'music-player';
+
+                    //Sound Wave
+                    const soundWaveDiv = document.createElement("div");
+                    soundWaveDiv.classList.add("soundWave");
+                    soundWaveDiv.id = `soundWave${idImg}`;
+
+                    const imgSoundWave = document.createElement("img");
+                    imgSoundWave.src = "img/soundWave.gif";
+                    imgSoundWave.alt = "";
+                    imgSoundWave.classList.add("soundWaveimg");
+
+                    soundWaveDiv.appendChild(imgSoundWave);
+                    musicPlayer.appendChild(soundWaveDiv);
+                    //Sound Wave
 
                     // Create the music image (album cover)
                     let musicImg = document.createElement('img');
@@ -8364,6 +8473,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 musicPlayer.classList.add('music-player');
                 musicPlayer.id = 'music-player';
 
+                //Sound Wave
+                const soundWaveDiv = document.createElement("div");
+                soundWaveDiv.classList.add("soundWave");
+                soundWaveDiv.id = `soundWave${idImg}`;
+
+                const imgSoundWave = document.createElement("img");
+                imgSoundWave.src = "img/soundWave.gif";
+                imgSoundWave.alt = "";
+                imgSoundWave.classList.add("soundWaveimg");
+
+                soundWaveDiv.appendChild(imgSoundWave);
+                musicPlayer.appendChild(soundWaveDiv);
+                //Sound Wave
+
                 // Create the music image (album cover)
                 let musicImg = document.createElement('img');
                 musicImg.src = imgSrc; // Ensure imgSrc is defined with a valid path
@@ -8551,6 +8674,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
             allArraySongFunctions()
 
+            const songDiv = document.getElementById('song');
+
+            // Temporarily remove smooth scrolling
+            songDiv.style.setProperty('scroll-behavior', 'auto', 'important');
+            songDiv.scrollLeft = 0; // Reset scroll position
+            songDiv.style.setProperty('scroll-behavior', 'smooth', 'important'); // Reapply smooth scrolling
+            
+
         })
 
 
@@ -8679,6 +8810,20 @@ document.addEventListener('DOMContentLoaded', function () {
                     let musicPlayer = document.createElement('div');
                     musicPlayer.classList.add('music-player');
                     musicPlayer.id = 'music-player';
+
+                    //Sound Wave
+                    const soundWaveDiv = document.createElement("div");
+                    soundWaveDiv.classList.add("soundWave");
+                    soundWaveDiv.id = `soundWave${idImg}`;
+
+                    const imgSoundWave = document.createElement("img");
+                    imgSoundWave.src = "img/soundWave.gif";
+                    imgSoundWave.alt = "";
+                    imgSoundWave.classList.add("soundWaveimg");
+
+                    soundWaveDiv.appendChild(imgSoundWave);
+                    musicPlayer.appendChild(soundWaveDiv);
+                    //Sound Wave
 
                     // Create the music image (album cover)
                     let musicImg = document.createElement('img');
@@ -8919,6 +9064,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     allArraySongFunctions()
+
+
+   
+        //BUGJUMPING
+        let idForSongJumpingOneSong = arrayPlayList[0][0].indexPlayList
+        document.getElementById(`${idForSongJumpingOneSong}Img`).click()
+        //BUGJUMPING
+
+        
+    
 })
 
 
@@ -9301,27 +9456,27 @@ document.getElementById('removeCarousel').addEventListener('click', function () 
     var carousel = document.getElementById('carouselExampleFade');
     var imgRemoveCarousel = document.getElementById('imgRemoveCarousel');
     var imgPlayList = document.getElementById('showPlayListImageDiv')
- 
-    
+
+
 
     if (imgRemoveCarousel.src.endsWith('hideImgCarousel.png')) {
-        
+
 
         this.disabled = true
         imgPlayList.style.pointerEvents = 'all'
         carousel.style.pointerEvents = 'none'
 
-          
-         imgPlayList.classList.remove('slide-left-imgPlaylist')
-         imgPlayList.classList.add('slide-back-imgPlaylist')
 
-         carousel.classList.remove('slide-back-carousel')
-         carousel.classList.add('slide-left-carousel')
+        imgPlayList.classList.remove('slide-left-imgPlaylist')
+        imgPlayList.classList.add('slide-back-imgPlaylist')
 
-         setTimeout(() => {
-             this.disabled = false
-         }, 2000);
-        
+        carousel.classList.remove('slide-back-carousel')
+        carousel.classList.add('slide-left-carousel')
+
+        setTimeout(() => {
+            this.disabled = false
+        }, 2000);
+
 
 
         // imgPlayList.style.display = 'flex'
@@ -9332,7 +9487,7 @@ document.getElementById('removeCarousel').addEventListener('click', function () 
         this.disabled = true
         imgPlayList.style.pointerEvents = 'none'
         carousel.style.pointerEvents = 'all'
-        
+
         imgPlayList.classList.add('slide-left-imgPlaylist')
         imgPlayList.classList.remove('slide-back-imgPlaylist')
 
@@ -9342,9 +9497,9 @@ document.getElementById('removeCarousel').addEventListener('click', function () 
 
         setTimeout(() => {
             this.disabled = false
-        }, 2000); 
+        }, 2000);
 
-       
+
         // imgPlayList.style.display = 'none'
         // carousel.style.display = 'block'; // Shows the carousel
         imgRemoveCarousel.src = 'img/hideImgCarousel.png'; // Changes the image back
@@ -9382,21 +9537,21 @@ document.getElementById('removeCarousel').addEventListener('click', function () 
 
 document.getElementById('removeSong').addEventListener('click', function () {
 
-      function scrollToStart() {
-          var song = document.getElementById('song');
+    function scrollToStart() {
+        var song = document.getElementById('song');
 
-          // Set a delay before scrolling
-          setTimeout(function () {
-              // Smooth scroll to the start (0)
-              song.scrollTo({
-                  left: 0,
-                  behavior: 'smooth'
-              });
-          }, 1000); // Delay of 1000ms (1 second)
-      }
+        // Set a delay before scrolling
+        setTimeout(function () {
+            // Smooth scroll to the start (0)
+            song.scrollTo({
+                left: 0,
+                behavior: 'smooth'
+            });
+        }, 1000); // Delay of 1000ms (1 second)
+    }
 
 
-   
+
 
 
     var song = document.getElementById('song');
@@ -9410,7 +9565,7 @@ document.getElementById('removeSong').addEventListener('click', function () {
     if (screenWidth <= 600) {
         if (imgButton.src.endsWith('img/notSongBar.png')) {
             imgButton.src = 'img/enableSongBar.png';
-            song.classList.remove("slide-back-mobile","hidden");  
+            song.classList.remove("slide-back-mobile", "hidden");
             song.classList.add("slide-left-mobile");
             // song.scrollLeft = song.scrollWidth
             this.disabled = true
@@ -9458,7 +9613,7 @@ document.getElementById('removeSong').addEventListener('click', function () {
                 song.style.setProperty('pointer-events', 'auto', 'important');
             }, 2000);
         } else {
-            
+
 
             setTimeout(() => {
                 scrollToStart()
@@ -9515,17 +9670,17 @@ document.getElementById('removeSong').addEventListener('click', function () {
 //CURSOR
 
 
-document.getElementById('hideBarMusic').addEventListener('click', function() {
+document.getElementById('hideBarMusic').addEventListener('click', function () {
     var musicBar = document.getElementById('musicBar');
     var image = document.getElementById('hideBarMusicImg');
-    var height140 = document.getElementById('140height') 
-    
+    var height140 = document.getElementById('140height')
+
     // Get the filename part of the image source
     var imageName = image.src.split('/').pop(); // Extracts just the filename
-    
+
     if (imageName === 'barMusicImg.png') {
-       height140.classList.remove("hidden");
-       this.disabled = true
+        height140.classList.remove("hidden");
+        this.disabled = true
 
         setTimeout(() => {
             height140.classList.remove("slide-left-140");
@@ -9535,41 +9690,41 @@ document.getElementById('hideBarMusic').addEventListener('click', function() {
         setTimeout(() => {
             this.disabled = false
         }, 2000);
-        
+
 
         musicBar.classList.remove('box')
         musicBar.classList.add('boxBack')
-        image.src = 'img/barMusicImgNo.png';    
+        image.src = 'img/barMusicImgNo.png';
     } else {
         this.disabled = true
-      
-         height140.classList.add("slide-left-140");
-         height140.classList.remove("slide-back-140", "hidden");
-        
 
-         setTimeout(() => {
-             height140.classList.add("hidden");
-             this.disabled = false
-         }, 2000);
+        height140.classList.add("slide-left-140");
+        height140.classList.remove("slide-back-140", "hidden");
 
-     
+
+        setTimeout(() => {
+            height140.classList.add("hidden");
+            this.disabled = false
+        }, 2000);
+
+
 
         musicBar.classList.remove('boxBack')
         musicBar.classList.add('box')
-        image.src = 'img/barMusicImg.png';   
+        image.src = 'img/barMusicImg.png';
     }
 });
 
 
 
- 
-document.getElementById('musicMode').addEventListener('click', function(){
+
+document.getElementById('musicMode').addEventListener('click', function () {
     let hideMusic = document.getElementById('hideBarMusicImg').src.split('/').pop()
     let hideImageCarousel = document.getElementById('imgRemoveCarousel').src.split('/').pop()
     let imageBarSong = document.getElementById('imgRemoveSong').src.split('/').pop()
 
     console.log(hideMusic);
-    
+
 
     if (hideMusic === 'barMusicImg.png') {
         document.getElementById('hideBarMusic').click()
@@ -9591,8 +9746,8 @@ document.getElementById('musicMode').addEventListener('click', function(){
         document.getElementById('imageMode').disabled = false
     }, 2000);
 
-    
-    
+
+
 })
 
 
@@ -9600,13 +9755,13 @@ document.getElementById('musicMode').addEventListener('click', function(){
 
 
 
-document.getElementById('imageMode').addEventListener('click', function(){
+document.getElementById('imageMode').addEventListener('click', function () {
     let hideMusic = document.getElementById('hideBarMusicImg').src.split('/').pop()
     let hideImageCarousel = document.getElementById('imgRemoveCarousel').src.split('/').pop()
     let imageBarSong = document.getElementById('imgRemoveSong').src.split('/').pop()
 
     console.log(hideMusic);
-    
+
 
     if (hideMusic !== 'barMusicImg.png') {
         document.getElementById('hideBarMusic').click()
@@ -9627,7 +9782,8 @@ document.getElementById('imageMode').addEventListener('click', function(){
         document.getElementById('musicMode').disabled = false
     }, 2000);
 
-    
-    
+
+
 })
 
+ 
