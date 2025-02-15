@@ -973,8 +973,8 @@ body {
 #carouselExampleFade {
     min-width: 800px;
     display: none;
-    will-change: transform, opacity, height;
-    transform: translate3d(0, 0, 0);
+    /* will-change: transform, opacity, height;
+    transform: translate3d(0, 0, 0); */
 }
 
 /* #imgGojo {
@@ -1334,8 +1334,8 @@ header button{
     /* Apply blur effect to background */
     /* -webkit-backdrop-filter: blur(10px); */
     /* Safari support */
-    will-change: transform, opacity, height;
-    transform: translate3d(0, 0, 0);
+    /* will-change: transform, opacity, height;
+    transform: translate3d(0, 0, 0); */
 }
 
  
@@ -3374,8 +3374,8 @@ body div {
     align-items: center;
     text-align: center;
     margin-top: 45px;
-    will-change: transform, opacity, height;
-    transform: translate3d(0, 0, 0);
+    /* will-change: transform, opacity, height;
+    transform: translate3d(0, 0, 0); */
     
 
 }
@@ -3899,7 +3899,7 @@ main{
 } 
   */
 
-  .modalRef {
+  /* .modalRef {
     will-change: transform, opacity, height;
     transform: translate3d(0, 0, 0);
   }
@@ -3907,4 +3907,4 @@ main{
   #musicBar{
     will-change: transform, opacity, height;
     transform: translate3d(0, 0, 0);
-  }
+  } */
