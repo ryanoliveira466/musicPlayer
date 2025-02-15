@@ -9382,48 +9382,21 @@ document.getElementById('removeCarousel').addEventListener('click', function () 
 
 document.getElementById('removeSong').addEventListener('click', function () {
 
-    // function scrollToStart() {
-    //     var song = document.getElementById('song');
+      function scrollToStart() {
+          var song = document.getElementById('song');
 
-    //     // Set a delay before scrolling
-    //     setTimeout(function () {
-    //         // Smooth scroll to the start (0)
-    //         song.scrollTo({
-    //             left: 0,
-    //             behavior: 'smooth'
-    //         });
-    //     }, 1000); // Delay of 1000ms (1 second)
-    // }
+          // Set a delay before scrolling
+          setTimeout(function () {
+              // Smooth scroll to the start (0)
+              song.scrollTo({
+                  left: 0,
+                  behavior: 'smooth'
+              });
+          }, 1000); // Delay of 1000ms (1 second)
+      }
 
 
-    function scrollToStart() {
-        const song = document.getElementById('song');
-        const startPosition = song.scrollLeft;
-        const targetPosition = 0;
-        const duration = 4000; // 1 second
-        const startTime = performance.now();
-    
-        function animateScroll(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1); // Cap at 1
-            const ease = easeOutQuad(progress);
-    
-            // Calculate the current scroll position
-            song.scrollLeft = startPosition + (targetPosition - startPosition) * ease;
-    
-            if (progress < 1) {
-                requestAnimationFrame(animateScroll);
-            }
-        }
-    
-        requestAnimationFrame(animateScroll);
-    }
-    
-    // Easing function for a smoother effect
-    function easeOutQuad(t) {
-        return t * (2 - t);
-    }
-    
+   
 
 
     var song = document.getElementById('song');
@@ -9439,7 +9412,7 @@ document.getElementById('removeSong').addEventListener('click', function () {
             imgButton.src = 'img/enableSongBar.png';
             song.classList.remove("slide-back-mobile","hidden");  
             song.classList.add("slide-left-mobile");
-            song.scrollLeft = song.scrollWidth
+            // song.scrollLeft = song.scrollWidth
             this.disabled = true
             song.style.setProperty('pointer-events', 'none', 'important');
 
@@ -9450,7 +9423,11 @@ document.getElementById('removeSong').addEventListener('click', function () {
                 song.style.setProperty('pointer-events', 'auto', 'important');
             }, 2000);
         } else {
-            scrollToStart()
+
+            setTimeout(() => {
+                scrollToStart()
+            }, 1000);
+
             song.classList.remove("hidden");
             imgButton.src = 'img/notSongBar.png';
             this.disabled = true
@@ -9471,7 +9448,7 @@ document.getElementById('removeSong').addEventListener('click', function () {
             imgButton.src = 'img/enableSongBar.png';
             song.classList.remove("slide-back", "hidden");
             song.classList.add("slide-left");
-            song.scrollLeft = song.scrollWidth
+            // song.scrollLeft = song.scrollWidth
             this.disabled = true
             song.style.setProperty('pointer-events', 'none', 'important');
 
@@ -9481,7 +9458,13 @@ document.getElementById('removeSong').addEventListener('click', function () {
                 song.style.setProperty('pointer-events', 'auto', 'important');
             }, 2000);
         } else {
-            scrollToStart()
+            
+
+            setTimeout(() => {
+                scrollToStart()
+            }, 1000);
+
+
             song.classList.remove("hidden");
             imgButton.src = 'img/notSongBar.png';
             this.disabled = true
