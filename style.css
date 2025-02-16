@@ -4134,6 +4134,7 @@ main {
 @media (pointer: coarse) {
 
 
+   
 
     /* Class/Animations */
 
@@ -4245,7 +4246,21 @@ main {
 
     /* Class/Animations */
 
+  
+    body{
+        animation: showPattern 0.5s ease-in-out !important;
+    }
 
+    
+
+
+    .modalRef{
+        animation: showPattern 1.7s ease !important;
+    }
+
+    .modalRef .modal-content{
+        border: 0px !important;
+    }
   
 
     .modalRef .modal-content{
@@ -4258,6 +4273,7 @@ main {
     #staticBackdrop{
         backdrop-filter: brightness(0.5) !important;
         background-color: rgb(14 13 13 / 82%) !important;
+        
     }
 
     #searchingDiv{
@@ -4377,53 +4393,53 @@ main {
 
     /* Slide animation class for desktop */
 .slide-left {
-    animation: slide-left 0.3s ease-in-out forwards;
+    animation: slide-left 0.1s ease-in-out forwards;
 }
 
 .slide-back {
-    animation: slide-back 0.3s ease-in-out forwards;
+    animation: slide-back 0.1s ease-in-out forwards;
 }
 
 /* Slide animation class for mobile */
 .slide-left-mobile {
-    animation: slide-left-mobile 0.3s ease-in-out forwards;
+    animation: slide-left-mobile 0.1s ease-in-out forwards;
 }
 
 .slide-back-mobile {
-    animation: slide-back-mobile 0.3s ease-in-out forwards;
+    animation: slide-back-mobile 0.1s ease-in-out forwards;
 }
 
 /* Slide animation class for desktop */
 .slide-left-140 {
-    animation: slide-left-140 0.3s forwards;
+    animation: slide-left-140 0.1s forwards;
 }
 
 .slide-back-140 {
-    animation: slide-back-140 0.3s forwards;
+    animation: slide-back-140 0.1s forwards;
 }
 
 .slide-left-carousel {
-    animation: slide-left-carousel 0.3s ease-in-out forwards;
+    animation: slide-left-carousel 0.1s ease-in-out forwards;
 }
 
 .slide-back-carousel {
-    animation: slide-back-carousel 0.3s ease-in-out forwards;
+    animation: slide-back-carousel 0.1s ease-in-out forwards;
 }
 
 .slide-left-imgPlaylist {
-    animation: slide-left-imgPlaylist 0.3s ease-in-out forwards;
+    animation: slide-left-imgPlaylist 0.1s ease-in-out forwards;
 }
 
 .slide-back-imgPlaylist {
-    animation: slide-back-imgPlaylist 0.3s ease-in-out forwards;
+    animation: slide-back-imgPlaylist 0.1s ease-in-out forwards;
 }
 
 .box {
-    animation: moveUpDisappear 0.3s forwards;
+    animation: moveUpDisappear 0.1s forwards;
 }
 
 .boxBack {
-    animation: moveUpDisappearBack 0.3s forwards;
+    animation: moveUpDisappearBack 0.1s forwards;
 }
 
     
