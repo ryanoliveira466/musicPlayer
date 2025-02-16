@@ -200,6 +200,47 @@ playlist2 = [
         artist: 'Refuzion',
         cover: 'cover'
     },
+    //
+    {
+        nameSong: '2',
+        wallPaper: 'img/teste/fightForSomething.jpg',
+        songSrc: 'song/Brennan Heart Coone ft. Max P - Fight For Something (Official Videoclip) [TubeRipper.com].mp3',
+        title: 'Fight For Something (feat. Max P)',
+        artist: 'Brennan Heart & Coone',
+        cover: 'cover'
+    },
+    {
+        nameSong: '3',
+        wallPaper: 'img/teste/sheGoes.jpg',
+        songSrc: 'song/Atmozfears Adrenalize - She Goes [HQ Edit] [TubeRipper.com].mp3',
+        title: 'She Goes',
+        artist: 'Atmozfears Adrenalize',
+        cover: 'cover'
+    },
+    {
+        nameSong: '4',
+        wallPaper: 'img/teste/habits.jpg',
+        songSrc: 'song/Tove Lo - Habits (Omegatypez Bootleg) [TubeRipper.com].mp3',
+        title: 'Habits (Omegatypez Bootleg)',
+        artist: 'Tove Lo',
+        cover: 'cover'
+    },
+    {
+        nameSong: '5',
+        wallPaper: 'img/teste/maloTebya.jpg',
+        songSrc: 'song/Bass hunter - MALO TEBYA (remix)[TubeRipper (mp3cut.net)-[AudioTrimmer.com].mp3',
+        title: 'Bass hunter - MALO TEBYA',
+        artist: 'Serebro',
+        cover: 'cover'
+    },
+    {
+        nameSong: '6',
+        wallPaper: 'img/teste/hearth.jpg',
+        songSrc: 'song/Electroforce - Can you feel my heart[TubeRipper (mp3cut.net)-[AudioTrimmer.com].mp3',
+        title: 'Electroforce - Can you feel my heart',
+        artist: 'Bring Me The Horizon',
+        cover: 'cover'
+    },
 
 ]
 
@@ -231,6 +272,30 @@ playlist3 = [
         wallPaper: 'img/teste/legends.jpg',
         songSrc: 'song/Juice WRLD - Legends (Official Audio) [TubeRipper.com].mp3',
         title: 'Juice WRLD - Legends',
+        artist: 'Jarad Anthony Higgins',
+        cover: 'cover'
+    },
+    {
+        nameSong: '4',
+        wallPaper: 'img/teste/robbery.jpg',
+        songSrc: 'song/Juice WRLD - Robbery (Official Music Video) [TubeRipper.com].mp3',
+        title: 'Juice WRLD - Robbery',
+        artist: 'Jarad Anthony Higgins',
+        cover: 'cover'
+    },
+    {
+        nameSong: '5',
+        wallPaper: 'img/teste/wishingWell.jpg',
+        songSrc: 'song/Juice WRLD - Wishing Well (Official Music Video) [TubeRipper.com].mp3',
+        title: 'Juice WRLD - Wishing Well',
+        artist: 'Jarad Anthony Higgins',
+        cover: 'cover'
+    },
+    {
+        nameSong: '6',
+        wallPaper: 'img/teste/righteous.webp',
+        songSrc: 'song/Juice WRLD - Righteous (Official Video) [TubeRipper.com].mp3',
+        title: 'Juice WRLD - Righteous',
         artist: 'Jarad Anthony Higgins',
         cover: 'cover'
     },
@@ -9843,5 +9908,3 @@ document.getElementById('imageMode').addEventListener('click', function () {
 
 
 })
-
- 
