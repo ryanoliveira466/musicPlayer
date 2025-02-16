@@ -6526,7 +6526,7 @@ document.getElementById('musicBarCircle').addEventListener('touchstart', functio
 document.getElementById('searchBar').addEventListener('click', function () {
 
 
-
+     
     this.disabled = true
     document.getElementById('searchBarSearching').value = ""
     document.getElementById('resultSearching').innerHTML = ""
@@ -6599,6 +6599,9 @@ document.getElementById('searchBar').addEventListener('click', function () {
 
     document.getElementById(`resultSearching`).scrollTo(0, 0)
 
+    
+
+
 })
 
 
@@ -6611,7 +6614,7 @@ document.getElementById('searchingDivExpand').addEventListener('click', function
 
 
 
-
+ 
 
     const buttonExpand = this;  // "this" refers to the button that was clicked
 
@@ -6674,6 +6677,9 @@ document.getElementById('searchingDivExpand').addEventListener('click', function
 
 
 document.getElementById('searchBarSearching').addEventListener('input', function () {
+
+
+   
 
     document.getElementById('resultSearching').innerHTML = ""
     let textFromInput = document.getElementById('searchBarSearching').value
@@ -8474,6 +8480,16 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('focus', fun
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('musicOffCan').innerHTML = ''
 
+    document.getElementById('header').classList.add('showInitialBar')
+     
+
+    //Gambiarra início
+    setTimeout(() => {
+        document.getElementById('showPlayListImageDiv').classList.add('slide-back-imgPlaylist')
+    }, 1);
+    //Gambiarra início
+    
+
     for (var i = 0; i < arrayPlayList.length; i++) {
         let name = arrayPlayList[i][0].namePlaylist
         let id = arrayPlayList[i][0].indexPlayList
@@ -9579,6 +9595,7 @@ document.getElementById('removeCarousel').addEventListener('click', function () 
     var carousel = document.getElementById('carouselExampleFade');
     var imgRemoveCarousel = document.getElementById('imgRemoveCarousel');
     var imgPlayList = document.getElementById('showPlayListImageDiv')
+    var heightCarousel = document.querySelectorAll('.fullHeightVhForCarousel')
 
 
 
@@ -9588,6 +9605,12 @@ document.getElementById('removeCarousel').addEventListener('click', function () 
         this.disabled = true
         imgPlayList.style.pointerEvents = 'all'
         carousel.style.pointerEvents = 'none'
+
+        heightCarousel.forEach((element) => {
+            element.classList.remove('slide-back-height-carousel')
+            element.classList.add('slide-left-height-carousel')
+        });
+        
 
 
         imgPlayList.classList.remove('slide-left-imgPlaylist')
@@ -9610,6 +9633,12 @@ document.getElementById('removeCarousel').addEventListener('click', function () 
         this.disabled = true
         imgPlayList.style.pointerEvents = 'none'
         carousel.style.pointerEvents = 'all'
+
+
+        heightCarousel.forEach((element) => {
+            element.classList.remove('slide-left-height-carousel')
+            element.classList.add('slide-back-height-carousel')
+        });
 
         imgPlayList.classList.add('slide-left-imgPlaylist')
         imgPlayList.classList.remove('slide-back-imgPlaylist')
@@ -9908,3 +9937,5 @@ document.getElementById('imageMode').addEventListener('click', function () {
 
 
 })
+
+ 
