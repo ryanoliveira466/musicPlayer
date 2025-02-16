@@ -337,6 +337,10 @@ html {
     animation: show 0.6s ease alternate;
 }
 
+.showAniBarInitial {
+    animation: show 2s ease-in-out alternate;
+}
+
 
 
 html p {
@@ -3723,7 +3727,7 @@ body div {
     0% {
         transform: translateX(0);
         opacity: 1;
-        height: 800px;
+        height: 800px; /*800px */
     }
 
     100% {
@@ -3747,7 +3751,7 @@ body div {
     100% {
         transform: translateX(0);
         opacity: 1;
-        height: 800px;
+        height: 800px; /*800px */
     }
 }
 
@@ -3755,7 +3759,7 @@ body div {
     0% {
         transform: translateY(0);
         opacity: 1;
-        height: 500px;
+         height: 80vh;  /*500px */
     }
 
     10% {
@@ -3815,9 +3819,86 @@ body div {
     100% {
         transform: translateY(0);
         opacity: 1;
-        height: 500px;
+        height: 80vh; /*500px */
     }
 }
+
+
+/* GAMBIARRA */
+
+@keyframes slide-back-height-carousel {
+    0% {
+        transform: translateX(100vw);
+        opacity: 0;
+        height: 0;
+        padding: 0;
+        margin: 0;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 0;
+        height: 40vh;
+    }
+}
+
+@keyframes slide-left-height-carousel {
+    0% {
+        transform: translateX(0);
+        opacity: 0;
+         height: 40vh;  /*500px */
+    }
+
+    10% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(100vw);
+        opacity: 0;
+        height: 0;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+/* GAMBIARRA */
+
+
+
+
 
 
 /* Slide animation class for desktop */
@@ -3865,6 +3946,15 @@ body div {
 
 .slide-back-imgPlaylist {
     animation: slide-back-imgPlaylist 2s ease-in-out forwards;
+}
+
+
+.slide-left-height-carousel {
+    animation: slide-left-height-carousel 2s ease-in-out forwards;
+}
+
+.slide-back-height-carousel {
+    animation: slide-back-height-carousel 2s ease-in-out forwards;
 }
 
 /* Hidden class with transition */
@@ -4127,20 +4217,44 @@ main {
   } */
 
 
+  @keyframes showInitialBar {
+    0% {
+        opacity: 0;
 
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+
+    }
+
+}
+
+
+.showInitialBar{
+    animation: showInitialBar 2.5s ease;
+}
 
 
 /* Mobile não roda nada tudo lagado 🤡 */
 
-/* Prevent scroll */
-
-body.modal-open {
-    position: fixed !important;
-    width: 100% !important;
-    overflow: hidden !important;
-    height: 100% !important;
-}
-
+ 
 
 @media (pointer: coarse) {
 
@@ -4181,99 +4295,24 @@ body.modal-open {
 
     }
 
-
-
-    @keyframes moveUpDisappear {
-        0% {
-            transform: translateY(0);
-
-        }
-
-        100% {
-            transform: translateY(-200px);
-
-        }
-    }
-
-
-
-    @keyframes moveUpDisappearBack {
-        0% {
-            transform: translateY(-200px);
-
-        }
-
-        100% {
-            transform: translateY(0);
-
-        }
-    }
-
-
-
-
-    @keyframes show {
-        0% {
-            opacity: 1;
-
-        }
-
-        100% {
-            opacity: 1;
-
-        }
-
-    }
-
-
-    @keyframes showMobile600px {
-        0% {
-            opacity: 1;
-
-        }
-
-
-
-        100% {
-            opacity: 1;
-
-        }
-
-    }
-
-    @keyframes showMobile600px {
-        0% {
-            opacity: 1;
-
-        }
-
-
-
-        100% {
-            opacity: 1;
-
-        }
-
-
-    }
+  
 
     /* Class/Animations */
 
 
-    #searchBarSearching {
+    /* #searchBarSearching {
         background-color: #0000008c !important;
-    }
+    } */
 
-    body {
-        animation: showPattern 0.5s ease-in-out !important;
-    }
+   
 
 
     .modalRef .modal-content {
-        will-change: opacity, filter;
-        /*PRE RENDER THEN NOT DELAYING */
+        will-change: opacity, filter; 
         animation: showPattern 1.7s ease !important;
     }
+
+     /*PRE RENDER THEN NOT DELAYING */
 
 
 
@@ -4317,60 +4356,38 @@ body.modal-open {
         will-change: opacity, filter, translate;
     }
 
+    html img{
+        will-change: opacity, filter, translate !important;
+    }
+
+  
 
 
 
-    html img,
-    html button,
-    html input,
-    .modalRef .music-player,
-    .color-display,
-    .imgSearchSarching,
+
+    #bgImageReal,
+    html button,html image
     .musicBarAudioTrack {
         transform: none !important;
-        animation: none !important;
-        transition: none !important;
     }
 
-    #musicBar {
-        transition: none !important;
-    }
+    
 
 
 
-    .movement140 {
-        transition: none !important;
-    }
+    
 
-
-    .imgGojo:hover {
-        transform: none !important;
-    }
+    
 
 
 
     /* Song */
 
 
-
-    .artist {
-        animation: none !important;
-    }
-
-    .music-info {
-        animation: none !important;
-    }
+ 
 
 
-    @media screen and (min-width: 601px) {
-        #song #music-player:hover {
-            transform: none !important;
-        }
-
-
-
-    }
-
+    
 
 
 
@@ -4421,107 +4438,11 @@ body.modal-open {
     }
 
 
-    @media screen and (max-width: 600px) {
+ 
 
-
-        #song #music-player {
-            transform: scale(0.95) !important;
-            width: 800px;
-            /* height: 790px; */
-            overflow: hidden;
-            margin: 0px;
-            border-radius: 10px !important;
-        }
-
-        #song .music-player {
-            transform: scale(0.95) !important;
-            width: 800px;
-            /* height: 790px; */
-            overflow: hidden;
-            margin: 0px;
-            border-radius: 10px !important;
-
-
-
-        }
-
-        #song .music-player:hover {
-            transform: none !important;
-        }
-
-        #song .music-player img:hover {
-            transform: none !important;
-        }
-    }
-
-
-    /* Song */
-
-
-    /*Result searching */
-
-    .patternResultSearching:hover {
-        transform: none !important;
-    }
-
-    
-/* Slide animation class for desktop */
-.slide-left {
-    animation: slide-left 0.3s ease-in-out forwards;
-}
-
-.slide-back {
-    animation: slide-back 0.3s ease-in-out forwards;
-}
-
-/* Slide animation class for mobile */
-.slide-left-mobile {
-    animation: slide-left-mobile 0.3s ease-in-out forwards;
-}
-
-.slide-back-mobile {
-    animation: slide-back-mobile 0.3s ease-in-out forwards;
-}
-
-
-/* Slide animation class for desktop */
-.slide-left-140 {
-    animation: slide-left-140 0.3s forwards;
-}
-
-.slide-back-140 {
-    animation: slide-back-140 0.3s forwards;
-}
-
-
-.slide-left-carousel {
-    animation: slide-left-carousel 0.3s ease-in-out forwards;
-}
-
-.slide-back-carousel {
-    animation: slide-back-carousel 0.3s ease-in-out forwards;
-}
-
-
-
-.slide-left-imgPlaylist {
-    animation: slide-left-imgPlaylist 0.3s ease-in-out forwards;
-}
-
-.slide-back-imgPlaylist {
-    animation: slide-back-imgPlaylist 0.3s ease-in-out forwards;
-}
-
-
+   
 
 }
-
-
-
-
-
-
-
 
 /* Mobile não roda nada tudo lagado 🤡 */
 
@@ -4537,3 +4458,13 @@ body.modal-open {
         transform: scale(1.5) !important;
     }
 }
+
+
+ 
+  #imagePlayList{
+    animation: none !important;
+  }
+
+ /* //FULL LENGHT STRATEGY */
+
+ 
