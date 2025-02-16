@@ -4248,6 +4248,10 @@ main {
     /* Class/Animations */
 
   
+    #searchBarSearching{
+        background-color: #0000008c !important;
+    }
+
     body{
         animation: showPattern 0.5s ease-in-out !important;
     }
@@ -4295,6 +4299,12 @@ main {
     .movement140{
         will-change: opacity, filter, translate;
     }
+
+    .patternResultSearching{
+        will-change: opacity, filter, translate;
+    }
+
+   
   
 
     html img,
@@ -4353,8 +4363,26 @@ main {
     @media screen and (max-width: 800px){
              /* 100% screnn modal */
 
+
+
+             #exampleModal .modal-dialog{
+                height: initial !important; /*// change? */
+           }
+        
+           #exampleModal  .modal-dialog{
+               padding: 10px !important;
+           }
+        
+           #exampleModal  .modal-content{
+               border: 5px solid var(--bs-modal-border-color) !important;
+               border-radius: 20px  !important;
+           }
+             
+
+
+
     .modalRef .modal-dialog{
-        height: 100% !important; /*// change? */
+        height: unset !important; /*// change? */
    }
 
    .modalRef .modal-dialog{
