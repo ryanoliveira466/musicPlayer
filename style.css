@@ -4136,6 +4136,68 @@ main {
 
 
     /* Class/Animations */
+
+
+    @keyframes showPattern {
+        0% {
+            opacity: 0;
+            
+        }
+    
+        20% {
+            opacity: 0;
+        }
+    
+        40% {
+            opacity: 0;
+        }
+    
+        60% {
+            opacity: 0;
+        }
+    
+        80% {
+            opacity: 0;
+        }
+    
+        100% {
+            opacity: 1;
+           
+        }
+    
+    }
+    
+
+
+    @keyframes moveUpDisappear {
+        0% {
+            transform: translateY(0);
+           
+        }
+    
+        100% {
+            transform: translateY(-200px);
+           
+        }
+    }
+    
+    
+    
+    @keyframes moveUpDisappearBack {
+        0% {
+            transform: translateY(-200px);
+           
+        }
+    
+        100% {
+            transform: translateY(0);
+          
+        }
+    }
+
+
+
+
     @keyframes show {
         0% {
             opacity: 1;
@@ -4184,7 +4246,24 @@ main {
     /* Class/Animations */
 
 
+  
 
+    .modalRef .modal-content{
+        backdrop-filter: brightness(0.5) !important;
+        background-color: rgb(14 13 13 / 82%) !important;
+        
+    }
+
+
+    #staticBackdrop{
+        backdrop-filter: brightness(0.5) !important;
+        background-color: rgb(14 13 13 / 82%) !important;
+    }
+
+    #searchingDiv{
+        backdrop-filter: brightness(0.5) !important;
+        background-color: rgb(14 13 13 / 82%) !important;
+    }
 
 
     html img,
@@ -4192,15 +4271,21 @@ main {
     html input,
     .modalRef .music-player,
     .color-display,
-    .imgSearchSarching {
+    .imgSearchSarching,.musicBarAudioTrack{
         transform: none !important;
         animation: none !important;
         transition: none !important;
-
-
-
     }
 
+    #musicBar{
+        transition: none !important;
+    }
+
+
+
+    .movement140{
+        transition: none !important;
+    }
 
 
     .imgGojo:hover {
@@ -4278,6 +4363,70 @@ main {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+    /* Slide animation class for desktop */
+.slide-left {
+    animation: slide-left 0s ease-in-out forwards;
+}
+
+.slide-back {
+    animation: slide-back 0s ease-in-out forwards;
+}
+
+/* Slide animation class for mobile */
+.slide-left-mobile {
+    animation: slide-left-mobile 0s ease-in-out forwards;
+}
+
+.slide-back-mobile {
+    animation: slide-back-mobile 0s ease-in-out forwards;
+}
+
+/* Slide animation class for desktop */
+.slide-left-140 {
+    animation: slide-left-140 0s forwards;
+}
+
+.slide-back-140 {
+    animation: slide-back-140 0s forwards;
+}
+
+.slide-left-carousel {
+    animation: slide-left-carousel 0s ease-in-out forwards;
+}
+
+.slide-back-carousel {
+    animation: slide-back-carousel 0s ease-in-out forwards;
+}
+
+.slide-left-imgPlaylist {
+    animation: slide-left-imgPlaylist 0s ease-in-out forwards;
+}
+
+.slide-back-imgPlaylist {
+    animation: slide-back-imgPlaylist 0s ease-in-out forwards;
+}
+
+.box {
+    animation: moveUpDisappear 0s forwards;
+}
+
+.boxBack {
+    animation: moveUpDisappearBack 0s forwards;
+}
+
+    
 
 }
 
