@@ -4133,6 +4133,10 @@ main {
 
 @media (pointer: coarse) {
 
+    #configButton{
+        pointer-events: none !important;
+    }
+
 
  
    
@@ -4379,11 +4383,18 @@ main {
            }
              
 
+  /* //dvh */
 
+    /* .modalRef .modal-dialog{
+        height: 100dvh !important;  change?
+   } */
 
-    .modalRef .modal-dialog{
-        height: unset !important; /*// change? */
+   .modalRef .modal-content{
+    height: unset !important;
    }
+
+
+   /* //dvh */
 
    .modalRef .modal-dialog{
        padding: 0px !important;
@@ -4442,6 +4453,59 @@ main {
         transform: none !important;
     }
 
+}
+
+
+
+
+
+
+
+/* Slide animation class for desktop */
+.slide-left {
+    animation: slide-left 0.3s ease-in-out forwards;
+}
+
+.slide-back {
+    animation: slide-back 0.3s ease-in-out forwards;
+}
+
+/* Slide animation class for mobile */
+.slide-left-mobile {
+    animation: slide-left-mobile 0.3s ease-in-out forwards;
+}
+
+.slide-back-mobile {
+    animation: slide-back-mobile 0.3s ease-in-out forwards;
+}
+
+
+/* Slide animation class for desktop */
+.slide-left-140 {
+    animation: slide-left-140 0.3s forwards;
+}
+
+.slide-back-140 {
+    animation: slide-back-140 0.3s forwards;
+}
+
+
+.slide-left-carousel {
+    animation: slide-left-carousel 0.3s ease-in-out forwards;
+}
+
+.slide-back-carousel {
+    animation: slide-back-carousel 0.3s ease-in-out forwards;
+}
+
+
+
+.slide-left-imgPlaylist {
+    animation: slide-left-imgPlaylist 0.3s ease-in-out forwards;
+}
+
+.slide-back-imgPlaylist {
+    animation: slide-back-imgPlaylist 0.3s ease-in-out forwards;
 }
 
 
