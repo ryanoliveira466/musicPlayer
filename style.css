@@ -3934,9 +3934,11 @@ html,
 body {
     margin: 0;
     padding: 0;
+    /* height: 100vh !important; */
     min-height: 100vh !important;
     box-sizing: border-box;
 }
+
 
 
 
@@ -4130,16 +4132,22 @@ main {
 
 /* Mobile não roda nada tudo lagado 🤡 */
 
+/* Prevent scroll */
+
+body.modal-open {
+    position: fixed !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    height: 100% !important;
+}
+
 
 @media (pointer: coarse) {
 
-    #configButton{
+
+    #configButton {
         pointer-events: none !important;
     }
-
-
- 
-   
 
     /* Class/Animations */
 
@@ -4147,57 +4155,57 @@ main {
     @keyframes showPattern {
         0% {
             opacity: 0;
-            
+
         }
-    
+
         20% {
             opacity: 0;
         }
-    
+
         40% {
             opacity: 0;
         }
-    
+
         60% {
             opacity: 0;
         }
-    
+
         80% {
             opacity: 0;
         }
-    
+
         100% {
             opacity: 1;
-           
+
         }
-    
+
     }
-    
+
 
 
     @keyframes moveUpDisappear {
         0% {
             transform: translateY(0);
-           
+
         }
-    
+
         100% {
             transform: translateY(-200px);
-           
+
         }
     }
-    
-    
-    
+
+
+
     @keyframes moveUpDisappearBack {
         0% {
             transform: translateY(-200px);
-           
+
         }
-    
+
         100% {
             transform: translateY(0);
-          
+
         }
     }
 
@@ -4224,7 +4232,7 @@ main {
 
         }
 
-         
+
 
         100% {
             opacity: 1;
@@ -4239,7 +4247,7 @@ main {
 
         }
 
-         
+
 
         100% {
             opacity: 1;
@@ -4251,84 +4259,86 @@ main {
 
     /* Class/Animations */
 
-  
-    #searchBarSearching{
+
+    #searchBarSearching {
         background-color: #0000008c !important;
     }
 
-    body{
+    body {
         animation: showPattern 0.5s ease-in-out !important;
     }
 
-    
-    .modalRef .modal-content{
-        will-change: opacity, filter; /*PRE RENDER THEN NOT DELAYING */
+
+    .modalRef .modal-content {
+        will-change: opacity, filter;
+        /*PRE RENDER THEN NOT DELAYING */
         animation: showPattern 1.7s ease !important;
     }
 
 
 
-    #staticBackdrop{
+    #staticBackdrop {
         will-change: opacity, filter, translate;
     }
 
-    #searchingDiv{
+    #searchingDiv {
         will-change: opacity, filter, translate;
     }
 
-    #resultSearching{
+    #resultSearching {
         will-change: opacity, filter, translate;
     }
 
-    .searchingDivHeader{
+    .searchingDivHeader {
         will-change: opacity, filter, translate;
     }
 
-    #song{
+    #song {
         will-change: opacity, filter, translate;
     }
 
-    #showPlayListImageDiv{
+    #showPlayListImageDiv {
         will-change: opacity, filter, translate;
     }
 
-    #carouselExampleFade{
+    #carouselExampleFade {
         will-change: opacity, filter, translate;
     }
 
-    #musicBar{
+    #musicBar {
         will-change: opacity, filter, translate;
     }
 
-    .movement140{
+    .movement140 {
         will-change: opacity, filter, translate;
     }
 
-    .patternResultSearching{
+    .patternResultSearching {
         will-change: opacity, filter, translate;
     }
 
-   
-  
+
+
 
     html img,
     html button,
     html input,
     .modalRef .music-player,
     .color-display,
-    .imgSearchSarching,.musicBarAudioTrack{
+    .imgSearchSarching,
+    .musicBarAudioTrack {
         transform: none !important;
         animation: none !important;
         transition: none !important;
     }
 
-    #musicBar{
+    #musicBar {
         transition: none !important;
     }
 
 
 
-    .movement140{
+    .movement140 {
         transition: none !important;
     }
 
@@ -4357,56 +4367,57 @@ main {
             transform: none !important;
         }
 
-       
+
 
     }
 
 
 
 
-    @media screen and (max-width: 800px){
-             /* 100% screnn modal */
+    @media screen and (max-width: 800px) {
+        /* 100% screnn modal */
 
 
 
-             #exampleModal .modal-dialog{
-                height: initial !important; /*// change? */
-           }
-        
-           #exampleModal  .modal-dialog{
-               padding: 10px !important;
-           }
-        
-           #exampleModal  .modal-content{
-               border: 5px solid var(--bs-modal-border-color) !important;
-               border-radius: 20px  !important;
-           }
-             
+        #exampleModal .modal-dialog {
+            height: initial !important;
+            /*// change? */
+        }
 
-  /* //dvh */
+        #exampleModal .modal-dialog {
+            padding: 10px !important;
+        }
 
-    /* .modalRef .modal-dialog{
+        #exampleModal .modal-content {
+            border: 5px solid var(--bs-modal-border-color) !important;
+            border-radius: 20px !important;
+        }
+
+
+        /* //dvh */
+
+        /* .modalRef .modal-dialog{
         height: 100dvh !important;  change?
    } */
 
-   .modalRef .modal-content{
-    height: unset !important;
-   }
+        .modalRef .modal-content {
+            height: 100dvh !important;
+        }
 
 
-   /* //dvh */
+        /* //dvh */
 
-   .modalRef .modal-dialog{
-       padding: 0px !important;
-   }
+        .modalRef .modal-dialog {
+            padding: 0px !important;
+        }
 
-   .modalRef .modal-content{
-       border: 0px !important;
-       border-radius: 0px !important;
-   }
+        .modalRef .modal-content {
+            border: 0px !important;
+            border-radius: 0px !important;
+        }
 
 
-   /* 100% screnn modal */
+        /* 100% screnn modal */
     }
 
 
@@ -4453,14 +4464,7 @@ main {
         transform: none !important;
     }
 
-}
-
-
-
-
-
-
-
+    
 /* Slide animation class for desktop */
 .slide-left {
     animation: slide-left 0.3s ease-in-out forwards;
@@ -4510,18 +4514,26 @@ main {
 
 
 
+}
+
+
+
+
+
+
+
+
 /* Mobile não roda nada tudo lagado 🤡 */
 
 
 
 
 @media (max-width: 600px) {
-    #musicBarAudioTrack{
+    #musicBarAudioTrack {
         height: 20px;
     }
 
-    #musicBarCircle img{
+    #musicBarCircle img {
         transform: scale(1.5) !important;
     }
 }
-
