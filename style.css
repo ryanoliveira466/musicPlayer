@@ -2928,7 +2928,7 @@ footer {
     top: 0;
     left: 0;
     z-index: 77;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(20px);
     transition: all 0.5s ease-in-out;
 }
 
@@ -4134,6 +4134,7 @@ main {
 @media (pointer: coarse) {
 
 
+ 
    
 
     /* Class/Animations */
@@ -4252,35 +4253,49 @@ main {
     }
 
     
-
-
-    .modalRef{
+    .modalRef .modal-content{
+        will-change: opacity, filter; /*PRE RENDER THEN NOT DELAYING */
         animation: showPattern 1.7s ease !important;
     }
 
-    .modalRef .modal-content{
-        border: 0px !important;
-    }
-  
-
-    .modalRef .modal-content{
-        backdrop-filter: brightness(0.5) !important;
-        background-color: rgb(14 13 13 / 82%) !important;
-        
-    }
 
 
     #staticBackdrop{
-        backdrop-filter: brightness(0.5) !important;
-        background-color: rgb(14 13 13 / 82%) !important;
-        
+        will-change: opacity, filter, translate;
     }
 
     #searchingDiv{
-        backdrop-filter: brightness(0.5) !important;
-        background-color: rgb(14 13 13 / 82%) !important;
+        will-change: opacity, filter, translate;
     }
 
+    #resultSearching{
+        will-change: opacity, filter, translate;
+    }
+
+    .searchingDivHeader{
+        will-change: opacity, filter, translate;
+    }
+
+    #song{
+        will-change: opacity, filter, translate;
+    }
+
+    #showPlayListImageDiv{
+        will-change: opacity, filter, translate;
+    }
+
+    #carouselExampleFade{
+        will-change: opacity, filter, translate;
+    }
+
+    #musicBar{
+        will-change: opacity, filter, translate;
+    }
+
+    .movement140{
+        will-change: opacity, filter, translate;
+    }
+  
 
     html img,
     html button,
@@ -4328,13 +4343,35 @@ main {
             transform: none !important;
         }
 
+       
+
     }
 
 
 
+
+    @media screen and (max-width: 800px){
+             /* 100% screnn modal */
+
+    .modalRef .modal-dialog{
+        height: 100% !important; /*// change? */
+   }
+
+   .modalRef .modal-dialog{
+       padding: 0px !important;
+   }
+
+   .modalRef .modal-content{
+       border: 0px !important;
+       border-radius: 0px !important;
+   }
+
+
+   /* 100% screnn modal */
+    }
+
+
     @media screen and (max-width: 600px) {
-
-
 
 
         #song #music-player {
@@ -4377,75 +4414,22 @@ main {
         transform: none !important;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /* Slide animation class for desktop */
-.slide-left {
-    animation: slide-left 0.1s ease-in-out forwards;
-}
-
-.slide-back {
-    animation: slide-back 0.1s ease-in-out forwards;
-}
-
-/* Slide animation class for mobile */
-.slide-left-mobile {
-    animation: slide-left-mobile 0.1s ease-in-out forwards;
-}
-
-.slide-back-mobile {
-    animation: slide-back-mobile 0.1s ease-in-out forwards;
-}
-
-/* Slide animation class for desktop */
-.slide-left-140 {
-    animation: slide-left-140 0.1s forwards;
-}
-
-.slide-back-140 {
-    animation: slide-back-140 0.1s forwards;
-}
-
-.slide-left-carousel {
-    animation: slide-left-carousel 0.1s ease-in-out forwards;
-}
-
-.slide-back-carousel {
-    animation: slide-back-carousel 0.1s ease-in-out forwards;
-}
-
-.slide-left-imgPlaylist {
-    animation: slide-left-imgPlaylist 0.1s ease-in-out forwards;
-}
-
-.slide-back-imgPlaylist {
-    animation: slide-back-imgPlaylist 0.1s ease-in-out forwards;
-}
-
-.box {
-    animation: moveUpDisappear 0.1s forwards;
-}
-
-.boxBack {
-    animation: moveUpDisappearBack 0.1s forwards;
-}
-
-    
-
 }
 
 
 
 /* Mobile não roda nada tudo lagado 🤡 */
+
+
+
+
+@media (max-width: 600px) {
+    #musicBarAudioTrack{
+        height: 20px;
+    }
+
+    #musicBarCircle img{
+        transform: scale(1.5) !important;
+    }
+}
+
