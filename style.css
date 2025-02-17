@@ -3759,7 +3759,7 @@ body div {
     0% {
         transform: translateY(0);
         opacity: 1;
-         height: 80vh;  /*500px */
+         height: 50vh;  /*500px */
     }
 
     10% {
@@ -3819,7 +3819,7 @@ body div {
     100% {
         transform: translateY(0);
         opacity: 1;
-        height: 80vh; /*500px */
+        height: 50vh; /*500px */
     }
 }
 
@@ -3854,7 +3854,7 @@ body div {
     100% {
         transform: translateX(0);
         opacity: 0;
-        height: 40vh;
+        height: 30vh;
     }
 }
 
@@ -3862,7 +3862,7 @@ body div {
     0% {
         transform: translateX(0);
         opacity: 0;
-         height: 40vh;  /*500px */
+         height: 30vh;  /*500px */
     }
 
     10% {
@@ -3893,6 +3893,71 @@ body div {
         margin: 0;
     }
 }
+
+
+
+
+
+
+@keyframes slide-back-imgPlaylist-Just-Take-Effect {
+    0% {
+        transform: translateY(100vw);
+        opacity: 0;
+        height: 0;
+        padding: 0;
+        margin: 0;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+        height: 50vh; /*500px */
+    }
+}
+
+
+
+@keyframes hideGambiarra {
+    0% {
+        
+        opacity: 0;
+         
+    }
+
+    
+
+    100% {
+        
+        opacity: 1;
+   
+    }
+}
+
+
+.slide-back-imgPlaylist-Just-Take-Effect{
+    animation: slide-back-imgPlaylist-Just-Take-Effect 0s forwards;
+}
+
+.hideGambiarra{
+    animation: hideGambiarra 5s ease-in-out;
+}
+
 
 /* GAMBIARRA */
 
@@ -4485,6 +4550,10 @@ main {
             transform: none !important;
         }
 
+        #song{
+            backdrop-filter: none !important;
+        }
+
 
 
     }
@@ -4570,6 +4639,11 @@ main {
         #song .music-player img:hover {
             transform: none !important;
         }
+
+        #newSong img{
+            width: 200px !important;
+            height: 200px !important;
+        }
     }
 
 
@@ -4581,6 +4655,23 @@ main {
     .patternResultSearching:hover {
         transform: none !important;
     }
+
+
+
+
+    #song{
+        overflow-x: hidden !important;
+        overflow-y: scroll !important;
+        flex-direction: column;
+        height: 730px !important;
+        border: 15px solid transparent !important;
+    }
+
+    #song::-webkit-scrollbar{
+        display: none !important;
+    }
+
+   
 
 
 }
@@ -4608,5 +4699,10 @@ main {
   }
 
  /* //FULL LENGHT STRATEGY */
+
+ #showPlayListImageDiv{
+    transform: translateY(0);
+    height: 50vh;
+ }
 
  

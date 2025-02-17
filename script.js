@@ -3042,7 +3042,7 @@ arraySong.forEach((song) => {
 
     document.getElementById(`audioPlay${song.nameSong}`).addEventListener('click', function () {
 
-        
+
 
 
 
@@ -3125,9 +3125,9 @@ arraySong.forEach((song) => {
 
             if (arraySong[i].nameSong == song.nameSong) {
                 document.getElementById(`audio${song.nameSong}`).play();
-               //
-               document.getElementById(`soundWave${arraySong[i].nameSong}`).style.display = 'flex'
-               //
+                //
+                document.getElementById(`soundWave${arraySong[i].nameSong}`).style.display = 'flex'
+                //
             }
 
             else {
@@ -3278,14 +3278,14 @@ function audioBtnFunction(song) {
             if (arraySong[i].nameSong == song.nameSong) {
                 document.getElementById(`audio${song.nameSong}`).play();
                 //
-               document.getElementById(`soundWave${arraySong[i].nameSong}`).style.display = 'flex'
-               //
+                document.getElementById(`soundWave${arraySong[i].nameSong}`).style.display = 'flex'
+                //
             }
 
             else {
                 //
-               document.getElementById(`soundWave${arraySong[i].nameSong}`).style.display = 'none'
-               //
+                document.getElementById(`soundWave${arraySong[i].nameSong}`).style.display = 'none'
+                //
                 document.getElementById(`audio${arraySong[i].nameSong}`).pause()
                 document.getElementById(`audioPlay${arraySong[i].nameSong}`).style.display = 'flex'
                 document.getElementById(`audioPause${arraySong[i].nameSong}`).style.display = 'none'
@@ -3459,13 +3459,16 @@ arraySong.forEach((song) => {
         offsetX = event.touches[0].clientX; - volumeCircle.offsetLeft;
         console.log('oi');
 
+
+
+
     });
 
     // Mouse move event to move the element
     document.addEventListener("touchmove", function (event) {
         if (isDragging2) {
 
-            document.getElementById('song').style.overflowX = 'hidden'
+
             const currentAudioSong = document.getElementById(`audio${currentId}`)
 
 
@@ -3619,13 +3622,15 @@ function volumeBtnAudio(song) {
         offsetX = event.touches[0].clientX; - volumeCircle.offsetLeft;
         console.log('oi');
 
+        console.log('asa');
+
     });
 
     // Mouse move event to move the element
     document.addEventListener("touchmove", function (event) {
         if (isDragging2) {
 
-            document.getElementById('song').style.overflowX = 'hidden'
+
             const currentAudioSong = document.getElementById(`audio${currentId}`)
 
 
@@ -4458,6 +4463,7 @@ arraySong.forEach(song => {
 
             else {
                 document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRightMax.png'
+                document.getElementById('musicBarCircle').style.left = '0px'
             }
 
 
@@ -4474,49 +4480,51 @@ arraySong.forEach(song => {
 function nextSongAuto() {
 
     console.log('teste next song auto');
-    
+
 
     arraySong.forEach(song => {
         document.getElementById(`audio${song.nameSong}`).addEventListener('ended', function () {
-    
+
             let nextSongPlaylist;
-    
+
             if (flagShuffle == false) {
-    
+
                 for (var i = 0; i < arraySong.length; i++) {
                     if (currentId == arraySong[i].nameSong) {
                         nextSongPlaylist = i + 1
                     }
                 }
-    
+
                 if (((nextSongPlaylist) > (arraySong.length - 1)) == false) {
-    
+
                     document.getElementById(`audio${arraySong[nextSongPlaylist].nameSong}`).load()
                     document.getElementById(`audioPlay${arraySong[nextSongPlaylist].nameSong}`).click()
-    
+
                     //
                     document.getElementById('bgImageReal').src = `${document.getElementById(`musicBarImg`).src}`;
-    
+
                     document.getElementById('bgImageReal').style.pointerEvents = 'none'
-    
+
                     setTimeout(function () {
                         document.getElementById('bgImageReal').style.pointerEvents = 'all'
                     }, 1000)
                     //
-    
+
                 }
-    
+
                 else {
                     document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRightMax.png'
+                    document.getElementById('musicBarCircle').style.left = '0px'
+
                 }
-    
-    
-    
+
+
+
             }
         })
-    
+
     });
-    
+
 }
 
 
@@ -5640,7 +5648,7 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
                     audioBtnFunction(positionArray)
                     volumeBtnAudio(positionArray)
                     shuffleSong(positionArray)
-                    
+
 
                 }
 
@@ -5805,7 +5813,7 @@ document.getElementById('btnViewSong'), addEventListener('click', function () {
 
 
 
-           
+
 
 
 
@@ -6526,7 +6534,7 @@ document.getElementById('musicBarCircle').addEventListener('touchstart', functio
 document.getElementById('searchBar').addEventListener('click', function () {
 
 
-     
+
     this.disabled = true
     document.getElementById('searchBarSearching').value = ""
     document.getElementById('resultSearching').innerHTML = ""
@@ -6599,7 +6607,7 @@ document.getElementById('searchBar').addEventListener('click', function () {
 
     document.getElementById(`resultSearching`).scrollTo(0, 0)
 
-    
+
 
 
 })
@@ -6614,7 +6622,7 @@ document.getElementById('searchingDivExpand').addEventListener('click', function
 
 
 
- 
+
 
     const buttonExpand = this;  // "this" refers to the button that was clicked
 
@@ -6679,7 +6687,7 @@ document.getElementById('searchingDivExpand').addEventListener('click', function
 document.getElementById('searchBarSearching').addEventListener('input', function () {
 
 
-   
+
 
     document.getElementById('resultSearching').innerHTML = ""
     let textFromInput = document.getElementById('searchBarSearching').value
@@ -6834,6 +6842,7 @@ document.getElementById('expandColoredImageBtn').addEventListener('click', funct
 
     document.getElementById('blackCover').style.display = 'flex'
     document.getElementById('header').style.display = 'none'
+    document.getElementById('musicBar').style.display = 'none'
 
     expandBack.style.display = 'flex'
     divImage.style.display = 'flex'
@@ -6931,6 +6940,7 @@ document.getElementById('expandColoredImageBtnBack').addEventListener('click', f
 
     document.getElementById('blackCover').style.display = 'none'
     document.getElementById('header').style.display = 'flex'
+    document.getElementById('musicBar').style.display = 'flex'
 
 
     const expandBack = document.getElementById('expandColoredImageBtnBack')
@@ -7780,7 +7790,7 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
             songDiv.style.setProperty('scroll-behavior', 'auto', 'important');
             songDiv.scrollLeft = 0; // Reset scroll position
             songDiv.style.setProperty('scroll-behavior', 'smooth', 'important'); // Reapply smooth scrolling
-            
+
 
         })
 
@@ -8481,14 +8491,17 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('musicOffCan').innerHTML = ''
 
     // document.getElementById('header').classList.add('showInitialBar')
-     
+
 
     // //Gambiarra início
-    // setTimeout(() => {
-    //     document.getElementById('showPlayListImageDiv').classList.add('slide-back-imgPlaylist')
-    // }, 1);
+    // const element = document.getElementById('showPlayListImageDiv');
+    // // element.style.transform = "translateY(0)";
+    // // element.style.height = '50vh'
+    //  element.classList.add('slide-back-imgPlaylist-Just-Take-Effect');
     // //Gambiarra início
-    
+
+    //TransalteY na classe e funcionou
+
 
     for (var i = 0; i < arrayPlayList.length; i++) {
         let name = arrayPlayList[i][0].namePlaylist
@@ -8817,7 +8830,7 @@ document.addEventListener('DOMContentLoaded', function () {
             songDiv.style.setProperty('scroll-behavior', 'auto', 'important');
             songDiv.scrollLeft = 0; // Reset scroll position
             songDiv.style.setProperty('scroll-behavior', 'smooth', 'important'); // Reapply smooth scrolling
-            
+
 
         })
 
@@ -9203,14 +9216,14 @@ document.addEventListener('DOMContentLoaded', function () {
     allArraySongFunctions()
 
 
-   
-        //BUGJUMPING
-        let idForSongJumpingOneSong = arrayPlayList[0][0].indexPlayList
-        document.getElementById(`${idForSongJumpingOneSong}Img`).click()
-        //BUGJUMPING
 
-        
-    
+    //BUGJUMPING
+    let idForSongJumpingOneSong = arrayPlayList[0][0].indexPlayList
+    document.getElementById(`${idForSongJumpingOneSong}Img`).click()
+    //BUGJUMPING
+
+
+
 })
 
 
@@ -9233,7 +9246,7 @@ function allArraySongFunctions() {
 
         document.getElementById(`audioPlay${song.nameSong}`).addEventListener('click', function () {
 
-           
+
 
 
             const imageAudioBar = document.getElementById('audioVolumeMusicBarImg')
@@ -9461,7 +9474,7 @@ function allArraySongFunctions() {
         document.addEventListener("touchmove", function (event) {
             if (isDragging2) {
 
-                document.getElementById('song').style.overflowX = 'hidden'
+
                 const currentAudioSong = document.getElementById(`audio${currentId}`)
 
 
@@ -9574,6 +9587,7 @@ function allArraySongFunctions() {
 
                 else {
                     document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRightMax.png'
+                    document.getElementById('musicBarCircle').style.left = '0px'
                 }
 
 
@@ -9610,7 +9624,7 @@ document.getElementById('removeCarousel').addEventListener('click', function () 
             element.classList.remove('slide-back-height-carousel')
             element.classList.add('slide-left-height-carousel')
         });
-        
+
 
 
         imgPlayList.classList.remove('slide-left-imgPlaylist')
@@ -9697,6 +9711,7 @@ document.getElementById('removeSong').addEventListener('click', function () {
             // Smooth scroll to the start (0)
             song.scrollTo({
                 left: 0,
+                top:0,
                 behavior: 'smooth'
             });
         }, 1000); // Delay of 1000ms (1 second)
@@ -9938,4 +9953,4 @@ document.getElementById('imageMode').addEventListener('click', function () {
 
 })
 
- 
+
