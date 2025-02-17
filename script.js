@@ -8480,14 +8480,14 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('focus', fun
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('musicOffCan').innerHTML = ''
 
-    document.getElementById('header').classList.add('showInitialBar')
+    // document.getElementById('header').classList.add('showInitialBar')
      
 
-    //Gambiarra início
-    setTimeout(() => {
-        document.getElementById('showPlayListImageDiv').classList.add('slide-back-imgPlaylist')
-    }, 1);
-    //Gambiarra início
+    // //Gambiarra início
+    // setTimeout(() => {
+    //     document.getElementById('showPlayListImageDiv').classList.add('slide-back-imgPlaylist')
+    // }, 1);
+    // //Gambiarra início
     
 
     for (var i = 0; i < arrayPlayList.length; i++) {
