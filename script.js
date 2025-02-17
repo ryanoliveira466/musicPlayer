@@ -7789,6 +7789,7 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
             // Temporarily remove smooth scrolling
             songDiv.style.setProperty('scroll-behavior', 'auto', 'important');
             songDiv.scrollLeft = 0; // Reset scroll position
+            songDiv.scrollTop = 0;
             songDiv.style.setProperty('scroll-behavior', 'smooth', 'important'); // Reapply smooth scrolling
 
 
@@ -8829,6 +8830,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Temporarily remove smooth scrolling
             songDiv.style.setProperty('scroll-behavior', 'auto', 'important');
             songDiv.scrollLeft = 0; // Reset scroll position
+            songDiv.scrollTop = 0;
             songDiv.style.setProperty('scroll-behavior', 'smooth', 'important'); // Reapply smooth scrolling
 
 
@@ -9725,6 +9727,8 @@ document.getElementById('removeSong').addEventListener('click', function () {
     var imgButton = document.getElementById('imgRemoveSong');
     var screenWidth = document.documentElement.clientWidth;
 
+    
+
     console.log(screenWidth);
 
 
@@ -9742,7 +9746,7 @@ document.getElementById('removeSong').addEventListener('click', function () {
             setTimeout(() => {
                 song.classList.add("hidden");
                 this.disabled = false
-                song.style.setProperty('pointer-events', 'auto', 'important');
+                //  song.style.setProperty('pointer-events', 'auto', 'important');
             }, 2000);
         } else {
 
@@ -9777,7 +9781,7 @@ document.getElementById('removeSong').addEventListener('click', function () {
             setTimeout(() => {
                 song.classList.add("hidden");
                 this.disabled = false
-                song.style.setProperty('pointer-events', 'auto', 'important');
+                // song.style.setProperty('pointer-events', 'auto', 'important');
             }, 2000);
         } else {
 

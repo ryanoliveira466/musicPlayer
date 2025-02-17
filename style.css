@@ -181,7 +181,7 @@ html a{
 } */
 
 
-@media (hover: hover) {
+/* @media (hover: hover) {
 
     html,
     body {
@@ -213,7 +213,7 @@ html a{
     html a {
         cursor: url(cursor/pointer.png) 16 16, pointer !important;
     }
-}
+} */
 
 
 /* CURSOR */
@@ -3927,7 +3927,7 @@ body div {
     100% {
         transform: translateY(0);
         opacity: 1;
-        height: 50vh; /*500px */
+        height: 70vh; /*500px */
     }
 }
 
