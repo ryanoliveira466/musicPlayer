@@ -3759,7 +3759,7 @@ body div {
     0% {
         transform: translateY(0);
         opacity: 1;
-         height: 50vh;  /*500px */
+         height: 70vh;  /*500px */
     }
 
     10% {
@@ -3819,7 +3819,7 @@ body div {
     100% {
         transform: translateY(0);
         opacity: 1;
-        height: 50vh; /*500px */
+        height: 70vh; /*500px */
     }
 }
 
@@ -4709,7 +4709,7 @@ main {
 
  #showPlayListImageDiv{
     transform: translateY(0);
-    height: 50vh;
+    height: 70vh;
  }
 
  
