@@ -4451,8 +4451,7 @@ main {
 
 
     .modalRef .modal-content {
-        will-change: opacity, filter;
-       
+        will-change: opacity, filter, translate;
         animation: showPattern 1.7s ease !important;
     }
 
@@ -4473,6 +4472,10 @@ main {
     }
 
     .searchingDivHeader {
+        will-change: opacity, filter, translate;
+    }
+
+    #height260{
         will-change: opacity, filter, translate;
     }
 
@@ -4609,6 +4612,10 @@ main {
 
 
     @media screen and (max-width: 600px) {
+
+        #song{
+            backdrop-filter: none !important;
+        }
 
 
         #song #music-player {

@@ -1,3 +1,7 @@
+/* Mobile não roda nada tudo lagado 🤡 */
+
+ 
+
 @media (pointer: coarse) {
 
 
@@ -128,8 +132,7 @@
 
 
     .modalRef .modal-content {
-        will-change: opacity, filter;
-       
+        will-change: opacity, filter, translate;
         animation: showPattern 1.7s ease !important;
     }
 
@@ -150,6 +153,10 @@
     }
 
     .searchingDivHeader {
+        will-change: opacity, filter, translate;
+    }
+
+    #height260{
         will-change: opacity, filter, translate;
     }
 
@@ -286,6 +293,10 @@
 
 
     @media screen and (max-width: 600px) {
+
+        #song{
+            backdrop-filter: none !important;
+        }
 
 
         #song #music-player {
