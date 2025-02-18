@@ -4679,6 +4679,19 @@ main {
     }
 
    
+    #song {
+        scroll-snap-type: both mandatory; /* Enables snapping in both directions */
+    }
+    
+    #song .music-player {
+        scroll-snap-align: center;
+    }
+    
+    
+    #newSong{
+        /* display: none; */
+        scroll-snap-align: end;
+    }
 
 
 }
