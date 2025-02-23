@@ -4670,7 +4670,7 @@ main {
         overflow-x: hidden !important;
         overflow-y: scroll !important;
         flex-direction: column;
-        height: 730px;
+        height: 730px !important;
         border: 15px solid transparent !important;
     }
 
