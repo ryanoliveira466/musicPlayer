@@ -4725,4 +4725,10 @@ main {
     height: 70vh;
  }
 
+
+
+
+#imageViewSong .music-info{
+    animation: none;
+ }
  
