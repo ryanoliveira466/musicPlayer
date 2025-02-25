@@ -4112,7 +4112,8 @@ html button {
 }
 
 #searchBar {
-    transition: transform .3s ease-out !important;
+    /* transition: transform .3s ease-out !important; */
+     transition: transform 0.1s ease;
 }
 
 .imgSearch:hover {
