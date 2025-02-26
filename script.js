@@ -7520,14 +7520,20 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
 
 
             
-            let elementImage = document.getElementById('imagePlayList')
-           
-            elementImage.style.display = 'none' // Remove the class
+            let elementImage = document.getElementById('imagePlayList');
 
-            // Wait for a short delay before re-adding the class
-            setTimeout(() => {
-                elementImage.style.display = 'flex' // Re-add the class to trigger the animation again
-             }, 0.01); // Small delay ensures browser registers the change
+            // Check if the pointer is coarse (touchscreen device)
+            if (window.matchMedia("(pointer: coarse)").matches) {
+                elementImage.style.display = 'flex'; // Always flex on touch devices
+            } else {
+                elementImage.style.display = 'none'; // Remove the class
+            
+                // Wait for a short delay before re-adding the class
+                setTimeout(() => {
+                    elementImage.style.display = 'flex'; // Re-add the class to trigger the animation again
+                }, 0.01); // Small delay ensures browser registers the change
+            }
+            
             
 
 
@@ -8568,14 +8574,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
             
 
-            let elementImage = document.getElementById('imagePlayList')
-           
-            elementImage.style.display = 'none' // Remove the class
+            let elementImage = document.getElementById('imagePlayList');
 
-            // Wait for a short delay before re-adding the class
-            setTimeout(() => {
-                elementImage.style.display = 'flex' // Re-add the class to trigger the animation again
-             }, 0.01); // Small delay ensures browser registers the change
+            // Check if the pointer is coarse (touchscreen device)
+            if (window.matchMedia("(pointer: coarse)").matches) {
+                elementImage.style.display = 'flex'; // Always flex on touch devices
+            } else {
+                elementImage.style.display = 'none'; // Remove the class
+            
+                // Wait for a short delay before re-adding the class
+                setTimeout(() => {
+                    elementImage.style.display = 'flex'; // Re-add the class to trigger the animation again
+                }, 0.01); // Small delay ensures browser registers the change
+            }
+            
 
 
 

@@ -4579,10 +4579,24 @@ main {
     }
 
 
+    .cropper-crop-box img{
+        transition: transform 0s ease !important;
+     }
+    
 
-
-    html img,
+     
+    #staticBackdrop img,
+    #showPlayListImageDiv img,
+    #musicBar img,
+    .rounded,
+    #image-previewEdit,
+    #image-previewSongEdit,
+    #header img,
+    .imgSearch,
+    #resultSearching img,
+    .music-player img,
     html button,
+    html button img,
     html input,
     .modalRef .music-player,
     .color-display,
@@ -4592,6 +4606,10 @@ main {
         animation: none !important;
         transition: none !important;
     }
+
+   
+
+    
 
     #musicBar {
         transition: none !important;
@@ -4808,6 +4826,9 @@ main {
  #imageViewSong .music-info{
     animation: none;
  }
+
+
+
 
  
 
