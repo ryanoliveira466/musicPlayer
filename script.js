@@ -1388,6 +1388,23 @@ document.getElementById('btnView'), addEventListener('click', function () {
 
 
 
+                //
+
+                let actualImageUser =  null;
+                let addClassActiveForImage;
+
+                if(document.getElementById(arrayImagesColor[deletedElement].id).className.includes("active")){
+                    actualImageUser = true
+                }
+
+                else{
+                    actualImageUser = false
+                    addClassActiveForImage = document.getElementsByClassName('carousel-item active')[0].id;
+                }
+
+
+                //
+
 
                 document.getElementById('imageView').style.pointerEvents = 'all'
                 document.getElementById('exampleModalView').style.pointerEvents = 'all'
@@ -1495,162 +1512,190 @@ document.getElementById('btnView'), addEventListener('click', function () {
                 //     flagAnimationChange = true
                 //  }
 
-                indexNextActive = 0
-
-                indexNextActive = Math.floor(Math.random() * arrayImagesColor.length);
 
 
 
+                if (actualImageUser == false) {
+                    console.log('Não mudar a imagem se o usuário estiver nela')
+                    document.getElementById(`${addClassActiveForImage}Img`).style.animation = 'none'
+                    document.getElementById(addClassActiveForImage).classList.add('active')
 
+                    setTimeout(() => {
+                        document.getElementById(`${addClassActiveForImage}Img`).style.setProperty(
+                            "animation", 
+                            "show 0s ease alternate", 
+                            "important"
+                        );
+                    }, 10);
 
+                    setTimeout(() => {
+                        document.getElementById(`${addClassActiveForImage}Img`).style.setProperty(
+                            "animation", 
+                            "show 0.6s ease alternate", 
+                            "important"
+                        );
+                    }, 1000);
 
-                //  if(flagAnimationChange){ 
+                } else {
+                    indexNextActive = 0
 
-
-                document.getElementById(arrayImagesColor[indexNextActive].id).classList.add('active')
-
-
-
-
-
-                let elements = document.getElementsByClassName('carousel-item active')[0];
-
-                if (elements.id == arrayImagesColor[indexNextActive].id) {
-
-
-                    document.getElementById(arrayImagesColor[indexNextActive].idImg).style.objectFit = arrayImagesColor[indexNextActive].cover
-
-                    if (document.getElementById(arrayImagesColor[indexNextActive].idImg).style.objectFit == 'scale-down' || document.getElementById(arrayImagesColor[indexNextActive].idImg).style.objectFit == 'contain') {
-                        document.getElementById(arrayImagesColor[indexNextActive].idImg).style.padding = '1rem'
-                    }
-
-                    else {
-                        document.getElementById(arrayImagesColor[indexNextActive].idImg).style.padding = '0px'
-                    }
-
-
-
-                    let divElement = document.getElementById(arrayImagesColor[indexNextActive].div);
-
-                    divElement.style.backgroundImage = arrayImagesColor[indexNextActive].color;
-                    divElement.style.animation = '1s fadeIn ease-out forwards';
-
-                    divElement.addEventListener("animationend", function () {
-                        document.body.style.backgroundImage = arrayImagesColor[indexNextActive].color;
-                        divElement.style.animation = 'none';
-                    });
-
-
-                    try {
-                        let removeStyleLoop = document.getElementById('after')
-                        document.head.removeChild(removeStyleLoop)
-                    } catch (error) {
-
-                    }
-
-                    // Create a <style> element to add custom CSS rules dynamically
-                    let style = document.createElement('style');
-                    // style.id = `${arrayImagesColor[i].id}after`
-
-
-                    //border-radius: 20px; AFTER BORDER RADIUS
-                    style.id = `after`
-
-                    style.innerHTML = `
-                 .imgGojo::after {
-                     content: '';
-                     position: absolute;
-                     width: 100%;
-                     height: 100%;
-                     background-color: ${arrayImagesColor[indexNextActive].tint};
-                     mix-blend-mode: ${arrayImagesColor[indexNextActive].mix};
-                    
-                     animation: 1s fadeIn ease-out forwards;
-                     }
-                      `;
-
-
-
-                    function randomHue() {
-                        // Generate a random hue between 0 and 360
-                        return Math.floor(Math.random() * 361);
-                    }
-
-                    function changeFaviconColor() {
-                        // Get the current favicon link element
-                        const faviconLink = document.getElementById('favicon');
-
-                        // Check if the favicon element exists
-                        if (!faviconLink) {
-                            console.error("Favicon link element not found.");
-                            return;
+                    indexNextActive = Math.floor(Math.random() * arrayImagesColor.length);
+    
+    
+    
+    
+    
+    
+                    //  if(flagAnimationChange){ 
+    
+    
+                    document.getElementById(arrayImagesColor[indexNextActive].id).classList.add('active')
+    
+    
+    
+    
+    
+                    let elements = document.getElementsByClassName('carousel-item active')[0];
+    
+                    if (elements.id == arrayImagesColor[indexNextActive].id) {
+    
+    
+                        document.getElementById(arrayImagesColor[indexNextActive].idImg).style.objectFit = arrayImagesColor[indexNextActive].cover
+    
+                        if (document.getElementById(arrayImagesColor[indexNextActive].idImg).style.objectFit == 'scale-down' || document.getElementById(arrayImagesColor[indexNextActive].idImg).style.objectFit == 'contain') {
+                            document.getElementById(arrayImagesColor[indexNextActive].idImg).style.padding = '1rem'
                         }
-
-                        // Create an image element to load the favicon image
-                        const img = new Image();
-
-                        // This helps prevent potential cross-origin issues
-                        img.crossOrigin = "Anonymous";
-
-                        // Set the favicon source (assuming it's a valid image URL)
-                        img.src = faviconLink.href;
-
-                        img.onload = function () {
-                            // Create a canvas element to manipulate the image
-                            const canvas = document.createElement('canvas');
-                            const ctx = canvas.getContext('2d');
-
-                            // Set canvas dimensions to match the image
-                            canvas.width = img.width;
-                            canvas.height = img.height;
-
-                            // Draw the image on the canvas
-                            ctx.drawImage(img, 0, 0);
-
-                            // Apply a random hue-rotate filter
-                            ctx.filter = `hue-rotate(${randomHue()}deg)`;
-
-                            // Re-draw the image with the applied filter
-                            ctx.drawImage(img, 0, 0);
-
-                            // Convert the canvas to a base64-encoded PNG image
-                            const newFavicon = canvas.toDataURL('image/png');
-
-                            // Update the favicon link with the new image
-                            faviconLink.href = newFavicon;
-                        };
-
-                        // Error handling for when the image fails to load
-                        img.onerror = function () {
-                            console.error("Failed to load the image.");
-                        };
+    
+                        else {
+                            document.getElementById(arrayImagesColor[indexNextActive].idImg).style.padding = '0px'
+                        }
+    
+    
+    
+                        let divElement = document.getElementById(arrayImagesColor[indexNextActive].div);
+    
+                        divElement.style.backgroundImage = arrayImagesColor[indexNextActive].color;
+                        divElement.style.animation = '1s fadeIn ease-out forwards';
+    
+                        divElement.addEventListener("animationend", function () {
+                            document.body.style.backgroundImage = arrayImagesColor[indexNextActive].color;
+                            divElement.style.animation = 'none';
+                        });
+    
+    
+                        try {
+                            let removeStyleLoop = document.getElementById('after')
+                            document.head.removeChild(removeStyleLoop)
+                        } catch (error) {
+    
+                        }
+    
+                        // Create a <style> element to add custom CSS rules dynamically
+                        let style = document.createElement('style');
+                        // style.id = `${arrayImagesColor[i].id}after`
+    
+    
+                        //border-radius: 20px; AFTER BORDER RADIUS
+                        style.id = `after`
+    
+                        style.innerHTML = `
+                     .imgGojo::after {
+                         content: '';
+                         position: absolute;
+                         width: 100%;
+                         height: 100%;
+                         background-color: ${arrayImagesColor[indexNextActive].tint};
+                         mix-blend-mode: ${arrayImagesColor[indexNextActive].mix};
+                        
+                         animation: 1s fadeIn ease-out forwards;
+                         }
+                          `;
+    
+    
+    
+                        function randomHue() {
+                            // Generate a random hue between 0 and 360
+                            return Math.floor(Math.random() * 361);
+                        }
+    
+                        function changeFaviconColor() {
+                            // Get the current favicon link element
+                            const faviconLink = document.getElementById('favicon');
+    
+                            // Check if the favicon element exists
+                            if (!faviconLink) {
+                                console.error("Favicon link element not found.");
+                                return;
+                            }
+    
+                            // Create an image element to load the favicon image
+                            const img = new Image();
+    
+                            // This helps prevent potential cross-origin issues
+                            img.crossOrigin = "Anonymous";
+    
+                            // Set the favicon source (assuming it's a valid image URL)
+                            img.src = faviconLink.href;
+    
+                            img.onload = function () {
+                                // Create a canvas element to manipulate the image
+                                const canvas = document.createElement('canvas');
+                                const ctx = canvas.getContext('2d');
+    
+                                // Set canvas dimensions to match the image
+                                canvas.width = img.width;
+                                canvas.height = img.height;
+    
+                                // Draw the image on the canvas
+                                ctx.drawImage(img, 0, 0);
+    
+                                // Apply a random hue-rotate filter
+                                ctx.filter = `hue-rotate(${randomHue()}deg)`;
+    
+                                // Re-draw the image with the applied filter
+                                ctx.drawImage(img, 0, 0);
+    
+                                // Convert the canvas to a base64-encoded PNG image
+                                const newFavicon = canvas.toDataURL('image/png');
+    
+                                // Update the favicon link with the new image
+                                faviconLink.href = newFavicon;
+                            };
+    
+                            // Error handling for when the image fails to load
+                            img.onerror = function () {
+                                console.error("Failed to load the image.");
+                            };
+                        }
+    
+                        // Call the function to change the favicon color
+                        changeFaviconColor();
+    
+    
+    
+    
+                        // Append the style element to the document head
+                        document.head.appendChild(style);
+    
+    
+    
+    
+    
                     }
-
-                    // Call the function to change the favicon color
-                    changeFaviconColor();
-
-
-
-
-                    // Append the style element to the document head
-                    document.head.appendChild(style);
-
-
-
-
-
+    
+                    else {
+                        console.log('ahhh');
+    
+                    }
+    
+                    // }
+    
+    
+    
+                    document.getElementById('offcanvasBottomCloseBtn').click()
                 }
 
-                else {
-                    console.log('ahhh');
-
-                }
-
-                // }
-
-
-
-                document.getElementById('offcanvasBottomCloseBtn').click()
+        
 
 
             }
@@ -4391,6 +4436,7 @@ document.getElementById('shuffleMusicBar').addEventListener('click', function ()
 
         document.getElementById(`audio${arraySong[randomSongPlaylist].nameSong}`).load()
         document.getElementById(`audioPlay${arraySong[randomSongPlaylist].nameSong}`).click()
+        document.getElementById(`bgImageReal`).src = arraySong[randomSongPlaylist].wallPaper
         document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
         document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
         flagShuffle = true
@@ -4421,6 +4467,7 @@ arraySong.forEach(song => {
             randomSongPlaylist = getRandomInt(arraySong.length)
             document.getElementById(`audio${arraySong[randomSongPlaylist].nameSong}`).load()
             document.getElementById(`audioPlay${arraySong[randomSongPlaylist].nameSong}`).click()
+            document.getElementById(`bgImageReal`).src = arraySong[randomSongPlaylist].wallPaper
 
         }
     })
@@ -4544,6 +4591,7 @@ function shuffleSong(song) {
             randomSongPlaylist = getRandomInt(arraySong.length)
             document.getElementById(`audio${arraySong[randomSongPlaylist].nameSong}`).load()
             document.getElementById(`audioPlay${arraySong[randomSongPlaylist].nameSong}`).click()
+            document.getElementById(`bgImageReal`).src = arraySong[randomSongPlaylist].wallPaper
 
         }
     })
@@ -7516,6 +7564,17 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
             // document.getElementById('showPlayListImageDiv').classList.add('showAni')
             let element = document.getElementById('showPlayListImageDiv');
 
+            if (cover == 'scale-down' || cover == 'contain') {
+                document.getElementById('imagePlayList').style.padding = '1rem'
+            }
+    
+            else {
+                document.getElementById('imagePlayList').style.padding = '0px'
+            }
+    
+
+            
+
             element.classList.remove('slide-back-imgPlaylist'); // Remove the class
 
 
@@ -7858,22 +7917,8 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
             if (isDeleted) {
 
 
+                
 
-
-
-                //
-                document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
-                document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
-                document.getElementById('shuffleMusicBarImg').src = 'img/shuffle.png'
-                document.getElementById('musicBarImg').src = 'img/notFound.jpg'
-                setTimeout(function () {
-                    document.getElementById('musicBarCircle').style.setProperty('left', '0px');
-                }, 200);
-                document.getElementById('audioPauseMusicBar').style.display = 'none'
-                document.getElementById('audioPlayMusicBar').style.display = 'flex'
-                document.getElementById('audioVolumeMusicBarImg').src = 'img/volume.png'
-                currentAudioPlaying = ""
-                //
 
 
                 let deletedElementIndex;
@@ -7901,11 +7946,49 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
 
                 ////////BBBBBBBBBBBBBBBB
 
+                if(flagActualPlayList != id){
+                    console.log('Não mudar de Playlist se o usuário estive nela');
+                    console.log('arraySong', arraySong);
+                    console.log('flagPlayList', flagActualPlayList);
+                }
+
+                else{
+
+                     //
+                document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
+                document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
+                document.getElementById('shuffleMusicBarImg').src = 'img/shuffle.png'
+                document.getElementById('musicBarImg').src = 'img/notFound.jpg'
+                setTimeout(function () {
+                    document.getElementById('musicBarCircle').style.setProperty('left', '0px');
+                }, 200);
+                document.getElementById('audioPauseMusicBar').style.display = 'none'
+                document.getElementById('audioPlayMusicBar').style.display = 'flex'
+                document.getElementById('audioVolumeMusicBarImg').src = 'img/volume.png'
+                currentAudioPlaying = ""
+                //
+
+
+
+
                 let randomChoisePlayList = Math.floor(Math.random() * arrayPlayList.length)
 
                 flagActualPlayList = arrayPlayList[randomChoisePlayList][0].indexPlayList
 
                 document.getElementById('imagePlayList').src = arrayPlayList[randomChoisePlayList][0].coverPlaylist
+
+                
+                if (arrayPlayList[randomChoisePlayList][0].coverObjFit == 'scale-down' || arrayPlayList[randomChoisePlayList][0].coverObjFit == 'contain') {
+                    document.getElementById('imagePlayList').style.padding = '1rem'
+                    document.getElementById('imagePlayList').style.objectFit = arrayPlayList[randomChoisePlayList][0].coverObjFit
+                }
+        
+                else {
+                    document.getElementById('imagePlayList').style.padding = '0px'
+                    document.getElementById('imagePlayList').style.objectFit = arrayPlayList[randomChoisePlayList][0].coverObjFit
+                    
+                     
+                }
 
                 document.getElementById('song').innerHTML = ''
 
@@ -8165,11 +8248,7 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
 
 
 
-
-
-
-
-
+                }
 
             }
 
@@ -8582,6 +8661,14 @@ document.addEventListener('DOMContentLoaded', function () {
             // document.getElementById('showPlayListImageDiv').classList.remove('showAni')
             // document.getElementById('showPlayListImageDiv').classList.add('showAni')
 
+            if (cover == 'scale-down' || cover == 'contain') {
+                document.getElementById('imagePlayList').style.padding = '1rem'
+            }
+    
+            else {
+                document.getElementById('imagePlayList').style.padding = '0px'
+            }
+
             let element = document.getElementById('showPlayListImageDiv');
 
             element.classList.remove('slide-back-imgPlaylist'); // Remove the class
@@ -8927,22 +9014,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (isDeleted) {
 
+              
 
 
-
-                //
-                document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
-                document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
-                document.getElementById('shuffleMusicBarImg').src = 'img/shuffle.png'
-                document.getElementById('musicBarImg').src = 'img/notFound.jpg'
-                setTimeout(function () {
-                    document.getElementById('musicBarCircle').style.setProperty('left', '0px');
-                }, 200);
-                document.getElementById('audioPauseMusicBar').style.display = 'none'
-                document.getElementById('audioPlayMusicBar').style.display = 'flex'
-                document.getElementById('audioVolumeMusicBarImg').src = 'img/volume.png'
-                currentAudioPlaying = ""
-                //
 
 
                 let deletedElementIndex;
@@ -8970,11 +9044,49 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 ////////BBBBBBBBBBBBBBBB
 
+                if(flagActualPlayList != id){
+                    console.log('Não mudar de Playlist se o usuário estive nela');
+                    console.log('arraySong', arraySong);
+                    console.log('flagPlayList', flagActualPlayList);
+                }
+
+                else{
+
+                     //
+                document.getElementById('arrowRightMusicBarImg').src = 'img/arrowRight.png'
+                document.getElementById('arrowLeftMusicBarImg').src = 'img/arrowLeft.png'
+                document.getElementById('shuffleMusicBarImg').src = 'img/shuffle.png'
+                document.getElementById('musicBarImg').src = 'img/notFound.jpg'
+                setTimeout(function () {
+                    document.getElementById('musicBarCircle').style.setProperty('left', '0px');
+                }, 200);
+                document.getElementById('audioPauseMusicBar').style.display = 'none'
+                document.getElementById('audioPlayMusicBar').style.display = 'flex'
+                document.getElementById('audioVolumeMusicBarImg').src = 'img/volume.png'
+                currentAudioPlaying = ""
+                //
+
+
+
+
                 let randomChoisePlayList = Math.floor(Math.random() * arrayPlayList.length)
 
                 flagActualPlayList = arrayPlayList[randomChoisePlayList][0].indexPlayList
 
                 document.getElementById('imagePlayList').src = arrayPlayList[randomChoisePlayList][0].coverPlaylist
+
+                 
+                if (arrayPlayList[randomChoisePlayList][0].coverObjFit == 'scale-down' || arrayPlayList[randomChoisePlayList][0].coverObjFit == 'contain') {
+                    document.getElementById('imagePlayList').style.padding = '1rem'
+                    document.getElementById('imagePlayList').style.objectFit = arrayPlayList[randomChoisePlayList][0].coverObjFit
+                }
+        
+                else {
+                    document.getElementById('imagePlayList').style.padding = '0px'
+                    document.getElementById('imagePlayList').style.objectFit = arrayPlayList[randomChoisePlayList][0].coverObjFit
+                    
+                     
+                }
 
                 document.getElementById('song').innerHTML = ''
 
@@ -9231,6 +9343,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     }, 0.01); // Small delay ensures browser registers the change
                 }
 
+
+
+
+                }
 
             }
 
@@ -9606,6 +9722,7 @@ function allArraySongFunctions() {
                 randomSongPlaylist = getRandomInt(arraySong.length)
                 document.getElementById(`audio${arraySong[randomSongPlaylist].nameSong}`).load()
                 document.getElementById(`audioPlay${arraySong[randomSongPlaylist].nameSong}`).click()
+                document.getElementById(`bgImageReal`).src = arraySong[randomSongPlaylist].wallPaper
 
             }
         })

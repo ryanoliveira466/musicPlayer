@@ -1057,8 +1057,11 @@ body {
 
 .imgGojo img {
     /* border-radius: 20px; AHHHHA */
-    height: 85vh;
-    max-height: 500px;
+
+    /* height: 85vh;
+    max-height: 500px; */
+
+    height: 500px;
     width: 900px;
     min-width: 800px;
     /* max-width: 100vw; */
@@ -3389,6 +3392,7 @@ body div {
     align-items: center;
     text-align: center;
     margin-top: 45px;
+    
     /* will-change: transform, opacity, height;
     transform: translate3d(0, 0, 0); */
 
@@ -3406,8 +3410,12 @@ body div {
 } */
 
 #imagePlayList {
-    height: 85vh;
-    max-height: 500px;
+
+    /* height: 85vh;
+    max-height: 500px; */
+
+
+    height: 500px;
     width: 650px;
     min-width: 650px;
     object-fit: cover;
@@ -3421,8 +3429,11 @@ body div {
 
 @media screen and (max-width: 900px) {
     #imagePlayList {
-        height: 85vh;
-        max-height: 500px;
+
+        /* height: 85vh;
+        max-height: 500px; */
+
+        height: 500px;
         width: 650px;
         min-width: 650px;
         /* max-width: 100vw; */
@@ -3765,7 +3776,7 @@ body div {
     0% {
         transform: translateY(0);
         opacity: 1;
-         height: 70vh;  /*500px */
+         height: 500px;  /*500px 70vh*/
     }
 
     10% {
@@ -3825,7 +3836,7 @@ body div {
     100% {
         transform: translateY(0);
         opacity: 1;
-        height: 70vh; /*500px */
+        height: 500px; /*500px 70vh*/
     }
 }
 
@@ -3933,7 +3944,7 @@ body div {
     100% {
         transform: translateY(0);
         opacity: 1;
-        height: 70vh; /*500px */
+        height: 500px; /*500px 70vh*/
     }
 }
 
@@ -4594,7 +4605,7 @@ main {
     #header img,
     .imgSearch,
     #resultSearching img,
-    .music-player img,
+    .musicImg,
     html button,
     html button img,
     html input,
@@ -4818,7 +4829,7 @@ main {
 
  #showPlayListImageDiv{
     transform: translateY(0);
-    height: 70vh;
+    height: 500px; /*70vh */
  }
 
 
