@@ -286,7 +286,7 @@ html a{
         transform: rotateX(-90deg);
     }
 
-
+    
 
     100% {
         opacity: 1;
@@ -335,6 +335,10 @@ html {
 
 .showAni {
     animation: show 0.6s ease alternate;
+}
+
+.showAniPlImg {
+    animation: fadeIn 0.6s ease alternate;
 }
 
 .showAniBarInitial {
@@ -1207,6 +1211,7 @@ input[type="text"]:hover {
     margin-top: 30px;
     margin-bottom: 30px;
     margin-right: 20px;
+    display: none;
 
 }
 
@@ -1216,7 +1221,7 @@ input[type="text"]:hover {
 }
 
 #removeCarousel {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -1228,7 +1233,7 @@ input[type="text"]:hover {
 
 
 #removeSong {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -3408,6 +3413,7 @@ body div {
     object-fit: cover;
     border-radius: 30px;
     border: 20px solid #7b7b7b8f;
+    animation: show 0.6s ease alternate;
     /* backdrop-filter: contrast(0.5); */
     /* backdrop-filter: invert(1); */
 }
@@ -4062,11 +4068,71 @@ body div {
     0% {
         transform: translateY(-200px);
         opacity: 0;
+        
     }
 
     100% {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+@keyframes moveUpDisappearHeader {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+        height: 136px;
+    }
+
+    20%{
+        opacity: 0.1;
+    }
+
+    40%{
+        opacity: 0.1;
+    }
+
+    60%{
+        opacity: 0.1;
+    }
+
+    80%{
+        opacity: 0.1;
+    }
+
+    100% {
+        transform: translateY(-200px);
+        opacity: 0;
+        height: 0;
+    }
+}
+
+
+
+@keyframes moveUpDisappearBackHeader {
+    0% {
+        transform: translateY(-200px);
+        opacity: 0;
+        height: 0;
+        
+    }
+
+    20%{
+        opacity: 0;
+    }
+
+    50%{
+        opacity: 0;
+    }
+
+    70%{
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+        height: 136px;
     }
 }
 
@@ -4076,6 +4142,14 @@ body div {
 
 .boxBack {
     animation: moveUpDisappearBack 2s forwards;
+}
+
+.boxHeader {
+    animation: moveUpDisappearHeader 0.9s forwards;
+}
+
+.boxBackHeader {
+    animation: moveUpDisappearBackHeader 2s forwards;
 }
 
 /* DIV ANIMATION TRIGGER */
@@ -4113,7 +4187,7 @@ html button {
 
 #searchBar {
     /* transition: transform .3s ease-out !important; */
-     transition: transform 0.1s ease;
+    transition: transform 0.1s ease;
 }
 
 .imgSearch:hover {
@@ -4680,6 +4754,8 @@ main {
     }
 
    
+
+
     #song {
         scroll-snap-type: both mandatory; /* Enables snapping in both directions */
     }
@@ -4693,6 +4769,7 @@ main {
         /* display: none; */
         scroll-snap-align: end;
     }
+    
 
 
 }
@@ -4715,9 +4792,9 @@ main {
 
 
  
-  #imagePlayList{
+  /* #imagePlayList{
     animation: none !important;
-  }
+  } */
 
  /* //FULL LENGHT STRATEGY */
 
@@ -4728,8 +4805,11 @@ main {
 
 
 
-
-#imageViewSong .music-info{
+ #imageViewSong .music-info{
     animation: none;
  }
+
  
+
+
+  

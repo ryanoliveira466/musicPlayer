@@ -7517,12 +7517,18 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('click', fun
             let element = document.getElementById('showPlayListImageDiv');
 
             element.classList.remove('slide-back-imgPlaylist'); // Remove the class
-            element.classList.remove('showAni'); // Remove the class
+
+
+            
+            let elementImage = document.getElementById('imagePlayList')
+           
+            elementImage.style.display = 'none' // Remove the class
 
             // Wait for a short delay before re-adding the class
             setTimeout(() => {
-                element.classList.add('showAni'); // Re-add the class to trigger the animation again
-            }, 1); // Small delay ensures browser registers the change
+                elementImage.style.display = 'flex' // Re-add the class to trigger the animation again
+             }, 0.01); // Small delay ensures browser registers the change
+            
 
 
 
@@ -8557,12 +8563,19 @@ document.addEventListener('DOMContentLoaded', function () {
             let element = document.getElementById('showPlayListImageDiv');
 
             element.classList.remove('slide-back-imgPlaylist'); // Remove the class
-            element.classList.remove('showAni'); // Remove the class
+
+
+
+            
+
+            let elementImage = document.getElementById('imagePlayList')
+           
+            elementImage.style.display = 'none' // Remove the class
 
             // Wait for a short delay before re-adding the class
             setTimeout(() => {
-                element.classList.add('showAni'); // Re-add the class to trigger the animation again
-            }, 1); // Small delay ensures browser registers the change
+                elementImage.style.display = 'flex' // Re-add the class to trigger the animation again
+             }, 0.01); // Small delay ensures browser registers the change
 
 
 
@@ -9918,6 +9931,17 @@ document.getElementById('musicMode').addEventListener('click', function () {
     }, 2000);
 
 
+    document.getElementById('header').classList.remove('boxHeader')
+    document.getElementById('header').classList.add('boxBackHeader')
+
+    document.getElementById('stiModalSong').style.display = 'flex'
+    document.getElementById('stiPlayList').style.display = 'flex'
+    document.getElementById('stiViewSong').style.display = 'flex'
+
+    document.getElementById('stiModalImagem').style.display = 'none'
+    document.getElementById('stiViewImagem').style.display = 'none'
+
+
 
 })
 
@@ -9930,6 +9954,8 @@ document.getElementById('imageMode').addEventListener('click', function () {
     let hideMusic = document.getElementById('hideBarMusicImg').src.split('/').pop()
     let hideImageCarousel = document.getElementById('imgRemoveCarousel').src.split('/').pop()
     let imageBarSong = document.getElementById('imgRemoveSong').src.split('/').pop()
+
+
 
     console.log(hideMusic);
 
@@ -9952,6 +9978,21 @@ document.getElementById('imageMode').addEventListener('click', function () {
         this.disabled = false
         document.getElementById('musicMode').disabled = false
     }, 2000);
+
+
+    document.getElementById('header').classList.remove('boxBackHeader')
+    document.getElementById('header').classList.add('boxHeader')
+
+    document.getElementById('stiModalSong').style.display = 'none'
+    document.getElementById('stiPlayList').style.display = 'none'
+    document.getElementById('stiViewSong').style.display = 'none'
+
+    document.getElementById('stiModalImagem').style.display = 'flex'
+    document.getElementById('stiViewImagem').style.display = 'flex'
+
+    
+
+
 
 
 
