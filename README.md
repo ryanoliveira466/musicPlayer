@@ -96,11 +96,7 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br> 
+
 
 
  
@@ -141,10 +137,7 @@ You can use @media (pointer: coarse) to style elements differently for touchscre
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br> 
+
 
  
 
