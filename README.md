@@ -4,21 +4,13 @@
 
 ---
 
-#### Projeto pessoal onde há funcionalidades de um tocador de música juntamente com filtros de imagens no site(em andamento)
+ Projeto pessoal onde há funcionalidades de um tocador de música juntamente com filtros de imagens no site(em andamento)
 
 ---
 
 [ryanoliveira466.github.io/musicPlayer](https://ryanoliveira466.github.io/musicPlayer/)
 
-
-# ⬇️
-
-# ⬇️
-
-# ⬇️
-
- 
-
+---
 # Tips for CSS Animation 
 
 ## ✅ vh (Viewport Height) & vw (Viewport Width)
