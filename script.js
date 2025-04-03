@@ -8629,7 +8629,20 @@ document.getElementById('buttonAcceptimgPlayList').addEventListener('focus', fun
 
     }
 
+    cropper5.destroy();
+
 })
+
+
+  //Destruir o cropper ao abrir o modal de imagens
+
+  document.getElementById('stiPlayList').addEventListener('click', function(){
+    if(cropper5){
+        cropper5.destroy();
+        document.getElementById('image-previewPlayList').src = `img/notFound.jpg`
+    }
+})
+
 
 
 
@@ -10130,6 +10143,9 @@ document.getElementById('hideBarMusic').addEventListener('click', function () {
 
 
 document.getElementById('musicMode').addEventListener('click', function () {
+
+    window.scrollTo(0,0)
+
     let hideMusic = document.getElementById('hideBarMusicImg').src.split('/').pop()
     let hideImageCarousel = document.getElementById('imgRemoveCarousel').src.split('/').pop()
     let imageBarSong = document.getElementById('imgRemoveSong').src.split('/').pop()
@@ -10178,6 +10194,9 @@ document.getElementById('musicMode').addEventListener('click', function () {
 
 
 document.getElementById('imageMode').addEventListener('click', function () {
+
+    window.scrollTo(0,0)
+
     let hideMusic = document.getElementById('hideBarMusicImg').src.split('/').pop()
     let hideImageCarousel = document.getElementById('imgRemoveCarousel').src.split('/').pop()
     let imageBarSong = document.getElementById('imgRemoveSong').src.split('/').pop()

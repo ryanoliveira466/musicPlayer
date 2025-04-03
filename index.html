@@ -1362,7 +1362,7 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
                 <small>
                     <p style="font-size: x-large;">Now</p>
                 </small>
-                <button type="button" class="btn-close" id="liveToastBtnClose" data-bs-dismiss="toast"
+                <button type="button" class="btn-close" id="liveToastBtnClose" style="animation: none !important;transform: none;" data-bs-dismiss="toast"
                     aria-label="Close"></button>
             </div>
             <div class="toast-body" style="color: aliceblue;">
@@ -1388,7 +1388,7 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
                 <small>
                     <p style="font-size: x-large;">Now</p>
                 </small>
-                <button type="button" class="btn-close" id="liveToastBtnNameClose" data-bs-dismiss="toast"
+                <button type="button" class="btn-close" id="liveToastBtnNameClose" style="animation: none !important;transform: none;" data-bs-dismiss="toast"
                     aria-label="Close"></button>
             </div>
             <div class="toast-body" style="color: aliceblue;">
@@ -1422,7 +1422,7 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
              <small>
                  <p style="font-size: x-large;">Now</p>
              </small>
-             <button type="button" class="btn-close" id="liveToastBtnClose" data-bs-dismiss="toast"
+             <button type="button" class="btn-close" id="liveToastBtnClose" style="animation: none !important;transform: none;" data-bs-dismiss="toast"
                  aria-label="Close"></button>
          </div>
          <div class="toast-body" style="color: aliceblue;">
@@ -1454,7 +1454,7 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
                  <small>
                      <p style="font-size: x-large;">Now</p>
                  </small>
-                 <button type="button" class="btn-close" id="liveToastBtnDeleteClose" data-bs-dismiss="toast"
+                 <button type="button" class="btn-close" id="liveToastBtnDeleteClose" style="animation: none !important;transform: none;" data-bs-dismiss="toast"
                      aria-label="Close"></button>
              </div>
              <div class="toast-body" style="color: aliceblue;">
@@ -2345,8 +2345,24 @@ aria-labelledby="exampleModalViewSongLabel" aria-hidden="true">
       } else {
         return 0;
       }
+
+      cropper.destroy();
     });
 
+
+    //Destruir o cropper ao abrir o modal de imagens
+
+    document.getElementById('stiModalImagem').addEventListener('click', function(){
+        if(cropper){
+            cropper.destroy();
+            document.getElementById('image-preview').src = `img/notFound.jpg`
+        }
+
+        document.querySelectorAll('.pcr-app').forEach(div => {
+        div.style.display = 'none';
+        });
+
+    })
 
 
 
@@ -2428,7 +2444,19 @@ if (cropper3) {
 } else {
   return 0;
 }
+cropper3.destroy();
 });
+
+
+  //Destruir o cropper ao abrir o modal de imagens
+
+  document.getElementById('stiModalSong').addEventListener('click', function(){
+        if(cropper3){
+            cropper3.destroy();
+            document.getElementById('image-previewSong').src = `img/notFound.jpg`
+        }
+    })
+
   </script>
   
 
